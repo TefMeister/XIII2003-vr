@@ -338,7 +338,7 @@ git push
 - Test: live confirmation via x64dbg breakpoint hit-rate (described below)
 
 **Interfaces:**
-- Produces: `proxy/re_findings.h` with `kD3DVersion` (8 or 9) and `kPresentVtableIndex` — consumed by Task 4.
+- Produces: `proxy/re_findings.h` with `kD3DVersion` (8 or 9), `kCreateDeviceVtableIndex`, and `kPresentVtableIndex` — consumed by Task 4.
 
 This is a discovery task — the exact values in `re_findings.h` are the deliverable, not something specifiable in advance. Use x64dbg-skills throughout rather than raw MCP calls where a matching skill exists.
 
@@ -1187,9 +1187,20 @@ void VrHost::Shutdown() {
 }
 ```
 
-- [ ] **Step 4: Verify fail-closed behavior on the dev machine**
+- [ ] **Step 4: Link vr_host into the proxy target and verify a clean build**
 
-Link `vr_host` into the proxy target (`target_link_libraries(D3DDrv PRIVATE ... vr_host)` in `proxy/CMakeLists.txt`), but don't call `TryInitialize()` from `dllmain.cpp` yet — that wiring is Task 8. For this task, verify only that the project builds cleanly with `vr_host` linked in (no headset or runtime needed to compile/link).
+```cmake
+# proxy/CMakeLists.txt - full replacement, adding vr_host to the Task 6 version
+add_library(D3DDrv SHARED dllmain.cpp present_hook.cpp camera_hook.cpp)
+target_link_libraries(D3DDrv PRIVATE minhook d3d9 pose_math proxy_config vr_host)
+set_target_properties(D3DDrv PROPERTIES
+    OUTPUT_NAME "D3DDrv"
+    SUFFIX ".dll"
+    LINK_FLAGS "/DEF:${CMAKE_CURRENT_SOURCE_DIR}/proxy.def"
+)
+```
+
+Don't call `TryInitialize()` from `dllmain.cpp` yet — that wiring is Task 8. For this task, verify only that the project builds cleanly with `vr_host` linked in (no headset or runtime needed to compile/link).
 
 - [ ] **Step 5: Commit**
 
