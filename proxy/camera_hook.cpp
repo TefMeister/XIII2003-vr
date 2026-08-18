@@ -13,6 +13,8 @@
 #include <windows.h>
 #include <cstdint>
 #include <cstring>
+#include "pose_math.h"
+#include "vr_host.h"
 
 // Unreal FRotator: three int32 in declaration order Pitch, Yaw, Roll.
 // A full revolution is 65536 units.
@@ -35,35 +37,51 @@ static const size_t  kStealLen = sizeof(kExpectedPrologue);  // 7
 static PlayerCalcView_t s_trampoline    = nullptr;
 static LONG             s_sweep         = 0;   // accumulating synthetic yaw
 static bool             s_sweepEnabled  = false;
+static bool             s_liveHmd       = false;
 static const LONG       kSweepStep      = 150; // ~0.8 deg/frame (150/65536*360)
 
 static void Log(const char* m) {
     OutputDebugStringA("[xiii-camera] "); OutputDebugStringA(m); OutputDebugStringA("\n");
 }
 
-// Read [VR] CameraSyntheticSweep (default 0) from the game's XIII.ini, which
-// lives next to XIII.exe. This is the headset-free smoke-test toggle; the real
-// HMD-pose path replaces the sweep later.
-static bool SweepEnabledFromIni() {
+// Read camera-override config from the game's XIII.ini (next to XIII.exe):
+//   [VR] CameraSyntheticSweep = 1  -> hardcoded yaw sweep (bypasses pose_math)
+//   [VR] CameraLiveHmd        = 1  -> drive the view from VrHostGetHeadPose()
+//                                     through the full pose_math pipeline
+// Both default 0 (passthrough). LiveHmd takes precedence if both are set.
+static void ReadConfigFromIni() {
     char exe[MAX_PATH];
-    if (!GetModuleFileNameA(nullptr, exe, MAX_PATH)) return false;
+    if (!GetModuleFileNameA(nullptr, exe, MAX_PATH)) return;
     char* slash = strrchr(exe, '\\');
-    if (!slash) return false;
+    if (!slash) return;
     lstrcpyA(slash + 1, "XIII.ini");
-    return GetPrivateProfileIntA("VR", "CameraSyntheticSweep", 0, exe) != 0;
+    s_sweepEnabled = GetPrivateProfileIntA("VR", "CameraSyntheticSweep", 0, exe) != 0;
+    s_liveHmd      = GetPrivateProfileIntA("VR", "CameraLiveHmd", 0, exe) != 0;
 }
 
 static void __fastcall Hook_PlayerCalcView(void* self, void* edx, void** ViewActor,
                                            void* CameraLocation,
                                            FRotator* CameraRotation) {
     s_trampoline(self, edx, ViewActor, CameraLocation, CameraRotation);
-    if (s_sweepEnabled && CameraRotation) {
+    if (!CameraRotation) return;
+    if (s_liveHmd) {
+        // Full pose pipeline: HMD quaternion -> euler radians -> rotator units.
+        float qx, qy, qz, qw;
+        if (VrHostGetHeadPose(&qx, &qy, &qz, &qw)) {
+            EulerRadians e = QuaternionToEuler(Quaternion{qx, qy, qz, qw});
+            // Yaw wraps mod 65536, so the normalized [0,65536) value adds right.
+            CameraRotation->Yaw += RadiansToUnrealRotatorUnits(e.yaw);
+            // Pitch is signed and small; convert directly (no wrap-normalize).
+            CameraRotation->Pitch +=
+                (int32_t)(e.pitch / 6.28318530717958647692f * 65536.0f);
+        }
+    } else if (s_sweepEnabled) {
         CameraRotation->Yaw += InterlockedAdd(&s_sweep, kSweepStep);
     }
 }
 
 bool InstallCameraHook() {
-    s_sweepEnabled = SweepEnabledFromIni();
+    ReadConfigFromIni();
 
     HMODULE hEngine = GetModuleHandleA("Engine.dll");
     if (!hEngine) { Log("Engine.dll not loaded"); return false; }
@@ -97,7 +115,8 @@ bool InstallCameraHook() {
     VirtualProtect(target, kStealLen, oldProt, &tmp);
     FlushInstructionCache(GetCurrentProcess(), target, kStealLen);
 
-    Log(s_sweepEnabled ? "eventPlayerCalcView hooked (synthetic sweep ON)"
-                       : "eventPlayerCalcView hooked (passthrough; sweep OFF)");
+    Log(s_liveHmd      ? "eventPlayerCalcView hooked (LiveHmd via pose_math)"
+        : s_sweepEnabled ? "eventPlayerCalcView hooked (synthetic sweep ON)"
+                         : "eventPlayerCalcView hooked (passthrough)");
     return true;
 }
