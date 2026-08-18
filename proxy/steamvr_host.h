@@ -24,3 +24,8 @@
 // game is unaffected.
 void StartSteamVrHost();
 void StopSteamVrHost();
+
+// Signal-only stop for DLL_PROCESS_DETACH: sets the run flag without waiting
+// (joining a thread there deadlocks on the loader lock, and during process
+// termination the thread is already gone).
+void SignalStopSteamVrHost();

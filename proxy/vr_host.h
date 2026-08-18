@@ -27,6 +27,17 @@ void VrHostSubmitFrame(const uint8_t* bgra, int width, int height);
 // into a swapchain image.
 bool VrHostCopyLatestFrame(uint8_t* dst, int cap, int* width, int* height);
 
+// As VrHostCopyLatestFrame, but also returns the frame's sequence number (one
+// increment per VrHostSubmitFrame). Consumers that re-present the frame on
+// their own clock use this to skip work -- and, critically, redundant
+// compositor uploads -- when no new frame has arrived.
+bool VrHostCopyLatestFrameEx(uint8_t* dst, int cap, int* width, int* height,
+                             unsigned* seq);
+
+// Sequence number of the latest latched frame (0 = none yet). Cheap poll for
+// "is there anything new?" without copying the pixels.
+unsigned VrHostLatestFrameSeq();
+
 // Push the real HMD orientation (from OpenXR). Once set, VrHostGetHeadPose
 // returns this instead of the synthetic yaw.
 void VrHostSetHeadPose(float x, float y, float z, float w);

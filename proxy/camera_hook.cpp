@@ -70,7 +70,9 @@ static void __fastcall Hook_PlayerCalcView(void* self, void* edx, void** ViewAct
         if (VrHostGetHeadPose(&qx, &qy, &qz, &qw)) {
             EulerRadians e = QuaternionToEuler(Quaternion{qx, qy, qz, qw});
             // Yaw wraps mod 65536, so the normalized [0,65536) value adds right.
-            CameraRotation->Yaw += RadiansToUnrealRotatorUnits(e.yaw);
+            // Negated: OpenVR's yaw winds opposite to Unreal's, so the raw value
+            // mirrors head-look (turn left, game pans right -- confirmed on HW).
+            CameraRotation->Yaw += RadiansToUnrealRotatorUnits(-e.yaw);
             // Pitch is signed and small; convert directly (no wrap-normalize).
             CameraRotation->Pitch +=
                 (int32_t)(e.pitch / 6.28318530717958647692f * 65536.0f);
