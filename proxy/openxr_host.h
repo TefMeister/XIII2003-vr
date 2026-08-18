@@ -15,3 +15,8 @@
 // runtime is absent) nothing is loaded and the game is unaffected.
 void StartOpenXrHost();
 void StopOpenXrHost();
+
+// Signal-only stop for DLL_PROCESS_DETACH: sets the run flag without waiting
+// (joining a thread there deadlocks on the loader lock, and during process
+// termination the thread is already gone).
+void SignalStopOpenXrHost();

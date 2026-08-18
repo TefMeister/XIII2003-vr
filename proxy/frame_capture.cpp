@@ -48,6 +48,22 @@ struct D3DLOCKED_RECT_8 {
     void* pBits;
 };
 
+struct D3DPRESENT_PARAMETERS_8 {  // fixed D3D8 ABI layout
+    UINT  BackBufferWidth;
+    UINT  BackBufferHeight;
+    UINT  BackBufferFormat;
+    UINT  BackBufferCount;
+    UINT  MultiSampleType;
+    UINT  SwapEffect;
+    HWND  hDeviceWindow;
+    BOOL  Windowed;
+    BOOL  EnableAutoDepthStencil;
+    UINT  AutoDepthStencilFormat;
+    DWORD Flags;
+    UINT  FullScreen_RefreshRateInHz;
+    UINT  FullScreen_PresentationInterval;
+};
+
 #define D3DLOCK_READONLY 0x00000010L
 
 // COM methods are __stdcall. First arg is the interface (this).
@@ -56,6 +72,7 @@ typedef HRESULT(WINAPI *CreateDevice_t)(void* self, UINT Adapter, UINT DeviceTyp
                                         HWND hFocusWindow, DWORD BehaviorFlags,
                                         void* pPresentationParameters,
                                         void** ppReturnedDeviceInterface);
+typedef HRESULT(WINAPI *Reset_t)(void* self, D3DPRESENT_PARAMETERS_8* pp);
 typedef HRESULT(WINAPI *Present_t)(void* self, const RECT* pSourceRect,
                                    const RECT* pDestRect, HWND hDestWindowOverride,
                                    const void* pDirtyRegion);
@@ -182,6 +199,8 @@ static void WriteBMP(const char* path, const D3DSURFACE_DESC_8& d,
 static Direct3DCreate8_t s_realCreate8   = nullptr;
 static void*             s_realCreateDev = nullptr;  // IDirect3D8::CreateDevice
 static void*             s_realPresent   = nullptr;  // IDirect3DDevice8::Present
+static void*             s_realReset     = nullptr;  // IDirect3DDevice8::Reset
+static HWND              s_focusWnd      = nullptr;  // from CreateDevice
 static void**            s_iatSlot       = nullptr;  // patched IAT entry
 static LONG              s_devHooked      = 0;
 static LONG              s_d3dHooked      = 0;
@@ -226,6 +245,41 @@ static uint8_t* DecodeSurfaceToBGRA(const D3DSURFACE_DESC_8& d,
         }
     }
     return out;
+}
+
+// ---- Windowed backbuffer clamp ----------------------------------------------
+//
+// In windowed mode the game asks for a DESKTOP-sized backbuffer (observed
+// 3440x1440 on hardware) but sets its viewport to the window's client size
+// (1280x960), so it renders into the top-left corner and the rest stays black.
+// The desktop window looks fine (Present clips to the window), but the VR
+// capture reads the whole backbuffer, so the headset overlay showed the game
+// squished into a corner of dead space. Clamping the requested backbuffer to
+// the device window's client size makes the viewport fill it exactly. Applied
+// on CreateDevice AND Reset (res changes go through Reset with fresh params).
+static void ClampWindowedBackbuffer(D3DPRESENT_PARAMETERS_8* pp) {
+    if (!pp || !pp->Windowed) return;
+    HWND w = pp->hDeviceWindow ? pp->hDeviceWindow : s_focusWnd;
+    RECT rc;
+    if (!w || !GetClientRect(w, &rc) || rc.right <= 0 || rc.bottom <= 0) return;
+    if (pp->BackBufferWidth == (UINT)rc.right && pp->BackBufferHeight == (UINT)rc.bottom)
+        return;
+    char b[128];
+    _snprintf(b, sizeof(b), "windowed backbuffer clamped %ux%u -> %ldx%ld",
+              pp->BackBufferWidth, pp->BackBufferHeight, rc.right, rc.bottom);
+    b[127] = 0;
+    Log(b);
+    pp->BackBufferWidth  = (UINT)rc.right;
+    pp->BackBufferHeight = (UINT)rc.bottom;
+}
+
+static HRESULT WINAPI Hook_Reset(void* dev, D3DPRESENT_PARAMETERS_8* pp) {
+    ClampWindowedBackbuffer(pp);
+    // The cached readback surface belongs to the pre-Reset device state; drop
+    // it so the next Present recreates it at the new size.
+    if (s_sysSurf) { ((Release_t)VtblEntry(s_sysSurf, 2))(s_sysSurf); s_sysSurf = nullptr; }
+    s_sysW = s_sysH = s_sysFmt = 0;
+    return ((Reset_t)s_realReset)(dev, pp);
 }
 
 // ---- Present hook -----------------------------------------------------------
@@ -299,6 +353,8 @@ static HRESULT WINAPI Hook_CreateDevice(void* self, UINT Adapter, UINT DeviceTyp
                                         HWND hFocusWindow, DWORD BehaviorFlags,
                                         void* pPresentationParameters,
                                         void** ppReturnedDeviceInterface) {
+    s_focusWnd = hFocusWindow;
+    ClampWindowedBackbuffer((D3DPRESENT_PARAMETERS_8*)pPresentationParameters);
     HRESULT hr = ((CreateDevice_t)s_realCreateDev)(
         self, Adapter, DeviceType, hFocusWindow, BehaviorFlags,
         pPresentationParameters, ppReturnedDeviceInterface);
@@ -307,6 +363,8 @@ static HRESULT WINAPI Hook_CreateDevice(void* self, UINT Adapter, UINT DeviceTyp
         void* dev = *ppReturnedDeviceInterface;
         s_realPresent = HookVtbl(dev, 15, (void*)&Hook_Present);
         Log(s_realPresent ? "Present hooked" : "Present hook FAILED");
+        s_realReset = HookVtbl(dev, 14, (void*)&Hook_Reset);
+        Log(s_realReset ? "Reset hooked" : "Reset hook FAILED");
     }
     return hr;
 }
