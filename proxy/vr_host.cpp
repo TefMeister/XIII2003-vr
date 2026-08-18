@@ -4,6 +4,7 @@
 #include <d3d11.h>
 #include <cstdio>
 #include <cstring>
+#include <cmath>
 
 static ID3D11Device*        g_dev = nullptr;
 static ID3D11DeviceContext* g_ctx = nullptr;
@@ -97,6 +98,18 @@ static void WriteBGRA_BMP(const char* path, const uint8_t* bgra, int W, int H, i
         free(row);
     }
     CloseHandle(f);
+}
+
+bool VrHostGetHeadPose(float* x, float* y, float* z, float* w) {
+    if (!x || !y || !z || !w) return false;
+    // Synthetic slow yaw about the Y axis (~one revolution per 12s) standing in
+    // for the OpenXR HMD pose. Replaced by the real headset orientation later.
+    const float twoPi = 6.28318530717958647692f;
+    float t = (float)GetTickCount() * 0.001f;
+    float angle = fmodf(t * (twoPi / 12.0f), twoPi);
+    float h = angle * 0.5f;
+    *x = 0.0f; *y = sinf(h); *z = 0.0f; *w = cosf(h);
+    return true;
 }
 
 bool VrHostDebugSaveTexture(const char* path) {
