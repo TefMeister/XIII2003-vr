@@ -4,6 +4,7 @@
 #include "camera_hook.h"
 #include "vr_host.h"
 #include "openxr_host.h"
+#include "steamvr_host.h"
 
 // Force the original render-device DLL to load so its static/global
 // constructors run and self-register UD3DRenderDevice into the engine's
@@ -31,6 +32,10 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD reason, LPVOID) {
         // DllMain returns and the loader lock releases). Delay-loaded loader,
         // so this is inert on machines without OpenXR.
         StartOpenXrHost();
+        // SteamVR / OpenVR VR host (only if [VR] SteamVR=1). Delay-loaded
+        // openvr_api.dll, so this is inert on machines without SteamVR. Enable
+        // EXACTLY ONE of OpenXR / SteamVR at a time -- never both.
+        StartSteamVrHost();
     }
     return TRUE;
 }

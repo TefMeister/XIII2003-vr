@@ -1,0 +1,5 @@
+# The OpenVR (SteamVR) API binaries are NOT committed (redistributables, and to
+# respect repo size limits). Fetch them with fetch_openvr.md. The header IS
+# vendored (headers/openvr.h).
+lib/openvr_api.lib
+bin/openvr_api.dll
