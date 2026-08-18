@@ -1,4 +1,4 @@
-add_library(D3DDrv SHARED dllmain.cpp)
+add_library(D3DDrv SHARED dllmain.cpp frame_capture.cpp)
 set_target_properties(D3DDrv PROPERTIES
     OUTPUT_NAME "D3DDrv"
     SUFFIX ".dll"
