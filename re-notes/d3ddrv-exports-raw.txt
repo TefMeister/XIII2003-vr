@@ -1,0 +1,69 @@
+﻿Microsoft (R) COFF/PE Dumper Version 14.44.35228.0
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+
+Dump of file D:\Program Files (x86)\Steam\steamapps\common\XIII - Classic\system\D3DDrv.dll
+
+File Type: DLL
+
+  Section contains the following exports for D3DDrv.dll
+
+    00000000 characteristics
+    417F9919 time date stamp Wed Oct 27 15:48:25 2004
+        0.00 version
+           1 ordinal base
+          42 number of functions
+          42 number of names
+
+    ordinal hint RVA      name
+
+          1    0 00006E90 ??0UD3DRenderDevice@@QAE@ABV0@@Z
+          2    1 00010120 ??0UD3DRenderDevice@@QAE@XZ
+          3    2 00006E00 ??1UD3DRenderDevice@@UAE@XZ
+          4    3 00005D20 ??2UD3DRenderDevice@@SAPAXIPAVUObject@@VFName@@K@Z
+          5    4 00005D50 ??2UD3DRenderDevice@@SAPAXIPAW4EInternal@@@Z
+          6    5 00007230 ??4UD3DRenderDevice@@QAEAAV0@ABV0@@Z
+          7    6 0004E5A8 ??_7UD3DRenderDevice@@6BFExec@@@
+          8    7 0004E5B0 ??_7UD3DRenderDevice@@6BUObject@@@
+          9    8 0000D510 ?DisplayBMPFile@UD3DRenderDevice@@UAEXPAD@Z
+         10    9 0000CE40 ?Exec@UD3DRenderDevice@@UAEHPBDAAVFOutputDevice@@@Z
+         11    A 0000CC60 ?Exit@UD3DRenderDevice@@UAEXPAVUViewport@@@Z
+         12    B 0000D900 ?Flush@UD3DRenderDevice@@UAEXPAVUViewport@@@Z
+         13    C 00010060 ?GetAvailableRes@UD3DRenderDevice@@UAEXAAV?$TArray@UFResInfo@@@@@Z
+         14    D 0000D140 ?GetStats@UD3DRenderDevice@@UAE?AVFString@@HM@Z
+         15    E 0000D740 ?GetVertexShader@UD3DRenderDevice@@QAEPAVFD3DVertexShader@@W4EVertexShader@@AAUFShaderDeclaration@@@Z
+         16    F 0000D380 ?GetVideoSurface@UD3DRenderDevice@@UAEPAXXZ
+         17   10 0000D1B0 ?GetXIIIStats@UD3DRenderDevice@@UAEXPAMH@Z
+         18   11 0000E0F0 ?Init@UD3DRenderDevice@@UAEHXZ
+         19   12 0000D330 ?InitRndCubeSpr@UD3DRenderDevice@@UAEXXZ
+         20   13 00005D70 ?InternalConstructor@UD3DRenderDevice@@SAXPAX@Z
+         21   14 0000D5A0 ?LoadTextureInVram@UD3DRenderDevice@@UAEXPAVUBitmapMaterial@@@Z
+         22   15 0000DBF0 ?Lock@UD3DRenderDevice@@UAEPAVFRenderInterface@@PAVUViewport@@PAEPAH@Z
+         23   16 00005D60 ?MyStaticSize@UD3DRenderDevice@@UAEHXZ
+         24   17 0000D000 ?Present@UD3DRenderDevice@@UAEXPAVUViewport@@@Z
+         25   18 0005FF70 ?PrivateStaticClass@UD3DRenderDevice@@0VUClass@@A
+         26   19 0000DF00 ?ReadPixels@UD3DRenderDevice@@UAEXPAVUViewport@@PAVFColor@@@Z
+         27   1A 0000CD70 ?RestoreGamma@UD3DRenderDevice@@UAEXXZ
+         28   1B 0000F1B0 ?SetRes@UD3DRenderDevice@@UAEHPAVUViewport@@HHH@Z
+         29   1C 00005D10 ?StaticClass@UD3DRenderDevice@@SAPAVUClass@@XZ
+         30   1D 0000C980 ?StaticConstructor@UD3DRenderDevice@@QAEXXZ
+         31   1E 0000D100 ?SupportsTextureFormat@UD3DRenderDevice@@UAEHW4ETextureFormat@@@Z
+         32   1F 0000D840 ?UnSetRes@UD3DRenderDevice@@QAEHPBDJ@Z
+         33   20 0000CF00 ?Unlock@UD3DRenderDevice@@UAEXPAVFRenderInterface@@@Z
+         34   21 0000DA60 ?UpdateGamma@UD3DRenderDevice@@UAEXPAVUViewport@@@Z
+         35   22 0000D390 ?Video_Close@UD3DRenderDevice@@UAEXXZ
+         36   23 0000D440 ?Video_CopyTexToScreen@UD3DRenderDevice@@UAEXHHHH@Z
+         37   24 0000D350 ?Video_Init@UD3DRenderDevice@@UAEXHH@Z
+         38   25 0000D3B0 ?Video_LockTex@UD3DRenderDevice@@UAEXHHPAPAXAAK@Z
+         39   26 0000D430 ?Video_UnlockTex@UD3DRenderDevice@@UAEXXZ
+         41   27 000599F0 GPackage
+         40   28 00005CF0 _DllMain@12
+         42   29 00060068 autoclassUD3DRenderDevice
+
+  Summary
+
+        D000 .data
+        1000 .data1
+        B000 .rdata
+        5000 .reloc
+       4D000 .text
