@@ -266,8 +266,15 @@ void StartOpenXrHost() {
 void StopOpenXrHost() {
     InterlockedExchange(&g_run, 0);
     if (g_thread) {
-        WaitForSingleObject(g_thread, 2000);
+        // 5 s: teardown includes xrDestroySession/xrDestroyInstance, which can
+        // block briefly on the runtime.
+        if (WaitForSingleObject(g_thread, 5000) == WAIT_TIMEOUT)
+            Log("host thread did not exit within 5 s -- teardown may be unclean");
         CloseHandle(g_thread);
         g_thread = nullptr;
     }
+}
+
+void SignalStopOpenXrHost() {
+    InterlockedExchange(&g_run, 0);
 }
