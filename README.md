@@ -108,3 +108,35 @@ Play for ~20–30 seconds, then open `%TEMP%\xiii_capture\`
   cannot run without it, and it's your one-step path back to a clean game.
 - Cel-shaded classic *XIII* is a fantastic candidate for VR — this is the first
   step toward getting it there.
+
+---
+
+## Credits & attribution
+
+This is an unofficial, non-commercial fan mod, made possible by the work of many:
+
+- **Ubisoft** — creators and rights holders of *XIII* (2003). All rights to the
+  game and its assets belong to them. This mod ships **no original game files**
+  and requires you to own a legitimate copy of the game.
+- **The Unreal Engine 1/2 modding community** — for decades of shared knowledge
+  about the engine's render devices, native-class registration, and the FRotator
+  rotation convention.
+- **Open-source tools** that made the work possible, including
+  [x64dbg](https://x64dbg.com/), [doctest](https://github.com/doctest/doctest),
+  and [pefile](https://github.com/erocarrera/pefile), plus the OpenXR ecosystem
+  for the VR work still to come.
+- **Everyone** whose tutorials, forum posts, projects, or ideas provided
+  inspiration along the way — whether named here or not.
+
+If you helped in any way, even just as inspiration, and feel you should be
+credited but aren't, please email us and we will add you as soon as possible.
+
+## Corrections & removal requests
+
+- **Missing or incorrect credit?** Email us and we will correct it as soon as
+  possible.
+- **Removal requests:** if you are the owner or creator of something used in this
+  mod and you want it removed from the mod or this repository, please contact us.
+  We will honour legitimate requests from rights holders promptly.
+
+**Contact:** td3kxlvr@proton.me
