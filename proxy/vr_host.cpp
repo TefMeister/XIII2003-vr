@@ -11,6 +11,19 @@ static ID3D11DeviceContext* g_ctx = nullptr;
 static ID3D11Texture2D*     g_tex = nullptr;  // DEFAULT usage, BGRA8 (swapchain-shaped)
 static int g_w = 0, g_h = 0;
 
+// Latest captured frame as a CPU BGRA buffer (for the OpenXR host to upload
+// into a swapchain image), guarded by a critical section.
+static CRITICAL_SECTION g_lock;
+static bool     g_lockInit = false;
+static uint8_t* g_latest   = nullptr;
+static int      g_latestW = 0, g_latestH = 0;
+
+// Head pose (quaternion). g_havePose flips true once OpenXR feeds a real pose;
+// until then VrHostGetHeadPose returns a synthetic yaw. Plain globals -- a rare
+// torn read is only a one-frame cosmetic glitch.
+static volatile bool g_havePose = false;
+static volatile float g_pose[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
+
 static void Log(const char* m) {
     OutputDebugStringA("[xiii-vrhost] "); OutputDebugStringA(m); OutputDebugStringA("\n");
 }
@@ -26,6 +39,7 @@ bool VrHostInit() {
                                nullptr, 0, D3D11_SDK_VERSION, &g_dev, &got, &g_ctx);
     }
     if (FAILED(hr)) { Log("D3D11CreateDevice failed"); return false; }
+    if (!g_lockInit) { InitializeCriticalSection(&g_lock); g_lockInit = true; }
     Log("D3D11 device created");
     return true;
 }
@@ -55,9 +69,43 @@ static bool EnsureTexture(int w, int h) {
 void VrHostSubmitFrame(const uint8_t* bgra, int width, int height) {
     if (!g_dev) VrHostInit();  // lazy: create the D3D11 device off the DllMain/loader-lock path
     if (!g_dev || !g_ctx || !bgra || width <= 0 || height <= 0) return;
-    if (!EnsureTexture(width, height)) return;
-    // DEFAULT texture: upload with UpdateSubresource (source is tightly packed).
-    g_ctx->UpdateSubresource(g_tex, 0, nullptr, bgra, (UINT)width * 4, 0);
+    if (EnsureTexture(width, height)) {
+        // DEFAULT texture: upload with UpdateSubresource (tightly packed source).
+        g_ctx->UpdateSubresource(g_tex, 0, nullptr, bgra, (UINT)width * 4, 0);
+    }
+    // Latch a CPU copy for the OpenXR host.
+    if (g_lockInit) {
+        EnterCriticalSection(&g_lock);
+        const size_t bytes = (size_t)width * height * 4;
+        if (g_latestW != width || g_latestH != height) {
+            free(g_latest);
+            g_latest = (uint8_t*)malloc(bytes);
+            g_latestW = g_latest ? width : 0;
+            g_latestH = g_latest ? height : 0;
+        }
+        if (g_latest) memcpy(g_latest, bgra, bytes);
+        LeaveCriticalSection(&g_lock);
+    }
+}
+
+bool VrHostCopyLatestFrame(uint8_t* dst, int cap, int* width, int* height) {
+    if (!g_lockInit || !dst) return false;
+    bool ok = false;
+    EnterCriticalSection(&g_lock);
+    const size_t bytes = (size_t)g_latestW * g_latestH * 4;
+    if (g_latest && bytes > 0 && (int)bytes <= cap) {
+        memcpy(dst, g_latest, bytes);
+        if (width)  *width  = g_latestW;
+        if (height) *height = g_latestH;
+        ok = true;
+    }
+    LeaveCriticalSection(&g_lock);
+    return ok;
+}
+
+void VrHostSetHeadPose(float x, float y, float z, float w) {
+    g_pose[0] = x; g_pose[1] = y; g_pose[2] = z; g_pose[3] = w;
+    g_havePose = true;
 }
 
 // Write a 24-bit bottom-up BMP from a mapped BGRA8 D3D11 readback.
@@ -102,6 +150,10 @@ static void WriteBGRA_BMP(const char* path, const uint8_t* bgra, int W, int H, i
 
 bool VrHostGetHeadPose(float* x, float* y, float* z, float* w) {
     if (!x || !y || !z || !w) return false;
+    if (g_havePose) {  // real OpenXR pose once available
+        *x = g_pose[0]; *y = g_pose[1]; *z = g_pose[2]; *w = g_pose[3];
+        return true;
+    }
     // Synthetic slow yaw about the Y axis (~one revolution per 12s) standing in
     // for the OpenXR HMD pose. Replaced by the real headset orientation later.
     const float twoPi = 6.28318530717958647692f;

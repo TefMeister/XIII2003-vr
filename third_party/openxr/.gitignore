@@ -1,0 +1,4 @@
+# The OpenXR loader binaries are NOT committed (size + they are redistributables).
+# Fetch them with fetch_loader.md instructions. Headers ARE vendored.
+lib/openxr_loader.lib
+bin/openxr_loader.dll

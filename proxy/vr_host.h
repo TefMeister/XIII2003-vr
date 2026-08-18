@@ -21,11 +21,20 @@ void VrHostShutdown();
 // X8R8G8B8/A8R8G8B8 surface.
 void VrHostSubmitFrame(const uint8_t* bgra, int width, int height);
 
-// Current head orientation as a quaternion (x, y, z, w). For now this is a
-// synthetic time-based yaw that stands in for the OpenXR HMD pose (so the whole
-// pose pipeline -- quaternion -> euler -> Unreal rotator -> camera -- can be
-// exercised on a monitor). Replaced by the real headset pose later. Returns
-// false if no pose is available.
+// Copy the most recently submitted frame (BGRA8, top-down) into `dst` (capacity
+// `cap` bytes). Returns false if there's no frame or `dst` is too small; on
+// success writes the frame's width/height. Used by the OpenXR host to upload
+// into a swapchain image.
+bool VrHostCopyLatestFrame(uint8_t* dst, int cap, int* width, int* height);
+
+// Push the real HMD orientation (from OpenXR). Once set, VrHostGetHeadPose
+// returns this instead of the synthetic yaw.
+void VrHostSetHeadPose(float x, float y, float z, float w);
+
+// Current head orientation as a quaternion (x, y, z, w). Returns the real HMD
+// pose if one has been set via VrHostSetHeadPose; otherwise a synthetic
+// time-based yaw (so the pose pipeline can be exercised on a monitor). Returns
+// false only on a null argument.
 bool VrHostGetHeadPose(float* x, float* y, float* z, float* w);
 
 // Debug/verification (headset-free): read the current D3D11 texture back and
