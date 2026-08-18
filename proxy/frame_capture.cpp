@@ -18,6 +18,8 @@
 #include <windows.h>
 #include <cstdio>
 #include <cstdint>
+#include <cstring>
+#include "vr_host.h"
 
 // ---- Minimal D3D8 types we touch (layouts are fixed/ABI-stable) -------------
 
@@ -189,6 +191,39 @@ static LONG              s_frame          = 0;
 // loading screens); capture stops after the last one.
 static const LONG kCaptureAt[] = { 60, 180, 300, 600, 900 };
 
+// Decode a locked D3D8 surface into a tightly-packed BGRA8 top-down buffer
+// (caller frees). Returns nullptr on failure. Matches DXGI_FORMAT_B8G8R8A8.
+static uint8_t* DecodeSurfaceToBGRA(const D3DSURFACE_DESC_8& d,
+                                    const D3DLOCKED_RECT_8& lr) {
+    const int W = (int)d.Width, H = (int)d.Height;
+    if (W <= 0 || H <= 0 || W > 16384 || H > 16384 || !lr.pBits) return nullptr;
+    uint8_t* out = (uint8_t*)malloc((size_t)W * H * 4);
+    if (!out) return nullptr;
+    const uint8_t* base = (const uint8_t*)lr.pBits;
+    for (int y = 0; y < H; ++y) {
+        const uint8_t* src = base + (size_t)y * lr.Pitch;
+        uint8_t* dst = out + (size_t)y * W * 4;
+        for (int x = 0; x < W; ++x) {
+            uint8_t r, g, b;
+            if (d.Format == FMT_A8R8G8B8 || d.Format == FMT_X8R8G8B8) {
+                const uint8_t* p = src + x * 4; b = p[0]; g = p[1]; r = p[2];
+            } else if (d.Format == FMT_R5G6B5) {
+                uint16_t p = *(const uint16_t*)(src + x * 2);
+                r = (uint8_t)(((p >> 11) & 0x1F) * 255 / 31);
+                g = (uint8_t)(((p >> 5)  & 0x3F) * 255 / 63);
+                b = (uint8_t)(( p        & 0x1F) * 255 / 31);
+            } else if (d.Format == FMT_X1R5G5B5 || d.Format == FMT_A1R5G5B5) {
+                uint16_t p = *(const uint16_t*)(src + x * 2);
+                r = (uint8_t)(((p >> 10) & 0x1F) * 255 / 31);
+                g = (uint8_t)(((p >> 5)  & 0x1F) * 255 / 31);
+                b = (uint8_t)(( p        & 0x1F) * 255 / 31);
+            } else { r = g = b = 0; }
+            dst[x * 4 + 0] = b; dst[x * 4 + 1] = g; dst[x * 4 + 2] = r; dst[x * 4 + 3] = 0xFF;
+        }
+    }
+    return out;
+}
+
 // ---- Present hook -----------------------------------------------------------
 
 static HRESULT WINAPI Hook_Present(void* dev, const RECT* s, const RECT* d,
@@ -225,6 +260,18 @@ static HRESULT WINAPI Hook_Present(void* dev, const RECT* s, const RECT* d,
                                       dir, n);
                             path[sizeof(path) - 1] = 0;
                             WriteBMP(path, desc, lr);
+                            // 0.2.0 frame bridge: push this frame into the VR
+                            // host's D3D11 texture, then read it back, so we can
+                            // confirm the D3D8 -> CPU -> D3D11 path is intact by
+                            // comparing d3d11_frame_NNN.bmp with xiii_frame_NNN.bmp.
+                            if (uint8_t* bgra = DecodeSurfaceToBGRA(desc, lr)) {
+                                VrHostSubmitFrame(bgra, (int)desc.Width, (int)desc.Height);
+                                char d11[MAX_PATH];
+                                _snprintf(d11, sizeof(d11), "%sd3d11_frame_%03ld.bmp", dir, n);
+                                d11[sizeof(d11) - 1] = 0;
+                                VrHostDebugSaveTexture(d11);
+                                free(bgra);
+                            }
                             if (UnlockRect) UnlockRect(sys);
                             Log(path);
                         }

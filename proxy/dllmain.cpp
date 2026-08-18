@@ -2,6 +2,7 @@
 #include <windows.h>
 #include "frame_capture.h"
 #include "camera_hook.h"
+#include "vr_host.h"
 
 // Force the original render-device DLL to load so its static/global
 // constructors run and self-register UD3DRenderDevice into the engine's
@@ -14,6 +15,9 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD reason, LPVOID) {
     if (reason == DLL_PROCESS_ATTACH) {
         DisableThreadLibraryCalls(hModule);
         LoadLibraryA("D3DDrv_Original.dll");
+        // NB: the VR host's D3D11 device is created lazily on the first captured
+        // frame (on the render thread) -- NOT here, because D3D11CreateDevice
+        // under the DllMain loader lock is unsafe.
         // Install the render-device present hook now that the original's
         // d3d8.dll import table is resolved. Capture happens later, when the
         // engine actually creates the device and starts presenting.
