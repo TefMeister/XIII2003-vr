@@ -9,6 +9,8 @@
 // RUNTIME: SteamVR (via Steam). Not OpenXR. Gated behind [VR] SteamVR=1.
 
 #include <windows.h>
+#include <d3d11.h>
+#include <dxgi.h>
 #include <openvr.h>
 #include <cmath>
 #include <cstdio>
@@ -88,7 +90,43 @@ static void SteamVrThreadMain() {
     vr::HmdMatrix34_t xform = HeadRelativeTransform();
     ov->SetOverlayTransformTrackedDeviceRelative(overlay, vr::k_unTrackedDeviceIndex_Hmd, &xform);
     ov->ShowOverlay(overlay);
-    Log("overlay created + shown");
+    Log("overlay created + shown (0.2.2 D3D11 texture path)");
+
+    // D3D11 path for the overlay content (0.2.2): SetOverlayRaw makes the
+    // compositor tear down and recreate the overlay's texture on every call,
+    // which strobes at video-update rates even when the calls are rate-capped
+    // (confirmed on hardware in 0.2.1). SetOverlayTexture with persistent
+    // D3D11 textures is the supported way to stream frames into an overlay.
+    // Two textures alternate so the compositor never samples one mid-update,
+    // and DXGI_FORMAT_B8G8R8A8_UNORM matches the latch, so no swizzle needed.
+    // Falls back to the old SetOverlayRaw path if device creation fails.
+    ID3D11Device*        dev = nullptr;
+    ID3D11DeviceContext* ctx = nullptr;
+    ID3D11Texture2D*     tex[2] = { nullptr, nullptr };
+    int texW = 0, texH = 0, texNext = 0;
+    {
+        // The device must live on the adapter the HMD is attached to.
+        int32_t adapterIdx = 0;
+        sys->GetDXGIOutputInfo(&adapterIdx);
+        if (adapterIdx < 0) adapterIdx = 0;
+        IDXGIFactory1* fac = nullptr;
+        IDXGIAdapter1* adapter = nullptr;
+        if (SUCCEEDED(CreateDXGIFactory1(__uuidof(IDXGIFactory1), (void**)&fac)) && fac)
+            fac->EnumAdapters1((UINT)adapterIdx, &adapter);
+        D3D_FEATURE_LEVEL got{};
+        HRESULT hr = D3D11CreateDevice(adapter,
+                                       adapter ? D3D_DRIVER_TYPE_UNKNOWN : D3D_DRIVER_TYPE_HARDWARE,
+                                       nullptr, 0, nullptr, 0, D3D11_SDK_VERSION,
+                                       &dev, &got, &ctx);
+        if (adapter) adapter->Release();
+        if (fac) fac->Release();
+        if (FAILED(hr)) {
+            dev = nullptr; ctx = nullptr;
+            Log("D3D11 device creation failed -- falling back to SetOverlayRaw");
+        } else {
+            Log("D3D11 device created on HMD adapter for overlay textures");
+        }
+    }
 
     // SetOverlayRaw wants RGBA8888; VrHostCopyLatestFrame gives BGRA8. Swap R<->B
     // into this scratch buffer each frame. (If colours look swapped on the
@@ -96,6 +134,25 @@ static void SteamVrThreadMain() {
     int cap = 0;
     uint8_t* bgra = nullptr;
     uint8_t* rgba = nullptr;
+
+    // FLICKER FIX (0.2.1): the 0.2.0 loop re-uploaded the frame with
+    // SetOverlayRaw every ~8 ms whether or not anything new had been captured,
+    // so the compositor kept sampling a texture that was being replaced up to
+    // 120x/s -- visible as high-speed strobing. Uploads are now gated on the
+    // latch's sequence number (only NEW frames upload) and rate-capped; when
+    // frames stop arriving (game quit/paused) the overlay hides instead of
+    // pinning a stale frame to the viewer's face.
+    const DWORD kMinUploadIntervalMs = 11;   // ~90 Hz ceiling on uploads
+    const DWORD kStarveHideMs        = 5000; // no new frames -> hide overlay
+    const DWORD kStatsMs             = 5000; // DebugView heartbeat
+    unsigned lastUploadedSeq  = 0;
+    unsigned lastSeenSeq      = 0;
+    unsigned statsBaseSeq     = 0;
+    unsigned statsUploads     = 0;
+    DWORD    lastUploadTick    = 0;
+    DWORD    lastSeqChangeTick = GetTickCount();
+    DWORD    lastStatsTick     = GetTickCount();
+    bool     overlayVisible    = true;
 
     while (InterlockedCompareExchange(&g_run, 1, 1) == 1) {
         // --- Head pose -> camera hook ---
@@ -109,18 +166,87 @@ static void SteamVrThreadMain() {
             VrHostSetHeadPose(qx, qy, qz, qw);
         }
 
-        // --- Latest game frame -> overlay ---
-        int w = 0, h = 0;
-        if (cap == 0) { cap = 4096 * 4096 * 4; bgra = (uint8_t*)malloc(cap); rgba = (uint8_t*)malloc(cap); }
-        if (bgra && rgba && VrHostCopyLatestFrame(bgra, cap, &w, &h) && w > 0 && h > 0) {
-            const int n = w * h;
-            for (int i = 0; i < n; ++i) {
-                rgba[i * 4 + 0] = bgra[i * 4 + 2];  // R <- B
-                rgba[i * 4 + 1] = bgra[i * 4 + 1];  // G
-                rgba[i * 4 + 2] = bgra[i * 4 + 0];  // B <- R
-                rgba[i * 4 + 3] = 255;
+        // --- Latest game frame -> overlay, only when there IS a new frame ---
+        const DWORD    now = GetTickCount();
+        const unsigned seq = VrHostLatestFrameSeq();
+        if (seq != lastSeenSeq) {
+            lastSeenSeq = seq;
+            lastSeqChangeTick = now;
+            if (!overlayVisible) {
+                ov->ShowOverlay(overlay);
+                overlayVisible = true;
+                Log("frames resumed -- overlay shown");
             }
-            ov->SetOverlayRaw(overlay, rgba, (uint32_t)w, (uint32_t)h, 4);
+        }
+        if (seq != lastUploadedSeq && (DWORD)(now - lastUploadTick) >= kMinUploadIntervalMs) {
+            int w = 0, h = 0;
+            unsigned copiedSeq = 0;
+            if (cap == 0) { cap = 4096 * 4096 * 4; bgra = (uint8_t*)malloc(cap); rgba = (uint8_t*)malloc(cap); }
+            if (bgra && rgba && VrHostCopyLatestFrameEx(bgra, cap, &w, &h, &copiedSeq) && w > 0 && h > 0) {
+                bool sent = false;
+                if (dev && ctx) {
+                    // Persistent-texture path (no strobe, no swizzle).
+                    if (!tex[0] || texW != w || texH != h) {
+                        for (int t = 0; t < 2; ++t) {
+                            if (tex[t]) { tex[t]->Release(); tex[t] = nullptr; }
+                            D3D11_TEXTURE2D_DESC td{};
+                            td.Width = (UINT)w; td.Height = (UINT)h;
+                            td.MipLevels = 1; td.ArraySize = 1;
+                            td.Format = DXGI_FORMAT_B8G8R8A8_UNORM;
+                            td.SampleDesc.Count = 1;
+                            td.Usage = D3D11_USAGE_DEFAULT;
+                            td.BindFlags = D3D11_BIND_SHADER_RESOURCE;
+                            if (FAILED(dev->CreateTexture2D(&td, nullptr, &tex[t]))) {
+                                tex[t] = nullptr;
+                            }
+                        }
+                        texW = w; texH = h;
+                        if (!tex[0] || !tex[1]) Log("overlay texture create failed -- using SetOverlayRaw");
+                    }
+                    if (tex[0] && tex[1]) {
+                        ID3D11Texture2D* t = tex[texNext];
+                        texNext ^= 1;
+                        ctx->UpdateSubresource(t, 0, nullptr, bgra, (UINT)w * 4, 0);
+                        ctx->Flush();  // copy fully submitted before the compositor sees it
+                        vr::Texture_t vt{ (void*)t, vr::TextureType_DirectX, vr::ColorSpace_Auto };
+                        sent = (ov->SetOverlayTexture(overlay, &vt) == vr::VROverlayError_None);
+                        if (!sent) Log("SetOverlayTexture failed -- using SetOverlayRaw");
+                    }
+                }
+                if (!sent) {
+                    // Fallback: CPU upload. RGBA byte order, so swap R<->B.
+                    const int n = w * h;
+                    for (int i = 0; i < n; ++i) {
+                        rgba[i * 4 + 0] = bgra[i * 4 + 2];  // R <- B
+                        rgba[i * 4 + 1] = bgra[i * 4 + 1];  // G
+                        rgba[i * 4 + 2] = bgra[i * 4 + 0];  // B <- R
+                        rgba[i * 4 + 3] = 255;
+                    }
+                    ov->SetOverlayRaw(overlay, rgba, (uint32_t)w, (uint32_t)h, 4);
+                }
+                lastUploadedSeq = copiedSeq;
+                lastUploadTick  = now;
+                ++statsUploads;
+            }
+        }
+
+        // --- Frame starvation: game quit or stopped presenting ---
+        if (overlayVisible && (DWORD)(now - lastSeqChangeTick) > kStarveHideMs) {
+            ov->HideOverlay(overlay);
+            overlayVisible = false;
+            Log("no new frames for 5 s -- overlay hidden (game quit or paused)");
+        }
+
+        // --- DebugView heartbeat: game fps vs upload rate, for the next report ---
+        if ((DWORD)(now - lastStatsTick) >= kStatsMs) {
+            char b[128];
+            _snprintf(b, sizeof(b), "stats: %u new frames latched, %u uploaded in %lu ms",
+                      seq - statsBaseSeq, statsUploads, (unsigned long)(now - lastStatsTick));
+            b[127] = 0;
+            Log(b);
+            statsBaseSeq  = seq;
+            statsUploads  = 0;
+            lastStatsTick = now;
         }
 
         // --- Events (react to SteamVR quitting) ---
@@ -131,13 +257,24 @@ static void SteamVrThreadMain() {
                 InterlockedExchange(&g_run, 0);
             }
         }
+        vr::VREvent_t se{};
+        while (sys->PollNextEvent(&se, sizeof(se))) {
+            if (se.eventType == vr::VREvent_Quit) {
+                sys->AcknowledgeQuit_Exiting();
+                InterlockedExchange(&g_run, 0);
+            }
+        }
 
-        Sleep(8);  // ~120 Hz upper bound; the real cap is the game's frame rate
+        Sleep(4);  // poll fast for pose/latch; uploads are gated above
     }
 
     free(bgra);
     free(rgba);
+    ov->ClearOverlayTexture(overlay);
     ov->DestroyOverlay(overlay);
+    for (int t = 0; t < 2; ++t) if (tex[t]) tex[t]->Release();
+    if (ctx) ctx->Release();
+    if (dev) dev->Release();
     vr::VR_Shutdown();
     Log("SteamVR host stopped");
 }
@@ -163,8 +300,15 @@ void StartSteamVrHost() {
 void StopSteamVrHost() {
     InterlockedExchange(&g_run, 0);
     if (g_thread) {
-        WaitForSingleObject(g_thread, 2000);
+        // 5 s: the loop wakes within ~4 ms, but teardown includes VR_Shutdown,
+        // which can take a while when the compositor is busy.
+        if (WaitForSingleObject(g_thread, 5000) == WAIT_TIMEOUT)
+            Log("host thread did not exit within 5 s -- teardown may be unclean");
         CloseHandle(g_thread);
         g_thread = nullptr;
     }
+}
+
+void SignalStopSteamVrHost() {
+    InterlockedExchange(&g_run, 0);
 }

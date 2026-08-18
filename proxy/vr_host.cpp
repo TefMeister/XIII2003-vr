@@ -17,6 +17,7 @@ static CRITICAL_SECTION g_lock;
 static bool     g_lockInit = false;
 static uint8_t* g_latest   = nullptr;
 static int      g_latestW = 0, g_latestH = 0;
+static unsigned g_latestSeq = 0;  // ++ per submit; consumers skip stale frames
 
 // Head pose (quaternion). g_havePose flips true once OpenXR feeds a real pose;
 // until then VrHostGetHeadPose returns a synthetic yaw. Plain globals -- a rare
@@ -67,28 +68,29 @@ static bool EnsureTexture(int w, int h) {
 }
 
 void VrHostSubmitFrame(const uint8_t* bgra, int width, int height) {
-    if (!g_dev) VrHostInit();  // lazy: create the D3D11 device off the DllMain/loader-lock path
-    if (!g_dev || !g_ctx || !bgra || width <= 0 || height <= 0) return;
-    if (EnsureTexture(width, height)) {
-        // DEFAULT texture: upload with UpdateSubresource (tightly packed source).
-        g_ctx->UpdateSubresource(g_tex, 0, nullptr, bgra, (UINT)width * 4, 0);
+    if (!bgra || width <= 0 || height <= 0) return;
+    // Latch a CPU copy for the VR hosts. NOTE: no per-frame D3D11 upload here
+    // any more -- that was a full-framebuffer UpdateSubresource on the game's
+    // render thread every Present, and the only consumer was the occasional
+    // debug BMP. VrHostDebugSaveTexture now uploads on demand instead.
+    if (!g_lockInit) { InitializeCriticalSection(&g_lock); g_lockInit = true; }
+    EnterCriticalSection(&g_lock);
+    const size_t bytes = (size_t)width * height * 4;
+    if (g_latestW != width || g_latestH != height) {
+        free(g_latest);
+        g_latest = (uint8_t*)malloc(bytes);
+        g_latestW = g_latest ? width : 0;
+        g_latestH = g_latest ? height : 0;
     }
-    // Latch a CPU copy for the OpenXR host.
-    if (g_lockInit) {
-        EnterCriticalSection(&g_lock);
-        const size_t bytes = (size_t)width * height * 4;
-        if (g_latestW != width || g_latestH != height) {
-            free(g_latest);
-            g_latest = (uint8_t*)malloc(bytes);
-            g_latestW = g_latest ? width : 0;
-            g_latestH = g_latest ? height : 0;
-        }
-        if (g_latest) memcpy(g_latest, bgra, bytes);
-        LeaveCriticalSection(&g_lock);
+    if (g_latest) {
+        memcpy(g_latest, bgra, bytes);
+        ++g_latestSeq;
     }
+    LeaveCriticalSection(&g_lock);
 }
 
-bool VrHostCopyLatestFrame(uint8_t* dst, int cap, int* width, int* height) {
+bool VrHostCopyLatestFrameEx(uint8_t* dst, int cap, int* width, int* height,
+                             unsigned* seq) {
     if (!g_lockInit || !dst) return false;
     bool ok = false;
     EnterCriticalSection(&g_lock);
@@ -97,10 +99,23 @@ bool VrHostCopyLatestFrame(uint8_t* dst, int cap, int* width, int* height) {
         memcpy(dst, g_latest, bytes);
         if (width)  *width  = g_latestW;
         if (height) *height = g_latestH;
+        if (seq)    *seq    = g_latestSeq;
         ok = true;
     }
     LeaveCriticalSection(&g_lock);
     return ok;
+}
+
+bool VrHostCopyLatestFrame(uint8_t* dst, int cap, int* width, int* height) {
+    return VrHostCopyLatestFrameEx(dst, cap, width, height, nullptr);
+}
+
+unsigned VrHostLatestFrameSeq() {
+    if (!g_lockInit) return 0;
+    EnterCriticalSection(&g_lock);
+    unsigned s = g_latestSeq;
+    LeaveCriticalSection(&g_lock);
+    return s;
 }
 
 void VrHostSetHeadPose(float x, float y, float z, float w) {
@@ -165,7 +180,19 @@ bool VrHostGetHeadPose(float* x, float* y, float* z, float* w) {
 }
 
 bool VrHostDebugSaveTexture(const char* path) {
-    if (!g_dev || !g_ctx || !g_tex) return false;
+    if (!g_dev) VrHostInit();  // lazy; only debug frames pay for the device
+    if (!g_dev || !g_ctx || !g_lockInit) return false;
+    // Upload the latched frame on demand (the per-frame upload is gone from
+    // VrHostSubmitFrame), so this still proves the D3D8 -> CPU -> D3D11 bridge.
+    EnterCriticalSection(&g_lock);
+    bool uploaded = false;
+    if (g_latest && g_latestW > 0 && g_latestH > 0 &&
+        EnsureTexture(g_latestW, g_latestH)) {
+        g_ctx->UpdateSubresource(g_tex, 0, nullptr, g_latest, (UINT)g_latestW * 4, 0);
+        uploaded = true;
+    }
+    LeaveCriticalSection(&g_lock);
+    if (!uploaded || !g_tex) return false;
     D3D11_TEXTURE2D_DESC d{};
     g_tex->GetDesc(&d);
     D3D11_TEXTURE2D_DESC sd = d;
