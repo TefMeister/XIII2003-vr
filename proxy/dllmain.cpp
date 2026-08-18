@@ -3,6 +3,7 @@
 #include "frame_capture.h"
 #include "camera_hook.h"
 #include "vr_host.h"
+#include "openxr_host.h"
 
 // Force the original render-device DLL to load so its static/global
 // constructors run and self-register UD3DRenderDevice into the engine's
@@ -26,6 +27,10 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD reason, LPVOID) {
         // verification). Engine.dll is already loaded by the time the render
         // device proxy's DllMain runs.
         InstallCameraHook();
+        // OpenXR VR host (only if [VR] OpenXR=1; the worker thread runs after
+        // DllMain returns and the loader lock releases). Delay-loaded loader,
+        // so this is inert on machines without OpenXR.
+        StartOpenXrHost();
     }
     return TRUE;
 }

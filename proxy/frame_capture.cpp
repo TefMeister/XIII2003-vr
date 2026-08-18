@@ -186,6 +186,10 @@ static void**            s_iatSlot       = nullptr;  // patched IAT entry
 static LONG              s_devHooked      = 0;
 static LONG              s_d3dHooked      = 0;
 static LONG              s_frame          = 0;
+// Cached system-memory readback surface (recreated only on size/format change),
+// so we can capture every frame cheaply instead of allocating one each time.
+static void*             s_sysSurf        = nullptr;
+static UINT              s_sysW = 0, s_sysH = 0, s_sysFmt = 0;
 
 // Frames to capture (spread across the first several seconds to skip black
 // loading screens); capture stops after the last one.
@@ -229,54 +233,56 @@ static uint8_t* DecodeSurfaceToBGRA(const D3DSURFACE_DESC_8& d,
 static HRESULT WINAPI Hook_Present(void* dev, const RECT* s, const RECT* d,
                                    HWND hwnd, const void* dirty) {
     LONG n = InterlockedIncrement(&s_frame);
-    bool want = false;
+    bool debugFrame = false;  // occasionally also dump BMPs for verification
     for (int i = 0; i < (int)(sizeof(kCaptureAt) / sizeof(kCaptureAt[0])); ++i)
-        if (kCaptureAt[i] == n) { want = true; break; }
+        if (kCaptureAt[i] == n) { debugFrame = true; break; }
 
-    if (want && dev) {
+    if (dev) {
         void* bb = nullptr;
         GetBackBuffer_t GetBackBuffer = (GetBackBuffer_t)VtblEntry(dev, 16);
         if (GetBackBuffer && GetBackBuffer(dev, 0, /*MONO*/0, &bb) == 0 && bb) {
             GetDesc_t GetDesc = (GetDesc_t)VtblEntry(bb, 8);
             D3DSURFACE_DESC_8 desc; memset(&desc, 0, sizeof(desc));
             if (GetDesc && GetDesc(bb, &desc) == 0) {
-                void* sys = nullptr;
-                CreateImageSurface_t CreateImageSurface =
-                    (CreateImageSurface_t)VtblEntry(dev, 27);
-                if (CreateImageSurface &&
-                    CreateImageSurface(dev, desc.Width, desc.Height, desc.Format,
-                                       &sys) == 0 && sys) {
+                // (Re)create the cached readback surface only on size/format change.
+                if (!s_sysSurf || s_sysW != desc.Width || s_sysH != desc.Height ||
+                    s_sysFmt != desc.Format) {
+                    if (s_sysSurf) { ((Release_t)VtblEntry(s_sysSurf, 2))(s_sysSurf); s_sysSurf = nullptr; }
+                    CreateImageSurface_t CreateImageSurface =
+                        (CreateImageSurface_t)VtblEntry(dev, 27);
+                    if (CreateImageSurface &&
+                        CreateImageSurface(dev, desc.Width, desc.Height, desc.Format,
+                                           &s_sysSurf) == 0) {
+                        s_sysW = desc.Width; s_sysH = desc.Height; s_sysFmt = desc.Format;
+                    } else { s_sysSurf = nullptr; }
+                }
+                if (s_sysSurf) {
                     CopyRects_t CopyRects = (CopyRects_t)VtblEntry(dev, 28);
-                    if (CopyRects && CopyRects(dev, bb, nullptr, 0, sys,
-                                               nullptr) == 0) {
-                        LockRect_t LockRect   = (LockRect_t)VtblEntry(sys, 9);
-                        UnlockRect_t UnlockRect = (UnlockRect_t)VtblEntry(sys, 10);
+                    if (CopyRects && CopyRects(dev, bb, nullptr, 0, s_sysSurf, nullptr) == 0) {
+                        LockRect_t LockRect     = (LockRect_t)VtblEntry(s_sysSurf, 9);
+                        UnlockRect_t UnlockRect = (UnlockRect_t)VtblEntry(s_sysSurf, 10);
                         D3DLOCKED_RECT_8 lr; memset(&lr, 0, sizeof(lr));
-                        if (LockRect &&
-                            LockRect(sys, &lr, nullptr, D3DLOCK_READONLY) == 0) {
-                            char dir[MAX_PATH]; CaptureDir(dir, sizeof(dir));
-                            char path[MAX_PATH];
-                            _snprintf(path, sizeof(path), "%sxiii_frame_%03ld.bmp",
-                                      dir, n);
-                            path[sizeof(path) - 1] = 0;
-                            WriteBMP(path, desc, lr);
-                            // 0.2.0 frame bridge: push this frame into the VR
-                            // host's D3D11 texture, then read it back, so we can
-                            // confirm the D3D8 -> CPU -> D3D11 path is intact by
-                            // comparing d3d11_frame_NNN.bmp with xiii_frame_NNN.bmp.
+                        if (LockRect && LockRect(s_sysSurf, &lr, nullptr, D3DLOCK_READONLY) == 0) {
                             if (uint8_t* bgra = DecodeSurfaceToBGRA(desc, lr)) {
+                                // Every frame: hand the latest frame to the VR host.
                                 VrHostSubmitFrame(bgra, (int)desc.Width, (int)desc.Height);
-                                char d11[MAX_PATH];
-                                _snprintf(d11, sizeof(d11), "%sd3d11_frame_%03ld.bmp", dir, n);
-                                d11[sizeof(d11) - 1] = 0;
-                                VrHostDebugSaveTexture(d11);
+                                if (debugFrame) {
+                                    char dir[MAX_PATH]; CaptureDir(dir, sizeof(dir));
+                                    char path[MAX_PATH];
+                                    _snprintf(path, sizeof(path), "%sxiii_frame_%03ld.bmp", dir, n);
+                                    path[sizeof(path) - 1] = 0;
+                                    WriteBMP(path, desc, lr);
+                                    char d11[MAX_PATH];
+                                    _snprintf(d11, sizeof(d11), "%sd3d11_frame_%03ld.bmp", dir, n);
+                                    d11[sizeof(d11) - 1] = 0;
+                                    VrHostDebugSaveTexture(d11);
+                                    Log(path);
+                                }
                                 free(bgra);
                             }
-                            if (UnlockRect) UnlockRect(sys);
-                            Log(path);
+                            if (UnlockRect) UnlockRect(s_sysSurf);
                         }
                     }
-                    ((Release_t)VtblEntry(sys, 2))(sys);
                 }
             }
             ((Release_t)VtblEntry(bb, 2))(bb);
