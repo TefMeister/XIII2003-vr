@@ -1,6 +1,7 @@
 // proxy/dllmain.cpp
 #include <windows.h>
 #include "frame_capture.h"
+#include "camera_hook.h"
 
 // Force the original render-device DLL to load so its static/global
 // constructors run and self-register UD3DRenderDevice into the engine's
@@ -17,6 +18,10 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD reason, LPVOID) {
         // d3d8.dll import table is resolved. Capture happens later, when the
         // engine actually creates the device and starts presenting.
         InstallFrameCapture();
+        // Camera-injection hook (synthetic yaw sweep for headset-free
+        // verification). Engine.dll is already loaded by the time the render
+        // device proxy's DllMain runs.
+        InstallCameraHook();
     }
     return TRUE;
 }
