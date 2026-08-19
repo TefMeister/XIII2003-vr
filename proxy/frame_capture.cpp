@@ -20,6 +20,8 @@
 #include <cstdint>
 #include <cstring>
 #include "vr_host.h"
+#include "frame_decode.h"
+#include "perf_stats.h"
 
 // ---- Minimal D3D8 types we touch (layouts are fixed/ABI-stable) -------------
 
@@ -214,37 +216,66 @@ static UINT              s_sysW = 0, s_sysH = 0, s_sysFmt = 0;
 // loading screens); capture stops after the last one.
 static const LONG kCaptureAt[] = { 60, 180, 300, 600, 900 };
 
-// Decode a locked D3D8 surface into a tightly-packed BGRA8 top-down buffer
-// (caller frees). Returns nullptr on failure. Matches DXGI_FORMAT_B8G8R8A8.
-static uint8_t* DecodeSurfaceToBGRA(const D3DSURFACE_DESC_8& d,
-                                    const D3DLOCKED_RECT_8& lr) {
-    const int W = (int)d.Width, H = (int)d.Height;
-    if (W <= 0 || H <= 0 || W > 16384 || H > 16384 || !lr.pBits) return nullptr;
-    uint8_t* out = (uint8_t*)malloc((size_t)W * H * 4);
-    if (!out) return nullptr;
-    const uint8_t* base = (const uint8_t*)lr.pBits;
-    for (int y = 0; y < H; ++y) {
-        const uint8_t* src = base + (size_t)y * lr.Pitch;
-        uint8_t* dst = out + (size_t)y * W * 4;
-        for (int x = 0; x < W; ++x) {
-            uint8_t r, g, b;
-            if (d.Format == FMT_A8R8G8B8 || d.Format == FMT_X8R8G8B8) {
-                const uint8_t* p = src + x * 4; b = p[0]; g = p[1]; r = p[2];
-            } else if (d.Format == FMT_R5G6B5) {
-                uint16_t p = *(const uint16_t*)(src + x * 2);
-                r = (uint8_t)(((p >> 11) & 0x1F) * 255 / 31);
-                g = (uint8_t)(((p >> 5)  & 0x3F) * 255 / 63);
-                b = (uint8_t)(( p        & 0x1F) * 255 / 31);
-            } else if (d.Format == FMT_X1R5G5B5 || d.Format == FMT_A1R5G5B5) {
-                uint16_t p = *(const uint16_t*)(src + x * 2);
-                r = (uint8_t)(((p >> 10) & 0x1F) * 255 / 31);
-                g = (uint8_t)(((p >> 5)  & 0x1F) * 255 / 31);
-                b = (uint8_t)(( p        & 0x1F) * 255 / 31);
-            } else { r = g = b = 0; }
-            dst[x * 4 + 0] = b; dst[x * 4 + 1] = g; dst[x * 4 + 2] = r; dst[x * 4 + 3] = 0xFF;
-        }
-    }
-    return out;
+// ---- Capture-path performance (0.2.4) ----------------------------------------
+//
+// The readback (CopyRects -> LockRect -> decode -> latch) used to run at game
+// fps on the game's render thread, though the overlay upload is capped at
+// ~90 Hz -- and it ran even with VR disabled. Now:
+//   * capture only runs when a VR host is enabled in XIII.ini (or for the
+//     occasional debug BMP frame),
+//   * it is rate-capped ([VR] CaptureMinIntervalMs, default 11 ms ~= 90 Hz,
+//     0 = uncapped),
+//   * every phase is timed and summarized in a [xiii-perf] heartbeat so the
+//     next hardware report says where the remaining time goes.
+static bool     s_vrConsumer    = false;  // any VR host enabled in XIII.ini
+static UINT     s_minIntervalMs = 11;
+static LARGE_INTEGER   s_qpcFreq  = {};
+static xiii::PhaseStats s_stCopy, s_stLock, s_stDecode, s_stSubmit;
+static uint32_t s_stPresents = 0, s_stCaptured = 0, s_stSkipped = 0;
+// Reused decode target (was a malloc/free of the whole frame every Present).
+static uint8_t* s_bgraBuf = nullptr;
+static size_t   s_bgraCap = 0;
+
+static xiii::RateLimiter& CaptureLimiter() {
+    static xiii::RateLimiter rl(s_minIntervalMs);  // first use is after config load
+    return rl;
+}
+static xiii::RateLimiter& StatsLimiter() {
+    static xiii::RateLimiter rl(5000);  // heartbeat cadence, matches the hosts
+    return rl;
+}
+
+static UINT ReadVrInt(const char* key, UINT def) {
+    char ini[MAX_PATH];
+    if (!GetModuleFileNameA(nullptr, ini, MAX_PATH)) return def;
+    char* slash = strrchr(ini, '\\');
+    if (!slash) return def;
+    lstrcpyA(slash + 1, "XIII.ini");
+    return (UINT)GetPrivateProfileIntA("VR", key, (INT)def, ini);
+}
+
+static uint32_t DeltaUs(const LARGE_INTEGER& a, const LARGE_INTEGER& b) {
+    if (!s_qpcFreq.QuadPart) QueryPerformanceFrequency(&s_qpcFreq);
+    if (!s_qpcFreq.QuadPart) return 0;
+    return (uint32_t)((b.QuadPart - a.QuadPart) * 1000000 / s_qpcFreq.QuadPart);
+}
+
+static void ReportPerfStats() {
+    char b[256];
+    // Single OutputDebugString call so the line arrives atomically (multi-call
+    // logging interleaves across threads and splits into separate DBWIN events).
+    _snprintf(b, sizeof(b),
+              "[xiii-perf] present=%lu captured=%lu skipped=%lu (cap %ums) | us avg/max: "
+              "copy=%u/%u lock=%u/%u decode=%u/%u submit=%u/%u\n",
+              (unsigned long)s_stPresents, (unsigned long)s_stCaptured,
+              (unsigned long)s_stSkipped, s_minIntervalMs,
+              s_stCopy.AvgUs(), s_stCopy.maxUs, s_stLock.AvgUs(), s_stLock.maxUs,
+              s_stDecode.AvgUs(), s_stDecode.maxUs,
+              s_stSubmit.AvgUs(), s_stSubmit.maxUs);
+    b[sizeof(b) - 1] = 0;
+    OutputDebugStringA(b);
+    s_stCopy.Reset(); s_stLock.Reset(); s_stDecode.Reset(); s_stSubmit.Reset();
+    s_stPresents = s_stCaptured = s_stSkipped = 0;
 }
 
 // ---- Windowed backbuffer clamp ----------------------------------------------
@@ -284,6 +315,75 @@ static HRESULT WINAPI Hook_Reset(void* dev, D3DPRESENT_PARAMETERS_8* pp) {
 
 // ---- Present hook -----------------------------------------------------------
 
+// One readback + decode + latch, with each phase timed into the perf stats.
+static void CaptureFrame(void* dev, LONG n, bool debugFrame) {
+    void* bb = nullptr;
+    GetBackBuffer_t GetBackBuffer = (GetBackBuffer_t)VtblEntry(dev, 16);
+    if (!GetBackBuffer || GetBackBuffer(dev, 0, /*MONO*/0, &bb) != 0 || !bb) return;
+    GetDesc_t GetDesc = (GetDesc_t)VtblEntry(bb, 8);
+    D3DSURFACE_DESC_8 desc; memset(&desc, 0, sizeof(desc));
+    if (GetDesc && GetDesc(bb, &desc) == 0) {
+        // (Re)create the cached readback surface only on size/format change.
+        if (!s_sysSurf || s_sysW != desc.Width || s_sysH != desc.Height ||
+            s_sysFmt != desc.Format) {
+            if (s_sysSurf) { ((Release_t)VtblEntry(s_sysSurf, 2))(s_sysSurf); s_sysSurf = nullptr; }
+            CreateImageSurface_t CreateImageSurface =
+                (CreateImageSurface_t)VtblEntry(dev, 27);
+            if (CreateImageSurface &&
+                CreateImageSurface(dev, desc.Width, desc.Height, desc.Format,
+                                   &s_sysSurf) == 0) {
+                s_sysW = desc.Width; s_sysH = desc.Height; s_sysFmt = desc.Format;
+            } else { s_sysSurf = nullptr; }
+        }
+        if (s_sysSurf) {
+            LARGE_INTEGER t0, t1, t2, t3, t4;
+            CopyRects_t CopyRects = (CopyRects_t)VtblEntry(dev, 28);
+            QueryPerformanceCounter(&t0);
+            if (CopyRects && CopyRects(dev, bb, nullptr, 0, s_sysSurf, nullptr) == 0) {
+                QueryPerformanceCounter(&t1);
+                s_stCopy.Add(DeltaUs(t0, t1));
+                LockRect_t LockRect     = (LockRect_t)VtblEntry(s_sysSurf, 9);
+                UnlockRect_t UnlockRect = (UnlockRect_t)VtblEntry(s_sysSurf, 10);
+                D3DLOCKED_RECT_8 lr; memset(&lr, 0, sizeof(lr));
+                if (LockRect && LockRect(s_sysSurf, &lr, nullptr, D3DLOCK_READONLY) == 0) {
+                    QueryPerformanceCounter(&t2);
+                    s_stLock.Add(DeltaUs(t1, t2));
+                    const size_t need = (size_t)desc.Width * desc.Height * 4;
+                    if (s_bgraCap < need) {
+                        free(s_bgraBuf);
+                        s_bgraBuf = (uint8_t*)malloc(need);
+                        s_bgraCap = s_bgraBuf ? need : 0;
+                    }
+                    if (s_bgraBuf &&
+                        xiii::DecodeToBGRA(desc.Format, (int)desc.Width, (int)desc.Height,
+                                           (const uint8_t*)lr.pBits, lr.Pitch, s_bgraBuf)) {
+                        QueryPerformanceCounter(&t3);
+                        s_stDecode.Add(DeltaUs(t2, t3));
+                        VrHostSubmitFrame(s_bgraBuf, (int)desc.Width, (int)desc.Height);
+                        QueryPerformanceCounter(&t4);
+                        s_stSubmit.Add(DeltaUs(t3, t4));
+                        ++s_stCaptured;
+                        if (debugFrame) {
+                            char dir[MAX_PATH]; CaptureDir(dir, sizeof(dir));
+                            char path[MAX_PATH];
+                            _snprintf(path, sizeof(path), "%sxiii_frame_%03ld.bmp", dir, n);
+                            path[sizeof(path) - 1] = 0;
+                            WriteBMP(path, desc, lr);
+                            char d11[MAX_PATH];
+                            _snprintf(d11, sizeof(d11), "%sd3d11_frame_%03ld.bmp", dir, n);
+                            d11[sizeof(d11) - 1] = 0;
+                            VrHostDebugSaveTexture(d11);
+                            Log(path);
+                        }
+                    }
+                    if (UnlockRect) UnlockRect(s_sysSurf);
+                }
+            }
+        }
+    }
+    ((Release_t)VtblEntry(bb, 2))(bb);
+}
+
 static HRESULT WINAPI Hook_Present(void* dev, const RECT* s, const RECT* d,
                                    HWND hwnd, const void* dirty) {
     LONG n = InterlockedIncrement(&s_frame);
@@ -291,57 +391,18 @@ static HRESULT WINAPI Hook_Present(void* dev, const RECT* s, const RECT* d,
     for (int i = 0; i < (int)(sizeof(kCaptureAt) / sizeof(kCaptureAt[0])); ++i)
         if (kCaptureAt[i] == n) { debugFrame = true; break; }
 
-    if (dev) {
-        void* bb = nullptr;
-        GetBackBuffer_t GetBackBuffer = (GetBackBuffer_t)VtblEntry(dev, 16);
-        if (GetBackBuffer && GetBackBuffer(dev, 0, /*MONO*/0, &bb) == 0 && bb) {
-            GetDesc_t GetDesc = (GetDesc_t)VtblEntry(bb, 8);
-            D3DSURFACE_DESC_8 desc; memset(&desc, 0, sizeof(desc));
-            if (GetDesc && GetDesc(bb, &desc) == 0) {
-                // (Re)create the cached readback surface only on size/format change.
-                if (!s_sysSurf || s_sysW != desc.Width || s_sysH != desc.Height ||
-                    s_sysFmt != desc.Format) {
-                    if (s_sysSurf) { ((Release_t)VtblEntry(s_sysSurf, 2))(s_sysSurf); s_sysSurf = nullptr; }
-                    CreateImageSurface_t CreateImageSurface =
-                        (CreateImageSurface_t)VtblEntry(dev, 27);
-                    if (CreateImageSurface &&
-                        CreateImageSurface(dev, desc.Width, desc.Height, desc.Format,
-                                           &s_sysSurf) == 0) {
-                        s_sysW = desc.Width; s_sysH = desc.Height; s_sysFmt = desc.Format;
-                    } else { s_sysSurf = nullptr; }
-                }
-                if (s_sysSurf) {
-                    CopyRects_t CopyRects = (CopyRects_t)VtblEntry(dev, 28);
-                    if (CopyRects && CopyRects(dev, bb, nullptr, 0, s_sysSurf, nullptr) == 0) {
-                        LockRect_t LockRect     = (LockRect_t)VtblEntry(s_sysSurf, 9);
-                        UnlockRect_t UnlockRect = (UnlockRect_t)VtblEntry(s_sysSurf, 10);
-                        D3DLOCKED_RECT_8 lr; memset(&lr, 0, sizeof(lr));
-                        if (LockRect && LockRect(s_sysSurf, &lr, nullptr, D3DLOCK_READONLY) == 0) {
-                            if (uint8_t* bgra = DecodeSurfaceToBGRA(desc, lr)) {
-                                // Every frame: hand the latest frame to the VR host.
-                                VrHostSubmitFrame(bgra, (int)desc.Width, (int)desc.Height);
-                                if (debugFrame) {
-                                    char dir[MAX_PATH]; CaptureDir(dir, sizeof(dir));
-                                    char path[MAX_PATH];
-                                    _snprintf(path, sizeof(path), "%sxiii_frame_%03ld.bmp", dir, n);
-                                    path[sizeof(path) - 1] = 0;
-                                    WriteBMP(path, desc, lr);
-                                    char d11[MAX_PATH];
-                                    _snprintf(d11, sizeof(d11), "%sd3d11_frame_%03ld.bmp", dir, n);
-                                    d11[sizeof(d11) - 1] = 0;
-                                    VrHostDebugSaveTexture(d11);
-                                    Log(path);
-                                }
-                                free(bgra);
-                            }
-                            if (UnlockRect) UnlockRect(s_sysSurf);
-                        }
-                    }
-                }
-            }
-            ((Release_t)VtblEntry(bb, 2))(bb);
-        }
+    ++s_stPresents;
+    // Capture only when someone consumes frames: a VR host, or a debug BMP
+    // frame (which must capture regardless of the rate cap, so desk
+    // verification on a VR-less machine still produces its BMPs).
+    if (dev && (s_vrConsumer || debugFrame)) {
+        if (debugFrame || CaptureLimiter().Allow(GetTickCount()))
+            CaptureFrame(dev, n, debugFrame);
+        else
+            ++s_stSkipped;
     }
+    if (s_vrConsumer && StatsLimiter().Allow(GetTickCount()))
+        ReportPerfStats();
 
     // Always forward the real Present so the desktop window keeps updating.
     return ((Present_t)s_realPresent)(dev, s, d, hwnd, dirty);
@@ -383,6 +444,18 @@ static void* WINAPI Hook_Direct3DCreate8(UINT SDKVersion) {
 // ---- IAT hook of d3d8.dll!Direct3DCreate8 in D3DDrv_Original -----------------
 
 void InstallFrameCapture() {
+    // Config first (before any Present can run): does anything consume frames,
+    // and how hard may the readback hit the render thread?
+    s_vrConsumer = ReadVrInt("SteamVR", 0) != 0 || ReadVrInt("OpenXR", 0) != 0;
+    s_minIntervalMs = ReadVrInt("CaptureMinIntervalMs", 11);
+    {
+        char b[128];
+        _snprintf(b, sizeof(b), "capture: vr consumer=%d, min interval=%u ms",
+                  s_vrConsumer ? 1 : 0, s_minIntervalMs);
+        b[127] = 0;
+        Log(b);
+    }
+
     HMODULE hMod = GetModuleHandleA("D3DDrv_Original.dll");
     if (!hMod) { Log("D3DDrv_Original not loaded; cannot install capture"); return; }
 

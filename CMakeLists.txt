@@ -7,5 +7,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 enable_testing()
 
 add_subdirectory(pose_math)
+add_subdirectory(capture_core)
 add_subdirectory(tests)
 add_subdirectory(proxy)

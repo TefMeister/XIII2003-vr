@@ -10,7 +10,7 @@ target_include_directories(D3DDrv PRIVATE
 # only pulled in when their host actually runs ([VR] OpenXR=1 / [VR] SteamVR=1);
 # machines without the respective runtime are unaffected.
 target_link_libraries(D3DDrv PRIVATE
-    d3d11 dxgi pose_math delayimp
+    d3d11 dxgi pose_math capture_core delayimp
     ${CMAKE_SOURCE_DIR}/third_party/openxr/lib/openxr_loader.lib
     ${CMAKE_SOURCE_DIR}/third_party/openvr/lib/openvr_api.lib)
 
