@@ -11,8 +11,8 @@ if errorlevel 1 (
 )
 cd /d "%~dp0proxy"
 cl /nologo /O2 /MT /EHsc /std:c++17 /W3 /LD ^
-  dllmain.cpp frame_capture.cpp camera_hook.cpp vr_host.cpp openxr_host.cpp steamvr_host.cpp shutdown_hook.cpp ..\pose_math\pose_math.cpp ^
-  /I..\third_party\openxr\include /I..\third_party\openvr\headers /I..\pose_math ^
+  dllmain.cpp frame_capture.cpp camera_hook.cpp vr_host.cpp openxr_host.cpp steamvr_host.cpp shutdown_hook.cpp ..\pose_math\pose_math.cpp ..\capture_core\frame_decode.cpp ..\capture_core\perf_stats.cpp ^
+  /I..\third_party\openxr\include /I..\third_party\openvr\headers /I..\pose_math /I..\capture_core ^
   /Fe:D3DDrv.dll ^
   /link /DEF:proxy.def /DELAYLOAD:openxr_loader.dll /DELAYLOAD:openvr_api.dll ^
   d3d11.lib dxgi.lib delayimp.lib user32.lib ^
