@@ -1,4 +1,4 @@
-# Project status — 2026-08-20 (0.2.6)
+# Project status — 2026-08-20 (0.2.7)
 
 Milestone 1 (SteamVR overlay + head-look on the legacy framebuffer) is
 **working, verified in the headset** as of 0.2.3: no flicker, responsive
@@ -102,6 +102,15 @@ CPU). No ini setting controls it.
   reported window). The overlay's 5 s starvation auto-hide should no longer
   trigger from focus changes.
 
+### 0.2.7 — heartbeats also log to a file
+
+`[xiii-perf]` lines (plus a per-run session header) now append to
+`%TEMP%\xiii_capture\xiii_perf.log` with local timestamps, so a headset
+session needs no DBWIN listener — play, then send the file. Gated
+`[VR] PerfLog` (default on; only active when a VR host is enabled). The file
+is opened and closed per write, so it is always flushed and safe to copy
+while the game runs. DebugView/`odscap.ps1` still see every line as before.
+
 Remaining perf candidates, in order:
 
 1. **GPU-only path**: share the D3D8 backbuffer with the D3D11 device (shared
@@ -131,7 +140,8 @@ Remaining perf candidates, in order:
 - Enable exactly ONE of `[VR] SteamVR` / `[VR] OpenXR`. The OpenXR host is
   still unverified on hardware.
 - Telemetry: everything logs via OutputDebugString (`[xiii-*]` prefixes);
-  capture with DebugView or `odscap.ps1`-style tooling. Debug BMP frames
+  capture with DebugView or `odscap.ps1`-style tooling. Perf heartbeats also
+  append to `%TEMP%\xiii_capture\xiii_perf.log` (0.2.7). Debug BMP frames
   land in `%TEMP%\xiii_capture\`.
 - On the home PC a `~ HIGHDPIAWARE` compat flag was set for XIII.exe (HKCU
   AppCompatFlags\Layers) — harmless, not required by the mod.
