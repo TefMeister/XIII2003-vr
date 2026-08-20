@@ -16,8 +16,13 @@ add_executable(readback_ring_tests test_readback_ring.cpp)
 target_include_directories(readback_ring_tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 target_link_libraries(readback_ring_tests PRIVATE capture_core)
 
+add_executable(focus_policy_tests test_focus_policy.cpp)
+target_include_directories(focus_policy_tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+target_link_libraries(focus_policy_tests PRIVATE capture_core)
+
 enable_testing()
 add_test(NAME pose_math_tests COMMAND pose_math_tests)
 add_test(NAME frame_decode_tests COMMAND frame_decode_tests)
 add_test(NAME perf_stats_tests COMMAND perf_stats_tests)
 add_test(NAME readback_ring_tests COMMAND readback_ring_tests)
+add_test(NAME focus_policy_tests COMMAND focus_policy_tests)

@@ -1,4 +1,4 @@
-# Project status — 2026-08-20 (0.2.5)
+# Project status — 2026-08-20 (0.2.6)
 
 Milestone 1 (SteamVR overlay + head-look on the legacy framebuffer) is
 **working, verified in the headset** as of 0.2.3: no flicker, responsive
@@ -76,7 +76,33 @@ dev machine (Amos01, windowed 1280x960):
   driver may defer the blit and pay the wait at `LockRect` instead, which is
   exactly the case pipelining fixes.
 
-Remaining candidates, in order:
+### 0.2.6 — the focus-loss freeze is fixed (desk-verified)
+
+The worst headset-session caveat — *"XIII pauses presentation when its window
+loses focus"* — is gone. Root cause (found live in the debugger): XIII.exe's
+main loop polls `GetForegroundWindow()` every iteration and, when the
+foreground window belongs to another process, skips `Engine->Tick` entirely
+and idles in an 8 ms `appSleep` poll loop (caught mid-`Sleep(8)` at zero
+CPU). No ini setting controls it.
+
+- **Fix:** `proxy/focus_hook.cpp` IAT-hooks `user32!GetForegroundWindow` in
+  **XIII.exe only**, reporting the game's device window while a foreign
+  window is foreground (decision logic unit-tested in
+  `capture_core/focus_policy`, 5th doctest suite). WinDrv/Engine keep their
+  honest view of focus, so input capture and `WM_KILLFOCUS` handling are
+  unchanged.
+- **Gate:** `[VR] KeepRenderingUnfocused` (default **on**), and the hook is
+  only installed at all when a VR host is enabled — with VR off the stock
+  path is untouched.
+- **Desk-verified:** heartbeats continue at full rate through a 25 s focus
+  steal (previously they stopped dead within a second).
+- Side effects to know about: the engine's mute-on-deactivate is skipped
+  together with the pause, so audio keeps playing unfocused (intended for
+  VR). A *minimized* game window still pauses (the loop `IsIconic()`s the
+  reported window). The overlay's 5 s starvation auto-hide should no longer
+  trigger from focus changes.
+
+Remaining perf candidates, in order:
 
 1. **GPU-only path**: share the D3D8 backbuffer with the D3D11 device (shared
    surface / DXGI interop) and feed `SetOverlayTexture` without touching the
@@ -97,9 +123,9 @@ Remaining candidates, in order:
 
 ## Caveats / notes
 
-- XIII **pauses presentation when its window loses focus** — keep the game
-  window focused while in the headset, or frames stop (overlay auto-hides
-  after 5 s of starvation and resumes when frames return).
+- ~~XIII pauses presentation when its window loses focus~~ — **fixed in
+  0.2.6** (see above) whenever a VR host is enabled. A minimized window
+  still pauses; opt out with `[VR] KeepRenderingUnfocused=0`.
 - Single instance: a running/hung XIII.exe blocks new launches silently
   (instant exit code 0).
 - Enable exactly ONE of `[VR] SteamVR` / `[VR] OpenXR`. The OpenXR host is
