@@ -22,6 +22,7 @@
 #include "vr_host.h"
 #include "frame_decode.h"
 #include "perf_stats.h"
+#include "readback_ring.h"
 
 // ---- Minimal D3D8 types we touch (layouts are fixed/ABI-stable) -------------
 
@@ -207,10 +208,23 @@ static void**            s_iatSlot       = nullptr;  // patched IAT entry
 static LONG              s_devHooked      = 0;
 static LONG              s_d3dHooked      = 0;
 static LONG              s_frame          = 0;
-// Cached system-memory readback surface (recreated only on size/format change),
-// so we can capture every frame cheaply instead of allocating one each time.
-static void*             s_sysSurf        = nullptr;
+// Cached system-memory readback surfaces (recreated only on size/format
+// change). Two slots: the pipelined readback (0.2.5) CopyRects into one while
+// locking the other, whose copy was issued a full capture interval earlier.
+static void*             s_sysSurf[2]     = { nullptr, nullptr };
 static UINT              s_sysW = 0, s_sysH = 0, s_sysFmt = 0;
+static xiii::ReadbackRing s_ring;
+
+static void ReleaseSysSurfaces() {
+    for (int i = 0; i < 2; ++i) {
+        if (s_sysSurf[i]) {
+            ((Release_t)VtblEntry(s_sysSurf[i], 2))(s_sysSurf[i]);
+            s_sysSurf[i] = nullptr;
+        }
+    }
+    s_sysW = s_sysH = s_sysFmt = 0;
+    s_ring.Reset();
+}
 
 // Frames to capture (spread across the first several seconds to skip black
 // loading screens); capture stops after the last one.
@@ -229,6 +243,14 @@ static const LONG kCaptureAt[] = { 60, 180, 300, 600, 900 };
 //     next hardware report says where the remaining time goes.
 static bool     s_vrConsumer    = false;  // any VR host enabled in XIII.ini
 static UINT     s_minIntervalMs = 11;
+// 0.2.5: lock the PREVIOUS tick's surface instead of the one just copied, so
+// the lock never waits on the copy just issued ([VR] PipelinedReadback; costs
+// one capture interval of overlay latency). Default OFF: the dev-machine A/B
+// showed the stall lives INSIDE CopyRects (driver syncs at blit time), where
+// double-buffering cannot help -- flip it on per-machine to test whether the
+// local driver defers the blit instead. Debug BMP frames always capture
+// synchronously so the BMP shows the exact frame.
+static bool     s_pipelined     = false;
 static LARGE_INTEGER   s_qpcFreq  = {};
 static xiii::PhaseStats s_stCopy, s_stLock, s_stDecode, s_stSubmit;
 static uint32_t s_stPresents = 0, s_stCaptured = 0, s_stSkipped = 0;
@@ -265,10 +287,10 @@ static void ReportPerfStats() {
     // Single OutputDebugString call so the line arrives atomically (multi-call
     // logging interleaves across threads and splits into separate DBWIN events).
     _snprintf(b, sizeof(b),
-              "[xiii-perf] present=%lu captured=%lu skipped=%lu (cap %ums) | us avg/max: "
+              "[xiii-perf] present=%lu captured=%lu skipped=%lu (cap %ums pipe=%d) | us avg/max: "
               "copy=%u/%u lock=%u/%u decode=%u/%u submit=%u/%u\n",
               (unsigned long)s_stPresents, (unsigned long)s_stCaptured,
-              (unsigned long)s_stSkipped, s_minIntervalMs,
+              (unsigned long)s_stSkipped, s_minIntervalMs, s_pipelined ? 1 : 0,
               s_stCopy.AvgUs(), s_stCopy.maxUs, s_stLock.AvgUs(), s_stLock.maxUs,
               s_stDecode.AvgUs(), s_stDecode.maxUs,
               s_stSubmit.AvgUs(), s_stSubmit.maxUs);
@@ -306,10 +328,9 @@ static void ClampWindowedBackbuffer(D3DPRESENT_PARAMETERS_8* pp) {
 
 static HRESULT WINAPI Hook_Reset(void* dev, D3DPRESENT_PARAMETERS_8* pp) {
     ClampWindowedBackbuffer(pp);
-    // The cached readback surface belongs to the pre-Reset device state; drop
-    // it so the next Present recreates it at the new size.
-    if (s_sysSurf) { ((Release_t)VtblEntry(s_sysSurf, 2))(s_sysSurf); s_sysSurf = nullptr; }
-    s_sysW = s_sysH = s_sysFmt = 0;
+    // The cached readback surfaces belong to the pre-Reset device state; drop
+    // them so the next Present recreates them at the new size.
+    ReleaseSysSurfaces();
     return ((Reset_t)s_realReset)(dev, pp);
 }
 
@@ -323,29 +344,47 @@ static void CaptureFrame(void* dev, LONG n, bool debugFrame) {
     GetDesc_t GetDesc = (GetDesc_t)VtblEntry(bb, 8);
     D3DSURFACE_DESC_8 desc; memset(&desc, 0, sizeof(desc));
     if (GetDesc && GetDesc(bb, &desc) == 0) {
-        // (Re)create the cached readback surface only on size/format change.
-        if (!s_sysSurf || s_sysW != desc.Width || s_sysH != desc.Height ||
-            s_sysFmt != desc.Format) {
-            if (s_sysSurf) { ((Release_t)VtblEntry(s_sysSurf, 2))(s_sysSurf); s_sysSurf = nullptr; }
+        // (Re)create both cached readback slots only on size/format change.
+        if (!s_sysSurf[0] || !s_sysSurf[1] || s_sysW != desc.Width ||
+            s_sysH != desc.Height || s_sysFmt != desc.Format) {
+            ReleaseSysSurfaces();
             CreateImageSurface_t CreateImageSurface =
                 (CreateImageSurface_t)VtblEntry(dev, 27);
             if (CreateImageSurface &&
                 CreateImageSurface(dev, desc.Width, desc.Height, desc.Format,
-                                   &s_sysSurf) == 0) {
+                                   &s_sysSurf[0]) == 0 &&
+                CreateImageSurface(dev, desc.Width, desc.Height, desc.Format,
+                                   &s_sysSurf[1]) == 0) {
                 s_sysW = desc.Width; s_sysH = desc.Height; s_sysFmt = desc.Format;
-            } else { s_sysSurf = nullptr; }
+            } else { ReleaseSysSurfaces(); }
         }
-        if (s_sysSurf) {
+        if (s_sysSurf[0] && s_sysSurf[1]) {
+            // Pipelined mode locks the slot whose copy was committed on the
+            // PREVIOUS capture tick, so the choice must be made before
+            // CommitCopy() below. Debug BMP frames (and the gate being off)
+            // stay synchronous: lock the slot we are about to fill, so the
+            // BMP shows this exact frame and works on the priming tick too.
+            const bool sync     = debugFrame || !s_pipelined;
+            const int  copySlot = s_ring.CopySlot();
+            const int  lockSlot = sync ? copySlot : s_ring.LockableSlot();
+
             LARGE_INTEGER t0, t1, t2, t3, t4;
             CopyRects_t CopyRects = (CopyRects_t)VtblEntry(dev, 28);
             QueryPerformanceCounter(&t0);
-            if (CopyRects && CopyRects(dev, bb, nullptr, 0, s_sysSurf, nullptr) == 0) {
+            if (CopyRects &&
+                CopyRects(dev, bb, nullptr, 0, s_sysSurf[copySlot], nullptr) == 0) {
                 QueryPerformanceCounter(&t1);
                 s_stCopy.Add(DeltaUs(t0, t1));
-                LockRect_t LockRect     = (LockRect_t)VtblEntry(s_sysSurf, 9);
-                UnlockRect_t UnlockRect = (UnlockRect_t)VtblEntry(s_sysSurf, 10);
+                s_ring.CommitCopy();
+                void* lockSurf = (lockSlot >= 0) ? s_sysSurf[lockSlot] : nullptr;
+                LockRect_t LockRect =
+                    lockSurf ? (LockRect_t)VtblEntry(lockSurf, 9) : nullptr;
+                UnlockRect_t UnlockRect =
+                    lockSurf ? (UnlockRect_t)VtblEntry(lockSurf, 10) : nullptr;
                 D3DLOCKED_RECT_8 lr; memset(&lr, 0, sizeof(lr));
-                if (LockRect && LockRect(s_sysSurf, &lr, nullptr, D3DLOCK_READONLY) == 0) {
+                // lockSlot -1 = pipelined priming tick (fresh surfaces, no
+                // committed copy yet): skip the decode, next tick has data.
+                if (LockRect && LockRect(lockSurf, &lr, nullptr, D3DLOCK_READONLY) == 0) {
                     QueryPerformanceCounter(&t2);
                     s_stLock.Add(DeltaUs(t1, t2));
                     const size_t need = (size_t)desc.Width * desc.Height * 4;
@@ -376,7 +415,7 @@ static void CaptureFrame(void* dev, LONG n, bool debugFrame) {
                             Log(path);
                         }
                     }
-                    if (UnlockRect) UnlockRect(s_sysSurf);
+                    if (UnlockRect) UnlockRect(lockSurf);
                 }
             }
         }
@@ -448,10 +487,12 @@ void InstallFrameCapture() {
     // and how hard may the readback hit the render thread?
     s_vrConsumer = ReadVrInt("SteamVR", 0) != 0 || ReadVrInt("OpenXR", 0) != 0;
     s_minIntervalMs = ReadVrInt("CaptureMinIntervalMs", 11);
+    s_pipelined = ReadVrInt("PipelinedReadback", 0) != 0;
     {
         char b[128];
-        _snprintf(b, sizeof(b), "capture: vr consumer=%d, min interval=%u ms",
-                  s_vrConsumer ? 1 : 0, s_minIntervalMs);
+        _snprintf(b, sizeof(b),
+                  "capture: vr consumer=%d, min interval=%u ms, pipelined=%d",
+                  s_vrConsumer ? 1 : 0, s_minIntervalMs, s_pipelined ? 1 : 0);
         b[127] = 0;
         Log(b);
     }

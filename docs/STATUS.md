@@ -1,4 +1,4 @@
-# Project status — 2026-08-19 (0.2.4)
+# Project status — 2026-08-20 (0.2.5)
 
 Milestone 1 (SteamVR overlay + head-look on the legacy framebuffer) is
 **working, verified in the headset** as of 0.2.3: no flicker, responsive
@@ -52,15 +52,37 @@ dev machine (Amos01, windowed 800x600–1280x960):
   `malloc`/`free` of the whole frame is a reused buffer. 3 test suites /
   1700+ assertions green (`build/tests/`).
 
+### 0.2.5 — double-buffered readback: built, gated, no win on the dev machine
+
+Attack candidate 1 (pipelined readback) is implemented and A/B-tested on the
+dev machine (Amos01, windowed 1280x960):
+
+- **Mechanism:** two cached system-memory surfaces scheduled by a new
+  unit-tested `capture_core/readback_ring` (4th doctest suite). Each capture
+  tick `CopyRects` into slot A and `LockRect`/decode slot B, whose copy was
+  issued a full capture interval (~11 ms) earlier — so the lock never waits
+  on the copy just issued. Costs one capture interval of overlay latency.
+  Debug BMP frames always capture synchronously (exact-frame BMPs, and they
+  work on the priming tick).
+- **Gate:** `[VR] PipelinedReadback` (default **0** = off, the
+  hardware-verified 0.2.4 behavior). The heartbeat reports the mode as
+  `pipe=0/1`.
+- **Dev-machine A/B result: no difference.** Pipelined `copy` avg ~3.3–4.5 ms
+  vs. synchronous ~3.3–4.3 ms; `lock` ~0 in BOTH modes. On this driver the
+  stall lives INSIDE `CopyRects` (it syncs at blit time), so alternating
+  destination surfaces cannot help. That is why the gate defaults off.
+- **Worth one A/B on the home machine anyway** (flip the ini key, compare
+  `copy` avg/max between `pipe=0` and `pipe=1` heartbeats): a different
+  driver may defer the blit and pay the wait at `LockRect` instead, which is
+  exactly the case pipelining fixes.
+
 Remaining candidates, in order:
 
-1. **Double-buffered readback (one-frame latency):** `CopyRects` into surface
-   A but `LockRect` surface B from the previous capture, so the lock never
-   waits on an in-flight copy. Cheap to try; should cut most of the ~2.7 ms
-   stall on the render thread.
-2. **GPU-only path**: share the D3D8 backbuffer with the D3D11 device (shared
+1. **GPU-only path**: share the D3D8 backbuffer with the D3D11 device (shared
    surface / DXGI interop) and feed `SetOverlayTexture` without touching the
-   CPU. Hardest but removes the whole round-trip. Re-profile on the home
+   CPU. Hardest but removes the whole round-trip — and after the 0.2.5
+   finding that `CopyRects` itself carries the stall, it is the only lever
+   left that can remove that cost rather than move it. Re-profile on the home
    machine first — its `[xiii-perf]` numbers decide whether this is worth it.
 
 ## Runtime setup (game side)
