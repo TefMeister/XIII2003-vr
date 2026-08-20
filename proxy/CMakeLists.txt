@@ -1,6 +1,6 @@
 add_library(D3DDrv SHARED
     dllmain.cpp frame_capture.cpp camera_hook.cpp vr_host.cpp
-    openxr_host.cpp steamvr_host.cpp shutdown_hook.cpp)
+    openxr_host.cpp steamvr_host.cpp shutdown_hook.cpp focus_hook.cpp)
 
 target_include_directories(D3DDrv PRIVATE
     ${CMAKE_SOURCE_DIR}/third_party/openxr/include

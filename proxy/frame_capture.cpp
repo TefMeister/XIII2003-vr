@@ -23,6 +23,7 @@
 #include "frame_decode.h"
 #include "perf_stats.h"
 #include "readback_ring.h"
+#include "focus_hook.h"
 
 // ---- Minimal D3D8 types we touch (layouts are fixed/ABI-stable) -------------
 
@@ -328,6 +329,7 @@ static void ClampWindowedBackbuffer(D3DPRESENT_PARAMETERS_8* pp) {
 
 static HRESULT WINAPI Hook_Reset(void* dev, D3DPRESENT_PARAMETERS_8* pp) {
     ClampWindowedBackbuffer(pp);
+    if (pp && pp->hDeviceWindow) FocusHookSetGameWindow(pp->hDeviceWindow);
     // The cached readback surfaces belong to the pre-Reset device state; drop
     // them so the next Present recreates them at the new size.
     ReleaseSysSurfaces();
@@ -455,6 +457,12 @@ static HRESULT WINAPI Hook_CreateDevice(void* self, UINT Adapter, UINT DeviceTyp
                                         void** ppReturnedDeviceInterface) {
     s_focusWnd = hFocusWindow;
     ClampWindowedBackbuffer((D3DPRESENT_PARAMETERS_8*)pPresentationParameters);
+    {
+        D3DPRESENT_PARAMETERS_8* pp =
+            (D3DPRESENT_PARAMETERS_8*)pPresentationParameters;
+        HWND w = (pp && pp->hDeviceWindow) ? pp->hDeviceWindow : hFocusWindow;
+        if (w) FocusHookSetGameWindow(w);
+    }
     HRESULT hr = ((CreateDevice_t)s_realCreateDev)(
         self, Adapter, DeviceType, hFocusWindow, BehaviorFlags,
         pPresentationParameters, ppReturnedDeviceInterface);

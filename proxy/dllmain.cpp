@@ -6,6 +6,7 @@
 #include "openxr_host.h"
 #include "steamvr_host.h"
 #include "shutdown_hook.h"
+#include "focus_hook.h"
 
 // Force the original render-device DLL to load so its static/global
 // constructors run and self-register UD3DRenderDevice into the engine's
@@ -42,6 +43,12 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD reason, LPVOID lpReserved) {
         // the OS terminates threads on quit. Terminating the host thread
         // mid-driver-call is what wedged XIII.exe unkillably in nvwgf2um.dll.
         InstallShutdownHook();
+        // Keep the engine ticking when the game window loses focus (0.2.6):
+        // XIII.exe's main loop polls GetForegroundWindow and stops ticking
+        // when another process is foreground, freezing the VR overlay. Only
+        // installed when a VR host is enabled ([VR] KeepRenderingUnfocused,
+        // default on).
+        InstallFocusHook();
     } else if (reason == DLL_PROCESS_DETACH) {
         // Last-resort only -- the real teardown happens in the ExitProcess
         // hook. Here the loader lock is held: never join threads or touch
