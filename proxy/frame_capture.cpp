@@ -252,6 +252,11 @@ static UINT     s_minIntervalMs = 11;
 // local driver defers the blit instead. Debug BMP frames always capture
 // synchronously so the BMP shows the exact frame.
 static bool     s_pipelined     = false;
+// 0.2.7: heartbeats also append to %TEMP%\xiii_capture\xiii_perf.log
+// ([VR] PerfLog, default on) so a headset session needs no DBWIN listener --
+// play, then send the file. One line per 5 s; opened/closed per write so the
+// file is always flushed and readable while the game runs.
+static bool     s_perfToFile    = true;
 static LARGE_INTEGER   s_qpcFreq  = {};
 static xiii::PhaseStats s_stCopy, s_stLock, s_stDecode, s_stSubmit;
 static uint32_t s_stPresents = 0, s_stCaptured = 0, s_stSkipped = 0;
@@ -283,6 +288,30 @@ static uint32_t DeltaUs(const LARGE_INTEGER& a, const LARGE_INTEGER& b) {
     return (uint32_t)((b.QuadPart - a.QuadPart) * 1000000 / s_qpcFreq.QuadPart);
 }
 
+static void AppendPerfLog(const char* line) {
+    if (!s_perfToFile) return;
+    char path[MAX_PATH];
+    CaptureDir(path, sizeof(path));
+    size_t n = lstrlenA(path);
+    _snprintf(path + n, sizeof(path) - n, "xiii_perf.log");
+    path[sizeof(path) - 1] = 0;
+    HANDLE f = CreateFileA(path, FILE_APPEND_DATA, FILE_SHARE_READ, nullptr,
+                           OPEN_ALWAYS, FILE_ATTRIBUTE_NORMAL, nullptr);
+    if (f == INVALID_HANDLE_VALUE) return;
+    SYSTEMTIME st; GetLocalTime(&st);
+    char ts[24];
+    _snprintf(ts, sizeof(ts), "[%02u:%02u:%02u] ",
+              st.wHour, st.wMinute, st.wSecond);
+    ts[sizeof(ts) - 1] = 0;
+    DWORD wr = 0;
+    WriteFile(f, ts, (DWORD)lstrlenA(ts), &wr, nullptr);
+    int len = lstrlenA(line);
+    while (len > 0 && (line[len - 1] == '\n' || line[len - 1] == '\r')) --len;
+    WriteFile(f, line, (DWORD)len, &wr, nullptr);
+    WriteFile(f, "\r\n", 2, &wr, nullptr);
+    CloseHandle(f);
+}
+
 static void ReportPerfStats() {
     char b[256];
     // Single OutputDebugString call so the line arrives atomically (multi-call
@@ -297,6 +326,7 @@ static void ReportPerfStats() {
               s_stSubmit.AvgUs(), s_stSubmit.maxUs);
     b[sizeof(b) - 1] = 0;
     OutputDebugStringA(b);
+    AppendPerfLog(b);
     s_stCopy.Reset(); s_stLock.Reset(); s_stDecode.Reset(); s_stSubmit.Reset();
     s_stPresents = s_stCaptured = s_stSkipped = 0;
 }
@@ -496,13 +526,28 @@ void InstallFrameCapture() {
     s_vrConsumer = ReadVrInt("SteamVR", 0) != 0 || ReadVrInt("OpenXR", 0) != 0;
     s_minIntervalMs = ReadVrInt("CaptureMinIntervalMs", 11);
     s_pipelined = ReadVrInt("PipelinedReadback", 0) != 0;
+    s_perfToFile = s_vrConsumer && ReadVrInt("PerfLog", 1) != 0;
     {
-        char b[128];
+        char b[160];
         _snprintf(b, sizeof(b),
-                  "capture: vr consumer=%d, min interval=%u ms, pipelined=%d",
-                  s_vrConsumer ? 1 : 0, s_minIntervalMs, s_pipelined ? 1 : 0);
-        b[127] = 0;
+                  "capture: vr consumer=%d, min interval=%u ms, pipelined=%d, "
+                  "perf log=%d",
+                  s_vrConsumer ? 1 : 0, s_minIntervalMs, s_pipelined ? 1 : 0,
+                  s_perfToFile ? 1 : 0);
+        b[sizeof(b) - 1] = 0;
         Log(b);
+        if (s_perfToFile) {
+            // Session separator so multiple runs stay tellable-apart in the
+            // appended file. Reuses the heartbeat writer for the timestamp.
+            SYSTEMTIME st; GetLocalTime(&st);
+            char h[160];
+            _snprintf(h, sizeof(h),
+                      "=== session %04u-%02u-%02u | cap %ums pipe=%d ===",
+                      st.wYear, st.wMonth, st.wDay, s_minIntervalMs,
+                      s_pipelined ? 1 : 0);
+            h[sizeof(h) - 1] = 0;
+            AppendPerfLog(h);
+        }
     }
 
     HMODULE hMod = GetModuleHandleA("D3DDrv_Original.dll");
