@@ -21,6 +21,19 @@ The blow-by-blow development history lives in the sibling repositories
 (`-dev-archive` for the messy in-progress record, `-modding-notes` for readable
 field notes). This repo is the consolidated engine knowledge, not the diary.
 
+## The five repositories for XIII (2003) VR
+
+Everything for this game lives in five repositories, each with one job — so you
+always know where to look. You are in **XIII2003-vr-engine-research**.
+
+| Repository | What lives here |
+| --- | --- |
+| [XIII2003-vr-mod](https://github.com/TefMeister/XIII2003-vr-mod) | The mod itself — the VR head-look `D3DDrv.dll` render-device proxy. |
+| [XIII2003-vr-dev-archive](https://github.com/TefMeister/XIII2003-vr-dev-archive) | Full development history — snapshots, probes, dead ends, raw recon. |
+| [XIII2003-vr-modding-notes](https://github.com/TefMeister/XIII2003-vr-modding-notes) | Readable field notes / progress ledger. |
+| [XIII2003-vr-staging](https://github.com/TefMeister/XIII2003-vr-staging) 🔒 | **Private** — unverified WIP builds, cross-machine handoff. |
+| **XIII2003-vr-engine-research** ← you are here | Distilled engine reference (dossier) + reusable VR RE playbook. |
+
 ## Status
 
 Milestone 1 — a framebuffer-in-VR view with live head-look — is **working and
