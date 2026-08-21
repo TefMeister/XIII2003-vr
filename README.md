@@ -182,3 +182,10 @@ credited but aren't, please email us and we will add you as soon as possible.
   We will honour legitimate requests from rights holders promptly.
 
 **Contact:** td3kxlvr@proton.me
+
+## Contributing & policy
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) — how we credit and link sources, our
+**study-everything-public but write-our-own-code** rule (we copy no one else's
+source code or files, any license or price), the terms for reusing our work
+(free, with credit), and how to request a correction or removal.
