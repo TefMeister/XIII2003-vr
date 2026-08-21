@@ -20,6 +20,19 @@ on top of the 0.1.0 render-hook foundation.
 
 ---
 
+## The five repositories for XIII (2003) VR
+
+Everything for this game lives in five repositories, each with one job — so you
+always know where to look. You are in **XIII2003-vr-mod**.
+
+| Repository | What lives here |
+| --- | --- |
+| **XIII2003-vr-mod** ← you are here | The mod itself — the VR head-look `D3DDrv.dll` render-device proxy. |
+| [XIII2003-vr-dev-archive](https://github.com/TefMeister/XIII2003-vr-dev-archive) | Full development history — snapshots, probes, dead ends, raw recon. |
+| [XIII2003-vr-modding-notes](https://github.com/TefMeister/XIII2003-vr-modding-notes) | Readable field notes / progress ledger. |
+| [XIII2003-vr-staging](https://github.com/TefMeister/XIII2003-vr-staging) 🔒 | **Private** — unverified WIP builds, cross-machine handoff. |
+| [XIII2003-vr-engine-research](https://github.com/TefMeister/XIII2003-vr-engine-research) | Distilled engine reference (dossier) + reusable VR RE playbook. |
+
 ## Download
 
 Grab **`XIII2003VR-0.2.0-alpha.zip`** from the
