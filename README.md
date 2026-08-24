@@ -1,9 +1,9 @@
 # XIII2003-vr-dev-archive
 Dev archive for the XIII (2003) VR conversion project - hook code, RE findings, build artifacts
 
-## The five repositories for XIII (2003) VR
+## The six repositories for XIII (2003) VR
 
-Everything for this game lives in five repositories, each with one job — so you
+Everything for this game lives in six repositories, each with one job — so you
 always know where to look. You are in **XIII2003-vr-dev-archive**.
 
 | Repository | What lives here |
@@ -13,6 +13,7 @@ always know where to look. You are in **XIII2003-vr-dev-archive**.
 | [XIII2003-vr-modding-notes](https://github.com/TefMeister/XIII2003-vr-modding-notes) | Readable field notes / progress ledger. |
 | [XIII2003-vr-staging](https://github.com/TefMeister/XIII2003-vr-staging) 🔒 | **Private** — unverified WIP builds, cross-machine handoff. |
 | [XIII2003-vr-engine-research](https://github.com/TefMeister/XIII2003-vr-engine-research) | Distilled engine reference (dossier) + reusable VR RE playbook. |
+| [XIII2003-vr-external-research](https://github.com/TefMeister/XIII2003-vr-external-research) | Ongoing public-research leads, gathered separately from hands-on modding work. |
 
 ## Contributing & policy
 
