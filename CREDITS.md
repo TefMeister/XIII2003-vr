@@ -30,6 +30,9 @@ grows as `/game-research XIII2003-vr` finds new leads.
 
 | Source / Work | Creator(s) | Link |
 |---|---|---|
+| XIII (2003) console commands documentation | xiii.wiki.gg community | https://xiii.wiki.gg/wiki/Cheats_in_XIII_(2003) |
+| UE Explorer | EliotVU | https://github.com/UE-Explorer/UE-Explorer |
+| PCGamingWiki (Unreal Tournament 2004 D3D9 renderer notes) | PCGamingWiki community | https://www.pcgamingwiki.com/wiki/Unreal_Tournament_2004 |
 
 AI development assistance: **Claude (Anthropic)** (https://www.anthropic.com).
 
