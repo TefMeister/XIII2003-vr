@@ -10,8 +10,8 @@ write-up in `topics/`. Status tags:
 
 | Date | Topic | Status | Summary |
 | --- | --- | --- | --- |
-
-*(No topics yet — this repo was seeded 2026-08-24. Run `/game-research XIII2003-vr` to start.)*
+| 2026-08-25 | [Native F2 console: Fly/Ghost/God commands](topics/2026-08-25-native-f2-console-fly-ghost-commands.md) | 🆕 new | A real native console (F2) exists with stock Unreal cheat-manager commands (God/Fly/Ghost/PlayersOnly/etc), not yet in the dossier — Fly/Ghost in particular are directly useful for fast, collision-free stereo-depth and aim testing during Milestone 2. |
+| 2026-08-25 | [UE Explorer decompiler + UE2 public-doc gap](topics/2026-08-25-ue-explorer-decompiler-and-ue2-doc-gap.md) | 🆕 new | UE Explorer is the confirmed right tool for the dossier's own named Milestone 2 lever (decompiling `.u` packages to find weapon-aim UnrealScript functions). Honest gap noted: unlike UE3/Alice, no public UE2 SDK/doc equivalent exists — native camera/projection work stays this project's own live derivation. |
 
 ## How to add a topic
 
