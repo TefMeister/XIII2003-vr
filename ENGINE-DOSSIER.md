@@ -192,6 +192,71 @@ off / to stock behavior):
 | `PipelinedReadback` | double-buffered readback (default 0; see §8) |
 | `KeepRenderingUnfocused` | the focus-freeze fix (default on; see §5/§7) |
 | `PerfLog` | append `[xiii-perf]` heartbeats to `%TEMP%\xiii_capture\xiii_perf.log` (default on) |
+| `Automation` | external console-command injection + telemetry (default off; see §9a) |
+| `AutomationPollMs` | how often the command drop-file is read (default 200) |
+| `AutomationTelemetryMs` | telemetry line interval (default 1000; 0 = off) |
+| `AutomationEngineExec` | allow the `UGameEngine::Exec` tier (default **off** — see §9a) |
+
+## 9a. Console commands & the automation harness (verified live 2026-08-27)
+
+XIII ships a real console (**F2**) whose commands can also be driven from
+**outside the process**, with no simulated input, via the 0.2.9 automation
+harness: append a line to `xiii_automation_cmds.txt` next to `XIII.exe`, and
+the proxy executes it and truncates the file. Focus-independent by design.
+
+**Where a command must be dispatched from — the expensive lesson.** 0.2.8
+drained the queue from the camera hook (`eventPlayerCalcView`) and the game
+died with a **General protection fault** the first time a command arrived:
+
+```
+History: UGameEngine::Exec <- UGameEngine::Draw <- UWindowsViewport::Repaint
+         <- UWindowsClient::Tick <- ClientTick <- UGameEngine::Tick <- ...
+```
+
+`eventPlayerCalcView` is reached from **inside `UGameEngine::Draw`** — running
+a console command re-entrantly mid-render faults. Dispatch must happen in the
+**game-logic phase**: the harness now hooks `APlayerController::Tick`
+(prologue `55 8B EC 6A FF` — 5 bytes, no relative operands). Moving the call
+site fixed it outright. **This is engine-agnostic advice: never dispatch
+engine commands from a render-path hook.**
+
+**Where the commands live — three different objects.** Calling
+`UObject::ScriptConsoleExec` on the PlayerController finds only the
+controller's own exec functions. The cheats are on **`UCheatManager`**, which
+the console reaches by hopping from the controller. Measured live:
+
+| resolves on | commands |
+| --- | --- |
+| **APlayerController** | `Fov <n>`, `BehindView <0/1>` |
+| **UCheatManager** | `God`, `Fly`, `Ghost`, `Walk`, `MaxAmmo`, `HealMe <n>`, `PlayersOnly` |
+| **not present in this build** | `Teleport`, `AllAmmo`, `Loaded`, `Invisible`, `SetSpeed`, `ChangeSize`, `Slomo` |
+
+Finding the CheatManager: its **vtable is exported**
+(`??_7UCheatManager@@6B@`), so the harness scans the controller's fields for a
+pointer whose target's vtable is exactly that — identity, not a hardcoded
+offset. Found at `controller+0x598` in this build; re-validated on use because
+the CheatManager is destroyed on level change.
+
+**Symbol → module map** (looking in the wrong module returns null *silently*):
+
+| symbol | module |
+| --- | --- |
+| `?GEngine@@3PAVUEngine@@A` | Engine.dll |
+| `?Exec@UGameEngine@@UAEHPBDAAVFOutputDevice@@@Z` | Engine.dll |
+| `?Tick@APlayerController@@UAEHMW4ELevelTick@@@Z` | Engine.dll |
+| `??_7UCheatManager@@6B@` | Engine.dll |
+| `?ScriptConsoleExec@UObject@@UAEHPBDAAVFOutputDevice@@PAV1@@Z` | **Core.dll** |
+| `?GLog@@3PAVFOutputDevice@@A` | **Core.dll** |
+
+The mangled names decode to `char const*` (`PBD`), so this build is **ANSI, not
+Unicode** — commands pass as plain `char*`. `GLog` supplies the
+`FOutputDevice&` both dispatch calls require, so no vtable has to be
+fabricated and command output lands in the game's own log.
+
+**End-to-end verified 2026-08-27:** `HealMe 100` sent from a text file raised
+the player's health 50 → 100, witnessed in-game. `God`/`Fly`/`Ghost`/`Walk`/
+`PlayersOnly` all resolve to the CheatManager; ~20 commands ran across two
+sessions with no fault and a clean process exit.
 
 Windowing (stock game keys): `StartupFullscreen=False` + `UseFullscreen=False`
 + `WindowedViewportX/Y` (e.g. 1280×960) for windowed dev testing; both True to
