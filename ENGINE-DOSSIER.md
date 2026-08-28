@@ -205,8 +205,9 @@ harness: append a line to `xiii_automation_cmds.txt` next to `XIII.exe`, and
 the proxy executes it and truncates the file. Focus-independent by design.
 
 **⛔ `UGameEngine::Exec` is unsafe to call from a hook in this build — do not
-re-arm it.** It is gated behind `AutomationEngineExec` in `[VR]`, **default 0,
-and it must stay 0.**
+re-arm it.** `[verified-live 2026-08-28, n=2 — two GPFs, two different call
+sites]` It is gated behind `AutomationEngineExec` in `[VR]`, **default 0, and it
+must stay 0.**
 
 0.2.8 drained the queue from the camera hook (`eventPlayerCalcView`) and the
 game died with a **General protection fault** the first time a command arrived:
@@ -222,7 +223,7 @@ to move dispatch to the game-logic phase — `APlayerController::Tick` (prologue
 `55 8B EC 6A FF`, 5 bytes, no relative operands). Commands then ran cleanly and
 **that diagnosis was recorded here as fact.**
 
-**It was wrong — disproved 2026-08-28.** The engine tier was re-armed on the
+**It was wrong — `[disproved 2026-08-28]`.** The engine tier was re-armed on the
 reasoning "the render path was the cause, and dispatch has moved", and the very
 first `Button bUp` faulted again from the *safe* site:
 
@@ -301,8 +302,8 @@ absent from this build, so there is no console way to reposition the player.
 Movement comes from synthetic **keyboard** input, and the result is precise
 enough to navigate by dead reckoning.
 
-**The mouse is a hard dead end.** XIII takes the mouse through **DirectInput in
-exclusive mode**, so `SendInput` never reaches it: 600 px of injected motion
+**The mouse is a hard dead end.** `[verified-live 2026-08-28, n=1]` XIII takes the
+mouse through **DirectInput in exclusive mode**, so `SendInput` never reaches it: 600 px of injected motion
 produced **0.0°** of yaw, while keyboard input in the same session worked
 perfectly. Do not spend time on mouse injection, `mouse_event`, or cursor
 warping — the device is not reading the Windows input queue at all. (Psychonauts
@@ -322,7 +323,7 @@ Aliases[27]=(Command="button b90Right",           Alias="FastTurnR")
 Binding them to spare keys routes yaw through the keyboard path that already
 works — no code change, no injection, no mouse.
 
-**⚠️ Edit `DefUser.ini`, NOT `User.ini`.** XIII does not merely rewrite
+**⚠️ Edit `DefUser.ini`, NOT `User.ini`.** `[verified-live 2026-08-28]` XIII does not merely rewrite
 `User.ini` on exit — it **deletes** it. The file exists only while the game
 runs and is recreated at launch from `DefUser.ini` (verified: identical section
 layout, identical line numbers; and no config exists anywhere outside the game
@@ -338,7 +339,8 @@ Added for automation (keys verified free in this build):
 | `U` / `J` | TurnLeft / TurnRight | smooth yaw |
 | `H` / `K` | FastTurnL / FastTurnR | snap turn |
 
-**Measured control model** (all figures live, not assumed):
+**Measured control model** `[measured 2026-08-28, via tools/xnav.ps1 + harness telemetry]`
+(all figures live, not assumed):
 
 | axis | keys | measurement |
 | --- | --- | --- |
@@ -348,13 +350,14 @@ Added for automation (keys verified free in this build):
 | pitch | `Backspace` / `=` | **~148 °/s**, clamps at **±85°** |
 | jump | `Space` | — |
 
-Accuracy: a four-leg square (W→D→S→A, equal durations) closed to **3.5 uu on
+Accuracy `[measured 2026-08-28, n=1 route each]`: a four-leg square (W→D→S→A, equal
+durations) closed to **3.5 uu on
 ~190 uu legs (1.8%)**. Closed-loop turning — turn, re-measure, correct — lands
 a target heading within **0.8°** in two or three iterations, which is what makes
 "turn to heading X, then walk N units" a reliable primitive rather than a nudge.
 
-**🔺 Do NOT wrap the telemetry yaw.** XIII's `rot=` yaw is a **raw accumulating
-integer**, not an angle masked to 0–65535 — it runs straight through the 65536
+**🔺 Do NOT wrap the telemetry yaw.** `[measured 2026-08-28]` XIII's `rot=` yaw is a
+**raw accumulating integer**, not an angle masked to 0–65535 — it runs straight through the 65536
 boundary (observed 179348 → 88646 monotonically). Applying the usual
 shortest-arc wrap to it destroys information: a real −199° turn reads as
 **+161°**, which looks exactly like the turn key spontaneously reversing
