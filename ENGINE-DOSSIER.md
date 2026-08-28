@@ -204,21 +204,53 @@ XIII ships a real console (**F2**) whose commands can also be driven from
 harness: append a line to `xiii_automation_cmds.txt` next to `XIII.exe`, and
 the proxy executes it and truncates the file. Focus-independent by design.
 
-**Where a command must be dispatched from — the expensive lesson.** 0.2.8
-drained the queue from the camera hook (`eventPlayerCalcView`) and the game
-died with a **General protection fault** the first time a command arrived:
+**⛔ `UGameEngine::Exec` is unsafe to call from a hook in this build — do not
+re-arm it.** It is gated behind `AutomationEngineExec` in `[VR]`, **default 0,
+and it must stay 0.**
+
+0.2.8 drained the queue from the camera hook (`eventPlayerCalcView`) and the
+game died with a **General protection fault** the first time a command arrived:
 
 ```
 History: UGameEngine::Exec <- UGameEngine::Draw <- UWindowsViewport::Repaint
          <- UWindowsClient::Tick <- ClientTick <- UGameEngine::Tick <- ...
 ```
 
-`eventPlayerCalcView` is reached from **inside `UGameEngine::Draw`** — running
-a console command re-entrantly mid-render faults. Dispatch must happen in the
-**game-logic phase**: the harness now hooks `APlayerController::Tick`
-(prologue `55 8B EC 6A FF` — 5 bytes, no relative operands). Moving the call
-site fixed it outright. **This is engine-agnostic advice: never dispatch
-engine commands from a render-path hook.**
+`eventPlayerCalcView` is reached from inside `UGameEngine::Draw`, so the
+original diagnosis was "console command re-entrant mid-render", and the fix was
+to move dispatch to the game-logic phase — `APlayerController::Tick` (prologue
+`55 8B EC 6A FF`, 5 bytes, no relative operands). Commands then ran cleanly and
+**that diagnosis was recorded here as fact.**
+
+**It was wrong — disproved 2026-08-28.** The engine tier was re-armed on the
+reasoning "the render path was the cause, and dispatch has moved", and the very
+first `Button bUp` faulted again from the *safe* site:
+
+```
+History: UGameEngine::Exec <- TickAllActors <- ULevel::Tick <- (NetMode=0)
+         <- TickLevel <- UGameEngine::Tick <- UpdateWorld <- MainLoop
+```
+
+Same fault, game-logic phase, no render path anywhere in the stack. The call
+site was never the cause: **`UGameEngine::Exec` itself faults when called from
+this harness in this build.** Moving the dispatch site appeared to fix it only
+because the two safe tiers (PlayerController, CheatManager) handled every
+command actually being sent, so the engine tier was never exercised again until
+it was deliberately re-armed.
+
+Consequences worth keeping:
+
+- The generic advice **"never dispatch engine commands from a render-path
+  hook"** is still sound practice and still worth following — but it is *not*
+  what this crash proves, and it must not be cited as though XIII demonstrated
+  it. XIII demonstrates something narrower and more useful: this engine's
+  `UGameEngine::Exec` is not callable from a hook at all.
+- Losing the tier costs nothing. It only ever offered `Button`, `Axis` and
+  `set`; every command the harness relies on lives in the two safe tiers, and
+  input is driven through the keyboard route in §9b instead.
+- **Method note:** "the fix worked" is not evidence of *why* it worked when the
+  failing path stopped being exercised at the same time. A fix that removes the
+  symptom and removes the test coverage together has proved nothing.
 
 **Where the commands live — three different objects.** Calling
 `UObject::ScriptConsoleExec` on the PlayerController finds only the
@@ -262,6 +294,81 @@ Windowing (stock game keys): `StartupFullscreen=False` + `UseFullscreen=False`
 + `WindowedViewportX/Y` (e.g. 1280×960) for windowed dev testing; both True to
 revert to fullscreen.
 
+## 9b. Driving the player — full locomotion without the mouse (verified live 2026-08-28)
+
+The console tiers give *state* (cheats, FOV) but no movement: `Teleport` is
+absent from this build, so there is no console way to reposition the player.
+Movement comes from synthetic **keyboard** input, and the result is precise
+enough to navigate by dead reckoning.
+
+**The mouse is a hard dead end.** XIII takes the mouse through **DirectInput in
+exclusive mode**, so `SendInput` never reaches it: 600 px of injected motion
+produced **0.0°** of yaw, while keyboard input in the same session worked
+perfectly. Do not spend time on mouse injection, `mouse_event`, or cursor
+warping — the device is not reading the Windows input queue at all. (Psychonauts
+hit the identical wall; treat exclusive-mode DirectInput as the default
+assumption for this era rather than a surprise.)
+
+**Yaw exists but ships unbound.** UE2 input is alias-based, and XIII defines
+turn aliases it never binds to a key:
+
+```
+Aliases[4] =(Command="Axis aBaseX Speed=-150.0", Alias="TurnLeft")
+Aliases[5] =(Command="Axis aBaseX  Speed=+150.0", Alias="TurnRight")
+Aliases[26]=(Command="button b90Left",            Alias="FastTurnL")
+Aliases[27]=(Command="button b90Right",           Alias="FastTurnR")
+```
+
+Binding them to spare keys routes yaw through the keyboard path that already
+works — no code change, no injection, no mouse.
+
+**⚠️ Edit `DefUser.ini`, NOT `User.ini`.** XIII does not merely rewrite
+`User.ini` on exit — it **deletes** it. The file exists only while the game
+runs and is recreated at launch from `DefUser.ini` (verified: identical section
+layout, identical line numbers; and no config exists anywhere outside the game
+directory — no Documents, no AppData, no Steam userdata). So `User.ini` cannot
+be edited with the game closed (it does not exist) and edits made while it runs
+are discarded. `DefUser.ini` is the only durable place a binding survives.
+Bindings go inside `[Engine.Input]`.
+
+Added for automation (keys verified free in this build):
+
+| key | alias | effect |
+| --- | --- | --- |
+| `U` / `J` | TurnLeft / TurnRight | smooth yaw |
+| `H` / `K` | FastTurnL / FastTurnR | snap turn |
+
+**Measured control model** (all figures live, not assumed):
+
+| axis | keys | measurement |
+| --- | --- | --- |
+| move fwd/back/strafe | `W` `A` `S` `D` | **~157 uu/s**, equal in all four directions |
+| smooth yaw | `U` / `J` | **∓166 °/s** |
+| snap yaw | `H` / `K` | **∓65.4° per tap** (4 trials, spread 0.4°) — *not* the 90° the alias name implies |
+| pitch | `Backspace` / `=` | **~148 °/s**, clamps at **±85°** |
+| jump | `Space` | — |
+
+Accuracy: a four-leg square (W→D→S→A, equal durations) closed to **3.5 uu on
+~190 uu legs (1.8%)**. Closed-loop turning — turn, re-measure, correct — lands
+a target heading within **0.8°** in two or three iterations, which is what makes
+"turn to heading X, then walk N units" a reliable primitive rather than a nudge.
+
+**🔺 Do NOT wrap the telemetry yaw.** XIII's `rot=` yaw is a **raw accumulating
+integer**, not an angle masked to 0–65535 — it runs straight through the 65536
+boundary (observed 179348 → 88646 monotonically). Applying the usual
+shortest-arc wrap to it destroys information: a real −199° turn reads as
+**+161°**, which looks exactly like the turn key spontaneously reversing
+direction. That artifact cost a full round of "the turn keys are unstable"
+investigation before five identical presses (−99.0, −98.1, −99.3, −102.3,
+−99.4) showed the keys were perfectly stable and the *analysis* was the bug.
+Subtract raw values; wrap only for display.
+
+**Focus caveat.** Console commands are focus-independent, but synthetic keys are
+not — they follow the foreground window. `KeepRenderingUnfocused=1` keeps the
+engine *ticking* when alt-tabbed, which is not the same thing: an unfocused
+game keeps rendering but receives no keys. Any driving session must hold
+foreground.
+
 ## 10. Telemetry & harness
 - All telemetry via `OutputDebugString` with `[xiii-*]` prefixes — capture with
   DebugView or the repo's `tools/odscap.ps1` (a DBWIN listener). Note the older
@@ -283,6 +390,19 @@ revert to fullscreen.
   suites.
 
 ## 11. Dead ends & false leads (save future time)
+- **Re-arming `AutomationEngineExec`** — GPFs the game (§9a). The tier is
+  disarmed by default and must stay that way; the render-path explanation that
+  once justified re-arming it is disproved.
+- **Mouse injection for view control** — `SendInput` is ignored outright;
+  DirectInput exclusive mode (§9b). 600 px → 0.0° of yaw. Bind keys instead.
+- **Editing `User.ini` to add bindings** — the file is deleted on exit and
+  regenerated from `DefUser.ini` at launch (§9b). Edits there always vanish; the
+  template is the only durable target.
+- **Trusting `FastTurnL`/`FastTurnR` to be 90°** — the aliases are named
+  `b90Left`/`b90Right` but measure a repeatable **65.4°** (§9b). Measure the
+  primitive; don't take the identifier's word for it.
+- **Wrapping the telemetry yaw to shortest arc** — it is already unwrapped, and
+  wrapping makes stable turn keys look like they reverse direction (§9b).
 - **Pipelined/double-buffered readback did not help on the dev machine** (§8) —
   the stall is inside `CopyRects`, not at the lock. Not deleted (a different
   driver may benefit), but don't expect it to be the perf win; the GPU-only
