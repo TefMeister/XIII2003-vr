@@ -1,0 +1,7 @@
+.worktrees/
+build/
+*.obj
+*.pdb
+*.ilk
+*.exp
+*.lib
