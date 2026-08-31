@@ -20,24 +20,24 @@ on top of the 0.1.0 render-hook foundation.
 
 ---
 
-## The six repositories for XIII (2003) VR
+## The folders for XIII (2003) VR
 
-Everything for this game lives in six repositories, each with one job — so you
-always know where to look. You are in **XIII2003-vr-mod**.
+Everything for this game lives in one repository, one folder per job — so you
+always know where to look. You are in **`mod/`**.
 
-| Repository | What lives here |
+| Folder | What lives here |
 | --- | --- |
-| **XIII2003-vr-mod** ← you are here | The mod itself — the VR head-look `D3DDrv.dll` render-device proxy. |
-| [XIII2003-vr-dev-archive](https://github.com/TefMeister/XIII2003-vr-dev-archive) | Full development history — snapshots, probes, dead ends, raw recon. |
-| [XIII2003-vr-modding-notes](https://github.com/TefMeister/XIII2003-vr-modding-notes) | Readable field notes / progress ledger. |
-| [XIII2003-vr-staging](https://github.com/TefMeister/XIII2003-vr-staging) 🔒 | **Private** — unverified WIP builds, cross-machine handoff. |
-| [XIII2003-vr-engine-research](https://github.com/TefMeister/XIII2003-vr-engine-research) | Distilled engine reference (dossier) + reusable VR RE playbook. |
-| [XIII2003-vr-external-research](https://github.com/TefMeister/XIII2003-vr-external-research) | Ongoing public-research leads, gathered separately from hands-on modding work. |
+| **`mod/`** ← you are here | The mod itself — the VR head-look `D3DDrv.dll` render-device proxy. |
+| [`dev-archive/`](../dev-archive/) | Full development history — snapshots, probes, dead ends, raw recon. |
+| [`modding-notes/`](../modding-notes/) | Readable field notes / progress ledger. |
+| [staging/XIII2003-vr](https://github.com/TefMeister/staging/tree/main/XIII2003-vr) 🔒 | **Private** — unverified WIP builds, cross-machine handoff. |
+| [`engine-research/`](../engine-research/) | Distilled engine reference (dossier) + reusable VR RE playbook. |
+| [`external-research/`](../external-research/) | Ongoing public-research leads, gathered separately from hands-on modding work. |
 
 ## Download
 
 Grab **`XIII2003VR-0.2.0-alpha.zip`** from the
-[**Releases page**](https://github.com/TefMeister/XIII2003-vr-mod/releases).
+[**Releases page**](../mod//releases).
 It contains the mod (`D3DDrv.dll`), Valve's `openvr_api.dll`, and a
 `READ_ME_FIRST.txt` with the same steps below.
 
