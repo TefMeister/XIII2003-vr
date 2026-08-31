@@ -21,7 +21,7 @@
 - Use the standard OpenXR loader (not a Meta/Oculus-specific SDK) so both VDXR and SteamVR+VD work unmodified.
 - Desktop window must keep receiving the real `Present` calls so the game is watchable/debuggable without a headset.
 
-All code lives in `D:\XIII2003VR-dev-archive` (https://github.com/TefMeister/XIII2003-vr-dev-archive), pushed independently as tasks complete. RE findings docs live in the same repo under `re-notes/`.
+All code lives in `D:\XIII2003VR-dev-archive` (https://github.com/TefMeister/XIII2003-vr/tree/main/dev-archive), pushed independently as tasks complete. RE findings docs live in the same repo under `re-notes/`.
 
 ---
 

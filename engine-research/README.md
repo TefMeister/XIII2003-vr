@@ -3,7 +3,7 @@
 Reverse-engineering research toward a VR conversion of **XIII "Classic"
 (2003)**, the classic Unreal Engine 2.x cel-shaded shooter.
 
-This repository holds two things:
+This folder holds two things:
 
 - **[`PLAYBOOK.md`](PLAYBOOK.md)** — a reusable, engine-agnostic, point-by-point
   method for taking *any* game whose engine nobody has converted to VR and
@@ -17,23 +17,23 @@ This repository holds two things:
   fixes, the performance profile, and the dead ends that cost us time so they
   don't cost the next engine's.
 
-The blow-by-blow development history lives in the sibling repositories
+The blow-by-blow development history lives in the sibling folders
 (`-dev-archive` for the messy in-progress record, `-modding-notes` for readable
 field notes). This repo is the consolidated engine knowledge, not the diary.
 
-## The six repositories for XIII (2003) VR
+## The folders for XIII (2003) VR
 
-Everything for this game lives in six repositories, each with one job — so you
-always know where to look. You are in **XIII2003-vr-engine-research**.
+Everything for this game lives in one repository, one folder per job — so you
+always know where to look. You are in **`engine-research/`**.
 
-| Repository | What lives here |
+| Folder | What lives here |
 | --- | --- |
-| [XIII2003-vr-mod](https://github.com/TefMeister/XIII2003-vr-mod) | The mod itself — the VR head-look `D3DDrv.dll` render-device proxy. |
-| [XIII2003-vr-dev-archive](https://github.com/TefMeister/XIII2003-vr-dev-archive) | Full development history — snapshots, probes, dead ends, raw recon. |
-| [XIII2003-vr-modding-notes](https://github.com/TefMeister/XIII2003-vr-modding-notes) | Readable field notes / progress ledger. |
-| [XIII2003-vr-staging](https://github.com/TefMeister/XIII2003-vr-staging) 🔒 | **Private** — unverified WIP builds, cross-machine handoff. |
-| **XIII2003-vr-engine-research** ← you are here | Distilled engine reference (dossier) + reusable VR RE playbook. |
-| [XIII2003-vr-external-research](https://github.com/TefMeister/XIII2003-vr-external-research) | Ongoing public-research leads, gathered separately from hands-on modding work. |
+| [`mod/`](../mod/) | The mod itself — the VR head-look `D3DDrv.dll` render-device proxy. |
+| [`dev-archive/`](../dev-archive/) | Full development history — snapshots, probes, dead ends, raw recon. |
+| [`modding-notes/`](../modding-notes/) | Readable field notes / progress ledger. |
+| [staging/XIII2003-vr](https://github.com/TefMeister/staging/tree/main/XIII2003-vr) 🔒 | **Private** — unverified WIP builds, cross-machine handoff. |
+| **`engine-research/`** ← you are here | Distilled engine reference (dossier) + reusable VR RE playbook. |
+| [`external-research/`](../external-research/) | Ongoing public-research leads, gathered separately from hands-on modding work. |
 
 ## Status
 

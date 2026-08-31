@@ -24,7 +24,7 @@ project.
 ## Prior art, tools, and research this repo draws on
 
 This is a new repo (seeded 2026-08-24) for public-research leads specifically —
-see [XIII2003-vr-modding-notes](https://github.com/TefMeister/XIII2003-vr-modding-notes)'s own
+see [XIII2003-vr-modding-notes](https://github.com/TefMeister/XIII2003-vr/tree/main/modding-notes)'s own
 `CREDITS.md` for the full list of tools/prior-art the mod itself already draws on. This table
 grows as `/game-research XIII2003-vr` finds new leads.
 
