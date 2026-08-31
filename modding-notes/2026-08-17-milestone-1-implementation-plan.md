@@ -8,7 +8,7 @@
 
 **Tech Stack:** C++17, CMake + MSVC, MinHook (inline hooking), OpenXR-SDK loader, doctest (unit tests), Python 3 (one-off export-dump tooling).
 
-**Spec:** `D:\XIII2003VR-modding-notes\2026-08-17-milestone-1-vr-headlook-design.md` (https://github.com/TefMeister/XIII2003-vr-notes/blob/main/2026-08-17-milestone-1-vr-headlook-design.md)
+**Spec:** `D:\XIII2003VR-modding-notes\2026-08-17-milestone-1-vr-headlook-design.md` (https://github.com/TefMeister/XIII2003-vr/blob/main/modding-notes/2026-08-17-milestone-1-vr-headlook-design.md)
 
 ## Global Constraints
 
