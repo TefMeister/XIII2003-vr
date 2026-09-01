@@ -33,6 +33,8 @@ grows as `/game-research XIII2003-vr` finds new leads.
 | XIII (2003) console commands documentation | xiii.wiki.gg community | https://xiii.wiki.gg/wiki/Cheats_in_XIII_(2003) |
 | UE Explorer | EliotVU | https://github.com/UE-Explorer/UE-Explorer |
 | PCGamingWiki (Unreal Tournament 2004 D3D9 renderer notes) | PCGamingWiki community | https://www.pcgamingwiki.com/wiki/Unreal_Tournament_2004 |
+| Unreal Developer Network archive — the public Unreal Engine 2 documentation set (UnrealScript reference, runtime topics, `UnDox`, and the `RuntimeHeaders` introduction naming "360 degree rendering drivers for VR systems") | Epic Games | https://docs.unrealengine.com/udk/Two/RuntimeHeaders.html |
+| vorpX community forum (the UT2004 OpenGL-renderer requirement, cited as a UE2-family data point) | vorpX forum contributors | https://www.vorpx.com/forums/topic/unreal-tournament-2004/ |
 
 AI development assistance: **Claude (Anthropic)** (https://www.anthropic.com).
 
