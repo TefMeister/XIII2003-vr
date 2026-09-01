@@ -156,6 +156,76 @@ never feed VR pose back into the simulation).
   until reboot**. `proxy/shutdown_hook.cpp` IAT-hooks `kernel32!ExitProcess`
   to stop the VR host threads before the OS terminates them.
 
+## 7a. Milestone 2: the true-stereo hook (static, 2026-09-01)
+
+`[inferred-static 2026-09-01, n=1 - decoded from D3DDrv_Original.dll and Engine.dll, never run]`
+
+UE2 does not deliver view/projection through a UE1-style `SetSceneNode`. It goes through the
+render interface, and XIII's implementation is one small function that forwards straight to
+Direct3D 8:
+
+**`FD3DRenderInterface::SetTransform` = `D3DDrv.dll + 0x129E0`**
+(VA `0x116129E0` at the preferred base `0x11600000`; the module has a `.reloc`, so always work in
+RVA). `__thiscall`, `ret 8`: `void SetTransform(ETransformType type, const FMatrix *m)`.
+
+Found from the UE2 `guard()` string `"FD3DRenderInterface::SetTransform"` (`0x1164EF6C`), whose
+only reference is that function's guard block.
+
+```
+if (matrix equals the cached copy) return;          // 0x11609420 = 64-byte compare
+dev = *(void **)(*(char **)(this + 4) + 0x66C);     // the D3D8 device wrapper
+dev->vtbl[0x94](dev, <state>, m);                   // IDirect3DDevice8::SetTransform (index 37)
+memcpy(cache, m, 64);                               // FMatrix = 4x4 floats
+```
+
+| `type` | UE2 meaning | cached at | forwarded as |
+|---|---|---|---|
+| `0` | `TT_LocalToWorld` | `this + 0x50` | `0x100` = `D3DTS_WORLD` |
+| `1` | `TT_WorldToCamera` | `this + 0x90` | `2` = `D3DTS_VIEW` |
+| `2` | `TT_CameraToScreen` | `this + 0xD0` | `3` = `D3DTS_PROJECTION` |
+
+Confidence comes from two independent facts agreeing: the constants `256 / 2 / 3` are exactly
+D3D8's `D3DTS_WORLD` / `D3DTS_VIEW` / `D3DTS_PROJECTION`, and vtable byte offset `0x94` is
+index 37, which is `IDirect3DDevice8::SetTransform`.
+
+**Why this is the M2 hook.** Both halves of stereo are here: per-eye view = translate
+`TT_WorldToCamera` along the camera right axis by +/- IPD/2; per-eye projection = an asymmetric
+frustum in `TT_CameraToScreen`. One function covers every pass, and no shader work is involved.
+The mod already replaces `D3DDrv.dll`, so it can hook here or one layer down at
+`IDirect3DDevice8::SetTransform` - prefer here, because `type` says what the matrix *is* and the
+engine's own cache is visible.
+
+### The trap: the unchanged-matrix early-out
+
+`SetTransform` **returns doing nothing when the incoming matrix equals its cached copy.** Modify
+the view for eye 1, and when the engine sets the same matrix again for eye 2 it compares equal to
+the cache and is skipped - eye 2 silently inherits eye 1's view and stereo collapses with no error
+anywhere. Any implementation must keep the cache holding what the engine *thinks* it set while
+sending the modified matrix to D3D, or invalidate the cache between eyes. **Settle this before
+writing the hook.**
+
+### Supporting addresses (`Engine.dll`, preferred base `0x10000000`)
+
+| Symbol | VA |
+|---|---|
+| `FCameraSceneNode::FCameraSceneNode(UViewport*, AActor*, FVector, FRotator, float Fov)` | `0x103CC190` |
+| `FLevelSceneNode::Render(FRenderInterface*)` | `0x103CBFF0` |
+| `FLevelSceneNode::GetViewFrustum()` | `0x103CB560` |
+| `FLevelSceneNode::GetWorldFrustumPoints(FVector*)` | `0x103CBCD0` |
+| `FSceneNode::Deproject(const FPlane&)` | `0x103C9A40` |
+| vtables | `FRenderInterface` `0x1046F298`, `FSceneNode` `0x1046F42C`, `FCameraSceneNode` `0x1046F474` |
+| `UD3DRenderDevice::Lock` -> `FRenderInterface*` | `D3DDrv` `0x1160DBF0` |
+
+The `FCameraSceneNode` constructor takes location, rotation and FOV in one call, so building the
+camera per eye is a viable second route. `SetTransform` is cheaper and does not require
+reproducing engine behaviour; the constructor route is the fallback if the cache problem above
+turns out to be intractable.
+
+### Blocked on
+
+**The proxy source is not in git** - see `modding-notes/2026-09-01-milestone-2-stereo-hook-found-and-a-missing-source-tree.md`.
+Nothing above can be implemented until the source tree reaches `staging/XIII2003-vr/src/`.
+
 ## 8. Performance notes (this game)
 - **The capture-path bottleneck is the `CopyRects` GPU→CPU readback**, not the
   pixel work: dev-machine profile ~2.7 ms avg / ~9.3 ms max per capture, ~6×
