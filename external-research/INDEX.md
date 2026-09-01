@@ -1,6 +1,6 @@
 # Research index
 
-**Last `/gr` pass: 2026-09-01 — FULL.** Inbox was empty. One new topic, and it does two things: it
+**Last `/gr` pass: 2026-09-01 — CHECK-IN** (INDEX + §7a of the dossier; not a full dossier read)**.** Inbox was empty. One new topic, and it does two things: it
 **narrows an over-broad claim of our own** (a public Epic-hosted UE2 doc set *does* exist; it is the
 C++ headers that are NDA-gated, which is the half that actually blocks us), and it supplies
 first-party corroboration for §7a — Epic's own page records that UE2's native render-driver headers
