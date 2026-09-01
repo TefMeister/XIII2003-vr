@@ -158,7 +158,9 @@ never feed VR pose back into the simulation).
 
 ## 7a. Milestone 2: the true-stereo hook (static, 2026-09-01)
 
-`[inferred-static 2026-09-01, n=1 - decoded from D3DDrv_Original.dll and Engine.dll, never run]`
+`[inferred-static - decoded from D3DDrv_Original.dll and Engine.dll on the dev PC 2026-09-01, re-read
+line by line on the home PC's copy 2026-09-02 with every offset and constant agreeing; two static
+readings of the same Steam depot, never run]`
 
 UE2 does not deliver view/projection through a UE1-style `SetSceneNode`. It goes through the
 render interface, and XIII's implementation is one small function that forwards straight to
@@ -187,6 +189,14 @@ memcpy(cache, m, 64);                               // FMatrix = 4x4 floats
 Confidence comes from two independent facts agreeing: the constants `256 / 2 / 3` are exactly
 D3D8's `D3DTS_WORLD` / `D3DTS_VIEW` / `D3DTS_PROJECTION`, and vtable byte offset `0x94` is
 index 37, which is `IDirect3DDevice8::SetTransform`.
+
+Two details from the 2026-09-02 re-read, both relevant to the injection design
+`[inferred-static 2026-09-02]`: the **order of operations differs by type** - type 0 calls D3D *then*
+copies into the cache, types 1 and 2 copy into the cache *first* and call D3D after; either way the
+cache holds exactly what D3D received, so a hook that forwards a *modified* matrix leaves the
+modified matrix in the cache and the engine's next *unmodified* set compares unequal and goes
+through. And the compare helper (`+0x9420`) is **16 `fcomp`s, not a `memcmp`** (`-0.0 == 0.0`; a
+NaN compare counts as equal via its `test ah,0x44 / jp` idiom). The second `ret 8` sits at `+0xBE`.
 
 **Why this is the M2 hook.** Both halves of stereo are here: per-eye view = translate
 `TT_WorldToCamera` along the camera right axis by +/- IPD/2; per-eye projection = an asymmetric
@@ -221,10 +231,26 @@ camera per eye is a viable second route. `SetTransform` is cheaper and does not 
 reproducing engine behaviour; the constructor route is the fallback if the cache problem above
 turns out to be intractable.
 
-### Blocked on
+### State (2026-09-02, home PC, static only)
 
-**The proxy source is not in git** - see `modding-notes/2026-09-01-milestone-2-stereo-hook-found-and-a-missing-source-tree.md`.
-Nothing above can be implemented until the source tree reaches `staging/XIII2003-vr/src/`.
+- **Source unblocked.** The proxy source is in `staging/XIII2003-vr/src/repo` (rescued 2026-09-01) and
+  **builds on the home PC** (CMake, VS2022, Win32 RelWithDebInfo; unit tests 10/10). A fresh build of
+  the untouched tree matches the game folder's `D3DDrv.dll.pre-027-bak` except for the PE timestamps,
+  so the rescued tree is exactly the last pre-0.2.7 deployment `[verified 2026-09-02]`. The
+  0.2.4-0.2.9 delta (focus fix, perf log, pipelined readback, automation harness) survives only as the
+  installed 0.2.7 binary - see the 2026-09-02 note, section 2.
+- **Recon hook written and compile-verified, never run** `[compile-verified 2026-09-02]`:
+  `proxy/transform_hook.cpp` - a passthrough inline hook on `SetTransform`, gated behind
+  `[VR] TransformRecon=1` (default off = not installed), fail-safe on two byte anchors, logging calls
+  per frame by type, distinct views per frame, perspective vs orthographic projections, how often the
+  early-out would fire, and the first matrices verbatim with the projection decoded to
+  `fovY / aspect / near / far` (`pose_math::DecodeD3DPerspective`, 4 tests against independently built
+  ground truth). Built DLL: `staging/XIII2003-vr/D3DDrv-m2-transform-recon-2026-09-02.dll`. **Not
+  deployed** - it is 0.2.3-based and would replace the only 0.2.7.
+- **Next: one launch** with that DLL and `TransformRecon=1`, then read
+  `%TEMP%\xiii_capture\xiii_transform.log`. The step list and what each outcome means are in
+  `modding-notes/2026-09-02-m2-groundwork-transform-recon-hook-built-and-rescued-source-proven.md`,
+  section 6.
 
 ## 8. Performance notes (this game)
 - **The capture-path bottleneck is the `CopyRects` GPU→CPU readback**, not the
