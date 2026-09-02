@@ -9,7 +9,8 @@ Three things moved, none of them needing the game up.
 
 ## 1. The rescued source builds here, and it is exactly the last pre-0.2.7 deployment
 
-`[verified 2026-09-02 by build + byte comparison]`
+`[verified-numerically 2026-09-02, n=1 binary]` — it builds (`compile-verified`) **and** the
+rebuilt DLL is byte-identical to the deployed one, which is the load-bearing half
 
 - `staging/XIII2003-vr/src/repo` configures and builds with CMake against VS2022 Build Tools
   (`-A Win32`, `RelWithDebInfo`, the configuration `BUILD.md` records for 0.2.7): `pose_math`,
