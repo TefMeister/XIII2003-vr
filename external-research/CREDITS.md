@@ -35,6 +35,10 @@ grows as `/game-research XIII2003-vr` finds new leads.
 | PCGamingWiki (Unreal Tournament 2004 D3D9 renderer notes) | PCGamingWiki community | https://www.pcgamingwiki.com/wiki/Unreal_Tournament_2004 |
 | Unreal Developer Network archive — the public Unreal Engine 2 documentation set (UnrealScript reference, runtime topics, `UnDox`, and the `RuntimeHeaders` introduction naming "360 degree rendering drivers for VR systems") | Epic Games | https://docs.unrealengine.com/udk/Two/RuntimeHeaders.html |
 | vorpX community forum (the UT2004 OpenGL-renderer requirement, cited as a UE2-family data point) | vorpX forum contributors | https://www.vorpx.com/forums/topic/unreal-tournament-2004/ |
+| XIII UnrealScript source mirrors (2005 leak of the Xbox branch, uploaded by Sonrat; read online, study-only, nothing copied — rights holder Ubisoft) | artism90, Ch0wW, VideogameSources (mirrors) | https://github.com/artism90/xiii-unrealscript · https://github.com/Ch0wW/xiii_unrealscript · https://github.com/VideogameSources/XIII |
+| UT2004 reverse-engineered native headers thread | OldUnreal community | https://www.oldunreal.com/phpBB3/viewtopic.php?t=10021 |
+| UnrealScript source availability notes (XIII packages stripped) | Beyond Unreal wiki (archive) | https://beyondunrealwiki.github.io/pages/unrealscript-source.html |
+| UT2004 under NVIDIA's stereo driver (D3D8-era per-draw stereo precedent) | NVIDIA GeForce forums community | https://www.nvidia.com/en-us/geforce/forums/3d-vision/41/116621/cant-get-unreal-tournament-2004-to-work-in-3d-wher/ |
 
 AI development assistance: **Claude (Anthropic)** (https://www.anthropic.com).
 
