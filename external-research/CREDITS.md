@@ -39,6 +39,8 @@ grows as `/game-research XIII2003-vr` finds new leads.
 | UT2004 reverse-engineered native headers thread | OldUnreal community | https://www.oldunreal.com/phpBB3/viewtopic.php?t=10021 |
 | UnrealScript source availability notes (XIII packages stripped) | Beyond Unreal wiki (archive) | https://beyondunrealwiki.github.io/pages/unrealscript-source.html |
 | UT2004 under NVIDIA's stereo driver (D3D8-era per-draw stereo precedent) | NVIDIA GeForce forums community | https://www.nvidia.com/en-us/geforce/forums/3d-vision/41/116621/cant-get-unreal-tournament-2004-to-work-in-3d-wher/ |
+| OpenXR SDK — `openxr.h` composition-layer struct definitions (read online, described in our own words, nothing copied) | The Khronos Group | https://github.com/KhronosGroup/OpenXR-SDK |
+| OpenVR issue #1253 — the per-eye pose defect, re-checked 2026-09-02 | LukeRoss00 (reporter), ValveSoftware/openvr | https://github.com/ValveSoftware/openvr/issues/1253 |
 
 AI development assistance: **Claude (Anthropic)** (https://www.anthropic.com).
 
