@@ -239,6 +239,15 @@ turns out to be intractable.
   so the rescued tree is exactly the last pre-0.2.7 deployment `[verified-numerically 2026-09-02, n=1 binary]` — an exact byte comparison of the locally rebuilt DLL against the deployed one, which is the whole population, not a sample. The
   0.2.4-0.2.9 delta (focus fix, perf log, pipelined readback, automation harness) survives only as the
   installed 0.2.7 binary - see the 2026-09-02 note, section 2.
+  - **⚠️ DO NOT EDIT ANYTHING INSIDE `staging/XIII2003-vr/src/repo/`.** The byte-identity above is
+    the entire evidence that this tree is the deployed build, and it is the reason the source is
+    trustworthy at all after a rescue. **Any** edit inside that tree destroys it - including
+    well-meant housekeeping like adding a confidence tag to its `docs/STATUS.md`, which is a frozen
+    2026-08-19 (0.2.3) snapshot and reads as an untagged claim-bearing document to tooling. `/gs`
+    check 3 flagged exactly that on 2026-09-02 and the **scanner** was changed to skip
+    vendored/rescued trees (`*/src/*`) rather than the file being "fixed"; if another tool ever
+    flags something in there, fix the tool. Work on the source by **branching from it**, never by
+    editing it in place.
 - **Recon hook written and compile-verified, never run** `[compile-verified 2026-09-02]`:
   `proxy/transform_hook.cpp` - a passthrough inline hook on `SetTransform`, gated behind
   `[VR] TransformRecon=1` (default off = not installed), fail-safe on two byte anchors, logging calls
