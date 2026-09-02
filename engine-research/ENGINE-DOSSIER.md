@@ -28,6 +28,17 @@ never feed VR pose back into the simulation).
   - `D3DDrv.dll` — the swappable **RenderDevice** (Unreal's pluggable renderer
     interface), loaded by name from `Engine.dll`. **This is our injection
     foothold** (§4).
+- **UnrealScript: the source is public, so this is a read, not a decompile**
+  (`/gr`, folded 2026-09-02). Earlier notes described the `*.u` bytecode as
+  "decompilable to near-source — a lever not yet pulled". Better than that: the
+  **Xbox branch of a 2005 leak is mirrored on GitHub** with the full package tree
+  and comments intact (`artism90/xiii-unrealscript` archived, `Ch0wW/xiii_unrealscript`,
+  `VideogameSources/XIII`; `XIIIArmes` = weapons, `XIIIPersos` = characters,
+  `XIDPawn` = AI/scripted pawns, **not** the player). The PC packages are
+  `StripSource`d — bytecode intact, text gone — so UE Explorer still earns its keep
+  for **PC-vs-Xbox diffs**, but the reading is done against the leak.
+  `[reported 2026-09-02 — study only, nothing copied, rights holder Ubisoft]`
+  See §12 for what this settles about the M2 aim design.
   - `WinDrv.dll` — window / input driver.
   - `*.u` (`xiii.u`, `gameplay.u`, `xidpawn.u`, …) — gameplay logic as
     compiled **UnrealScript bytecode** (decompilable to near-source, so
@@ -214,6 +225,52 @@ anywhere. Any implementation must keep the cache holding what the engine *thinks
 sending the modified matrix to D3D, or invalidate the cache between eyes. **Settle this before
 writing the hook.**
 
+### Route (b): draw every batch twice at the D3D8 level — no early-out to defeat, but a gap of its own
+
+`/gr` (2026-09-02) points at **`unreal-gold-vr`'s M2 design**, which is
+`[compile-verified 2026-09-02; verified-numerically 2026-09-02, 70,550 checks]` in that project:
+draw **every world batch twice**, each eye through its own half-width viewport with its own per-eye
+constants, one shared depth buffer, 2D/HUD left full-width mono, off by default and
+console-switchable. Applied here: hook `SetTransform` only to **observe** the engine's view and
+projection, and hook `Draw(Indexed)Primitive` to draw twice with per-eye `D3DTS_VIEW` /
+`D3DTS_PROJECTION` and viewports. **`FD3DRenderInterface`'s cache never receives a modified matrix,
+so the compare behaves exactly as stock and there is nothing to design around.** Prior art at the
+same layer: NVIDIA's stereo driver rated UT2004 (same UE2 generation) "excellent" by intercepting
+the fixed-function projection per draw, below the engine `[reported 2026-09-02]`.
+
+> #### ⚠️ Route (b) is NOT automatically complete — measured statically 2026-09-02
+>
+> It covers only draws that take their transform from the **fixed-function** pipeline. A vtable-call
+> scan of `D3DDrv_Original.dll` `[inferred-static 2026-09-02, n=1 binary, whole-.text scan]` finds
+> the programmable path is **present and used**:
+>
+> | `IDirect3DDevice8` method | vtable idx | call sites in `D3DDrv_Original.dll` |
+> |---|---|---|
+> | `CreateVertexShader` | 75 | **10** |
+> | `SetVertexShader` | 76 | **17** |
+> | `SetVertexShaderConstant` | 79 | **4** |
+> | `DrawIndexedPrimitive` | 71 | 12 |
+> | `DrawPrimitive` | 70 | 6 |
+> | `DrawIndexedPrimitiveUP` | 73 | 3 |
+> | `SetTransform` | 37 | 15 |
+>
+> and **the site at `+0x4205` uploads five constants starting at register `c0`**
+> (`push 5` / `lea eax,[esp+0x10]; push eax` / `push 0`), which is the shape of a transform matrix
+> plus one spare. A draw issued under a programmable vertex shader reads its view and projection
+> from those constants, **not** from `SetTransform` — so route (b) alone would leave exactly those
+> draws mono while everything around them went stereo. That is the silent-miss failure `/gr` warned
+> about, and it is now known to be a real risk in this binary rather than a hypothetical.
+>
+> **What is NOT established:** whether those programmable draws carry *world geometry* (they may be
+> confined to skinning, terrain or effects), and what fraction of a real frame they are. That is a
+> count, not a static question — which is what the draw recon below exists to measure.
+>
+> **`SetVertexShader` is not a reliable classifier on its own:** D3D8 overloads one `DWORD` for both
+> FVF codes and shader handles, and "an FVF has bit 0 clear" is a runtime convention, not something
+> to bet a design on. The recon therefore records what `CreateVertexShader` actually **returned** and
+> tests membership — and ignores declaration-only creations (`pFunction == nullptr`), which still run
+> fixed-function and would otherwise overcount the gap.
+
 ### Supporting addresses (`Engine.dll`, preferred base `0x10000000`)
 
 | Symbol | VA |
@@ -239,15 +296,23 @@ turns out to be intractable.
   so the rescued tree is exactly the last pre-0.2.7 deployment `[verified-numerically 2026-09-02, n=1 binary]` — an exact byte comparison of the locally rebuilt DLL against the deployed one, which is the whole population, not a sample. The
   0.2.4-0.2.9 delta (focus fix, perf log, pipelined readback, automation harness) survives only as the
   installed 0.2.7 binary - see the 2026-09-02 note, section 2.
-  - **⚠️ DO NOT EDIT ANYTHING INSIDE `staging/XIII2003-vr/src/repo/`.** The byte-identity above is
-    the entire evidence that this tree is the deployed build, and it is the reason the source is
-    trustworthy at all after a rescue. **Any** edit inside that tree destroys it - including
-    well-meant housekeeping like adding a confidence tag to its `docs/STATUS.md`, which is a frozen
-    2026-08-19 (0.2.3) snapshot and reads as an untagged claim-bearing document to tooling. `/gs`
-    check 3 flagged exactly that on 2026-09-02 and the **scanner** was changed to skip
-    vendored/rescued trees (`*/src/*`) rather than the file being "fixed"; if another tool ever
-    flags something in there, fix the tool. Work on the source by **branching from it**, never by
-    editing it in place.
+  - **⚠️ THE PRISTINE RESCUE IS COMMIT `e67e15e`, NOT THE CURRENT TREE — corrected 2026-09-02.**
+    The rule here used to read "DO NOT EDIT ANYTHING INSIDE `staging/XIII2003-vr/src/repo/`",
+    because the byte-identity above is the entire evidence that this tree is the deployed build.
+    **That rule has already been overtaken by events and saying otherwise would mislead:** the
+    2026-09-02 02:54 `/pd` checkpoint (`0b235cb`) added `proxy/transform_hook.*`, `pose_math/` and
+    `tests/` into that tree and edited `frame_capture.cpp`, `dllmain.cpp`, `build.bat` and
+    `proxy/CMakeLists.txt`; a later pass the same day extended the draw recon. **The tree is now the
+    M2 working tree, and a fresh build of it no longer reproduces `D3DDrv.dll.pre-027-bak`.**
+    - **Nothing was lost, and the claim is still checkable:** `e67e15e` (2026-09-01, "XIII: rescue
+      the proxy source into git") holds the untouched tree — verified 2026-09-02 by listing it:
+      no `transform_hook.*`, no `pose_math/`, original `frame_capture.cpp`. **The byte-identity claim
+      is anchored to `e67e15e`**, and re-verifying it means building *that* commit, not `HEAD`.
+    - **The part of the old rule that still stands:** do not "tidy" the frozen artefacts in there.
+      `docs/STATUS.md` is a 2026-08-19 (0.2.3) snapshot and reads as an untagged claim-bearing
+      document to tooling; `/gs` check 3 flagged it on 2026-09-02 and the **scanner** was changed to
+      skip vendored/rescued trees (`*/src/*`) rather than the file being "fixed". If another tool
+      flags something in there, fix the tool.
 - **Recon hook written and compile-verified, never run** `[compile-verified 2026-09-02]`:
   `proxy/transform_hook.cpp` - a passthrough inline hook on `SetTransform`, gated behind
   `[VR] TransformRecon=1` (default off = not installed), fail-safe on two byte anchors, logging calls
@@ -256,10 +321,43 @@ turns out to be intractable.
   `fovY / aspect / near / far` (`pose_math::DecodeD3DPerspective`, 4 tests against independently built
   ground truth). Built DLL: `staging/XIII2003-vr/D3DDrv-m2-transform-recon-2026-09-02.dll`. **Not
   deployed** - it is 0.2.3-based and would replace the only 0.2.7.
-- **Next: one launch** with that DLL and `TransformRecon=1`, then read
-  `%TEMP%\xiii_capture\xiii_transform.log`. The step list and what each outcome means are in
-  `modding-notes/2026-09-02-m2-groundwork-transform-recon-hook-built-and-rescued-source-proven.md`,
-  section 6.
+- **Draw / vertex-shader recon added 2026-09-02 (second pass), so ONE launch decides the design.**
+  `[compile-verified 2026-09-02]` The transform recon alone counts `SetTransform` traffic but has no
+  **denominator** — it cannot say whether the fixed-function pipeline accounts for every draw, which
+  is precisely what route (b) depends on. `frame_capture.cpp` now also hooks (behind the same
+  `TransformRecon` flag, on the device vtable it already owns) `CreateVertexShader` (75),
+  `SetVertexShader` (76), `SetVertexShaderConstant` (79), `DrawPrimitive` (70),
+  `DrawIndexedPrimitive` (71) and `DrawIndexedPrimitiveUP` (73), and reports per frame:
+  **fixed-function draws vs programmable-VS draws**, the percentage, `SetVertexShader` /
+  `SetVertexShaderConstant` rates, how many programmable shaders were created, and the distinct
+  `(register, count)` pairs seen on `SetVertexShaderConstant`. Hot-path discipline is preserved: the
+  draw hooks bump one counter, the membership scan happens in `SetVertexShader`.
+  - **Reading the result:** `programmable-VS=0` across varied scenes ⇒ route (b) covers everything
+    and is the better design (no early-out to defeat). `programmable-VS > 0` ⇒ route (b) needs a
+    vertex-shader-constants path too; the logged `VSconst regs` line then says which register the
+    matrix lands on, and `c0 x5` would corroborate the `+0x4205` static finding.
+  - A `HANDLE TABLE OVERFLOWED` marker in the log means the 64-entry shader table filled and the
+    programmable count **understates** — say so rather than trusting the number.
+- **Built, linked and staged for the run** `[compile-verified 2026-09-02]`: full MSVC build of the
+  tree (`build.bat`, VS2022 Build Tools, Win32), 173,056 bytes, **exports verified byte-for-byte
+  identical in name and count (40/40) to the deployed 0.2.7 `D3DDrv.dll`**, so it is ABI-compatible
+  with what the engine loads. (The size differs from the deployed 0.2.7's 75,776 because of build
+  configuration — `/MT` static CRT — not missing functionality; the export surface is the thing that
+  decides whether the render device loads.) The vendored OpenVR/OpenXR binaries are gitignored by
+  design and were fetched per `third_party/*/fetch_*.md` to complete the link.
+  - **Deployed side-by-side, NOT over the live build:** the game folder now has
+    `system\D3DDrv-m2-recon.dll` beside the untouched `D3DDrv.dll`. **This is deliberate** — the
+    recon build comes from the 0.2.3-era rescued tree, so swapping it in permanently would regress
+    the focus-loss IAT hook, perf log and automation harness that survive only in the installed
+    0.2.7 binary. Also at `staging/XIII2003-vr/D3DDrv-m2-recon-2026-09-02b.dll`.
+  - `XIII.ini` `[VR]` gained documented `TransformRecon=0` / `TransformReconDump=12` keys (backup:
+    `XIII.ini.bak-2026-09-02`), so the run is a rename plus one character.
+- **Next: one launch** — rename `D3DDrv.dll` aside, rename `D3DDrv-m2-recon.dll` to `D3DDrv.dll`, set
+  `[VR] TransformRecon=1`, play a minute of varied scenery, then read
+  `%TEMP%\xiii_capture\xiii_transform.log` and **restore the 0.2.7 DLL afterwards**. The step list and
+  what each outcome means are in
+  `modding-notes/2026-09-02-m2-groundwork-transform-recon-hook-built-and-rescued-source-proven.md`
+  section 6, and `modding-notes/2026-09-02b-draw-recon-decides-the-m2-route.md`.
 
 ## 8. Performance notes (this game)
 - **The capture-path bottleneck is the `CopyRects` GPU→CPU readback**, not the
@@ -535,10 +633,49 @@ foreground.
   a pure framebuffer capture can't produce genuinely distinct eye views.
 - **6DOF / motion-controlled two-handed weapon aim** requires feeding VR pose
   **into the simulation**, which the framebuffer approach structurally cannot
-  do (the sim never sees VR data). That's the whole reason Milestone 2 exists;
-  the UnrealScript `*.u` bytecode being decompilable is the lever for it.
-- **OpenXR host is unverified on hardware** — only the OpenVR/SteamVR overlay
-  path has been confirmed in the headset. Enable exactly one host.
+  do (the sim never sees VR data). That's the whole reason Milestone 2 exists.
+  **The aim design is now concrete, and it is a READ rather than a decompile**
+  (`/gr`, folded 2026-09-02): XIII's **UnrealScript source is public** — the Xbox
+  branch of a 2005 leak, mirrored on GitHub (`Ch0wW/xiii_unrealscript`,
+  `VideogameSources/XIII`), full package tree including `XIIIArmes` (weapons) and
+  `XIIIPersos` (characters). PC packages are `StripSource`d, so decompile those
+  only to *diff* against the leaked text.
+  `[reported 2026-09-02 — study only, nothing copied, rights holder Ubisoft]`
+  - **Fire chain** (`Engine/Classes/Weapon.uc`, both `ProjectileFire` and
+    `TraceFire`): `GetAxes(Instigator.GetViewRotation(), X,Y,Z)`;
+    `Start = GetFireStart(X,Y,Z)` (native: eye + `FireOffset` in view axes);
+    `AdjustedAim = Instigator.AdjustAim(AmmoType, Start, 0)`. **Direction is the
+    controller's `Rotation`; origin is the eye.**
+  - **So:** head = HMD by *replacing* `CameraRotation` in the existing
+    `eventPlayerCalcView` hook; hand = controller by writing motion-controller
+    yaw/pitch into the PlayerController `Rotation` from the `APlayerController::Tick`
+    hook the harness already owns, so every `GetViewRotation()` the weapon makes
+    returns the hand. Origin stays at the eye unless native `GetFireStart` is hooked.
+    Disable `ViewAdjustAim` smoothing and bob/shake for comfort. Note XIII keeps a
+    firing aim distinct from the displayed one (`AdjustedAimForFiring`,
+    `ViewAdjustAim`, `OldAdjustAim`), and `AdjustAim`'s body is commented out on
+    this branch.
+- **⚠️ The OpenXR question splits in two (`/gr`, folded 2026-09-02) — and the M2 half
+  does not exist yet.** `[verified-static 2026-09-02, from Khronos's published `openxr.h`]`
+  - **M1: the quad-layer host is unverified on hardware** — only the OpenVR/SteamVR
+    overlay path has been confirmed in the headset. Enable exactly one host.
+  - **M2: there is no projection-layer path at all.** Both existing hosts are M1
+    designs presenting one flat image, and `XrCompositionLayerQuad` is a flat
+    rectangle with a single pose that **cannot carry stereo**. Verifying the quad
+    host proves M1 over OpenXR and nothing about M2.
+  - The good news: `XrCompositionLayerProjectionView` carries **its own `pose` and
+    its own `fov`**, and `XrCompositionLayerProjection` holds an **array** of them
+    submitted together in one layer, in one space — so per-eye poses are expressible
+    by construction, with none of the "last submit wins" collision behind OpenVR
+    #1253 (re-checked 2026-09-02: still open, seven years, no Valve response).
+    Session and swapchain handling are shared with the quad host, so the new path is
+    not large — but it is a different code path, and better known before the
+    `SetTransform` work starts producing two eyes.
+  - **Untested:** whether a given runtime *honours* independent per-view poses during
+    reprojection. Risk moved from "impossible" to "untested per runtime" `[reported]`.
+    **`far-cry-2-vr` is blocked on the identical question** for its AER submission — one
+    headset test (two views submitted with deliberately different poses) answers it for
+    both projects.
 - **Readback cost on the target machine is unconfirmed** — the profiled numbers
   are from the low-powered dev PC; the home-machine `[xiii-perf]` log decides
   whether the GPU-only path is worth building.
