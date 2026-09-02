@@ -351,7 +351,13 @@ turns out to be intractable.
     the focus-loss IAT hook, perf log and automation harness that survive only in the installed
     0.2.7 binary. Also at `staging/XIII2003-vr/D3DDrv-m2-recon-2026-09-02b.dll`.
   - `XIII.ini` `[VR]` gained documented `TransformRecon=0` / `TransformReconDump=12` keys (backup:
-    `XIII.ini.bak-2026-09-02`), so the run is a rename plus one character.
+    `XIII.ini.bak-2026-09-02`), so the run is a rename plus one character. A later pass the same day
+    added `OpenXrProjection=0` / `OpenXrProjectionTestOffsetM=0` for the M2 submission path (§12);
+    both default off, so nothing changes until they are set.
+  - **The staged DLL also carries the OpenXR projection path** (rebuilt 2026-09-02, 186,880 B,
+    exports still 40/40). The two features are independently gated — a flat `TransformRecon` run
+    leaves the projection code dormant because `OpenXR` defaults to 0 — so one DLL serves both the
+    flat recon run and a later headset submission test.
 - **Next: one launch** — rename `D3DDrv.dll` aside, rename `D3DDrv-m2-recon.dll` to `D3DDrv.dll`, set
   `[VR] TransformRecon=1`, play a minute of varied scenery, then read
   `%TEMP%\xiii_capture\xiii_transform.log` and **restore the 0.2.7 DLL afterwards**. The step list and
@@ -659,10 +665,28 @@ foreground.
   does not exist yet.** `[verified-static 2026-09-02, from Khronos's published `openxr.h`]`
   - **M1: the quad-layer host is unverified on hardware** — only the OpenVR/SteamVR
     overlay path has been confirmed in the headset. Enable exactly one host.
-  - **M2: there is no projection-layer path at all.** Both existing hosts are M1
-    designs presenting one flat image, and `XrCompositionLayerQuad` is a flat
-    rectangle with a single pose that **cannot carry stereo**. Verifying the quad
-    host proves M1 over OpenXR and nothing about M2.
+  - **M2: ~~there is no projection-layer path at all~~ — BUILT 2026-09-02, not yet run.**
+    `[compile-verified 2026-09-02]` Both existing hosts were M1 designs presenting one
+    flat image, and `XrCompositionLayerQuad` is a flat rectangle with a single pose that
+    **cannot carry stereo**, so verifying the quad host proves M1 over OpenXR and nothing
+    about M2. `openxr_host.cpp` now has a second path behind
+    **`[VR] OpenXrProjection=1`**: an `XrCompositionLayerProjection` carrying two
+    `XrCompositionLayerProjectionView`s, each with its own `pose` and `fov` from
+    `xrLocateViews`. It falls back to the quad layer if fewer than two views locate or
+    the pose is not valid, rather than submitting a half-built layer.
+    - **⚠️ It is NOT stereo and is expected to look slightly wrong.** Both views
+      reference the same swapchain image, because the D3D8 side does not produce two
+      eyes yet — a mono frame shown through two per-eye frusta. **The point is to prove
+      the SUBMISSION half of M2 independently of the RENDER half**, so that when
+      stereo content arrives the only untested thing is the content.
+    - **⭐ And it carries the experiment that answers the runtime question for two
+      projects.** `[VR] OpenXrProjectionTestOffsetM=<metres>` (try `0.15`) submits the
+      two views with deliberately opposite lateral pose offsets. **Image visibly splits
+      between the eyes ⇒ the runtime honours independent per-view poses. Both eyes
+      identical however large the number ⇒ it ignores them and reprojects from one head
+      pose**, which would make the M2 submission design a per-runtime risk rather than a
+      solved problem. `far-cry-2-vr` is blocked on exactly this for its AER submission,
+      so one headset test answers both.
   - The good news: `XrCompositionLayerProjectionView` carries **its own `pose` and
     its own `fov`**, and `XrCompositionLayerProjection` holds an **array** of them
     submitted together in one layer, in one space — so per-eye poses are expressible
