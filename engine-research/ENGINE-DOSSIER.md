@@ -236,7 +236,7 @@ turns out to be intractable.
 - **Source unblocked.** The proxy source is in `staging/XIII2003-vr/src/repo` (rescued 2026-09-01) and
   **builds on the home PC** (CMake, VS2022, Win32 RelWithDebInfo; unit tests 10/10). A fresh build of
   the untouched tree matches the game folder's `D3DDrv.dll.pre-027-bak` except for the PE timestamps,
-  so the rescued tree is exactly the last pre-0.2.7 deployment `[verified 2026-09-02]`. The
+  so the rescued tree is exactly the last pre-0.2.7 deployment `[verified-numerically 2026-09-02, n=1 binary]` — an exact byte comparison of the locally rebuilt DLL against the deployed one, which is the whole population, not a sample. The
   0.2.4-0.2.9 delta (focus fix, perf log, pipelined readback, automation harness) survives only as the
   installed 0.2.7 binary - see the 2026-09-02 note, section 2.
 - **Recon hook written and compile-verified, never run** `[compile-verified 2026-09-02]`:
