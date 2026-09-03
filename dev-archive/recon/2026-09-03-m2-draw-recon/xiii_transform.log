@@ -1,0 +1,1223 @@
+=== session 2026-09-03 10:27:12  transform recon (dump 12 per type) ===
+FD3DRenderInterface::SetTransform hooked at 116129E0 (recon only, passthrough)
+view #1 frame=574 this=05B07E70 
+  [0]  0.000000  0.000000  1.000000  0.000000
+  [1]  1.000000  0.000000  0.000000  0.000000
+  [2]  0.000000  1.000000  0.000000  0.000000
+  [3]  16.000000  115.100006  32.000000  1.000000
+t=22s frames=574 | per frame: world=0.0 view=0.0 (distinct 0.0) proj=0.0 (persp 0.0 ortho 0.0) other=0.0 | equals-cache skips: world=0 view=0 proj=0
+  draws/frame: fixed-function=1.0 programmable-VS=0.0 (0.0% of 1.0) | SetVertexShader=1.0 VSconst=0.0 | shaders created=6 | VSconst regs: c10 x1
+  => every draw this interval was fixed-function: route (b) (draw twice at D3D8) would cover all of it
+proj #1 frame=574 this=05B07E70 
+  [0]  1.091343  0.000000  0.000000  0.000000
+  [1]  0.000000  1.455124  0.000000  0.000000
+  [2]  0.000000  0.000000  1.000076  1.000000
+  [3]  0.000000  0.000000 -5.000381  0.000000
+  perspective: fovY=68.996 deg aspect=1.33333 near=5.0000 far=65541.00 offcentre=(0.00000, 0.00000)
+world #1 frame=574 this=05B07E70 (equals cache -> engine skips D3D call)
+  [0]  1.000000  0.000000  0.000000  0.000000
+  [1]  0.000000  1.000000  0.000000  0.000000
+  [2]  0.000000  0.000000  1.000000  0.000000
+  [3]  0.000000  0.000000  0.000000  1.000000
+world #2 frame=574 this=05B07E70 (equals cache -> engine skips D3D call)
+  [0]  1.000000  0.000000  0.000000  0.000000
+  [1]  0.000000  1.000000  0.000000  0.000000
+  [2]  0.000000  0.000000  1.000000  0.000000
+  [3]  0.000000  0.000000  0.000000  1.000000
+view #2 frame=574 this=05B07E70 (equals cache -> engine skips D3D call)
+  [0]  1.000000  0.000000  0.000000  0.000000
+  [1]  0.000000  1.000000  0.000000  0.000000
+  [2]  0.000000  0.000000  1.000000  0.000000
+  [3]  0.000000  0.000000  0.000000  1.000000
+proj #2 frame=574 this=05B07E70 
+  [0]  0.001563  0.000000  0.000000  0.000000
+  [1]  0.000000 -0.002083  0.000000  0.000000
+  [2]  0.000000  0.000000  1.000000  0.000000
+  [3] -1.000781  1.001042  0.000000  1.000000
+  orthographic (w = 1): a 2D / canvas pass, leave alone for stereo
+world #3 frame=574 this=05B07E70 (equals cache -> engine skips D3D call)
+  [0]  1.000000  0.000000  0.000000  0.000000
+  [1]  0.000000  1.000000  0.000000  0.000000
+  [2]  0.000000  0.000000  1.000000  0.000000
+  [3]  0.000000  0.000000  0.000000  1.000000
+view #3 frame=574 this=05B07E70 (equals cache -> engine skips D3D call)
+  [0]  1.000000  0.000000  0.000000  0.000000
+  [1]  0.000000  1.000000  0.000000  0.000000
+  [2]  0.000000  0.000000  1.000000  0.000000
+  [3]  0.000000  0.000000  0.000000  1.000000
+proj #3 frame=574 this=05B07E70 
+  [0]  0.001563  0.000000  0.000000  0.000000
+  [1]  0.000000 -0.002083  0.000000  0.000000
+  [2]  0.000000  0.000000  1.000000  0.000000
+  [3] -1.000781  1.001042  0.000000  1.000000
+  orthographic (w = 1): a 2D / canvas pass, leave alone for stereo
+world #4 frame=574 this=05B07E70 (equals cache -> engine skips D3D call)
+  [0]  1.000000  0.000000  0.000000  0.000000
+  [1]  0.000000  1.000000  0.000000  0.000000
+  [2]  0.000000  0.000000  1.000000  0.000000
+  [3]  0.000000  0.000000  0.000000  1.000000
+view #4 frame=574 this=05B07E70 (equals cache -> engine skips D3D call)
+  [0]  1.000000  0.000000  0.000000  0.000000
+  [1]  0.000000  1.000000  0.000000  0.000000
+  [2]  0.000000  0.000000  1.000000  0.000000
+  [3]  0.000000  0.000000  0.000000  1.000000
+proj #4 frame=574 this=05B07E70 
+  [0]  0.001563  0.000000  0.000000  0.000000
+  [1]  0.000000 -0.002083  0.000000  0.000000
+  [2]  0.000000  0.000000  1.000000  0.000000
+  [3] -1.000781  1.001042  0.000000  1.000000
+  orthographic (w = 1): a 2D / canvas pass, leave alone for stereo
+world #5 frame=574 this=05B07E70 (equals cache -> engine skips D3D call)
+  [0]  1.000000  0.000000  0.000000  0.000000
+  [1]  0.000000  1.000000  0.000000  0.000000
+  [2]  0.000000  0.000000  1.000000  0.000000
+  [3]  0.000000  0.000000  0.000000  1.000000
+view #5 frame=574 this=05B07E70 (equals cache -> engine skips D3D call)
+  [0]  1.000000  0.000000  0.000000  0.000000
+  [1]  0.000000  1.000000  0.000000  0.000000
+  [2]  0.000000  0.000000  1.000000  0.000000
+  [3]  0.000000  0.000000  0.000000  1.000000
+proj #5 frame=574 this=05B07E70 
+  [0]  0.001563  0.000000  0.000000  0.000000
+  [1]  0.000000 -0.002083  0.000000  0.000000
+  [2]  0.000000  0.000000  1.000000  0.000000
+  [3] -1.000781  1.001042  0.000000  1.000000
+  orthographic (w = 1): a 2D / canvas pass, leave alone for stereo
+world #6 frame=574 this=05B07E70 (equals cache -> engine skips D3D call)
+  [0]  1.000000  0.000000  0.000000  0.000000
+  [1]  0.000000  1.000000  0.000000  0.000000
+  [2]  0.000000  0.000000  1.000000  0.000000
+  [3]  0.000000  0.000000  0.000000  1.000000
+view #6 frame=574 this=05B07E70 (equals cache -> engine skips D3D call)
+  [0]  1.000000  0.000000  0.000000  0.000000
+  [1]  0.000000  1.000000  0.000000  0.000000
+  [2]  0.000000  0.000000  1.000000  0.000000
+  [3]  0.000000  0.000000  0.000000  1.000000
+proj #6 frame=574 this=05B07E70 
+  [0]  0.001563  0.000000  0.000000  0.000000
+  [1]  0.000000 -0.002083  0.000000  0.000000
+  [2]  0.000000  0.000000  1.000000  0.000000
+  [3] -1.000781  1.001042  0.000000  1.000000
+  orthographic (w = 1): a 2D / canvas pass, leave alone for stereo
+world #7 frame=574 this=05B07E70 (equals cache -> engine skips D3D call)
+  [0]  1.000000  0.000000  0.000000  0.000000
+  [1]  0.000000  1.000000  0.000000  0.000000
+  [2]  0.000000  0.000000  1.000000  0.000000
+  [3]  0.000000  0.000000  0.000000  1.000000
+view #7 frame=574 this=05B07E70 (equals cache -> engine skips D3D call)
+  [0]  1.000000  0.000000  0.000000  0.000000
+  [1]  0.000000  1.000000  0.000000  0.000000
+  [2]  0.000000  0.000000  1.000000  0.000000
+  [3]  0.000000  0.000000  0.000000  1.000000
+proj #7 frame=574 this=05B07E70 
+  [0]  0.001563  0.000000  0.000000  0.000000
+  [1]  0.000000 -0.002083  0.000000  0.000000
+  [2]  0.000000  0.000000  1.000000  0.000000
+  [3] -1.000781  1.001042  0.000000  1.000000
+  orthographic (w = 1): a 2D / canvas pass, leave alone for stereo
+world #8 frame=574 this=05B07E70 (equals cache -> engine skips D3D call)
+  [0]  1.000000  0.000000  0.000000  0.000000
+  [1]  0.000000  1.000000  0.000000  0.000000
+  [2]  0.000000  0.000000  1.000000  0.000000
+  [3]  0.000000  0.000000  0.000000  1.000000
+view #8 frame=574 this=05B07E70 (equals cache -> engine skips D3D call)
+  [0]  1.000000  0.000000  0.000000  0.000000
+  [1]  0.000000  1.000000  0.000000  0.000000
+  [2]  0.000000  0.000000  1.000000  0.000000
+  [3]  0.000000  0.000000  0.000000  1.000000
+proj #8 frame=574 this=05B07E70 
+  [0]  0.001563  0.000000  0.000000  0.000000
+  [1]  0.000000 -0.002083  0.000000  0.000000
+  [2]  0.000000  0.000000  1.000000  0.000000
+  [3] -1.000781  1.001042  0.000000  1.000000
+  orthographic (w = 1): a 2D / canvas pass, leave alone for stereo
+world #9 frame=574 this=05B07E70 (equals cache -> engine skips D3D call)
+  [0]  1.000000  0.000000  0.000000  0.000000
+  [1]  0.000000  1.000000  0.000000  0.000000
+  [2]  0.000000  0.000000  1.000000  0.000000
+  [3]  0.000000  0.000000  0.000000  1.000000
+view #9 frame=574 this=05B07E70 (equals cache -> engine skips D3D call)
+  [0]  1.000000  0.000000  0.000000  0.000000
+  [1]  0.000000  1.000000  0.000000  0.000000
+  [2]  0.000000  0.000000  1.000000  0.000000
+  [3]  0.000000  0.000000  0.000000  1.000000
+proj #9 frame=574 this=05B07E70 
+  [0]  0.001563  0.000000  0.000000  0.000000
+  [1]  0.000000 -0.002083  0.000000  0.000000
+  [2]  0.000000  0.000000  1.000000  0.000000
+  [3] -1.000781  1.001042  0.000000  1.000000
+  orthographic (w = 1): a 2D / canvas pass, leave alone for stereo
+world #10 frame=574 this=05B07E70 (equals cache -> engine skips D3D call)
+  [0]  1.000000  0.000000  0.000000  0.000000
+  [1]  0.000000  1.000000  0.000000  0.000000
+  [2]  0.000000  0.000000  1.000000  0.000000
+  [3]  0.000000  0.000000  0.000000  1.000000
+view #10 frame=574 this=05B07E70 (equals cache -> engine skips D3D call)
+  [0]  1.000000  0.000000  0.000000  0.000000
+  [1]  0.000000  1.000000  0.000000  0.000000
+  [2]  0.000000  0.000000  1.000000  0.000000
+  [3]  0.000000  0.000000  0.000000  1.000000
+proj #10 frame=574 this=05B07E70 
+  [0]  0.001563  0.000000  0.000000  0.000000
+  [1]  0.000000 -0.002083  0.000000  0.000000
+  [2]  0.000000  0.000000  1.000000  0.000000
+  [3] -1.000781  1.001042  0.000000  1.000000
+  orthographic (w = 1): a 2D / canvas pass, leave alone for stereo
+world #11 frame=574 this=05B07E70 (equals cache -> engine skips D3D call)
+  [0]  1.000000  0.000000  0.000000  0.000000
+  [1]  0.000000  1.000000  0.000000  0.000000
+  [2]  0.000000  0.000000  1.000000  0.000000
+  [3]  0.000000  0.000000  0.000000  1.000000
+view #11 frame=574 this=05B07E70 (equals cache -> engine skips D3D call)
+  [0]  1.000000  0.000000  0.000000  0.000000
+  [1]  0.000000  1.000000  0.000000  0.000000
+  [2]  0.000000  0.000000  1.000000  0.000000
+  [3]  0.000000  0.000000  0.000000  1.000000
+proj #11 frame=574 this=05B07E70 
+  [0]  0.001563  0.000000  0.000000  0.000000
+  [1]  0.000000 -0.002083  0.000000  0.000000
+  [2]  0.000000  0.000000  1.000000  0.000000
+  [3] -1.000781  1.001042  0.000000  1.000000
+  orthographic (w = 1): a 2D / canvas pass, leave alone for stereo
+world #12 frame=574 this=05B07E70 (equals cache -> engine skips D3D call)
+  [0]  1.000000  0.000000  0.000000  0.000000
+  [1]  0.000000  1.000000  0.000000  0.000000
+  [2]  0.000000  0.000000  1.000000  0.000000
+  [3]  0.000000  0.000000  0.000000  1.000000
+view #12 frame=574 this=05B07E70 (equals cache -> engine skips D3D call)
+  [0]  1.000000  0.000000  0.000000  0.000000
+  [1]  0.000000  1.000000  0.000000  0.000000
+  [2]  0.000000  0.000000  1.000000  0.000000
+  [3]  0.000000  0.000000  0.000000  1.000000
+proj #12 frame=574 this=05B07E70 
+  [0]  0.001563  0.000000  0.000000  0.000000
+  [1]  0.000000 -0.002083  0.000000  0.000000
+  [2]  0.000000  0.000000  1.000000  0.000000
+  [3] -1.000781  1.001042  0.000000  1.000000
+  orthographic (w = 1): a 2D / canvas pass, leave alone for stereo
+t=23s frames=54 | per frame: world=28.1 view=27.2 (distinct 2.0) proj=28.9 (persp 2.7 ortho 26.2) other=0.0 | equals-cache skips: world=1425 view=1416 proj=0
+  draws/frame: fixed-function=32.3 programmable-VS=1.7 (5.0% of 34.0) | SetVertexShader=3.7 VSconst=1.7 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=24s frames=87 | per frame: world=28.0 view=27.0 (distinct 2.0) proj=29.0 (persp 3.0 ortho 26.0) other=0.0 | equals-cache skips: world=2262 view=2262 proj=0
+  draws/frame: fixed-function=32.0 programmable-VS=2.0 (5.9% of 34.0) | SetVertexShader=4.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=25s frames=87 | per frame: world=28.0 view=27.0 (distinct 2.0) proj=29.0 (persp 3.0 ortho 26.0) other=0.0 | equals-cache skips: world=2262 view=2262 proj=0
+  draws/frame: fixed-function=32.0 programmable-VS=2.0 (5.9% of 34.0) | SetVertexShader=4.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=26s frames=82 | per frame: world=28.0 view=27.0 (distinct 2.0) proj=29.0 (persp 3.0 ortho 26.0) other=0.0 | equals-cache skips: world=2132 view=2132 proj=0
+  draws/frame: fixed-function=32.0 programmable-VS=2.0 (5.9% of 34.0) | SetVertexShader=4.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=27s frames=82 | per frame: world=28.0 view=27.0 (distinct 2.0) proj=29.0 (persp 3.0 ortho 26.0) other=0.0 | equals-cache skips: world=2133 view=2132 proj=0
+  draws/frame: fixed-function=32.1 programmable-VS=2.0 (5.9% of 34.1) | SetVertexShader=4.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=28s frames=86 | per frame: world=28.0 view=27.0 (distinct 2.0) proj=29.0 (persp 3.0 ortho 26.0) other=0.0 | equals-cache skips: world=2235 view=2236 proj=0
+  draws/frame: fixed-function=31.9 programmable-VS=2.0 (5.8% of 33.9) | SetVertexShader=4.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=29s frames=82 | per frame: world=28.0 view=27.0 (distinct 2.0) proj=29.0 (persp 3.0 ortho 26.0) other=0.0 | equals-cache skips: world=2132 view=2132 proj=0
+  draws/frame: fixed-function=32.0 programmable-VS=2.0 (5.9% of 34.0) | SetVertexShader=4.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=31s frames=58 | per frame: world=28.0 view=27.0 (distinct 2.0) proj=29.0 (persp 3.0 ortho 26.0) other=0.0 | equals-cache skips: world=1508 view=1508 proj=0
+  draws/frame: fixed-function=32.0 programmable-VS=2.0 (5.9% of 34.0) | SetVertexShader=4.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=32s frames=73 | per frame: world=28.0 view=27.0 (distinct 2.0) proj=29.0 (persp 3.0 ortho 26.0) other=0.0 | equals-cache skips: world=1898 view=1898 proj=0
+  draws/frame: fixed-function=32.0 programmable-VS=2.0 (5.9% of 34.0) | SetVertexShader=4.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=33s frames=81 | per frame: world=35.4 view=34.4 (distinct 2.0) proj=36.4 (persp 3.0 ortho 33.4) other=0.0 | equals-cache skips: world=2704 view=2704 proj=0
+  draws/frame: fixed-function=39.4 programmable-VS=2.0 (4.8% of 41.4) | SetVertexShader=4.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=34s frames=83 | per frame: world=41.0 view=40.0 (distinct 2.0) proj=42.0 (persp 3.0 ortho 39.0) other=0.0 | equals-cache skips: world=3237 view=3237 proj=0
+  draws/frame: fixed-function=45.0 programmable-VS=2.0 (4.3% of 47.0) | SetVertexShader=4.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=35s frames=82 | per frame: world=41.0 view=40.0 (distinct 2.0) proj=42.0 (persp 3.0 ortho 39.0) other=0.0 | equals-cache skips: world=3198 view=3198 proj=0
+  draws/frame: fixed-function=45.0 programmable-VS=2.0 (4.3% of 47.0) | SetVertexShader=4.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=36s frames=84 | per frame: world=31.4 view=30.4 (distinct 2.0) proj=32.4 (persp 3.0 ortho 29.4) other=0.0 | equals-cache skips: world=2471 view=2471 proj=0
+  draws/frame: fixed-function=35.4 programmable-VS=2.0 (5.3% of 37.4) | SetVertexShader=4.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=37s frames=84 | per frame: world=32.0 view=31.0 (distinct 2.0) proj=33.0 (persp 3.0 ortho 30.0) other=0.0 | equals-cache skips: world=2520 view=2520 proj=0
+  draws/frame: fixed-function=36.0 programmable-VS=2.0 (5.3% of 38.0) | SetVertexShader=4.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=38s frames=84 | per frame: world=32.0 view=31.0 (distinct 2.0) proj=33.0 (persp 3.0 ortho 30.0) other=0.0 | equals-cache skips: world=2521 view=2520 proj=0
+  draws/frame: fixed-function=36.1 programmable-VS=2.0 (5.3% of 38.1) | SetVertexShader=4.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=39s frames=73 | per frame: world=32.0 view=31.0 (distinct 2.0) proj=33.0 (persp 3.0 ortho 30.0) other=0.0 | equals-cache skips: world=2189 view=2190 proj=0
+  draws/frame: fixed-function=35.9 programmable-VS=2.0 (5.2% of 37.9) | SetVertexShader=4.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=40s frames=75 | per frame: world=32.0 view=31.0 (distinct 2.0) proj=33.0 (persp 3.0 ortho 30.0) other=0.0 | equals-cache skips: world=2250 view=2250 proj=0
+  draws/frame: fixed-function=36.0 programmable-VS=2.0 (5.3% of 38.0) | SetVertexShader=4.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=41s frames=84 | per frame: world=36.4 view=35.4 (distinct 2.0) proj=37.4 (persp 3.0 ortho 34.4) other=0.0 | equals-cache skips: world=2889 view=2889 proj=0
+  draws/frame: fixed-function=40.4 programmable-VS=2.0 (4.7% of 42.4) | SetVertexShader=4.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=42s frames=83 | per frame: world=41.0 view=40.0 (distinct 2.0) proj=42.0 (persp 3.0 ortho 39.0) other=0.0 | equals-cache skips: world=3237 view=3237 proj=0
+  draws/frame: fixed-function=45.0 programmable-VS=2.0 (4.3% of 47.0) | SetVertexShader=4.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=43s frames=82 | per frame: world=41.0 view=40.0 (distinct 2.0) proj=42.0 (persp 3.0 ortho 39.0) other=0.0 | equals-cache skips: world=3198 view=3198 proj=0
+  draws/frame: fixed-function=45.0 programmable-VS=2.0 (4.3% of 47.0) | SetVertexShader=4.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=44s frames=81 | per frame: world=41.0 view=40.0 (distinct 2.0) proj=42.0 (persp 3.0 ortho 39.0) other=0.0 | equals-cache skips: world=3159 view=3159 proj=0
+  draws/frame: fixed-function=45.0 programmable-VS=2.0 (4.3% of 47.0) | SetVertexShader=4.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=45s frames=85 | per frame: world=41.0 view=40.0 (distinct 2.0) proj=42.0 (persp 3.0 ortho 39.0) other=0.0 | equals-cache skips: world=3315 view=3315 proj=0
+  draws/frame: fixed-function=45.0 programmable-VS=2.0 (4.3% of 47.0) | SetVertexShader=4.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=46s frames=83 | per frame: world=41.5 view=40.5 (distinct 2.0) proj=42.5 (persp 3.0 ortho 39.5) other=0.0 | equals-cache skips: world=3276 view=3275 proj=0
+  draws/frame: fixed-function=45.5 programmable-VS=2.0 (4.3% of 47.6) | SetVertexShader=4.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=50s frames=118 | per frame: world=14.6 view=14.3 (distinct 0.7) proj=15.0 (persp 1.1 ortho 13.9) other=0.0 | equals-cache skips: world=1638 view=1639 proj=0
+  draws/frame: fixed-function=16.7 programmable-VS=0.7 (4.1% of 17.4) | SetVertexShader=2.1 VSconst=0.7 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=51s frames=9 | per frame: world=8.1 view=7.8 (distinct 0.1) proj=8.1 (persp 0.3 ortho 7.8) other=0.0 | equals-cache skips: world=71 view=70 proj=2
+  draws/frame: fixed-function=8.4 programmable-VS=0.2 (2.6% of 8.7) | SetVertexShader=1.3 VSconst=0.2 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=52s frames=39 | per frame: world=76.1 view=11.6 (distinct 3.9) proj=11.6 (persp 1.9 ortho 9.7) other=0.0 | equals-cache skips: world=454 view=340 proj=327
+  draws/frame: fixed-function=118.8 programmable-VS=13.8 (10.4% of 132.6) | SetVertexShader=37.6 VSconst=9.9 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=53s frames=77 | per frame: world=76.9 view=13.0 (distinct 4.0) proj=13.0 (persp 2.0 ortho 11.0) other=0.0 | equals-cache skips: world=1005 view=770 proj=771
+  draws/frame: fixed-function=110.3 programmable-VS=14.2 (11.4% of 124.5) | SetVertexShader=38.5 VSconst=10.1 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=54s frames=78 | per frame: world=75.1 view=13.0 (distinct 4.0) proj=13.0 (persp 2.0 ortho 11.0) other=0.0 | equals-cache skips: world=1010 view=780 proj=779
+  draws/frame: fixed-function=107.7 programmable-VS=13.8 (11.4% of 121.6) | SetVertexShader=37.5 VSconst=9.9 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=55s frames=78 | per frame: world=69.1 view=6.1 (distinct 4.0) proj=6.1 (persp 2.0 ortho 4.1) other=0.0 | equals-cache skips: world=474 view=240 proj=240
+  draws/frame: fixed-function=102.1 programmable-VS=14.0 (12.1% of 116.1) | SetVertexShader=38.0 VSconst=10.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=56s frames=76 | per frame: world=72.3 view=9.1 (distinct 4.0) proj=9.1 (persp 2.0 ortho 7.1) other=0.0 | equals-cache skips: world=692 view=464 proj=464
+  draws/frame: fixed-function=105.3 programmable-VS=14.0 (11.7% of 119.3) | SetVertexShader=38.0 VSconst=10.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=57s frames=71 | per frame: world=75.0 view=11.0 (distinct 4.0) proj=11.0 (persp 2.0 ortho 9.0) other=0.0 | equals-cache skips: world=781 view=568 proj=568
+  draws/frame: fixed-function=108.0 programmable-VS=14.0 (11.5% of 122.0) | SetVertexShader=38.0 VSconst=10.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=58s frames=79 | per frame: world=74.8 view=10.8 (distinct 4.0) proj=10.8 (persp 2.0 ortho 8.8) other=0.0 | equals-cache skips: world=851 view=614 proj=614
+  draws/frame: fixed-function=107.8 programmable-VS=14.0 (11.5% of 121.8) | SetVertexShader=38.0 VSconst=10.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=59s frames=78 | per frame: world=69.0 view=5.0 (distinct 4.0) proj=5.0 (persp 2.0 ortho 3.0) other=0.0 | equals-cache skips: world=390 view=156 proj=156
+  draws/frame: fixed-function=102.0 programmable-VS=14.0 (12.1% of 116.0) | SetVertexShader=38.0 VSconst=10.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=60s frames=79 | per frame: world=69.0 view=5.0 (distinct 4.0) proj=5.0 (persp 2.0 ortho 3.0) other=0.0 | equals-cache skips: world=395 view=158 proj=158
+  draws/frame: fixed-function=102.0 programmable-VS=14.0 (12.1% of 116.0) | SetVertexShader=38.0 VSconst=10.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=61s frames=73 | per frame: world=69.2 view=5.0 (distinct 4.0) proj=5.0 (persp 2.0 ortho 3.0) other=0.0 | equals-cache skips: world=365 view=146 proj=146
+  draws/frame: fixed-function=102.2 programmable-VS=14.0 (12.0% of 116.2) | SetVertexShader=38.0 VSconst=10.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=62s frames=76 | per frame: world=70.0 view=5.0 (distinct 4.0) proj=5.0 (persp 2.0 ortho 3.0) other=0.0 | equals-cache skips: world=380 view=152 proj=152
+  draws/frame: fixed-function=103.0 programmable-VS=14.0 (12.0% of 117.0) | SetVertexShader=38.0 VSconst=10.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=63s frames=74 | per frame: world=69.2 view=5.0 (distinct 4.0) proj=5.0 (persp 2.0 ortho 3.0) other=0.0 | equals-cache skips: world=370 view=148 proj=148
+  draws/frame: fixed-function=102.1 programmable-VS=14.0 (12.1% of 116.1) | SetVertexShader=37.8 VSconst=10.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=64s frames=74 | per frame: world=69.0 view=5.0 (distinct 4.0) proj=5.0 (persp 2.0 ortho 3.0) other=0.0 | equals-cache skips: world=370 view=148 proj=148
+  draws/frame: fixed-function=101.0 programmable-VS=14.0 (12.2% of 115.0) | SetVertexShader=36.0 VSconst=10.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=65s frames=77 | per frame: world=68.0 view=5.0 (distinct 4.0) proj=5.0 (persp 2.0 ortho 3.0) other=0.0 | equals-cache skips: world=387 view=154 proj=155
+  draws/frame: fixed-function=99.7 programmable-VS=14.0 (12.3% of 113.7) | SetVertexShader=36.1 VSconst=10.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=66s frames=77 | per frame: world=66.1 view=5.0 (distinct 4.0) proj=5.0 (persp 2.0 ortho 3.0) other=0.0 | equals-cache skips: world=383 view=154 proj=153
+  draws/frame: fixed-function=94.9 programmable-VS=14.0 (12.8% of 108.8) | SetVertexShader=35.9 VSconst=10.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=67s frames=78 | per frame: world=67.0 view=5.0 (distinct 4.0) proj=5.0 (persp 2.0 ortho 3.0) other=0.0 | equals-cache skips: world=390 view=156 proj=156
+  draws/frame: fixed-function=96.0 programmable-VS=14.0 (12.7% of 110.0) | SetVertexShader=36.0 VSconst=10.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=68s frames=74 | per frame: world=67.0 view=5.0 (distinct 4.0) proj=5.0 (persp 2.0 ortho 3.0) other=0.0 | equals-cache skips: world=370 view=148 proj=148
+  draws/frame: fixed-function=96.0 programmable-VS=14.0 (12.7% of 110.0) | SetVertexShader=34.0 VSconst=10.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=69s frames=73 | per frame: world=67.0 view=5.0 (distinct 4.0) proj=5.0 (persp 2.0 ortho 3.0) other=0.0 | equals-cache skips: world=365 view=146 proj=146
+  draws/frame: fixed-function=96.0 programmable-VS=14.0 (12.7% of 110.0) | SetVertexShader=34.0 VSconst=10.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=70s frames=79 | per frame: world=65.9 view=5.0 (distinct 4.0) proj=5.0 (persp 2.0 ortho 3.0) other=0.0 | equals-cache skips: world=395 view=158 proj=158
+  draws/frame: fixed-function=94.9 programmable-VS=14.0 (12.9% of 108.9) | SetVertexShader=34.8 VSconst=10.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=71s frames=80 | per frame: world=65.2 view=5.0 (distinct 4.0) proj=5.0 (persp 2.0 ortho 3.0) other=0.0 | equals-cache skips: world=400 view=160 proj=160
+  draws/frame: fixed-function=94.2 programmable-VS=14.0 (12.9% of 108.2) | SetVertexShader=35.0 VSconst=10.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=72s frames=77 | per frame: world=66.0 view=5.0 (distinct 4.0) proj=5.0 (persp 2.0 ortho 3.0) other=0.0 | equals-cache skips: world=385 view=154 proj=154
+  draws/frame: fixed-function=95.0 programmable-VS=14.0 (12.8% of 109.0) | SetVertexShader=34.0 VSconst=10.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=73s frames=78 | per frame: world=65.5 view=5.0 (distinct 4.0) proj=5.0 (persp 2.0 ortho 3.0) other=0.0 | equals-cache skips: world=390 view=156 proj=156
+  draws/frame: fixed-function=94.5 programmable-VS=14.0 (12.9% of 108.5) | SetVertexShader=34.0 VSconst=10.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=74s frames=77 | per frame: world=64.5 view=5.0 (distinct 4.0) proj=5.0 (persp 2.0 ortho 3.0) other=0.0 | equals-cache skips: world=385 view=154 proj=154
+  draws/frame: fixed-function=93.5 programmable-VS=14.0 (13.0% of 107.5) | SetVertexShader=34.0 VSconst=10.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=75s frames=74 | per frame: world=64.0 view=5.0 (distinct 4.0) proj=5.0 (persp 2.0 ortho 3.0) other=0.0 | equals-cache skips: world=370 view=148 proj=148
+  draws/frame: fixed-function=93.0 programmable-VS=14.0 (13.1% of 107.0) | SetVertexShader=34.0 VSconst=10.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=76s frames=76 | per frame: world=65.8 view=6.6 (distinct 4.0) proj=6.6 (persp 2.0 ortho 4.6) other=0.0 | equals-cache skips: world=504 view=276 proj=276
+  draws/frame: fixed-function=94.8 programmable-VS=14.0 (12.9% of 108.8) | SetVertexShader=34.0 VSconst=10.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=77s frames=77 | per frame: world=69.0 view=9.0 (distinct 4.0) proj=9.0 (persp 2.0 ortho 7.0) other=0.0 | equals-cache skips: world=693 view=462 proj=462
+  draws/frame: fixed-function=98.0 programmable-VS=14.0 (12.5% of 112.0) | SetVertexShader=34.0 VSconst=10.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=78s frames=76 | per frame: world=65.5 view=5.3 (distinct 4.0) proj=5.3 (persp 2.0 ortho 3.3) other=0.0 | equals-cache skips: world=396 view=176 proj=168
+  draws/frame: fixed-function=94.4 programmable-VS=14.1 (13.0% of 108.5) | SetVertexShader=34.3 VSconst=10.1 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=79s frames=77 | per frame: world=78.0 view=9.8 (distinct 4.0) proj=9.8 (persp 2.0 ortho 7.8) other=0.0 | equals-cache skips: world=736 view=527 proj=454
+  draws/frame: fixed-function=104.6 programmable-VS=16.0 (13.3% of 120.6) | SetVertexShader=39.6 VSconst=11.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=80s frames=79 | per frame: world=68.8 view=9.2 (distinct 3.3) proj=9.2 (persp 2.0 ortho 7.2) other=0.0 | equals-cache skips: world=732 view=551 proj=474
+  draws/frame: fixed-function=96.8 programmable-VS=8.1 (7.7% of 104.8) | SetVertexShader=28.9 VSconst=6.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=81s frames=75 | per frame: world=51.4 view=9.9 (distinct 3.0) proj=9.9 (persp 2.0 ortho 7.9) other=0.0 | equals-cache skips: world=734 view=590 proj=450
+  draws/frame: fixed-function=71.8 programmable-VS=5.0 (6.5% of 76.8) | SetVertexShader=20.7 VSconst=4.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=82s frames=80 | per frame: world=37.0 view=7.0 (distinct 3.0) proj=7.0 (persp 2.0 ortho 5.0) other=0.0 | equals-cache skips: world=484 view=404 proj=244
+  draws/frame: fixed-function=49.0 programmable-VS=3.0 (5.8% of 52.0) | SetVertexShader=17.0 VSconst=3.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=83s frames=77 | per frame: world=38.2 view=12.0 (distinct 3.0) proj=12.0 (persp 2.0 ortho 10.0) other=0.0 | equals-cache skips: world=847 view=770 proj=616
+  draws/frame: fixed-function=46.7 programmable-VS=3.0 (6.0% of 49.7) | SetVertexShader=17.0 VSconst=3.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=84s frames=80 | per frame: world=38.0 view=12.0 (distinct 3.0) proj=12.0 (persp 2.0 ortho 10.0) other=0.0 | equals-cache skips: world=880 view=800 proj=640
+  draws/frame: fixed-function=44.3 programmable-VS=3.0 (6.3% of 47.3) | SetVertexShader=17.0 VSconst=3.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=85s frames=76 | per frame: world=39.9 view=12.9 (distinct 3.9) proj=12.9 (persp 2.0 ortho 10.9) other=0.0 | equals-cache skips: world=908 view=760 proj=608
+  draws/frame: fixed-function=45.9 programmable-VS=4.9 (9.6% of 50.8) | SetVertexShader=23.6 VSconst=4.9 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=86s frames=73 | per frame: world=39.5 view=12.4 (distinct 4.0) proj=12.4 (persp 2.0 ortho 10.4) other=0.0 | equals-cache skips: world=831 view=685 proj=539
+  draws/frame: fixed-function=45.5 programmable-VS=5.0 (9.9% of 50.5) | SetVertexShader=24.0 VSconst=5.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=87s frames=79 | per frame: world=40.4 view=12.0 (distinct 4.0) proj=12.0 (persp 2.0 ortho 10.0) other=0.0 | equals-cache skips: world=872 view=711 proj=554
+  draws/frame: fixed-function=46.5 programmable-VS=5.1 (9.8% of 51.5) | SetVertexShader=24.3 VSconst=5.1 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=88s frames=78 | per frame: world=32.5 view=7.5 (distinct 2.2) proj=7.5 (persp 1.1 ortho 6.4) other=0.0 | equals-cache skips: world=537 view=491 proj=338
+  draws/frame: fixed-function=137.5 programmable-VS=2.3 (1.6% of 139.8) | SetVertexShader=14.5 VSconst=2.3 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=89s frames=78 | per frame: world=31.2 view=5.7 (distinct 1.9) proj=5.7 (persp 1.0 ortho 4.7) other=0.0 | equals-cache skips: world=448 view=370 proj=296
+  draws/frame: fixed-function=149.2 programmable-VS=2.0 (1.3% of 151.2) | SetVertexShader=12.9 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=90s frames=77 | per frame: world=32.0 view=6.0 (distinct 2.0) proj=6.0 (persp 1.0 ortho 5.0) other=0.0 | equals-cache skips: world=462 view=385 proj=308
+  draws/frame: fixed-function=150.0 programmable-VS=2.0 (1.3% of 152.0) | SetVertexShader=13.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=91s frames=79 | per frame: world=29.4 view=2.9 (distinct 0.8) proj=2.9 (persp 1.0 ortho 1.9) other=0.0 | equals-cache skips: world=229 view=150 proj=120
+  draws/frame: fixed-function=147.4 programmable-VS=2.0 (1.3% of 149.4) | SetVertexShader=12.4 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=92s frames=73 | per frame: world=27.4 view=1.0 (distinct 0.6) proj=1.0 (persp 1.0 ortho 0.0) other=0.0 | equals-cache skips: world=93 view=0 proj=0
+  draws/frame: fixed-function=143.0 programmable-VS=2.0 (1.4% of 145.0) | SetVertexShader=11.5 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=93s frames=77 | per frame: world=25.9 view=1.9 (distinct 1.9) proj=1.9 (persp 1.0 ortho 0.9) other=0.0 | equals-cache skips: world=227 view=0 proj=0
+  draws/frame: fixed-function=128.3 programmable-VS=2.0 (1.5% of 130.3) | SetVertexShader=11.5 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=94s frames=83 | per frame: world=19.1 view=1.0 (distinct 1.0) proj=1.0 (persp 1.0 ortho 0.0) other=0.0 | equals-cache skips: world=167 view=0 proj=0
+  draws/frame: fixed-function=74.0 programmable-VS=0.0 (0.0% of 74.1) | SetVertexShader=6.1 VSconst=0.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=95s frames=79 | per frame: world=24.9 view=1.7 (distinct 1.7) proj=1.7 (persp 1.0 ortho 0.7) other=0.0 | equals-cache skips: world=215 view=0 proj=0
+  draws/frame: fixed-function=114.0 programmable-VS=1.4 (1.2% of 115.5) | SetVertexShader=9.9 VSconst=1.4 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=96s frames=79 | per frame: world=29.0 view=1.2 (distinct 1.1) proj=1.2 (persp 1.0 ortho 0.2) other=0.0 | equals-cache skips: world=145 view=0 proj=0
+  draws/frame: fixed-function=142.3 programmable-VS=2.0 (1.4% of 144.3) | SetVertexShader=11.3 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=97s frames=79 | per frame: world=29.7 view=1.0 (distinct 0.7) proj=1.0 (persp 1.0 ortho 0.0) other=0.0 | equals-cache skips: world=110 view=0 proj=0
+  draws/frame: fixed-function=144.5 programmable-VS=2.0 (1.4% of 146.5) | SetVertexShader=11.3 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=98s frames=77 | per frame: world=29.2 view=2.5 (distinct 2.5) proj=2.6 (persp 1.0 ortho 1.5) other=0.0 | equals-cache skips: world=232 view=42 proj=0
+  draws/frame: fixed-function=136.1 programmable-VS=2.0 (1.4% of 138.1) | SetVertexShader=12.6 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=99s frames=79 | per frame: world=29.4 view=2.9 (distinct 2.9) proj=2.9 (persp 1.0 ortho 1.9) other=0.0 | equals-cache skips: world=236 view=73 proj=0
+  draws/frame: fixed-function=131.5 programmable-VS=2.0 (1.5% of 133.5) | SetVertexShader=12.9 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=100s frames=75 | per frame: world=31.9 view=2.1 (distinct 1.7) proj=2.1 (persp 1.0 ortho 1.1) other=0.0 | equals-cache skips: world=158 view=58 proj=26
+  draws/frame: fixed-function=127.7 programmable-VS=5.5 (4.1% of 133.2) | SetVertexShader=17.3 VSconst=5.5 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=101s frames=76 | per frame: world=34.2 view=4.6 (distinct 2.6) proj=4.6 (persp 1.0 ortho 3.6) other=0.0 | equals-cache skips: world=411 view=228 proj=152
+  draws/frame: fixed-function=119.2 programmable-VS=8.2 (6.5% of 127.4) | SetVertexShader=24.0 VSconst=8.2 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=102s frames=69 | per frame: world=33.1 view=5.6 (distinct 3.6) proj=5.6 (persp 1.0 ortho 4.6) other=0.0 | equals-cache skips: world=569 view=207 proj=138
+  draws/frame: fixed-function=113.2 programmable-VS=6.6 (5.5% of 119.8) | SetVertexShader=26.1 VSconst=6.6 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=103s frames=75 | per frame: world=37.9 view=5.3 (distinct 3.0) proj=5.3 (persp 1.0 ortho 4.3) other=0.0 | equals-cache skips: world=570 view=240 proj=167
+  draws/frame: fixed-function=137.1 programmable-VS=4.3 (3.0% of 141.3) | SetVertexShader=26.3 VSconst=4.3 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=104s frames=72 | per frame: world=47.6 view=6.9 (distinct 3.9) proj=6.9 (persp 1.0 ortho 5.9) other=0.0 | equals-cache skips: world=589 view=288 proj=216
+  draws/frame: fixed-function=162.0 programmable-VS=7.7 (4.6% of 169.7) | SetVertexShader=35.5 VSconst=7.7 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=105s frames=75 | per frame: world=23.5 view=3.3 (distinct 1.9) proj=3.3 (persp 1.0 ortho 2.3) other=0.0 | equals-cache skips: world=430 view=144 proj=108
+  draws/frame: fixed-function=88.1 programmable-VS=1.5 (1.7% of 89.7) | SetVertexShader=16.1 VSconst=1.5 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=106s frames=77 | per frame: world=17.9 view=2.6 (distinct 1.5) proj=2.6 (persp 1.0 ortho 1.6) other=0.0 | equals-cache skips: world=366 view=126 proj=84
+  draws/frame: fixed-function=61.5 programmable-VS=0.0 (0.0% of 61.5) | SetVertexShader=8.7 VSconst=0.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => every draw this interval was fixed-function: route (b) (draw twice at D3D8) would cover all of it
+t=107s frames=75 | per frame: world=50.0 view=6.0 (distinct 3.3) proj=6.0 (persp 1.0 ortho 5.0) other=0.0 | equals-cache skips: world=814 view=274 proj=199
+  draws/frame: fixed-function=155.9 programmable-VS=7.4 (4.5% of 163.3) | SetVertexShader=32.0 VSconst=7.4 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=108s frames=70 | per frame: world=86.2 view=4.8 (distinct 3.4) proj=4.8 (persp 1.0 ortho 3.8) other=0.0 | equals-cache skips: world=1076 view=124 proj=93
+  draws/frame: fixed-function=245.6 programmable-VS=16.5 (6.3% of 262.0) | SetVertexShader=56.6 VSconst=16.5 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=109s frames=70 | per frame: world=89.3 view=1.7 (distinct 1.7) proj=1.7 (persp 1.0 ortho 0.7) other=0.0 | equals-cache skips: world=855 view=0 proj=0
+  draws/frame: fixed-function=258.5 programmable-VS=15.5 (5.7% of 274.0) | SetVertexShader=48.1 VSconst=15.5 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=110s frames=69 | per frame: world=91.1 view=3.6 (distinct 1.6) proj=3.6 (persp 1.0 ortho 2.6) other=0.0 | equals-cache skips: world=953 view=176 proj=132
+  draws/frame: fixed-function=268.0 programmable-VS=13.0 (4.6% of 281.0) | SetVertexShader=42.8 VSconst=13.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=111s frames=67 | per frame: world=102.8 view=5.3 (distinct 2.0) proj=5.3 (persp 1.0 ortho 4.3) other=0.0 | equals-cache skips: world=1211 view=286 proj=201
+  draws/frame: fixed-function=294.1 programmable-VS=12.3 (4.0% of 306.5) | SetVertexShader=44.3 VSconst=12.3 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=112s frames=70 | per frame: world=105.7 view=6.8 (distinct 2.0) proj=6.8 (persp 1.0 ortho 5.8) other=0.0 | equals-cache skips: world=1365 view=409 proj=210
+  draws/frame: fixed-function=295.2 programmable-VS=7.6 (2.5% of 302.9) | SetVertexShader=38.4 VSconst=7.6 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=113s frames=71 | per frame: world=112.2 view=7.0 (distinct 2.0) proj=7.0 (persp 1.0 ortho 6.0) other=0.0 | equals-cache skips: world=1515 view=426 proj=213
+  draws/frame: fixed-function=306.5 programmable-VS=7.0 (2.2% of 313.5) | SetVertexShader=37.8 VSconst=7.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=114s frames=69 | per frame: world=108.7 view=3.5 (distinct 2.0) proj=3.5 (persp 1.0 ortho 2.5) other=0.0 | equals-cache skips: world=1000 view=174 proj=27
+  draws/frame: fixed-function=307.1 programmable-VS=7.0 (2.2% of 314.1) | SetVertexShader=36.3 VSconst=7.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=115s frames=64 | per frame: world=107.9 view=3.0 (distinct 2.0) proj=3.0 (persp 1.0 ortho 2.0) other=0.0 | equals-cache skips: world=811 view=128 proj=0
+  draws/frame: fixed-function=309.6 programmable-VS=7.0 (2.2% of 316.6) | SetVertexShader=36.8 VSconst=7.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=116s frames=66 | per frame: world=110.6 view=7.4 (distinct 2.0) proj=7.4 (persp 1.0 ortho 6.4) other=0.0 | equals-cache skips: world=904 view=422 proj=232
+  draws/frame: fixed-function=315.9 programmable-VS=7.0 (2.2% of 322.9) | SetVertexShader=37.5 VSconst=7.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=117s frames=70 | per frame: world=60.3 view=9.6 (distinct 3.3) proj=9.6 (persp 1.7 ortho 7.9) other=0.0 | equals-cache skips: world=759 view=506 proj=362
+  draws/frame: fixed-function=141.3 programmable-VS=3.6 (2.5% of 145.0) | SetVertexShader=24.5 VSconst=3.6 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=118s frames=74 | per frame: world=32.3 view=8.0 (distinct 4.0) proj=8.0 (persp 2.0 ortho 6.0) other=0.0 | equals-cache skips: world=592 view=370 proj=370
+  draws/frame: fixed-function=51.7 programmable-VS=2.0 (3.7% of 53.7) | SetVertexShader=17.3 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=119s frames=76 | per frame: world=31.2 view=3.3 (distinct 3.1) proj=3.3 (persp 2.0 ortho 1.3) other=0.0 | equals-cache skips: world=248 view=20 proj=92
+  draws/frame: fixed-function=51.6 programmable-VS=2.0 (3.7% of 53.6) | SetVertexShader=18.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=120s frames=76 | per frame: world=32.4 view=3.0 (distinct 3.0) proj=3.0 (persp 2.0 ortho 1.0) other=0.0 | equals-cache skips: world=228 view=0 proj=76
+  draws/frame: fixed-function=51.4 programmable-VS=2.0 (3.7% of 53.4) | SetVertexShader=17.1 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=121s frames=74 | per frame: world=42.7 view=9.7 (distinct 4.0) proj=9.7 (persp 2.0 ortho 7.7) other=0.0 | equals-cache skips: world=719 view=497 proj=500
+  draws/frame: fixed-function=65.5 programmable-VS=2.0 (3.0% of 67.5) | SetVertexShader=19.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=122s frames=75 | per frame: world=41.2 view=10.0 (distinct 4.0) proj=10.0 (persp 2.0 ortho 8.0) other=0.0 | equals-cache skips: world=750 view=525 proj=525
+  draws/frame: fixed-function=61.8 programmable-VS=2.0 (3.1% of 63.8) | SetVertexShader=19.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=123s frames=74 | per frame: world=41.9 view=10.0 (distinct 4.0) proj=10.0 (persp 2.0 ortho 8.0) other=0.0 | equals-cache skips: world=740 view=518 proj=518
+  draws/frame: fixed-function=60.9 programmable-VS=2.0 (3.2% of 62.9) | SetVertexShader=19.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=124s frames=72 | per frame: world=49.0 view=6.8 (distinct 3.5) proj=6.8 (persp 2.0 ortho 4.8) other=0.0 | equals-cache skips: world=515 view=273 proj=306
+  draws/frame: fixed-function=75.3 programmable-VS=4.6 (5.8% of 79.9) | SetVertexShader=21.1 VSconst=3.4 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=125s frames=74 | per frame: world=71.3 view=4.1 (distinct 3.3) proj=4.1 (persp 2.0 ortho 2.1) other=0.0 | equals-cache skips: world=307 view=85 proj=136
+  draws/frame: fixed-function=107.7 programmable-VS=12.6 (10.5% of 120.4) | SetVertexShader=30.4 VSconst=7.8 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=126s frames=74 | per frame: world=61.7 view=5.0 (distinct 4.0) proj=5.0 (persp 2.0 ortho 3.0) other=0.0 | equals-cache skips: world=400 view=148 proj=148
+  draws/frame: fixed-function=91.6 programmable-VS=9.1 (9.1% of 100.7) | SetVertexShader=26.5 VSconst=5.9 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=127s frames=78 | per frame: world=65.4 view=5.0 (distinct 4.0) proj=5.0 (persp 2.0 ortho 3.0) other=0.0 | equals-cache skips: world=437 view=156 proj=156
+  draws/frame: fixed-function=94.7 programmable-VS=9.8 (9.4% of 104.5) | SetVertexShader=28.4 VSconst=6.2 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=128s frames=81 | per frame: world=43.1 view=4.5 (distinct 3.5) proj=4.5 (persp 2.0 ortho 2.5) other=0.0 | equals-cache skips: world=367 view=162 proj=162
+  draws/frame: fixed-function=67.3 programmable-VS=4.0 (5.7% of 71.3) | SetVertexShader=18.4 VSconst=2.7 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=129s frames=77 | per frame: world=43.0 view=9.2 (distinct 4.0) proj=9.2 (persp 2.0 ortho 7.2) other=0.0 | equals-cache skips: world=685 view=481 proj=455
+  draws/frame: fixed-function=65.3 programmable-VS=1.9 (2.9% of 67.3) | SetVertexShader=16.6 VSconst=1.9 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=130s frames=80 | per frame: world=46.3 view=9.3 (distinct 4.0) proj=9.3 (persp 2.0 ortho 7.3) other=0.0 | equals-cache skips: world=717 view=505 proj=479
+  draws/frame: fixed-function=70.2 programmable-VS=2.7 (3.7% of 72.9) | SetVertexShader=19.3 VSconst=2.7 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=131s frames=79 | per frame: world=47.1 view=10.0 (distinct 4.0) proj=10.0 (persp 2.0 ortho 8.0) other=0.0 | equals-cache skips: world=711 view=553 proj=474
+  draws/frame: fixed-function=73.3 programmable-VS=2.1 (2.8% of 75.5) | SetVertexShader=18.4 VSconst=2.1 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=132s frames=77 | per frame: world=44.3 view=8.2 (distinct 4.0) proj=8.2 (persp 2.0 ortho 6.2) other=0.0 | equals-cache skips: world=556 view=399 proj=323
+  draws/frame: fixed-function=69.1 programmable-VS=2.0 (2.9% of 71.1) | SetVertexShader=18.1 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=133s frames=78 | per frame: world=41.5 view=6.0 (distinct 4.0) proj=6.0 (persp 2.0 ortho 4.0) other=0.0 | equals-cache skips: world=387 view=234 proj=155
+  draws/frame: fixed-function=62.9 programmable-VS=2.0 (3.0% of 64.9) | SetVertexShader=17.9 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=134s frames=81 | per frame: world=41.0 view=6.0 (distinct 4.0) proj=6.0 (persp 2.0 ortho 4.0) other=0.0 | equals-cache skips: world=405 view=243 proj=162
+  draws/frame: fixed-function=62.0 programmable-VS=2.0 (3.1% of 64.0) | SetVertexShader=18.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=135s frames=81 | per frame: world=41.9 view=6.0 (distinct 4.0) proj=6.0 (persp 2.0 ortho 4.0) other=0.0 | equals-cache skips: world=405 view=243 proj=162
+  draws/frame: fixed-function=62.9 programmable-VS=2.0 (3.1% of 64.9) | SetVertexShader=18.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=136s frames=81 | per frame: world=42.7 view=6.7 (distinct 4.0) proj=6.7 (persp 2.0 ortho 4.7) other=0.0 | equals-cache skips: world=461 view=299 proj=218
+  draws/frame: fixed-function=63.7 programmable-VS=2.0 (3.0% of 65.7) | SetVertexShader=18.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=137s frames=79 | per frame: world=50.1 view=14.0 (distinct 4.0) proj=14.0 (persp 2.0 ortho 12.0) other=0.0 | equals-cache skips: world=1029 view=869 proj=791
+  draws/frame: fixed-function=71.3 programmable-VS=2.0 (2.7% of 73.3) | SetVertexShader=18.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=138s frames=81 | per frame: world=49.9 view=14.0 (distinct 4.0) proj=14.0 (persp 2.0 ortho 12.0) other=0.0 | equals-cache skips: world=1051 view=891 proj=809
+  draws/frame: fixed-function=70.7 programmable-VS=2.0 (2.8% of 72.7) | SetVertexShader=18.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=139s frames=34 | per frame: world=45.9 view=14.1 (distinct 3.5) proj=14.1 (persp 1.8 ortho 12.4) other=0.0 | equals-cache skips: world=451 view=391 proj=291
+  draws/frame: fixed-function=64.4 programmable-VS=1.8 (2.7% of 66.1) | SetVertexShader=15.9 VSconst=1.8 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=140s frames=21 | per frame: world=55.7 view=10.3 (distinct 2.5) proj=10.3 (persp 1.6 ortho 8.7) other=0.0 | equals-cache skips: world=200 view=180 proj=107
+  draws/frame: fixed-function=187.3 programmable-VS=7.4 (3.8% of 194.7) | SetVertexShader=28.3 VSconst=4.5 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=141s frames=77 | per frame: world=45.3 view=9.8 (distinct 3.0) proj=9.8 (persp 2.0 ortho 7.9) other=0.0 | equals-cache skips: world=667 view=605 proj=538
+  draws/frame: fixed-function=155.0 programmable-VS=1.3 (0.8% of 156.4) | SetVertexShader=19.6 VSconst=1.3 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=142s frames=79 | per frame: world=33.2 view=14.2 (distinct 3.0) proj=14.2 (persp 2.0 ortho 12.2) other=0.0 | equals-cache skips: world=1061 view=962 proj=927
+  draws/frame: fixed-function=106.1 programmable-VS=0.0 (0.0% of 106.1) | SetVertexShader=12.5 VSconst=0.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => every draw this interval was fixed-function: route (b) (draw twice at D3D8) would cover all of it
+t=143s frames=75 | per frame: world=55.1 view=26.1 (distinct 3.9) proj=26.1 (persp 2.0 ortho 24.1) other=0.0 | equals-cache skips: world=1895 view=1737 proj=1704
+  draws/frame: fixed-function=161.0 programmable-VS=3.6 (2.2% of 164.6) | SetVertexShader=28.0 VSconst=3.6 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=144s frames=70 | per frame: world=72.4 view=23.0 (distinct 4.0) proj=23.0 (persp 2.0 ortho 21.0) other=0.0 | equals-cache skips: world=1566 view=1400 proj=1400
+  draws/frame: fixed-function=213.4 programmable-VS=4.0 (1.8% of 217.4) | SetVertexShader=33.9 VSconst=4.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=145s frames=74 | per frame: world=69.2 view=23.0 (distinct 4.0) proj=23.0 (persp 2.0 ortho 21.0) other=0.0 | equals-cache skips: world=1628 view=1480 proj=1480
+  draws/frame: fixed-function=213.3 programmable-VS=4.0 (1.8% of 217.3) | SetVertexShader=30.5 VSconst=4.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=146s frames=74 | per frame: world=79.9 view=23.0 (distinct 4.0) proj=23.0 (persp 2.0 ortho 21.0) other=0.0 | equals-cache skips: world=1628 view=1480 proj=1480
+  draws/frame: fixed-function=220.4 programmable-VS=4.9 (2.2% of 225.3) | SetVertexShader=35.5 VSconst=4.9 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=147s frames=71 | per frame: world=88.7 view=23.0 (distinct 4.0) proj=23.0 (persp 2.0 ortho 21.0) other=0.0 | equals-cache skips: world=1562 view=1420 proj=1420
+  draws/frame: fixed-function=242.8 programmable-VS=6.0 (2.4% of 248.8) | SetVertexShader=41.0 VSconst=6.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=148s frames=70 | per frame: world=90.0 view=23.0 (distinct 4.0) proj=23.0 (persp 2.0 ortho 21.0) other=0.0 | equals-cache skips: world=1540 view=1400 proj=1400
+  draws/frame: fixed-function=252.9 programmable-VS=7.7 (3.0% of 260.6) | SetVertexShader=55.2 VSconst=7.7 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=149s frames=79 | per frame: world=89.4 view=23.0 (distinct 4.0) proj=23.0 (persp 2.0 ortho 21.0) other=0.0 | equals-cache skips: world=1738 view=1580 proj=1580
+  draws/frame: fixed-function=250.4 programmable-VS=8.7 (3.3% of 259.1) | SetVertexShader=55.9 VSconst=8.7 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=150s frames=83 | per frame: world=89.4 view=22.9 (distinct 3.9) proj=22.9 (persp 2.0 ortho 20.9) other=0.0 | equals-cache skips: world=1819 view=1660 proj=1660
+  draws/frame: fixed-function=249.6 programmable-VS=7.7 (3.0% of 257.2) | SetVertexShader=53.0 VSconst=7.7 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=151s frames=69 | per frame: world=88.1 view=22.4 (distinct 3.4) proj=22.4 (persp 2.0 ortho 20.4) other=0.0 | equals-cache skips: world=1474 view=1380 proj=1380
+  draws/frame: fixed-function=245.4 programmable-VS=5.4 (2.2% of 250.9) | SetVertexShader=46.4 VSconst=5.4 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=152s frames=65 | per frame: world=89.6 view=22.9 (distinct 3.9) proj=22.9 (persp 2.0 ortho 20.9) other=0.0 | equals-cache skips: world=1424 view=1300 proj=1300
+  draws/frame: fixed-function=249.8 programmable-VS=7.6 (3.0% of 257.4) | SetVertexShader=53.1 VSconst=7.6 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=153s frames=68 | per frame: world=90.4 view=23.0 (distinct 4.0) proj=23.0 (persp 2.0 ortho 21.0) other=0.0 | equals-cache skips: world=1477 view=1360 proj=1360
+  draws/frame: fixed-function=250.9 programmable-VS=8.8 (3.4% of 259.7) | SetVertexShader=56.8 VSconst=8.8 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=154s frames=70 | per frame: world=89.6 view=23.0 (distinct 4.0) proj=23.0 (persp 2.0 ortho 21.0) other=0.0 | equals-cache skips: world=1470 view=1400 proj=1400
+  draws/frame: fixed-function=249.9 programmable-VS=8.0 (3.1% of 257.9) | SetVertexShader=54.4 VSconst=8.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=155s frames=72 | per frame: world=77.5 view=11.0 (distinct 4.0) proj=11.0 (persp 2.0 ortho 9.0) other=0.0 | equals-cache skips: world=645 view=573 proj=573
+  draws/frame: fixed-function=228.5 programmable-VS=7.9 (3.3% of 236.4) | SetVertexShader=43.0 VSconst=7.9 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=156s frames=71 | per frame: world=72.1 view=6.0 (distinct 4.0) proj=6.0 (persp 2.0 ortho 4.0) other=0.0 | equals-cache skips: world=284 view=213 proj=213
+  draws/frame: fixed-function=223.5 programmable-VS=6.0 (2.6% of 229.5) | SetVertexShader=35.7 VSconst=6.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=157s frames=70 | per frame: world=72.1 view=6.0 (distinct 4.0) proj=6.0 (persp 2.0 ortho 4.0) other=0.0 | equals-cache skips: world=280 view=210 proj=210
+  draws/frame: fixed-function=224.4 programmable-VS=4.6 (2.0% of 229.0) | SetVertexShader=35.6 VSconst=4.6 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=158s frames=73 | per frame: world=79.2 view=14.4 (distinct 4.0) proj=14.4 (persp 2.0 ortho 12.4) other=0.0 | equals-cache skips: world=902 view=829 proj=829
+  draws/frame: fixed-function=230.3 programmable-VS=4.0 (1.7% of 234.3) | SetVertexShader=34.6 VSconst=4.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=159s frames=72 | per frame: world=73.1 view=16.0 (distinct 4.0) proj=16.0 (persp 2.0 ortho 14.0) other=0.0 | equals-cache skips: world=1008 view=936 proj=936
+  draws/frame: fixed-function=216.5 programmable-VS=4.0 (1.8% of 220.5) | SetVertexShader=32.9 VSconst=4.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=160s frames=72 | per frame: world=70.4 view=16.0 (distinct 4.0) proj=16.0 (persp 2.0 ortho 14.0) other=0.0 | equals-cache skips: world=1009 view=936 proj=937
+  draws/frame: fixed-function=211.7 programmable-VS=4.0 (1.9% of 215.7) | SetVertexShader=33.2 VSconst=4.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=161s frames=70 | per frame: world=69.6 view=16.0 (distinct 4.0) proj=16.0 (persp 2.0 ortho 14.0) other=0.0 | equals-cache skips: world=979 view=910 proj=909
+  draws/frame: fixed-function=208.5 programmable-VS=4.0 (1.9% of 212.5) | SetVertexShader=32.8 VSconst=4.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=162s frames=72 | per frame: world=70.6 view=16.0 (distinct 4.0) proj=16.0 (persp 2.0 ortho 14.0) other=0.0 | equals-cache skips: world=1008 view=936 proj=936
+  draws/frame: fixed-function=210.6 programmable-VS=4.6 (2.2% of 215.3) | SetVertexShader=34.0 VSconst=4.6 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=163s frames=72 | per frame: world=71.3 view=16.0 (distinct 4.0) proj=16.0 (persp 2.0 ortho 14.0) other=0.0 | equals-cache skips: world=1008 view=936 proj=936
+  draws/frame: fixed-function=211.3 programmable-VS=6.0 (2.8% of 217.3) | SetVertexShader=34.6 VSconst=6.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=164s frames=69 | per frame: world=71.4 view=16.0 (distinct 4.0) proj=16.0 (persp 2.0 ortho 14.0) other=0.0 | equals-cache skips: world=968 view=897 proj=898
+  draws/frame: fixed-function=212.6 programmable-VS=6.0 (2.8% of 218.6) | SetVertexShader=34.2 VSconst=6.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=165s frames=71 | per frame: world=70.6 view=16.0 (distinct 4.0) proj=16.0 (persp 2.0 ortho 14.0) other=0.0 | equals-cache skips: world=992 view=923 proj=922
+  draws/frame: fixed-function=209.5 programmable-VS=6.0 (2.8% of 215.5) | SetVertexShader=33.8 VSconst=6.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=166s frames=69 | per frame: world=66.4 view=11.5 (distinct 4.0) proj=11.5 (persp 2.0 ortho 9.5) other=0.0 | equals-cache skips: world=656 view=587 proj=587
+  draws/frame: fixed-function=206.4 programmable-VS=5.9 (2.8% of 212.3) | SetVertexShader=33.8 VSconst=5.9 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=167s frames=73 | per frame: world=57.8 view=8.9 (distinct 4.0) proj=8.9 (persp 2.0 ortho 6.9) other=0.0 | equals-cache skips: world=504 view=431 proj=431
+  draws/frame: fixed-function=197.8 programmable-VS=3.6 (1.8% of 201.4) | SetVertexShader=29.4 VSconst=3.6 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=168s frames=74 | per frame: world=55.5 view=9.4 (distinct 4.0) proj=9.4 (persp 2.0 ortho 7.4) other=0.0 | equals-cache skips: world=548 view=474 proj=474
+  draws/frame: fixed-function=195.5 programmable-VS=2.0 (1.0% of 197.5) | SetVertexShader=27.2 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=169s frames=70 | per frame: world=56.8 view=9.5 (distinct 4.0) proj=9.5 (persp 2.0 ortho 7.5) other=0.0 | equals-cache skips: world=526 view=454 proj=455
+  draws/frame: fixed-function=199.0 programmable-VS=2.0 (1.0% of 201.0) | SetVertexShader=29.2 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=170s frames=71 | per frame: world=55.1 view=9.0 (distinct 4.0) proj=9.0 (persp 2.0 ortho 7.0) other=0.0 | equals-cache skips: world=498 view=429 proj=428
+  draws/frame: fixed-function=194.2 programmable-VS=2.0 (1.0% of 196.2) | SetVertexShader=28.3 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=171s frames=73 | per frame: world=59.8 view=6.0 (distinct 4.0) proj=6.0 (persp 2.0 ortho 4.0) other=0.0 | equals-cache skips: world=292 view=219 proj=219
+  draws/frame: fixed-function=202.1 programmable-VS=3.0 (1.5% of 205.1) | SetVertexShader=31.4 VSconst=3.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=172s frames=73 | per frame: world=70.9 view=6.0 (distinct 4.0) proj=6.0 (persp 2.0 ortho 4.0) other=0.0 | equals-cache skips: world=292 view=219 proj=219
+  draws/frame: fixed-function=221.8 programmable-VS=4.0 (1.8% of 225.8) | SetVertexShader=34.6 VSconst=4.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=173s frames=71 | per frame: world=71.1 view=6.0 (distinct 4.0) proj=6.0 (persp 2.0 ortho 4.0) other=0.0 | equals-cache skips: world=292 view=213 proj=214
+  draws/frame: fixed-function=224.3 programmable-VS=4.0 (1.8% of 228.3) | SetVertexShader=33.2 VSconst=4.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=174s frames=70 | per frame: world=76.9 view=6.0 (distinct 4.0) proj=6.0 (persp 2.0 ortho 4.0) other=0.0 | equals-cache skips: world=533 view=210 proj=209
+  draws/frame: fixed-function=235.6 programmable-VS=4.0 (1.7% of 239.6) | SetVertexShader=37.7 VSconst=4.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=175s frames=66 | per frame: world=91.3 view=6.6 (distinct 4.0) proj=6.6 (persp 2.0 ortho 4.6) other=0.0 | equals-cache skips: world=1307 view=238 proj=238
+  draws/frame: fixed-function=263.1 programmable-VS=5.4 (2.0% of 268.5) | SetVertexShader=50.4 VSconst=5.4 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=176s frames=70 | per frame: world=126.5 view=11.0 (distinct 4.0) proj=11.0 (persp 2.0 ortho 9.0) other=0.0 | equals-cache skips: world=3867 view=560 proj=560
+  draws/frame: fixed-function=312.0 programmable-VS=6.0 (1.9% of 318.0) | SetVertexShader=60.4 VSconst=6.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=177s frames=68 | per frame: world=117.5 view=11.0 (distinct 4.0) proj=11.0 (persp 2.0 ortho 9.0) other=0.0 | equals-cache skips: world=3288 view=544 proj=544
+  draws/frame: fixed-function=302.6 programmable-VS=6.0 (1.9% of 308.6) | SetVertexShader=55.9 VSconst=6.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=178s frames=67 | per frame: world=87.2 view=9.0 (distinct 4.0) proj=9.0 (persp 2.0 ortho 7.0) other=0.0 | equals-cache skips: world=1423 view=401 proj=401
+  draws/frame: fixed-function=267.8 programmable-VS=6.0 (2.2% of 273.8) | SetVertexShader=52.0 VSconst=6.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=179s frames=69 | per frame: world=72.4 view=6.0 (distinct 4.0) proj=6.0 (persp 2.0 ortho 4.0) other=0.0 | equals-cache skips: world=511 view=207 proj=207
+  draws/frame: fixed-function=254.6 programmable-VS=6.0 (2.3% of 260.6) | SetVertexShader=49.0 VSconst=6.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=180s frames=71 | per frame: world=75.9 view=6.0 (distinct 4.0) proj=6.0 (persp 2.0 ortho 4.0) other=0.0 | equals-cache skips: world=802 view=213 proj=213
+  draws/frame: fixed-function=258.7 programmable-VS=6.0 (2.3% of 264.7) | SetVertexShader=50.3 VSconst=6.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=181s frames=63 | per frame: world=121.6 view=6.0 (distinct 4.0) proj=6.0 (persp 2.0 ortho 4.0) other=0.0 | equals-cache skips: world=3857 view=189 proj=190
+  draws/frame: fixed-function=323.0 programmable-VS=4.1 (1.2% of 327.1) | SetVertexShader=49.7 VSconst=4.1 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=182s frames=61 | per frame: world=157.4 view=6.0 (distinct 4.0) proj=6.0 (persp 2.0 ortho 4.0) other=0.0 | equals-cache skips: world=6083 view=183 proj=183
+  draws/frame: fixed-function=346.4 programmable-VS=4.0 (1.2% of 350.5) | SetVertexShader=46.3 VSconst=4.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=183s frames=65 | per frame: world=162.3 view=6.0 (distinct 4.0) proj=6.0 (persp 2.0 ortho 4.0) other=0.0 | equals-cache skips: world=7075 view=195 proj=194
+  draws/frame: fixed-function=340.4 programmable-VS=4.0 (1.2% of 344.4) | SetVertexShader=42.7 VSconst=4.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=184s frames=63 | per frame: world=140.4 view=6.0 (distinct 4.0) proj=6.0 (persp 2.0 ortho 4.0) other=0.0 | equals-cache skips: world=5323 view=189 proj=190
+  draws/frame: fixed-function=348.9 programmable-VS=4.1 (1.2% of 352.9) | SetVertexShader=47.9 VSconst=4.1 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=185s frames=68 | per frame: world=98.9 view=7.0 (distinct 4.4) proj=7.2 (persp 2.4 ortho 4.8) other=0.0 | equals-cache skips: world=2634 view=239 proj=247
+  draws/frame: fixed-function=323.7 programmable-VS=5.6 (1.7% of 329.2) | SetVertexShader=54.5 VSconst=5.6 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=186s frames=64 | per frame: world=111.6 view=15.0 (distinct 7.0) proj=17.1 (persp 6.1 ortho 11.0) other=0.0 | equals-cache skips: world=1286 view=512 proj=577
+  draws/frame: fixed-function=447.4 programmable-VS=14.1 (3.1% of 461.5) | SetVertexShader=95.9 VSconst=14.1 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=187s frames=70 | per frame: world=89.3 view=15.0 (distinct 7.0) proj=16.9 (persp 5.9 ortho 11.0) other=0.0 | equals-cache skips: world=920 view=560 proj=629
+  draws/frame: fixed-function=404.4 programmable-VS=13.9 (3.3% of 418.3) | SetVertexShader=89.7 VSconst=13.9 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=188s frames=66 | per frame: world=99.7 view=14.0 (distinct 6.7) proj=16.0 (persp 5.8 ortho 10.2) other=0.0 | equals-cache skips: world=801 view=493 proj=552
+  draws/frame: fixed-function=416.8 programmable-VS=13.1 (3.1% of 429.9) | SetVertexShader=87.0 VSconst=13.1 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=189s frames=68 | per frame: world=71.2 view=10.4 (distinct 4.5) proj=12.4 (persp 3.8 ortho 8.6) other=0.0 | equals-cache skips: world=582 view=469 proj=458
+  draws/frame: fixed-function=276.5 programmable-VS=10.1 (3.5% of 286.6) | SetVertexShader=62.0 VSconst=10.1 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=190s frames=67 | per frame: world=65.6 view=23.7 (distinct 3.6) proj=25.7 (persp 3.6 ortho 22.1) other=0.0 | equals-cache skips: world=1504 view=1415 proj=1390
+  draws/frame: fixed-function=226.2 programmable-VS=9.0 (3.8% of 235.1) | SetVertexShader=48.2 VSconst=9.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=191s frames=69 | per frame: world=80.7 view=33.1 (distinct 4.0) proj=35.2 (persp 4.1 ortho 31.1) other=0.0 | equals-cache skips: world=2287 view=2080 proj=2080
+  draws/frame: fixed-function=224.4 programmable-VS=12.3 (5.2% of 236.7) | SetVertexShader=49.5 VSconst=12.3 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=192s frames=69 | per frame: world=84.0 view=35.9 (distinct 4.3) proj=37.9 (persp 4.5 ortho 33.4) other=0.0 | equals-cache skips: world=2459 view=2249 proj=2268
+  draws/frame: fixed-function=180.5 programmable-VS=7.5 (4.0% of 188.0) | SetVertexShader=39.2 VSconst=7.5 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=193s frames=64 | per frame: world=128.0 view=39.9 (distinct 8.0) proj=41.9 (persp 6.0 ortho 35.9) other=0.0 | equals-cache skips: world=2411 view=2094 proj=2158
+  draws/frame: fixed-function=369.1 programmable-VS=21.5 (5.5% of 390.6) | SetVertexShader=85.0 VSconst=19.3 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=194s frames=67 | per frame: world=106.3 view=31.9 (distinct 6.3) proj=33.9 (persp 5.3 ortho 28.6) other=0.0 | equals-cache skips: world=2026 view=1767 proj=1812
+  draws/frame: fixed-function=319.0 programmable-VS=17.3 (5.1% of 336.4) | SetVertexShader=72.9 VSconst=15.4 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=195s frames=69 | per frame: world=62.8 view=25.6 (distinct 4.5) proj=27.6 (persp 4.0 ortho 23.6) other=0.0 | equals-cache skips: world=1644 view=1528 proj=1528
+  draws/frame: fixed-function=170.3 programmable-VS=12.7 (7.0% of 183.1) | SetVertexShader=54.2 VSconst=12.1 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=196s frames=67 | per frame: world=66.9 view=24.4 (distinct 4.7) proj=26.4 (persp 4.0 ortho 22.4) other=0.0 | equals-cache skips: world=1539 view=1385 proj=1385
+  draws/frame: fixed-function=225.2 programmable-VS=12.3 (5.2% of 237.5) | SetVertexShader=54.3 VSconst=11.1 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=197s frames=65 | per frame: world=73.5 view=22.8 (distinct 5.0) proj=24.8 (persp 4.0 ortho 20.8) other=0.0 | equals-cache skips: world=1429 view=1221 proj=1222
+  draws/frame: fixed-function=243.5 programmable-VS=14.1 (5.5% of 257.6) | SetVertexShader=60.1 VSconst=13.1 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=198s frames=69 | per frame: world=73.2 view=20.2 (distinct 5.0) proj=22.2 (persp 4.0 ortho 18.2) other=0.0 | equals-cache skips: world=1324 view=1116 proj=1115
+  draws/frame: fixed-function=245.8 programmable-VS=14.8 (5.7% of 260.7) | SetVertexShader=58.0 VSconst=12.8 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=199s frames=69 | per frame: world=65.8 view=19.4 (distinct 4.3) proj=21.4 (persp 4.0 ortho 17.4) other=0.0 | equals-cache skips: world=1252 view=1109 proj=1110
+  draws/frame: fixed-function=205.9 programmable-VS=9.3 (4.3% of 215.1) | SetVertexShader=36.9 VSconst=7.3 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=200s frames=69 | per frame: world=70.6 view=23.5 (distinct 4.0) proj=25.5 (persp 4.0 ortho 21.5) other=0.0 | equals-cache skips: world=1541 view=1414 proj=1413
+  draws/frame: fixed-function=187.2 programmable-VS=10.0 (5.1% of 197.2) | SetVertexShader=29.7 VSconst=8.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=201s frames=65 | per frame: world=83.7 view=29.9 (distinct 4.0) proj=31.9 (persp 4.0 ortho 27.9) other=0.0 | equals-cache skips: world=2210 view=1751 proj=1751
+  draws/frame: fixed-function=200.8 programmable-VS=10.0 (4.7% of 210.8) | SetVertexShader=29.8 VSconst=8.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=202s frames=65 | per frame: world=98.9 view=28.0 (distinct 4.0) proj=30.0 (persp 4.0 ortho 26.0) other=0.0 | equals-cache skips: world=3023 view=1624 proj=1624
+  draws/frame: fixed-function=216.0 programmable-VS=10.0 (4.4% of 226.0) | SetVertexShader=30.6 VSconst=8.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=203s frames=68 | per frame: world=94.7 view=25.0 (distinct 4.0) proj=27.0 (persp 4.0 ortho 23.0) other=0.0 | equals-cache skips: world=2908 view=1496 proj=1496
+  draws/frame: fixed-function=212.6 programmable-VS=10.0 (4.5% of 222.7) | SetVertexShader=31.1 VSconst=8.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=204s frames=68 | per frame: world=85.4 view=26.2 (distinct 4.0) proj=28.2 (persp 4.0 ortho 24.2) other=0.0 | equals-cache skips: world=2332 view=1580 proj=1580
+  draws/frame: fixed-function=219.3 programmable-VS=10.7 (4.7% of 230.1) | SetVertexShader=31.8 VSconst=7.4 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=205s frames=70 | per frame: world=77.6 view=28.0 (distinct 4.0) proj=30.0 (persp 4.0 ortho 26.0) other=0.0 | equals-cache skips: world=1945 view=1750 proj=1750
+  draws/frame: fixed-function=213.0 programmable-VS=14.1 (6.2% of 227.1) | SetVertexShader=32.4 VSconst=9.4 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=206s frames=69 | per frame: world=76.3 view=27.6 (distinct 4.0) proj=29.6 (persp 4.0 ortho 25.6) other=0.0 | equals-cache skips: world=1837 view=1699 proj=1699
+  draws/frame: fixed-function=211.3 programmable-VS=13.0 (5.8% of 224.3) | SetVertexShader=33.3 VSconst=9.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=207s frames=66 | per frame: world=66.7 view=24.4 (distinct 4.0) proj=26.3 (persp 4.0 ortho 22.4) other=0.0 | equals-cache skips: world=1542 view=1410 proj=1410
+  draws/frame: fixed-function=186.5 programmable-VS=10.8 (5.5% of 197.3) | SetVertexShader=26.5 VSconst=8.3 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=208s frames=68 | per frame: world=54.0 view=14.8 (distinct 4.0) proj=16.8 (persp 4.0 ortho 12.8) other=0.0 | equals-cache skips: world=941 view=805 proj=805
+  draws/frame: fixed-function=160.9 programmable-VS=10.0 (5.9% of 170.9) | SetVertexShader=25.6 VSconst=8.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=209s frames=68 | per frame: world=57.4 view=23.0 (distinct 3.8) proj=25.0 (persp 4.0 ortho 21.0) other=0.0 | equals-cache skips: world=1471 view=1372 proj=1372
+  draws/frame: fixed-function=149.2 programmable-VS=9.3 (5.9% of 158.5) | SetVertexShader=22.8 VSconst=7.3 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=210s frames=72 | per frame: world=58.0 view=27.6 (distinct 3.0) proj=29.5 (persp 4.0 ortho 25.6) other=0.0 | equals-cache skips: world=1841 view=1841 proj=1841
+  draws/frame: fixed-function=143.7 programmable-VS=6.2 (4.1% of 149.9) | SetVertexShader=16.0 VSconst=4.2 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=211s frames=72 | per frame: world=55.7 view=26.9 (distinct 3.0) proj=28.9 (persp 4.0 ortho 24.9) other=0.0 | equals-cache skips: world=1794 view=1794 proj=1794
+  draws/frame: fixed-function=135.7 programmable-VS=5.5 (3.9% of 141.2) | SetVertexShader=13.9 VSconst=3.5 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=212s frames=73 | per frame: world=53.4 view=27.0 (distinct 3.0) proj=29.0 (persp 4.0 ortho 25.0) other=0.0 | equals-cache skips: world=1825 view=1825 proj=1825
+  draws/frame: fixed-function=128.9 programmable-VS=3.9 (3.0% of 132.8) | SetVertexShader=10.7 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=213s frames=68 | per frame: world=52.6 view=21.4 (distinct 3.0) proj=23.4 (persp 4.0 ortho 19.4) other=0.0 | equals-cache skips: world=1318 view=1318 proj=1318
+  draws/frame: fixed-function=129.5 programmable-VS=5.3 (3.9% of 134.8) | SetVertexShader=12.7 VSconst=3.3 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=214s frames=74 | per frame: world=45.1 view=14.0 (distinct 3.0) proj=16.0 (persp 4.0 ortho 12.0) other=0.0 | equals-cache skips: world=888 view=888 proj=888
+  draws/frame: fixed-function=113.4 programmable-VS=6.0 (5.0% of 119.4) | SetVertexShader=14.1 VSconst=4.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=215s frames=73 | per frame: world=44.9 view=14.0 (distinct 3.0) proj=16.0 (persp 4.0 ortho 12.0) other=0.0 | equals-cache skips: world=876 view=876 proj=876
+  draws/frame: fixed-function=104.1 programmable-VS=6.0 (5.5% of 110.1) | SetVertexShader=14.0 VSconst=4.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=216s frames=75 | per frame: world=38.2 view=9.6 (distinct 3.0) proj=11.6 (persp 4.0 ortho 7.6) other=0.0 | equals-cache skips: world=570 view=570 proj=570
+  draws/frame: fixed-function=98.2 programmable-VS=4.4 (4.3% of 102.6) | SetVertexShader=11.6 VSconst=2.4 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=217s frames=74 | per frame: world=34.4 view=9.0 (distinct 3.0) proj=11.0 (persp 4.0 ortho 7.0) other=0.0 | equals-cache skips: world=518 view=518 proj=518
+  draws/frame: fixed-function=86.7 programmable-VS=4.0 (4.4% of 90.7) | SetVertexShader=8.8 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=218s frames=70 | per frame: world=31.5 view=9.0 (distinct 3.0) proj=11.0 (persp 4.0 ortho 7.0) other=0.0 | equals-cache skips: world=490 view=490 proj=490
+  draws/frame: fixed-function=72.9 programmable-VS=4.0 (5.2% of 76.9) | SetVertexShader=7.4 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=219s frames=75 | per frame: world=33.1 view=9.0 (distinct 3.0) proj=11.0 (persp 4.0 ortho 7.0) other=0.0 | equals-cache skips: world=608 view=525 proj=525
+  draws/frame: fixed-function=76.7 programmable-VS=4.0 (5.0% of 80.7) | SetVertexShader=8.6 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=220s frames=69 | per frame: world=51.1 view=9.0 (distinct 3.0) proj=11.0 (persp 4.0 ortho 7.0) other=0.0 | equals-cache skips: world=558 view=483 proj=483
+  draws/frame: fixed-function=109.1 programmable-VS=24.4 (18.3% of 133.5) | SetVertexShader=19.2 VSconst=4.7 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=221s frames=67 | per frame: world=56.7 view=9.2 (distinct 3.2) proj=11.2 (persp 4.0 ortho 7.2) other=0.0 | equals-cache skips: world=557 view=469 proj=469
+  draws/frame: fixed-function=117.7 programmable-VS=23.6 (16.7% of 141.3) | SetVertexShader=24.0 VSconst=7.6 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=222s frames=64 | per frame: world=57.7 view=10.3 (distinct 4.0) proj=12.3 (persp 4.0 ortho 8.3) other=0.0 | equals-cache skips: world=638 view=468 proj=468
+  draws/frame: fixed-function=123.7 programmable-VS=24.0 (16.3% of 147.7) | SetVertexShader=29.5 VSconst=8.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=223s frames=66 | per frame: world=62.8 view=12.0 (distinct 4.0) proj=14.0 (persp 4.0 ortho 10.0) other=0.0 | equals-cache skips: world=1039 view=597 proj=597
+  draws/frame: fixed-function=128.5 programmable-VS=24.0 (15.7% of 152.5) | SetVertexShader=31.7 VSconst=8.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=224s frames=68 | per frame: world=66.9 view=18.0 (distinct 3.7) proj=20.0 (persp 4.0 ortho 16.0) other=0.0 | equals-cache skips: world=1581 view=1038 proj=1038
+  draws/frame: fixed-function=127.2 programmable-VS=17.9 (12.3% of 145.1) | SetVertexShader=24.9 VSconst=6.2 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=225s frames=69 | per frame: world=53.0 view=20.0 (distinct 3.0) proj=22.0 (persp 4.0 ortho 18.0) other=0.0 | equals-cache skips: world=1254 view=1242 proj=1243
+  draws/frame: fixed-function=102.5 programmable-VS=5.3 (4.9% of 107.8) | SetVertexShader=11.1 VSconst=2.2 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=226s frames=67 | per frame: world=62.0 view=20.0 (distinct 3.0) proj=22.0 (persp 4.0 ortho 18.0) other=0.0 | equals-cache skips: world=1351 view=1206 proj=1205
+  draws/frame: fixed-function=119.9 programmable-VS=12.5 (9.5% of 132.4) | SetVertexShader=15.6 VSconst=3.7 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=227s frames=71 | per frame: world=63.7 view=20.0 (distinct 3.0) proj=22.0 (persp 4.0 ortho 18.0) other=0.0 | equals-cache skips: world=1399 view=1278 proj=1278
+  draws/frame: fixed-function=120.6 programmable-VS=15.0 (11.1% of 135.6) | SetVertexShader=18.0 VSconst=6.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=228s frames=70 | per frame: world=65.6 view=20.0 (distinct 3.0) proj=22.0 (persp 4.0 ortho 18.0) other=0.0 | equals-cache skips: world=1493 view=1260 proj=1261
+  draws/frame: fixed-function=121.5 programmable-VS=15.0 (11.0% of 136.5) | SetVertexShader=19.4 VSconst=6.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=229s frames=72 | per frame: world=61.9 view=20.0 (distinct 3.0) proj=22.0 (persp 4.0 ortho 18.0) other=0.0 | equals-cache skips: world=1578 view=1296 proj=1295
+  draws/frame: fixed-function=114.7 programmable-VS=15.0 (11.6% of 129.7) | SetVertexShader=17.4 VSconst=6.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=230s frames=69 | per frame: world=61.7 view=20.0 (distinct 3.0) proj=22.0 (persp 4.0 ortho 18.0) other=0.0 | equals-cache skips: world=1599 view=1242 proj=1242
+  draws/frame: fixed-function=115.9 programmable-VS=15.0 (11.5% of 130.9) | SetVertexShader=19.5 VSconst=6.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=231s frames=73 | per frame: world=59.3 view=17.7 (distinct 3.0) proj=19.7 (persp 4.0 ortho 15.7) other=0.0 | equals-cache skips: world=1536 view=1149 proj=1149
+  draws/frame: fixed-function=112.3 programmable-VS=15.0 (11.8% of 127.3) | SetVertexShader=21.9 VSconst=6.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=232s frames=72 | per frame: world=50.8 view=9.0 (distinct 3.0) proj=11.0 (persp 4.0 ortho 7.0) other=0.0 | equals-cache skips: world=898 view=504 proj=504
+  draws/frame: fixed-function=105.8 programmable-VS=15.0 (12.4% of 120.8) | SetVertexShader=23.2 VSconst=6.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=233s frames=72 | per frame: world=49.9 view=9.0 (distinct 3.0) proj=11.0 (persp 4.0 ortho 7.0) other=0.0 | equals-cache skips: world=894 view=504 proj=505
+  draws/frame: fixed-function=102.2 programmable-VS=15.0 (12.8% of 117.2) | SetVertexShader=22.0 VSconst=6.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=234s frames=70 | per frame: world=52.2 view=9.0 (distinct 3.0) proj=11.0 (persp 4.0 ortho 7.0) other=0.0 | equals-cache skips: world=972 view=490 proj=489
+  draws/frame: fixed-function=103.2 programmable-VS=21.7 (17.3% of 124.9) | SetVertexShader=26.0 VSconst=6.1 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=235s frames=68 | per frame: world=54.2 view=9.2 (distinct 3.2) proj=11.2 (persp 4.0 ortho 7.2) other=0.0 | equals-cache skips: world=1020 view=476 proj=476
+  draws/frame: fixed-function=102.2 programmable-VS=33.4 (24.6% of 135.5) | SetVertexShader=29.4 VSconst=9.4 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=236s frames=72 | per frame: world=51.6 view=10.0 (distinct 4.0) proj=12.0 (persp 4.0 ortho 8.0) other=0.0 | equals-cache skips: world=902 view=504 proj=504
+  draws/frame: fixed-function=99.0 programmable-VS=40.5 (29.0% of 139.5) | SetVertexShader=34.1 VSconst=10.8 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=237s frames=73 | per frame: world=49.1 view=10.6 (distinct 3.8) proj=12.6 (persp 4.0 ortho 8.6) other=0.0 | equals-cache skips: world=917 view=511 proj=511
+  draws/frame: fixed-function=95.3 programmable-VS=50.3 (34.6% of 145.6) | SetVertexShader=34.1 VSconst=11.1 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=238s frames=72 | per frame: world=52.7 view=13.2 (distinct 3.7) proj=15.2 (persp 4.4 ortho 10.8) other=0.0 | equals-cache skips: world=1053 view=630 proj=646
+  draws/frame: fixed-function=92.7 programmable-VS=50.3 (35.2% of 143.0) | SetVertexShader=30.6 VSconst=10.3 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=239s frames=69 | per frame: world=79.6 view=24.0 (distinct 6.0) proj=26.0 (persp 6.0 ortho 20.0) other=0.0 | equals-cache skips: world=1656 view=1104 proj=1173
+  draws/frame: fixed-function=141.2 programmable-VS=55.9 (28.4% of 197.1) | SetVertexShader=44.4 VSconst=15.9 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=240s frames=66 | per frame: world=81.7 view=24.0 (distinct 6.0) proj=26.0 (persp 6.0 ortho 20.0) other=0.0 | equals-cache skips: world=1586 view=1056 proj=1123
+  draws/frame: fixed-function=145.7 programmable-VS=57.9 (28.5% of 203.6) | SetVertexShader=46.8 VSconst=17.4 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=241s frames=70 | per frame: world=82.4 view=23.4 (distinct 6.0) proj=25.4 (persp 6.0 ortho 19.4) other=0.0 | equals-cache skips: world=1638 view=1080 proj=1149
+  draws/frame: fixed-function=147.6 programmable-VS=59.8 (28.8% of 207.4) | SetVertexShader=50.2 VSconst=19.5 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=242s frames=69 | per frame: world=78.9 view=19.4 (distinct 6.2) proj=21.4 (persp 6.0 ortho 15.4) other=0.0 | equals-cache skips: world=1318 view=784 proj=852
+  draws/frame: fixed-function=141.6 programmable-VS=63.8 (31.1% of 205.4) | SetVertexShader=52.3 VSconst=21.9 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=243s frames=66 | per frame: world=91.8 view=23.2 (distinct 8.0) proj=25.3 (persp 6.1 ortho 19.2) other=0.0 | equals-cache skips: world=1565 view=938 proj=1004
+  draws/frame: fixed-function=165.3 programmable-VS=96.9 (37.0% of 262.1) | SetVertexShader=60.9 VSconst=25.9 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=244s frames=63 | per frame: world=100.7 view=22.7 (distinct 8.0) proj=24.7 (persp 5.9 ortho 18.8) other=0.0 | equals-cache skips: world=1494 view=868 proj=931
+  draws/frame: fixed-function=194.5 programmable-VS=113.7 (36.9% of 308.1) | SetVertexShader=65.7 VSconst=27.6 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=245s frames=68 | per frame: world=78.7 view=15.7 (distinct 5.4) proj=17.7 (persp 5.0 ortho 12.7) other=0.0 | equals-cache skips: world=1171 view=699 proj=733
+  draws/frame: fixed-function=135.3 programmable-VS=111.6 (45.2% of 246.9) | SetVertexShader=58.6 VSconst=26.4 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=246s frames=73 | per frame: world=54.5 view=10.4 (distinct 3.0) proj=12.3 (persp 4.0 ortho 8.4) other=0.0 | equals-cache skips: world=901 view=611 proj=610
+  draws/frame: fixed-function=77.8 programmable-VS=82.1 (51.4% of 159.9) | SetVertexShader=37.5 VSconst=17.9 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=247s frames=66 | per frame: world=77.8 view=19.9 (distinct 4.4) proj=21.9 (persp 5.0 ortho 17.0) other=0.0 | equals-cache skips: world=1388 view=1004 proj=1033
+  draws/frame: fixed-function=120.8 programmable-VS=77.7 (39.1% of 198.5) | SetVertexShader=43.6 VSconst=18.7 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=248s frames=64 | per frame: world=96.6 view=26.4 (distinct 6.0) proj=28.4 (persp 6.0 ortho 22.4) other=0.0 | equals-cache skips: world=1633 view=1172 proj=1237
+  draws/frame: fixed-function=158.5 programmable-VS=95.6 (37.6% of 254.0) | SetVertexShader=50.7 VSconst=22.6 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=249s frames=68 | per frame: world=59.6 view=17.9 (distinct 3.0) proj=19.9 (persp 4.0 ortho 15.9) other=0.0 | equals-cache skips: world=1439 view=1075 proj=1077
+  draws/frame: fixed-function=86.8 programmable-VS=84.4 (49.3% of 171.1) | SetVertexShader=36.1 VSconst=17.2 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=250s frames=73 | per frame: world=47.8 view=15.4 (distinct 3.0) proj=17.4 (persp 4.0 ortho 13.4) other=0.0 | equals-cache skips: world=1381 view=981 proj=980
+  draws/frame: fixed-function=71.3 programmable-VS=75.0 (51.3% of 146.4) | SetVertexShader=30.0 VSconst=12.9 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=251s frames=71 | per frame: world=38.0 view=10.0 (distinct 3.0) proj=12.0 (persp 4.0 ortho 8.0) other=0.0 | equals-cache skips: world=1044 view=568 proj=568
+  draws/frame: fixed-function=66.4 programmable-VS=56.3 (45.9% of 122.7) | SetVertexShader=25.6 VSconst=8.6 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=252s frames=68 | per frame: world=40.9 view=12.2 (distinct 3.0) proj=14.2 (persp 4.0 ortho 10.2) other=0.0 | equals-cache skips: world=1002 view=694 proj=695
+  draws/frame: fixed-function=74.5 programmable-VS=64.1 (46.2% of 138.6) | SetVertexShader=30.9 VSconst=10.3 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=253s frames=73 | per frame: world=40.1 view=14.1 (distinct 3.0) proj=16.0 (persp 4.0 ortho 12.1) other=0.0 | equals-cache skips: world=1080 view=881 proj=880
+  draws/frame: fixed-function=75.1 programmable-VS=50.1 (40.0% of 125.2) | SetVertexShader=25.2 VSconst=7.8 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=254s frames=66 | per frame: world=70.1 view=14.0 (distinct 3.0) proj=16.0 (persp 4.0 ortho 12.0) other=0.0 | equals-cache skips: world=1243 view=792 proj=793
+  draws/frame: fixed-function=119.4 programmable-VS=55.2 (31.6% of 174.6) | SetVertexShader=47.7 VSconst=18.4 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=255s frames=68 | per frame: world=67.7 view=14.5 (distinct 3.0) proj=16.4 (persp 4.0 ortho 12.5) other=0.0 | equals-cache skips: world=1131 view=848 proj=847
+  draws/frame: fixed-function=116.1 programmable-VS=50.0 (30.1% of 166.1) | SetVertexShader=47.0 VSconst=18.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=256s frames=65 | per frame: world=65.6 view=14.7 (distinct 3.0) proj=16.7 (persp 4.0 ortho 12.7) other=0.0 | equals-cache skips: world=1013 view=824 proj=825
+  draws/frame: fixed-function=114.8 programmable-VS=43.3 (27.4% of 158.1) | SetVertexShader=44.8 VSconst=16.9 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=257s frames=71 | per frame: world=63.0 view=13.2 (distinct 3.0) proj=15.3 (persp 4.0 ortho 11.2) other=0.0 | equals-cache skips: world=941 view=798 proj=797
+  draws/frame: fixed-function=112.9 programmable-VS=37.1 (24.8% of 150.0) | SetVertexShader=44.3 VSconst=16.1 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=258s frames=70 | per frame: world=62.7 view=13.0 (distinct 3.0) proj=14.9 (persp 3.9 ortho 11.0) other=0.0 | equals-cache skips: world=919 view=768 proj=768
+  draws/frame: fixed-function=109.2 programmable-VS=37.5 (25.6% of 146.7) | SetVertexShader=46.3 VSconst=16.8 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=259s frames=70 | per frame: world=61.5 view=10.6 (distinct 3.0) proj=12.7 (persp 4.1 ortho 8.6) other=0.0 | equals-cache skips: world=793 view=604 proj=605
+  draws/frame: fixed-function=109.6 programmable-VS=40.4 (26.9% of 150.0) | SetVertexShader=51.3 VSconst=19.1 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=260s frames=68 | per frame: world=63.5 view=10.7 (distinct 3.0) proj=12.6 (persp 3.9 ortho 8.7) other=0.0 | equals-cache skips: world=911 view=591 proj=590
+  draws/frame: fixed-function=112.8 programmable-VS=27.7 (19.7% of 140.5) | SetVertexShader=50.8 VSconst=17.7 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=261s frames=66 | per frame: world=62.8 view=9.9 (distinct 3.9) proj=12.0 (persp 4.1 ortho 7.9) other=0.0 | equals-cache skips: world=921 view=465 proj=465
+  draws/frame: fixed-function=123.7 programmable-VS=23.3 (15.9% of 147.0) | SetVertexShader=51.4 VSconst=16.2 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=262s frames=72 | per frame: world=50.7 view=9.9 (distinct 4.0) proj=11.9 (persp 3.9 ortho 7.9) other=0.0 | equals-cache skips: world=824 view=501 proj=501
+  draws/frame: fixed-function=103.5 programmable-VS=20.9 (16.8% of 124.3) | SetVertexShader=44.2 VSconst=14.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=263s frames=69 | per frame: world=49.4 view=10.9 (distinct 4.0) proj=12.9 (persp 4.0 ortho 8.8) other=0.0 | equals-cache skips: world=844 view=541 proj=542
+  draws/frame: fixed-function=101.3 programmable-VS=21.0 (17.2% of 122.3) | SetVertexShader=41.3 VSconst=14.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=264s frames=68 | per frame: world=49.8 view=11.5 (distinct 4.0) proj=13.5 (persp 4.0 ortho 9.5) other=0.0 | equals-cache skips: world=824 view=577 proj=576
+  draws/frame: fixed-function=99.5 programmable-VS=21.4 (17.7% of 120.9) | SetVertexShader=42.3 VSconst=14.4 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=265s frames=70 | per frame: world=54.4 view=11.4 (distinct 4.0) proj=13.4 (persp 4.0 ortho 9.4) other=0.0 | equals-cache skips: world=1055 view=591 proj=591
+  draws/frame: fixed-function=105.8 programmable-VS=21.4 (16.8% of 127.2) | SetVertexShader=43.9 VSconst=14.5 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=266s frames=71 | per frame: world=55.2 view=12.3 (distinct 4.0) proj=14.3 (persp 4.0 ortho 10.3) other=0.0 | equals-cache skips: world=1123 view=658 proj=659
+  draws/frame: fixed-function=108.4 programmable-VS=21.3 (16.4% of 129.7) | SetVertexShader=43.7 VSconst=14.3 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=267s frames=71 | per frame: world=47.9 view=11.5 (distinct 4.0) proj=13.5 (persp 3.9 ortho 9.5) other=0.0 | equals-cache skips: world=959 view=608 proj=607
+  draws/frame: fixed-function=102.1 programmable-VS=17.7 (14.8% of 119.8) | SetVertexShader=37.8 VSconst=11.8 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=268s frames=68 | per frame: world=46.5 view=11.2 (distinct 4.0) proj=13.2 (persp 4.0 ortho 9.2) other=0.0 | equals-cache skips: world=887 view=560 proj=560
+  draws/frame: fixed-function=101.9 programmable-VS=18.0 (15.0% of 119.9) | SetVertexShader=37.1 VSconst=12.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=269s frames=73 | per frame: world=43.8 view=10.0 (distinct 4.0) proj=12.0 (persp 4.0 ortho 8.0) other=0.0 | equals-cache skips: world=728 view=511 proj=511
+  draws/frame: fixed-function=98.6 programmable-VS=20.8 (17.4% of 119.4) | SetVertexShader=39.8 VSconst=14.8 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=270s frames=69 | per frame: world=47.1 view=13.8 (distinct 4.0) proj=15.8 (persp 4.0 ortho 11.8) other=0.0 | equals-cache skips: world=889 view=744 proj=745
+  draws/frame: fixed-function=104.1 programmable-VS=22.5 (17.8% of 126.5) | SetVertexShader=42.2 VSconst=16.4 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=271s frames=70 | per frame: world=48.7 view=19.0 (distinct 4.0) proj=20.9 (persp 4.0 ortho 17.0) other=0.0 | equals-cache skips: world=1257 view=1120 proj=1119
+  draws/frame: fixed-function=116.5 programmable-VS=21.6 (15.6% of 138.1) | SetVertexShader=41.4 VSconst=15.6 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=272s frames=70 | per frame: world=52.6 view=25.7 (distinct 4.0) proj=27.7 (persp 4.0 ortho 23.7) other=0.0 | equals-cache skips: world=1729 view=1586 proj=1586
+  draws/frame: fixed-function=110.3 programmable-VS=25.2 (18.6% of 135.5) | SetVertexShader=44.2 VSconst=19.4 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=273s frames=71 | per frame: world=55.2 view=31.2 (distinct 4.8) proj=33.2 (persp 4.0 ortho 29.2) other=0.0 | equals-cache skips: world=2214 view=1947 proj=1947
+  draws/frame: fixed-function=117.9 programmable-VS=16.3 (12.1% of 134.2) | SetVertexShader=35.6 VSconst=13.4 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=274s frames=69 | per frame: world=55.6 view=29.8 (distinct 4.0) proj=31.8 (persp 4.0 ortho 27.8) other=0.0 | equals-cache skips: world=2417 view=1848 proj=1849
+  draws/frame: fixed-function=115.6 programmable-VS=9.1 (7.3% of 124.7) | SetVertexShader=26.6 VSconst=7.1 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=275s frames=72 | per frame: world=49.3 view=27.2 (distinct 4.0) proj=29.2 (persp 4.0 ortho 25.3) other=0.0 | equals-cache skips: world=2212 view=1748 proj=1747
+  draws/frame: fixed-function=94.1 programmable-VS=7.9 (7.8% of 102.0) | SetVertexShader=22.9 VSconst=5.9 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=276s frames=68 | per frame: world=49.5 view=31.0 (distinct 4.9) proj=33.0 (persp 4.6 ortho 28.3) other=0.0 | equals-cache skips: world=2048 view=1778 proj=1778
+  draws/frame: fixed-function=106.1 programmable-VS=8.0 (7.0% of 114.1) | SetVertexShader=26.6 VSconst=6.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=277s frames=67 | per frame: world=59.6 view=25.2 (distinct 6.6) proj=27.2 (persp 6.0 ortho 21.2) other=0.0 | equals-cache skips: world=1489 view=1113 proj=1114
+  draws/frame: fixed-function=160.3 programmable-VS=16.6 (9.4% of 176.9) | SetVertexShader=47.7 VSconst=12.3 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=278s frames=66 | per frame: world=65.6 view=21.5 (distinct 6.0) proj=23.5 (persp 5.3 ortho 18.1) other=0.0 | equals-cache skips: world=1283 view=951 proj=950
+  draws/frame: fixed-function=162.0 programmable-VS=39.2 (19.5% of 201.2) | SetVertexShader=57.7 VSconst=19.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=279s frames=67 | per frame: world=40.5 view=14.0 (distinct 4.0) proj=16.0 (persp 4.0 ortho 12.0) other=0.0 | equals-cache skips: world=871 view=737 proj=737
+  draws/frame: fixed-function=117.2 programmable-VS=19.1 (14.0% of 136.3) | SetVertexShader=36.4 VSconst=13.1 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=280s frames=69 | per frame: world=34.6 view=12.7 (distinct 4.0) proj=14.8 (persp 4.0 ortho 10.7) other=0.0 | equals-cache skips: world=811 view=671 proj=672
+  draws/frame: fixed-function=104.0 programmable-VS=18.0 (14.7% of 122.0) | SetVertexShader=31.6 VSconst=12.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=281s frames=72 | per frame: world=30.5 view=11.3 (distinct 4.0) proj=13.3 (persp 3.9 ortho 9.4) other=0.0 | equals-cache skips: world=744 view=602 proj=601
+  draws/frame: fixed-function=100.4 programmable-VS=16.1 (13.8% of 116.5) | SetVertexShader=29.8 VSconst=11.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=282s frames=72 | per frame: world=30.8 view=12.2 (distinct 4.0) proj=14.2 (persp 4.0 ortho 10.2) other=0.0 | equals-cache skips: world=803 view=659 proj=659
+  draws/frame: fixed-function=96.8 programmable-VS=20.0 (17.1% of 116.8) | SetVertexShader=32.7 VSconst=14.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=283s frames=70 | per frame: world=31.3 view=13.2 (distinct 4.0) proj=15.1 (persp 3.9 ortho 11.2) other=0.0 | equals-cache skips: world=854 view=714 proj=714
+  draws/frame: fixed-function=97.5 programmable-VS=19.7 (16.8% of 117.2) | SetVertexShader=32.2 VSconst=13.9 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=284s frames=77 | per frame: world=28.0 view=11.0 (distinct 4.0) proj=11.0 (persp 2.0 ortho 9.0) other=0.0 | equals-cache skips: world=770 view=616 proj=616
+  draws/frame: fixed-function=95.0 programmable-VS=16.0 (14.4% of 111.0) | SetVertexShader=30.0 VSconst=12.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=339s frames=1392 | per frame: world=0.7 view=0.3 (distinct 0.1) proj=0.3 (persp 0.0 ortho 0.2) other=0.0 | equals-cache skips: world=340 view=272 proj=272
+  draws/frame: fixed-function=3.3 programmable-VS=0.4 (10.6% of 3.7) | SetVertexShader=1.7 VSconst=0.3 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=340s frames=9 | per frame: world=14.3 view=12.2 (distinct 0.2) proj=12.3 (persp 0.2 ortho 12.1) other=0.0 | equals-cache skips: world=111 view=109 proj=1
+  draws/frame: fixed-function=20.4 programmable-VS=1.4 (6.6% of 21.9) | SetVertexShader=3.9 VSconst=1.1 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=341s frames=9 | per frame: world=12.2 view=12.2 (distinct 0.0) proj=12.2 (persp 0.0 ortho 12.2) other=0.0 | equals-cache skips: world=110 view=110 proj=0
+  draws/frame: fixed-function=12.2 programmable-VS=0.0 (0.0% of 12.2) | SetVertexShader=1.0 VSconst=0.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => every draw this interval was fixed-function: route (b) (draw twice at D3D8) would cover all of it
+t=342s frames=5 | per frame: world=110.2 view=12.2 (distinct 1.0) proj=12.2 (persp 0.6 ortho 11.6) other=0.0 | equals-cache skips: world=62 view=56 proj=1
+  draws/frame: fixed-function=487.8 programmable-VS=12.4 (2.5% of 500.2) | SetVertexShader=34.4 VSconst=11.6 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=343s frames=53 | per frame: world=151.8 view=34.5 (distinct 4.0) proj=36.4 (persp 2.9 ortho 33.5) other=0.0 | equals-cache skips: world=1920 view=1670 proj=1617
+  draws/frame: fixed-function=251.2 programmable-VS=23.1 (8.4% of 274.2) | SetVertexShader=59.2 VSconst=23.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=344s frames=81 | per frame: world=153.4 view=40.0 (distinct 4.0) proj=42.1 (persp 3.0 ortho 39.0) other=0.0 | equals-cache skips: world=3490 view=2997 proj=2916
+  draws/frame: fixed-function=248.6 programmable-VS=21.3 (7.9% of 269.8) | SetVertexShader=58.7 VSconst=21.3 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=345s frames=75 | per frame: world=150.5 view=40.0 (distinct 4.0) proj=41.9 (persp 3.0 ortho 39.0) other=0.0 | equals-cache skips: world=3218 view=2775 proj=2700
+  draws/frame: fixed-function=243.2 programmable-VS=20.7 (7.9% of 263.9) | SetVertexShader=57.2 VSconst=20.7 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=346s frames=67 | per frame: world=152.0 view=40.0 (distinct 4.0) proj=42.0 (persp 3.0 ortho 39.0) other=0.0 | equals-cache skips: world=2881 view=2479 proj=2412
+  draws/frame: fixed-function=246.0 programmable-VS=21.0 (7.9% of 267.0) | SetVertexShader=58.0 VSconst=21.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=347s frames=67 | per frame: world=152.0 view=40.0 (distinct 4.0) proj=42.0 (persp 3.0 ortho 39.0) other=0.0 | equals-cache skips: world=2881 view=2479 proj=2412
+  draws/frame: fixed-function=246.0 programmable-VS=21.0 (7.9% of 267.0) | SetVertexShader=58.0 VSconst=21.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=348s frames=65 | per frame: world=150.5 view=40.0 (distinct 4.0) proj=42.0 (persp 3.0 ortho 39.0) other=0.0 | equals-cache skips: world=2844 view=2405 proj=2340
+  draws/frame: fixed-function=245.3 programmable-VS=19.4 (7.3% of 264.7) | SetVertexShader=53.4 VSconst=19.4 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=349s frames=69 | per frame: world=128.9 view=24.7 (distinct 4.0) proj=26.7 (persp 3.0 ortho 23.7) other=0.0 | equals-cache skips: world=1932 view=1493 proj=1424
+  draws/frame: fixed-function=224.3 programmable-VS=17.7 (7.3% of 242.0) | SetVertexShader=51.6 VSconst=17.7 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=350s frames=71 | per frame: world=104.6 view=20.0 (distinct 4.0) proj=22.0 (persp 3.0 ortho 19.0) other=0.0 | equals-cache skips: world=1606 view=1207 proj=1136
+  draws/frame: fixed-function=184.4 programmable-VS=14.7 (7.4% of 199.2) | SetVertexShader=48.8 VSconst=14.7 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=351s frames=72 | per frame: world=88.1 view=19.7 (distinct 3.7) proj=21.7 (persp 3.0 ortho 18.7) other=0.0 | equals-cache skips: world=1683 view=1224 proj=1152
+  draws/frame: fixed-function=141.8 programmable-VS=15.4 (9.8% of 157.2) | SetVertexShader=43.3 VSconst=15.4 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=352s frames=76 | per frame: world=69.1 view=20.7 (distinct 2.4) proj=22.7 (persp 3.0 ortho 19.7) other=0.0 | equals-cache skips: world=1868 view=1467 proj=1391
+  draws/frame: fixed-function=111.0 programmable-VS=8.7 (7.3% of 119.8) | SetVertexShader=27.2 VSconst=8.7 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=353s frames=79 | per frame: world=58.9 view=24.1 (distinct 3.1) proj=26.1 (persp 3.0 ortho 23.1) other=0.0 | equals-cache skips: world=2270 view=1738 proj=1659
+  draws/frame: fixed-function=85.5 programmable-VS=5.2 (5.7% of 90.6) | SetVertexShader=17.9 VSconst=5.2 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=354s frames=78 | per frame: world=38.9 view=12.7 (distinct 3.0) proj=14.7 (persp 3.0 ortho 11.7) other=0.0 | equals-cache skips: world=1354 view=834 proj=756
+  draws/frame: fixed-function=50.4 programmable-VS=4.0 (7.4% of 54.4) | SetVertexShader=12.4 VSconst=4.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=355s frames=76 | per frame: world=39.7 view=10.0 (distinct 3.0) proj=12.0 (persp 3.0 ortho 9.0) other=0.0 | equals-cache skips: world=1138 view=611 proj=535
+  draws/frame: fixed-function=56.9 programmable-VS=4.0 (6.6% of 60.9) | SetVertexShader=12.0 VSconst=4.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=356s frames=75 | per frame: world=41.5 view=11.9 (distinct 3.9) proj=13.9 (persp 3.0 ortho 10.9) other=0.0 | equals-cache skips: world=827 view=675 proj=600
+  draws/frame: fixed-function=91.4 programmable-VS=6.7 (6.8% of 98.1) | SetVertexShader=24.1 VSconst=6.7 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=357s frames=77 | per frame: world=39.1 view=12.0 (distinct 4.0) proj=14.0 (persp 3.0 ortho 11.0) other=0.0 | equals-cache skips: world=847 view=693 proj=616
+  draws/frame: fixed-function=86.7 programmable-VS=6.4 (6.9% of 93.1) | SetVertexShader=24.9 VSconst=6.4 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=358s frames=79 | per frame: world=37.0 view=12.0 (distinct 4.0) proj=14.0 (persp 3.0 ortho 11.0) other=0.0 | equals-cache skips: world=870 view=711 proj=632
+  draws/frame: fixed-function=82.6 programmable-VS=6.0 (6.8% of 88.6) | SetVertexShader=24.2 VSconst=6.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=359s frames=75 | per frame: world=30.8 view=11.5 (distinct 3.5) proj=13.5 (persp 3.0 ortho 10.5) other=0.0 | equals-cache skips: world=791 view=675 proj=600
+  draws/frame: fixed-function=64.9 programmable-VS=5.1 (7.3% of 70.0) | SetVertexShader=18.7 VSconst=5.1 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=360s frames=73 | per frame: world=25.3 view=11.0 (distinct 3.0) proj=13.0 (persp 3.0 ortho 10.0) other=0.0 | equals-cache skips: world=731 view=657 proj=584
+  draws/frame: fixed-function=50.5 programmable-VS=4.0 (7.3% of 54.5) | SetVertexShader=14.2 VSconst=4.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=361s frames=74 | per frame: world=24.9 view=11.5 (distinct 3.1) proj=13.5 (persp 3.0 ortho 10.5) other=0.0 | equals-cache skips: world=775 view=694 proj=620
+  draws/frame: fixed-function=42.7 programmable-VS=4.2 (9.0% of 46.9) | SetVertexShader=13.0 VSconst=4.2 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=362s frames=78 | per frame: world=23.6 view=11.6 (distinct 3.0) proj=13.6 (persp 3.0 ortho 10.6) other=0.0 | equals-cache skips: world=825 view=747 proj=669
+  draws/frame: fixed-function=39.6 programmable-VS=4.0 (9.2% of 43.6) | SetVertexShader=12.0 VSconst=4.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=363s frames=77 | per frame: world=34.1 view=11.9 (distinct 3.9) proj=13.9 (persp 3.4 ortho 10.5) other=0.0 | equals-cache skips: world=943 view=696 proj=619
+  draws/frame: fixed-function=58.0 programmable-VS=4.9 (7.8% of 62.9) | SetVertexShader=17.7 VSconst=4.9 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=364s frames=77 | per frame: world=51.6 view=16.6 (distinct 5.0) proj=18.6 (persp 4.0 ortho 14.6) other=0.0 | equals-cache skips: world=1433 view=971 proj=894
+  draws/frame: fixed-function=85.6 programmable-VS=6.0 (6.5% of 91.6) | SetVertexShader=25.0 VSconst=6.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=365s frames=73 | per frame: world=38.8 view=13.9 (distinct 4.1) proj=15.9 (persp 3.6 ortho 12.4) other=0.0 | equals-cache skips: world=1067 view=789 proj=716
+  draws/frame: fixed-function=65.0 programmable-VS=5.1 (7.3% of 70.1) | SetVertexShader=19.3 VSconst=5.1 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=366s frames=82 | per frame: world=22.0 view=10.0 (distinct 3.0) proj=12.0 (persp 3.0 ortho 9.0) other=0.0 | equals-cache skips: world=738 view=656 proj=574
+  draws/frame: fixed-function=38.0 programmable-VS=4.0 (9.5% of 42.0) | SetVertexShader=12.0 VSconst=4.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=367s frames=80 | per frame: world=19.8 view=7.8 (distinct 3.0) proj=9.8 (persp 3.0 ortho 6.8) other=0.0 | equals-cache skips: world=545 view=465 proj=385
+  draws/frame: fixed-function=35.8 programmable-VS=4.0 (10.0% of 39.8) | SetVertexShader=11.2 VSconst=4.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=368s frames=81 | per frame: world=17.0 view=5.0 (distinct 3.0) proj=7.0 (persp 3.0 ortho 4.0) other=0.0 | equals-cache skips: world=324 view=243 proj=162
+  draws/frame: fixed-function=33.0 programmable-VS=4.0 (10.8% of 37.0) | SetVertexShader=10.0 VSconst=4.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=369s frames=80 | per frame: world=20.0 view=5.1 (distinct 3.1) proj=7.1 (persp 3.0 ortho 4.1) other=0.0 | equals-cache skips: world=331 view=240 proj=160
+  draws/frame: fixed-function=43.4 programmable-VS=4.3 (9.0% of 47.7) | SetVertexShader=14.2 VSconst=4.3 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=370s frames=77 | per frame: world=24.7 view=6.0 (distinct 4.0) proj=8.0 (persp 3.0 ortho 5.0) other=0.0 | equals-cache skips: world=385 view=231 proj=154
+  draws/frame: fixed-function=73.6 programmable-VS=6.0 (7.5% of 79.6) | SetVertexShader=22.7 VSconst=6.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=371s frames=74 | per frame: world=22.1 view=6.0 (distinct 4.0) proj=8.0 (persp 3.0 ortho 5.0) other=0.0 | equals-cache skips: world=370 view=222 proj=148
+  draws/frame: fixed-function=67.0 programmable-VS=6.0 (8.2% of 73.0) | SetVertexShader=23.9 VSconst=6.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=372s frames=80 | per frame: world=15.4 view=6.0 (distinct 4.0) proj=8.0 (persp 3.0 ortho 5.0) other=0.0 | equals-cache skips: world=400 view=240 proj=160
+  draws/frame: fixed-function=32.5 programmable-VS=6.0 (15.6% of 38.5) | SetVertexShader=19.6 VSconst=6.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=373s frames=80 | per frame: world=19.4 view=6.0 (distinct 4.0) proj=8.0 (persp 3.0 ortho 5.0) other=0.0 | equals-cache skips: world=400 view=240 proj=160
+  draws/frame: fixed-function=68.0 programmable-VS=6.0 (8.1% of 74.0) | SetVertexShader=24.5 VSconst=6.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=374s frames=79 | per frame: world=20.9 view=6.7 (distinct 4.0) proj=8.7 (persp 3.0 ortho 5.7) other=0.0 | equals-cache skips: world=451 view=293 proj=214
+  draws/frame: fixed-function=74.3 programmable-VS=6.0 (7.5% of 80.3) | SetVertexShader=25.1 VSconst=6.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=375s frames=79 | per frame: world=23.4 view=12.6 (distinct 3.6) proj=14.6 (persp 3.0 ortho 11.6) other=0.0 | equals-cache skips: world=917 view=790 proj=711
+  draws/frame: fixed-function=57.1 programmable-VS=5.2 (8.4% of 62.3) | SetVertexShader=14.7 VSconst=5.2 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=376s frames=79 | per frame: world=21.2 view=12.0 (distinct 3.0) proj=14.0 (persp 3.0 ortho 11.0) other=0.0 | equals-cache skips: world=869 view=790 proj=711
+  draws/frame: fixed-function=49.6 programmable-VS=4.0 (7.5% of 53.6) | SetVertexShader=11.2 VSconst=4.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=377s frames=72 | per frame: world=20.7 view=12.0 (distinct 3.0) proj=14.0 (persp 3.0 ortho 11.0) other=0.0 | equals-cache skips: world=792 view=720 proj=648
+  draws/frame: fixed-function=48.0 programmable-VS=4.0 (7.7% of 52.0) | SetVertexShader=12.1 VSconst=4.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=378s frames=76 | per frame: world=20.4 view=12.0 (distinct 3.0) proj=14.0 (persp 3.0 ortho 11.0) other=0.0 | equals-cache skips: world=836 view=760 proj=684
+  draws/frame: fixed-function=45.6 programmable-VS=4.0 (8.1% of 49.6) | SetVertexShader=12.8 VSconst=4.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=379s frames=64 | per frame: world=20.7 view=11.7 (distinct 3.0) proj=13.7 (persp 3.0 ortho 10.7) other=0.0 | equals-cache skips: world=683 view=619 proj=555
+  draws/frame: fixed-function=45.7 programmable-VS=4.0 (8.1% of 49.7) | SetVertexShader=13.0 VSconst=4.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=380s frames=75 | per frame: world=21.0 view=12.0 (distinct 3.0) proj=14.0 (persp 3.0 ortho 11.0) other=0.0 | equals-cache skips: world=825 view=750 proj=675
+  draws/frame: fixed-function=41.2 programmable-VS=4.0 (8.9% of 45.2) | SetVertexShader=13.0 VSconst=4.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=381s frames=79 | per frame: world=20.1 view=12.0 (distinct 3.0) proj=14.0 (persp 3.0 ortho 11.0) other=0.0 | equals-cache skips: world=869 view=790 proj=711
+  draws/frame: fixed-function=41.1 programmable-VS=4.0 (8.9% of 45.1) | SetVertexShader=17.3 VSconst=4.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=382s frames=75 | per frame: world=20.0 view=12.0 (distinct 3.0) proj=14.0 (persp 3.0 ortho 11.0) other=0.0 | equals-cache skips: world=825 view=750 proj=675
+  draws/frame: fixed-function=43.0 programmable-VS=4.0 (8.5% of 47.0) | SetVertexShader=20.0 VSconst=4.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=383s frames=68 | per frame: world=14.1 view=6.1 (distinct 3.0) proj=8.1 (persp 3.0 ortho 5.1) other=0.0 | equals-cache skips: world=349 view=281 proj=213
+  draws/frame: fixed-function=37.1 programmable-VS=4.0 (9.7% of 41.1) | SetVertexShader=20.0 VSconst=4.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=384s frames=65 | per frame: world=13.0 view=5.0 (distinct 3.0) proj=7.0 (persp 3.0 ortho 4.0) other=0.0 | equals-cache skips: world=260 view=195 proj=130
+  draws/frame: fixed-function=36.0 programmable-VS=4.0 (10.0% of 40.0) | SetVertexShader=20.0 VSconst=4.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=385s frames=70 | per frame: world=13.0 view=5.0 (distinct 3.0) proj=7.0 (persp 3.0 ortho 4.0) other=0.0 | equals-cache skips: world=280 view=210 proj=140
+  draws/frame: fixed-function=36.0 programmable-VS=4.0 (10.0% of 40.0) | SetVertexShader=20.0 VSconst=4.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=386s frames=73 | per frame: world=13.5 view=5.0 (distinct 3.0) proj=7.0 (persp 3.0 ortho 4.0) other=0.0 | equals-cache skips: world=292 view=219 proj=146
+  draws/frame: fixed-function=42.3 programmable-VS=4.0 (8.6% of 46.3) | SetVertexShader=24.1 VSconst=4.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=387s frames=79 | per frame: world=14.0 view=5.0 (distinct 3.0) proj=7.0 (persp 3.0 ortho 4.0) other=0.0 | equals-cache skips: world=316 view=237 proj=158
+  draws/frame: fixed-function=48.3 programmable-VS=4.0 (7.6% of 52.3) | SetVertexShader=25.6 VSconst=4.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=388s frames=68 | per frame: world=14.0 view=5.0 (distinct 3.0) proj=7.0 (persp 3.0 ortho 4.0) other=0.0 | equals-cache skips: world=272 view=204 proj=136
+  draws/frame: fixed-function=47.0 programmable-VS=4.0 (7.8% of 51.0) | SetVertexShader=23.0 VSconst=4.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=389s frames=71 | per frame: world=14.0 view=5.0 (distinct 3.0) proj=7.0 (persp 3.0 ortho 4.0) other=0.0 | equals-cache skips: world=284 view=213 proj=142
+  draws/frame: fixed-function=46.3 programmable-VS=4.0 (7.9% of 50.3) | SetVertexShader=24.4 VSconst=4.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=390s frames=71 | per frame: world=17.0 view=8.0 (distinct 3.0) proj=10.0 (persp 3.0 ortho 7.0) other=0.0 | equals-cache skips: world=494 view=423 proj=352
+  draws/frame: fixed-function=45.0 programmable-VS=4.0 (8.2% of 49.0) | SetVertexShader=16.1 VSconst=4.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=391s frames=70 | per frame: world=20.0 view=11.5 (distinct 2.5) proj=13.5 (persp 3.0 ortho 10.5) other=0.0 | equals-cache skips: world=736 view=700 proj=630
+  draws/frame: fixed-function=47.1 programmable-VS=3.0 (6.0% of 50.2) | SetVertexShader=13.3 VSconst=3.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=392s frames=71 | per frame: world=19.0 view=11.0 (distinct 2.0) proj=13.0 (persp 3.0 ortho 10.0) other=0.0 | equals-cache skips: world=710 view=710 proj=639
+  draws/frame: fixed-function=44.0 programmable-VS=2.0 (4.3% of 46.0) | SetVertexShader=8.1 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=393s frames=74 | per frame: world=19.0 view=11.0 (distinct 2.0) proj=13.0 (persp 3.0 ortho 10.0) other=0.0 | equals-cache skips: world=740 view=740 proj=666
+  draws/frame: fixed-function=44.0 programmable-VS=2.0 (4.3% of 46.0) | SetVertexShader=8.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=394s frames=70 | per frame: world=19.0 view=11.0 (distinct 2.0) proj=13.0 (persp 3.0 ortho 10.0) other=0.0 | equals-cache skips: world=700 view=700 proj=630
+  draws/frame: fixed-function=44.0 programmable-VS=2.0 (4.3% of 46.0) | SetVertexShader=8.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=395s frames=83 | per frame: world=13.9 view=5.9 (distinct 2.0) proj=7.9 (persp 3.0 ortho 4.9) other=0.0 | equals-cache skips: world=403 view=403 proj=320
+  draws/frame: fixed-function=38.9 programmable-VS=2.0 (4.9% of 40.9) | SetVertexShader=8.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=396s frames=84 | per frame: world=12.0 view=4.0 (distinct 2.0) proj=6.0 (persp 3.0 ortho 3.0) other=0.0 | equals-cache skips: world=253 view=252 proj=168
+  draws/frame: fixed-function=37.3 programmable-VS=2.0 (5.1% of 39.3) | SetVertexShader=8.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=397s frames=81 | per frame: world=12.0 view=4.0 (distinct 2.0) proj=6.0 (persp 3.0 ortho 3.0) other=0.0 | equals-cache skips: world=242 view=243 proj=162
+  draws/frame: fixed-function=36.7 programmable-VS=2.0 (5.2% of 38.7) | SetVertexShader=8.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=398s frames=82 | per frame: world=12.0 view=4.0 (distinct 2.0) proj=6.0 (persp 3.0 ortho 3.0) other=0.0 | equals-cache skips: world=246 view=246 proj=164
+  draws/frame: fixed-function=37.0 programmable-VS=2.0 (5.1% of 39.0) | SetVertexShader=8.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=399s frames=76 | per frame: world=12.0 view=4.0 (distinct 2.0) proj=6.0 (persp 3.0 ortho 3.0) other=0.0 | equals-cache skips: world=228 view=228 proj=152
+  draws/frame: fixed-function=37.0 programmable-VS=2.0 (5.1% of 39.0) | SetVertexShader=8.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=400s frames=81 | per frame: world=12.0 view=4.0 (distinct 2.0) proj=6.0 (persp 3.0 ortho 3.0) other=0.0 | equals-cache skips: world=243 view=243 proj=162
+  draws/frame: fixed-function=37.0 programmable-VS=2.0 (5.1% of 39.0) | SetVertexShader=8.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=401s frames=79 | per frame: world=12.0 view=4.0 (distinct 2.0) proj=6.0 (persp 3.0 ortho 3.0) other=0.0 | equals-cache skips: world=237 view=237 proj=158
+  draws/frame: fixed-function=37.0 programmable-VS=2.0 (5.1% of 39.0) | SetVertexShader=8.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=402s frames=76 | per frame: world=12.0 view=4.0 (distinct 2.0) proj=6.0 (persp 3.0 ortho 3.0) other=0.0 | equals-cache skips: world=228 view=228 proj=152
+  draws/frame: fixed-function=37.0 programmable-VS=2.0 (5.1% of 39.0) | SetVertexShader=8.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=403s frames=75 | per frame: world=12.0 view=4.0 (distinct 2.0) proj=6.0 (persp 3.0 ortho 3.0) other=0.0 | equals-cache skips: world=225 view=225 proj=150
+  draws/frame: fixed-function=37.0 programmable-VS=2.0 (5.1% of 39.0) | SetVertexShader=8.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=404s frames=79 | per frame: world=12.0 view=4.0 (distinct 2.0) proj=6.0 (persp 3.0 ortho 3.0) other=0.0 | equals-cache skips: world=237 view=237 proj=158
+  draws/frame: fixed-function=37.0 programmable-VS=2.0 (5.1% of 39.0) | SetVertexShader=8.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=405s frames=79 | per frame: world=12.0 view=4.0 (distinct 2.0) proj=6.0 (persp 3.0 ortho 3.0) other=0.0 | equals-cache skips: world=237 view=237 proj=158
+  draws/frame: fixed-function=37.0 programmable-VS=2.0 (5.1% of 39.0) | SetVertexShader=8.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=406s frames=77 | per frame: world=12.0 view=4.0 (distinct 2.0) proj=6.0 (persp 3.0 ortho 3.0) other=0.0 | equals-cache skips: world=231 view=231 proj=154
+  draws/frame: fixed-function=37.0 programmable-VS=2.0 (5.1% of 39.0) | SetVertexShader=8.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=407s frames=69 | per frame: world=12.0 view=4.0 (distinct 2.0) proj=6.0 (persp 3.0 ortho 3.0) other=0.0 | equals-cache skips: world=207 view=207 proj=138
+  draws/frame: fixed-function=37.0 programmable-VS=2.0 (5.1% of 39.0) | SetVertexShader=8.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=408s frames=67 | per frame: world=12.0 view=4.0 (distinct 2.0) proj=6.0 (persp 3.0 ortho 3.0) other=0.0 | equals-cache skips: world=201 view=201 proj=134
+  draws/frame: fixed-function=37.0 programmable-VS=2.0 (5.1% of 39.0) | SetVertexShader=8.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=409s frames=70 | per frame: world=12.0 view=4.0 (distinct 2.0) proj=6.0 (persp 3.0 ortho 3.0) other=0.0 | equals-cache skips: world=210 view=210 proj=140
+  draws/frame: fixed-function=37.0 programmable-VS=2.0 (5.1% of 39.0) | SetVertexShader=8.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=410s frames=87 | per frame: world=12.0 view=4.0 (distinct 2.0) proj=6.0 (persp 3.0 ortho 3.0) other=0.0 | equals-cache skips: world=261 view=261 proj=174
+  draws/frame: fixed-function=37.0 programmable-VS=2.0 (5.1% of 39.0) | SetVertexShader=8.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=411s frames=64 | per frame: world=12.0 view=4.0 (distinct 2.0) proj=6.0 (persp 3.0 ortho 3.0) other=0.0 | equals-cache skips: world=192 view=192 proj=128
+  draws/frame: fixed-function=37.0 programmable-VS=2.0 (5.1% of 39.0) | SetVertexShader=8.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=412s frames=80 | per frame: world=12.0 view=4.0 (distinct 2.0) proj=6.0 (persp 3.0 ortho 3.0) other=0.0 | equals-cache skips: world=240 view=240 proj=160
+  draws/frame: fixed-function=37.0 programmable-VS=2.0 (5.1% of 39.0) | SetVertexShader=8.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=413s frames=78 | per frame: world=20.3 view=12.3 (distinct 2.0) proj=14.3 (persp 3.0 ortho 11.3) other=0.0 | equals-cache skips: world=882 view=882 proj=120
+  draws/frame: fixed-function=45.3 programmable-VS=2.0 (4.2% of 47.3) | SetVertexShader=8.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=414s frames=73 | per frame: world=48.0 view=40.0 (distinct 2.0) proj=42.0 (persp 3.0 ortho 39.0) other=0.0 | equals-cache skips: world=2847 view=2847 proj=0
+  draws/frame: fixed-function=73.0 programmable-VS=2.0 (2.7% of 75.0) | SetVertexShader=8.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=415s frames=79 | per frame: world=50.7 view=42.7 (distinct 2.0) proj=44.7 (persp 3.0 ortho 41.7) other=0.0 | equals-cache skips: world=3291 view=3291 proj=0
+  draws/frame: fixed-function=75.7 programmable-VS=2.0 (2.6% of 77.7) | SetVertexShader=8.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=416s frames=77 | per frame: world=63.0 view=55.0 (distinct 2.0) proj=57.0 (persp 3.0 ortho 54.0) other=0.0 | equals-cache skips: world=4158 view=4158 proj=0
+  draws/frame: fixed-function=88.0 programmable-VS=2.0 (2.2% of 90.0) | SetVertexShader=8.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=417s frames=76 | per frame: world=63.0 view=55.0 (distinct 2.0) proj=57.0 (persp 3.0 ortho 54.0) other=0.0 | equals-cache skips: world=4105 view=4104 proj=0
+  draws/frame: fixed-function=88.0 programmable-VS=2.0 (2.2% of 90.0) | SetVertexShader=8.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=418s frames=63 | per frame: world=61.6 view=53.7 (distinct 2.0) proj=55.7 (persp 2.9 ortho 52.8) other=0.0 | equals-cache skips: world=3325 view=3325 proj=2
+  draws/frame: fixed-function=86.2 programmable-VS=2.0 (2.2% of 88.2) | SetVertexShader=7.9 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=419s frames=67 | per frame: world=40.3 view=39.6 (distinct 2.0) proj=41.0 (persp 2.4 ortho 38.6) other=0.0 | equals-cache skips: world=2605 view=2588 proj=0
+  draws/frame: fixed-function=44.5 programmable-VS=1.4 (3.1% of 46.0) | SetVertexShader=3.4 VSconst=1.4 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=420s frames=81 | per frame: world=41.0 view=40.0 (distinct 2.0) proj=42.0 (persp 3.0 ortho 39.0) other=0.0 | equals-cache skips: world=3159 view=3159 proj=0
+  draws/frame: fixed-function=45.0 programmable-VS=2.0 (4.3% of 47.0) | SetVertexShader=4.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=421s frames=83 | per frame: world=30.3 view=29.3 (distinct 2.0) proj=31.3 (persp 3.0 ortho 28.3) other=0.0 | equals-cache skips: world=2346 view=2346 proj=0
+  draws/frame: fixed-function=34.3 programmable-VS=2.0 (5.5% of 36.3) | SetVertexShader=4.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono
+t=422s frames=79 | per frame: world=46.8 view=45.8 (distinct 2.0) proj=47.8 (persp 3.0 ortho 44.8) other=0.0 | equals-cache skips: world=3536 view=3536 proj=0
+  draws/frame: fixed-function=50.8 programmable-VS=2.0 (3.8% of 52.8) | SetVertexShader=4.0 VSconst=2.0 | shaders created=6 | VSconst regs: c10 x1 c0 x8 c0 x5
+  => some draws bypass SetTransform via vertex-shader constants: route (b) needs a constants path too, or those draws stay mono

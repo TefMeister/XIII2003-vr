@@ -218,6 +218,17 @@ engine's own cache is visible.
 
 ### The trap: the unchanged-matrix early-out
 
+> **✅ MEASURED 2026-09-03 — the early-out is RARE, but the design requirement is unchanged.**
+> Cumulative "would fire" counts against total calls, one session `[measured 2026-09-03]`:
+> **world 3,536 / 1,325,094 = 0.267 %**; **view 3,536 / 361,272 = 0.979 %**;
+> **projection 0 / 390,502 = 0 %** — the engine never re-sets an identical projection.
+>
+> ⚠️ This bounds how often the early-out is *reached* in vanilla play. It does **not** retire the
+> requirement below: the hazard was never frequency but that a cache left holding *our* modified
+> matrix makes the engine's next set look redundant, so the second eye silently inherits the first
+> eye's view. The requirement stands; what changed is that the cost of honouring it is small, so
+> route (a) is no longer the expensive option it appeared to be.
+
 `SetTransform` **returns doing nothing when the incoming matrix equals its cached copy.** Modify
 the view for eye 1, and when the engine sets the same matrix again for eye 2 it compares equal to
 the cache and is skipped - eye 2 silently inherits eye 1's view and stereo collapses with no error
@@ -265,6 +276,38 @@ the fixed-function projection per draw, below the engine `[reported 2026-09-02]`
 > confined to skinning, terrain or effects), and what fraction of a real frame they are. That is a
 > count, not a static question — which is what the draw recon below exists to measure.
 >
+> #### ✅ MEASURED 2026-09-03 (one flat run, dev PC) — the risk MATERIALISED. Route (b) alone is ruled out.
+>
+> `[measured 2026-09-03, n=26,595 frames / 343 intervals / 3,254,942 draws, one session]`
+> No `HANDLE TABLE OVERFLOWED`, so the count does not understate.
+>
+> | | |
+> |---|---|
+> | intervals with `programmable-VS > 0` | **338 of 343** |
+> | frame-weighted programmable share | **8.72 %** (283,774 draws) |
+> | peak interval | **51.4 %** of that second's draws |
+> | programmable draws / frame | mean 11.8, max **113.7** |
+> | distinct vertex shaders created | **6** in the whole session |
+>
+> The recon's verdict line fired on **339 of 343** intervals; only **4** reported an all
+> fixed-function second, and those are menus and loads. The busiest gameplay seconds have the
+> *highest* programmable share, so this is not menu noise.
+>
+> **⇒ DECISION: M2 = route (b) AS THE BACKBONE PLUS A VERTEX-SHADER-CONSTANTS PATH.** Route (b)
+> still covers ~91 % of draws with no early-out to fight, but on its own it would leave about one
+> draw in eleven — and half the frame in effect-heavy moments — flat inside a stereo image.
+>
+> **The live constant registers, identical in 342 of 343 intervals:** `c10 x1  c0 x8  c0 x5`.
+> - **`c0 x5` confirms the `+0x4205` static inference** `[verified-live 2026-09-03, n=342 intervals]`.
+>   This is where a per-eye matrix goes.
+> - **`c0 x8`** — eight float4s at `c0`, unpredicted. Two stacked matrices is the obvious reading but
+>   is `[hypothesis]` until a shader is read.
+> - **`c10 x1`** — one float4 at `c10`; the shape of a colour/scalar, not a transform.
+>
+> **Still NOT established:** *what* those draws are. Six shaders is a small enough surface to settle
+> by dumping their bytecode; a cel-shade outline pass is a plausible candidate for this game but is
+> `[hypothesis]` — nothing so far distinguishes it from skinned characters or particles.
+>
 > **`SetVertexShader` is not a reliable classifier on its own:** D3D8 overloads one `DWORD` for both
 > FVF codes and shader handles, and "an FVF has bit 0 clear" is a runtime convention, not something
 > to bet a design on. The recon therefore records what `CreateVertexShader` actually **returned** and
@@ -287,6 +330,40 @@ The `FCameraSceneNode` constructor takes location, rotation and FOV in one call,
 camera per eye is a viable second route. `SetTransform` is cheaper and does not require
 reproducing engine behaviour; the constructor route is the fallback if the cache problem above
 turns out to be intractable.
+
+### Live frame shape — measured 2026-09-03 (one flat run, dev PC)
+
+`[measured 2026-09-03, n=26,595 frames, one session]` — what a real XIII frame actually issues,
+which is what a stereo path has to work with. Mean 77.5 fps over 343 s.
+
+| per frame | mean | max | note |
+|---|---|---|---|
+| world `SetTransform` | 49.8 | 162.3 | |
+| view `SetTransform` | 13.6 | 55.0 | |
+| **distinct** view matrices | **3.3** | **8.0** | mode is 4.0 (130 of 343 intervals) |
+| projection, **perspective** | 2.8 | 6.1 | the 3D views |
+| projection, **orthographic** | 12.9 | 54.0 | HUD / canvas |
+| `other` transform types | 0.0 | 0.0 | none exist |
+
+Two consequences, both load-bearing:
+
+- **Most projection traffic is 2D.** Orthographic outnumbers perspective ~4.6:1, and the recon
+  labels those itself (*"a 2D / canvas pass, leave alone for stereo"*). A stereo path that rewrites
+  every projection would corrupt the HUD far more often than it fixes the world.
+- **"The view matrix" is not one thing.** The engine already renders 3–8 distinct views per frame
+  in vanilla, so multi-view is not alien to this renderer — but a stereo path must identify *which*
+  view is the player camera. Which one that is remains `[hypothesis]`.
+
+**The one perspective projection that landed in the dump budget decodes cleanly**
+`[verified-live 2026-09-03, n=1]` via `pose_math::DecodeD3DPerspective`:
+`fovY = 68.996°, aspect = 1.33333 (4:3), near = 5.0, far = 65541, offcentre = (0, 0)` — a symmetric
+frustum at the game's own 4:3 render aspect. Per-eye VR replaces both fov and aspect and makes the
+frustum asymmetric.
+
+> ⚠️ **`TransformReconDump=N` spends its budget on the MENU.** All 12 dumps in the 2026-09-03 run
+> carry `frame=574`, before gameplay began, so every dumped matrix is a menu identity and **no
+> gameplay matrix was captured**. The per-interval counters are unaffected. A future run needs a
+> bigger budget, a frame threshold, or a key trigger.
 
 ### State (2026-09-02, home PC, static only)
 
