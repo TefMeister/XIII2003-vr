@@ -12,7 +12,9 @@ projection layer should not have the same problem because it carries a pose per 
 tagged `[hypothesis]`, reasoned from the API's shape, with a note that it needed checking against the
 specification before anyone built on it.
 
-**Checked, from Khronos's own published header** `[verified-static 2026-09-02]`:
+**Checked, from Khronos's own published header** `[reported 2026-09-02]` — first-party, read out
+of the header itself, but a document read rather than a measurement. (Tag corrected 2026-09-03:
+`verified-static` is not one of the eight vocabulary names.):
 
 ```
 XrCompositionLayerProjectionView {
