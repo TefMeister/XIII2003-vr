@@ -1,7 +1,7 @@
 # Research index
 
-**Last `/gr` pass: 2026-09-02 (scoped re-run) — CHECK-IN** (board OPEN block + INDEX; the dossier and every topic were read in full earlier today)**.** My two morning drops are still unread in `engine-research/inbox/` and were left alone. One new topic, following a thread opened on a sibling an hour ago: **OpenXR's projection layer carries a pose per view**, verified from Khronos's own header rather than argued — both eyes go in one layer, in one space, so OpenVR #1253's last-call-wins collision cannot occur. The project-specific find is a gap: **both existing hosts are M1 flat-panel designs**, and a quad layer cannot carry stereo, so M2 needs a projection-layer path that does not exist yet. Pointer in `engine-research/inbox/`.
-_Previous: Last `/gr` pass: 2026-09-02 (estate sweep) — FULL (dossier read in full, every topic re-read, board read). Inbox was empty. Two new topics. XIII's UnrealScript source is public on GitHub (a …_
+**Last `/gr` pass: 2026-09-03 (estate sweep) — CHECK-IN** (board OPEN block + INDEX)**.** Inbox empty. **No new research** — this pass corrected an off-vocabulary `[verified-static]` tag in this project's OpenXR topic (→ `[reported]`, first-party sourcing kept in the prose) and filed a pointer for the same tag at `ENGINE-DOSSIER.md:665`, which is the modding lane's to change. Every open row is internal: one staged launch that decides the M2 route, the implementation that follows it, and a headset check of the already-built projection-layer path. Nothing public is in front of any of them.
+_Previous: **Last `/gr` pass: 2026-09-02 (scoped re-run) — CHECK-IN** (board OPEN block + INDEX; the dossier and every topic were read in full earlier today)**.** My two morning drops are still unread in `engine-research/inbox/` and were left alone. One new topic, follow…_
 
 Every research topic gathered for this project, newest first. Each row links to a self-contained
 write-up in `topics/`. Status tags:
