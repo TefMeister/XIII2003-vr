@@ -739,7 +739,7 @@ foreground.
     `ViewAdjustAim`, `OldAdjustAim`), and `AdjustAim`'s body is commented out on
     this branch.
 - **⚠️ The OpenXR question splits in two (`/gr`, folded 2026-09-02) — and the M2 half
-  does not exist yet.** `[verified-static 2026-09-02, from Khronos's published `openxr.h`]`
+  does not exist yet.** `[reported 2026-09-02]` — first-party, read out of Khronos's published `openxr.h` itself rather than from anyone's description of it, but a document read rather than a measurement (tag corrected 2026-09-04 from an off-vocabulary `verified-static`, per a `/gr` inbox drop)
   - **M1: the quad-layer host is unverified on hardware** — only the OpenVR/SteamVR
     overlay path has been confirmed in the headset. Enable exactly one host.
   - **M2: ~~there is no projection-layer path at all~~ — BUILT 2026-09-02, not yet run.**
@@ -777,6 +777,30 @@ foreground.
     **`far-cry-2-vr` is blocked on the identical question** for its AER submission — one
     headset test (two views submitted with deliberately different poses) answers it for
     both projects.
+  - **⚠️ Not merely untested — known to VARY between runtimes and versions** `[reported 2026-09-03,
+    folded from an `/sr` inbox drop 2026-09-04]`. Two public first-hand reports contradict each
+    other about which runtime is at fault: LukeRoss00 (2020-10, SteamVR 1.15.4 / OpenXR runtime
+    0.1.0, Valve Index) saw spec-correct per-view poses produce a **wrong stereo baseline plus a
+    vertical offset between the eyes**, worked around with the head pose for both views and a swap
+    of the views' `fov.angleDown`, with Oculus and Microsoft runtimes correct; SirKandela with Rylie
+    Pavlik (Khronos forums, 2023-09) saw the **Oculus desktop runtime appear to ignore** the
+    submitted view pose while SteamVR respected it — the inverse. **So record the runtime name and
+    version with whatever the headset run produces**, or the result does not transfer.
+    - **The `OpenXrProjectionTestOffsetM` experiment is the weaker half.** Khronos's reference text
+      says the projection view `pose`/`fov` "should almost always derive from" `xrLocateViews`, so a
+      synthetic 0.15 m offset is the submission a runtime is least tuned for, and "both eyes
+      identical" is ambiguous between *the runtime collapses per-view poses* and *the runtime
+      rejected an implausible pose and fell back to the head pose* — the silent-no-op shape this
+      project already distrusts. Keep the test (a clean split is still informative) but **add the
+      stronger reading beside it: with `OpenXrProjectionTestOffsetM=0` the same build submits the
+      legitimate located poses; look for LukeRoss's signature — a visibly wrong stereo baseline
+      together with vertical misalignment between the eyes.** Vertical disparity is a *positive*
+      identification of the defect, since nothing in a correct stereo pair produces it. If it shows,
+      the workaround above is documented before concluding the M2 submission design is blocked.
+    - Sources: steamcommunity.com/app/250820/discussions/8/3001046778344834329/ ;
+      community.khronos.org/t/oculus-runtime-ignores-projection-layer-views-pose/110078 .
+      Generalised form: cross-engine library `docs/techniques/README.md` → "OpenXR carries a pose per
+      view where OpenVR collapses to one" → "Expressible is not honoured".
 - **Readback cost on the target machine is unconfirmed** — the profiled numbers
   are from the low-powered dev PC; the home-machine `[xiii-perf]` log decides
   whether the GPU-only path is worth building.
