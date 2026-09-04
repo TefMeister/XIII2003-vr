@@ -314,6 +314,38 @@ the fixed-function projection per draw, below the engine `[reported 2026-09-02]`
 > tests membership — and ignores declaration-only creations (`pFunction == nullptr`), which still run
 > fixed-function and would otherwise overcount the gap.
 
+> #### ✅ READ FROM DISK 2026-09-04 (home PC, `/pd`, static) — the six shaders are identified, and `c0..c3` IS `World*View*Projection` from the `SetTransform` caches
+>
+> `[inferred-static 2026-09-04, n=1 binary — the shipped D3DDrv_Original.dll, md5 b537d19f…]`
+>
+> - **The vertex shaders are assembled from TEXT at runtime, and the text ships in the DLL.** No D3D8
+>   bytecode version tokens exist in the file; three `vs.1.0` assembly sources do (file offsets
+>   `0x59050`, `0x59158`, `0x59278`), plus a detached fog fragment reading `c8.y`/`c8.z` and six
+>   `xps.1.1` Xbox pixel-shader strings that the PC path cannot assemble (console-port leftovers).
+>   - `0x59050` — **the cel-shade OUTLINE pass**: normal normalised, position pushed along it by `c4.w`,
+>     transformed by the 4x4 at `c0..c3`, flat colour `c4`. The 2026-09-03 `[hypothesis]` is now fact.
+>   - `0x59158` / `0x59278` — **toon lighting lookups**: transform by `c0..c3`, colour `c4`, texcoord 0
+>     = `v2`, texcoord 1 = `(n·c5, n·c6)` from the normalised normal (or the normalised position).
+>   - All three: `oPos = v0.x*c0 + v0.y*c1 + v0.z*c2 + v0.w*c3` — **position × the matrix whose rows are
+>     `c0..c3`**, row-vector order, the same convention as `SetTransform`.
+>   - Six *handles* from three *sources*: the outline site binds one of **two** global handles, the toon
+>     site one of **three** — variants of the same text, consistent with `shaders created=6`.
+> - **⭐ Both upload sites compose `c0..c3` as `World × View × Projection` from the three
+>   `FD3DRenderInterface` caches decoded for the early-out — `this+0x50`, `+0x90`, `+0xD0`.** Outline
+>   site `+0x41A8..+0x4205`: `tmp = mul(cache+0x50, cache+0x90)`, `out = mul(tmp, cache+0xD0)`, then
+>   `c4 = (0, 0, 0, width)` and `SetVertexShaderConstant(0, out, 5)`. Toon site `+0x4638..+0x4779`: the
+>   same two multiplies, then `SetVertexShaderConstant(0, out, 8)` — so **`c0 x8` is one matrix plus
+>   four parameter registers** (`c4` colour, `c5`/`c6` lookup vectors, `c7` = `(4,4,1,1)`); "two stacked
+>   matrices" is **`[disproved 2026-09-04]`**. The helper at `0x1161D75A` is a row-vector 4x4 product,
+>   `call(out, A, B)` ⇒ `out = A*B`. The remaining two sites are `c10 x1` at device init (`+0x2601`,
+>   fixed lookup parameters) and `c8 x1` (`+0x12947`, fog — never reached in the 2026-09-03 run).
+> - **Why it decides the constants path:** the programmable draws read the *product* of the very
+>   matrices the fixed-function path receives. Per-eye stereo is therefore one operation for both
+>   pipelines — replace V and P by their per-eye versions — through `SetTransform` for fixed-function
+>   draws and by re-uploading `c0..c3 = W * V_eye * P_eye` for programmable ones. No inversion, no
+>   shader patching, nothing to defeat. The built hook verifies the equality at draw time before
+>   rewriting (below); whether it holds *at draw time* is the one thing the flat run must confirm.
+
 ### Supporting addresses (`Engine.dll`, preferred base `0x10000000`)
 
 | Symbol | VA |
@@ -364,6 +396,45 @@ frustum asymmetric.
 > carry `frame=574`, before gameplay began, so every dumped matrix is a menu identity and **no
 > gameplay matrix was captured**. The per-interval counters are unaffected. A future run needs a
 > bigger budget, a frame threshold, or a key trigger.
+
+### State (2026-09-04, home PC, static only) — M2 stereo BUILT, never run
+
+`[compile-verified 2026-09-04]` · `[verified-numerically 2026-09-04, 9,209 checks; 5 mutations all caught]`.
+Full account: `modding-notes/2026-09-04-m2-stereo-built-route-b-plus-constants-path.md`.
+
+- **`pose_math/stereo_math.{h,cpp}`** — per-eye view `V * Translate(-e,0,0)` (left `e=-ipd/2`, right
+  `+ipd/2`, parallel cameras), per-eye projection from OpenXR-style tangents with the engine's depth
+  rows (`Q`, `-zn*Q`) copied verbatim, exact viewport halves. **Tests** (`tests/test_stereo_math.cpp`):
+  1,000 random points — left eye sees every finite point further RIGHT by exactly `ipd*m00/z` in NDC,
+  zero vertical disparity; the hook's recompose `W*V_eye*P_eye` equals the algebraically different
+  `(W*V*P)*P^-1*T*P_eye`; symmetric tangents reproduce FovLH; frustum edges land on ±1. Five deliberate
+  breakages fail 2,006 / 40 / 250 / 6 / 4 assertions. Evidence: `dev-archive/recon/2026-09-04-m2-stereo-math-verified/`.
+- **`proxy/stereo_hook.{h,cpp}`** — device-level, installed from the `CreateDevice` hook after the
+  recon (chain recon → stereo → real), only when `[VR] Stereo≠0`. Shadows W/V/P (`SetTransform` 37),
+  viewport (40), render-target-is-back-buffer (31, by size/format), `c0..c7` (79), programmable-shader
+  state (75/76, by returned handle). Draw-twice in all four `Draw*` (70–73): orthographic ⇒ mono
+  untouched; off-back-buffer target ⇒ mono; else left half / eye 0, right half / eye 1, engine state
+  restored. Fixed-function eyes via the real `SetTransform`; programmable eyes via `c0..c3 =
+  W*V_eye*P_eye` **after checking the uploaded `c0..c3` equals the shadowed `W*V*P`** (mismatch ⇒
+  drawn unmodified into both halves and counted, never dropped; first three matches logged with the
+  max element difference). IPD: `StereoIPD` units until the OpenXR host publishes located views, then
+  metres × `StereoWorldScale`. Projection: engine's until per-eye tangents are published. Numpad
+  7 toggle / 4,6 IPD / 5 swap. `[xiii-stereo]` + `xiii_stereo.log` per-second class counts.
+  Fail-safe: any unhookable slot ⇒ all restored, stereo unavailable.
+- **Plumbing:** `VrHostSet/GetEyeParams`, `VrHostSet/GetStereoLayout`; the OpenXR projection layer
+  samples each view's HALF of the swapchain image when the layout is SBS and publishes tangents + view
+  separation after `xrLocateViews`; `TransformReconDumpFromFrame` so the recon's dumps skip the menu.
+- **Build:** MSVC exit 0, **211,968 B, exports 40/40 identical to the deployed 0.2.7**. Deployed
+  beside it as `system\D3DDrv-m2-stereo.dll` (installed DLL md5-verified untouched) and
+  `staging/XIII2003-vr/D3DDrv-m2-stereo-2026-09-04.dll`; supersedes `D3DDrv-m2-recon.dll` (it
+  contains the recon and the projection path too). `XIII.ini` `[VR]`: `Stereo=0/1/2`, `StereoIPD=3.4`,
+  `StereoWorldScale=52.5`, `StereoSwapEyes`, `StereoUseHmdFov`, `StereoHotkeys`,
+  `TransformReconDumpFromFrame` — all defaults = stock (backup `XIII.ini.bak-2026-09-02` / `-09-04`).
+- **Not established:** nothing has rendered; `c0..c3 == W*V*P` *at draw time* (the `vs-mismatch`
+  counter decides — fallback `M*P^-1*T*P_eye` needs no W and is already numerically cross-checked);
+  which of the 3–8 views is the player camera (all perspective views get the offset); IPD scale is
+  folklore `[hypothesis]`; a back-buffer-sized off-screen target would be split too.
+- **Next: one flat launch** — `Stereo=2`, numpad 7 in a level. Outcome table: notes 2026-09-04 §4.
 
 ### State (2026-09-02, home PC, static only)
 
