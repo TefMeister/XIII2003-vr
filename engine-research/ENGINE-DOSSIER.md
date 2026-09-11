@@ -853,6 +853,8 @@ the slot says which capability died, the module says who did it, and re-patching
 work rather than defensive coding. ⚠️ A rewritten slot 37 or 79 would also **retro-actively explain
 any past run where the classification looked broken for no reason.**
 
+**⇒ RAN 2026-09-11 (§11h): no rewrite in two complete sessions on the dev PC** `[verified-live 2026-09-11, n=2]`.
+
 ## 11f. ⭐ The per-eye edit sets TWO matrices — a projected shadow would use a third (2026-09-11, `/pd`, static)
 
 Read out of our own source; no launch involved.
@@ -891,6 +893,9 @@ fix** — a third matrix beside the two the eye path already writes. ⚠️ Text
 scrolling, environment mapping and decals too, so non-zero narrows the field without identifying the
 shadow.
 
+**⇒ RAN 2026-09-11 (§11h): texture matrices on stages 0 and 1 in every level, and the shadow is
+measured screen-locked** — its between-eye shift is ~10 % of the floor's under it `[measured 2026-09-11, n=1 frame]`.
+
 ## 11g. ⭐ Head roll: computed on every frame since day one, never used (2026-09-11, `/pd`, static)
 
 `camera_hook.cpp` applied yaw and pitch and stopped — **but `FRotator` already carries a `Roll`
@@ -925,6 +930,77 @@ the display time (a restructuring of when the pose is sampled, not a two-line ch
 pacing** — the stereo log already shows 24–72 fps swings, and prediction cannot smooth a frame rate
 that is itself lurching. **Attempting prediction first would be guessing at the split**; whatever
 shake survives a run with roll correct is the honest measure of what prediction must fix.
+
+## 11h. ⭐⭐ First flat run of the instrumented stereo build — the hooks hold, the spin is gone, the shadow is screen-locked (2026-09-11, `/lm`, dev PC)
+
+Three launches, driven unattended. Note: `modding-notes/2026-09-11f-the-hooks-hold-the-spin-is-gone-and-the-shadow-is-stuck-to-the-screen.md`;
+evidence `dev-archive/recon/2026-09-11f-flat-stereo-run-the-hooks-hold-and-the-shadow-is-stuck-to-the-screen/`.
+Builds: `C9B0FFA03876` (2026-09-11e roll build, runs 1–2) and `2DE67150A128` (the reader's
+"diagnostics to the log file" build, run 3).
+
+**Render.** Side-by-side, correct parallax: bank lobby at eye distance 3.40 units — near pillar
+−9 px, floor −4, far balcony 0; +22 % eye distance ⇒ +22 % shift; swap flips every sign
+`[measured 2026-09-11]`. `vs-stereo=21`, `vs-mismatch=0`, `c0..c3 == W*V*P (max |diff| 0)` on the
+first shader draws — the vertex-shader-constants path is live flat as well as in VR. Per-eye halves
+are horizontally squeezed because the flat path keeps the engine's projection (`fov=engine`).
+
+**In-level draw mix per frame** `[verified-live 2026-09-11, n=2 levels]`:
+
+| | ff-stereo | vs-stereo | mono-ortho | mono-rtt | rhw-mono | rhw-stereo | texmat | rt-switch-away |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| `Banque01` lobby | 207 | 21 | 3 (37 with the objectives card up) | 2 | 0 | **12** | 18 | 120–150 |
+| `Plage01` hut, first person | 306 | 14 | 3 | 4 | 0 | 0 | **134** | ~128 |
+| menus (stereo on) | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 |
+
+**§11b answered: nothing rewrites our slots here.** No `VTABLE SLOT REWRITTEN` in two complete
+sessions (listener proven by `Present hooked`; run 3 also writes it to the file) and the captured tail
+of a third `[verified-live 2026-09-11, n=2 full sessions]`. §11b stops being a live suspect on the dev
+PC (no overlays running). ⚠️ An overlay (Steam, Virtual Desktop) on the home PC is a different
+process mix; the file log now answers that for free on the next headset run.
+
+**Self-spin answered: fixed.** `CameraLiveHmd=1` with no runtime ⇒ `eventPlayerCalcView hooked
+(LiveHmd via pose_math)`, zero `view:` lines, two hands-off screenshots 6 s apart identical (mean
+difference 0.41/255) `[verified-live 2026-09-11, n=1]`.
+
+**§11e answered, and its premise corrected: the HUD players see is the ORTHO bucket.** First-person
+play shows health + crosshair with `mono-ortho=3` and `rhw` 0/0. Drawn once at the full-screen
+position, so health lands in the left half only and the crosshair on the seam. The bank's 12
+`rhw-stereo` draws are **unidentified** (nothing visible is doubled) — do not treat them as the HUD
+`[measured 2026-09-11]`. ⇒ The fix is per-eye HUD placement for BOTH buckets (ortho: draw per eye with
+that eye's viewport; XYZRHW: remap coordinates into the eye's half), plus §11d's HUD depth.
+
+**§11f answered, and measured: the shadow is screen-locked.** `TEXTURE MATRICES IN USE on stage(s): 0
+1` in every level. The bank lobby shows **no** character shadows; the beach hut does. At eye distance
+13.40 (magnified ×3.9) the player's arm shadow shifts **−2.5 px** between the eyes while the floor it
+lies on shifts **−23…−27 px** (five patches, NCC 0.99–1.00) `[measured 2026-09-11, n=1 frame]` — ~5–6 px
+of depth error at 3.40. **Screen-locked is the specific signature of camera-space texgen
+(`D3DTSS_TCI_CAMERASPACEPOSITION`) under a texture matrix built for the centre view**: the per-eye VIEW
+moves camera space by ±ipd/2, the texture matrix undoes nothing, so the lookup follows the camera
+`[hypothesis: the texgen mode is not read yet; the measurement fits it and a world-fixed projection
+would not look like this]`. **Fix:** per eye `T' = Translate(±ipd/2 along camera X) · T` (row-vector
+order; sign to be pinned by a failing control), on stages whose texgen is camera-space.
+
+**Roll/pitch:** the `view:` line needs a real pose, so it is headset-only (this PC has no
+`openxr_loader.dll`/`openvr_api.dll` in `system\`) `[measured 2026-09-11]`.
+
+**Driving it (this build has no command harness, no focus fix):**
+- `steam://rungameid/1170760` → Enter ×3 (profile "XIII" pre-selected → Continue → PLAY) → `Banque01`;
+  Space dismisses the objectives card. Up on the profile screen wraps to "Create new profile". The menu
+  cursor ignores Windows mouse clicks.
+- **⭐ `XIII.exe Plage01` (working directory `system\`) loads the level directly** — no Steam
+  round-trip, `Browse: Plage01…` in `XIII.log`, a short cutscene, then control
+  `[verified-live 2026-09-11, n=1]`. `-windowed` is not a switch; the ini is already windowed.
+- `keybd_event` by virtual-key code to the foreground window; stereo keys are `VK_NUMPAD4…7`
+  (a scancode-only send becomes `VK_HOME` etc. with NumLock off). `U`/`J` turn: 120 ms ≈ 20°, 300 ms ≈ 45°.
+- ⚠️ **Traps (reader, 2026-09-11):** `Stereo=2` zeroes the `rhw-*` counters until numpad 7 (the on/off
+  gate is before the classifier); `TransformRecon=1` with stereo in the same launch produces six FALSE
+  `VTABLE SLOT REWRITTEN` lines naming our own `D3DDrv.dll`; before any 0.2.9 run, empty
+  `system\xiii_automation_cmds.txt` (two stale engine-tier lines from 2026-08-28) and set
+  `AutomationEngineExec=0`, or the first gameplay tick replays the §9a GPF `[inferred-static]`.
+- **Log file:** from build `2DE67150A128` every proxy diagnostic (watchdog, camera install lines,
+  `view:`, VR host, shutdown) also appends to `%TEMP%\xiii_capture\xiii_stereo.log`, headed `=== proxy
+  loaded … pid N ===` `[verified-live 2026-09-11, n=1]`. Earlier builds need `odscap.ps1` started
+  **before** launch for those lines.
 
 ## 11c. Per-view poses: VDXR is a THIRD runtime, and no public report covers it (drained from `/gr` 2026-09-04)
 
@@ -1016,6 +1092,9 @@ Read out of our own `stereo_hook.cpp`, answering §11d's "cheapest first step".
   of **our own instrument** — two cases were indistinguishable because our classifier never looked at
   the field that distinguishes them. *Before concluding you need a measurement from the game, check
   what your own code is already throwing away.*
+- **⇒ RAN 2026-09-11 (§11h): the HUD players see is NOT pre-transformed** — first-person play reads
+  `rhw` 0/0 with `mono-ortho=3`; the bank's 12 `rhw-stereo` draws are something else, unidentified
+  `[measured 2026-09-11]`.
 
 ## 12. Open risks toward the North Star
 - **True stereo depth** is not attempted in Milestone 1 (same 2D image to both

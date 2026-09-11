@@ -75,6 +75,11 @@ place it beside the installed device and never over it. **Stamped for the first 
 ⚠️ **The active `D3DDrv.dll` is NOT ours and was not touched.** Nobody should assume the installed
 device is the stereo one — it is not, and switching is a deliberate rename.
 
+> ⚠️ **Corrected 2026-09-11f:** the 275,968 B `D3DDrv.dll` **is ours** — byte-identical to
+> `staging/XIII2003-vr/D3DDrv-0.2.9.dll`, the 0.2.9 automation-harness build rescued on 2026-09-03
+> `[measured 2026-09-11, /lm reader]`. "Not the stereo build" stands; "not ours" was wrong. See
+> `2026-09-11f-the-hooks-hold-the-spin-is-gone-and-the-shadow-is-stuck-to-the-screen.md`.
+
 ## 4. Three inbox drops drained (dossier §11b, §11c, §11d)
 
 - **🚨 §11b — our device-vtable patches can be silently rewritten by anyone recording a D3D state
