@@ -53,6 +53,29 @@ even just inspired anything used in this project and you aren't credited
 here, please **open a GitHub issue on this repo** and we'll correct it as
 soon as possible. We would much rather over-credit than leave anyone out.
 
+## Added by the 2026-09-11 research pass
+
+For the HUD-depth and stereo-bucket findings behind
+`topics/2026-09-11-the-hud-needs-a-third-treatment-and-the-objective-marker-is-in-the-wrong-bucket.md`:
+
+- **NVIDIA GameWorks** — the archived *3D Vision Automatic* best-practices documentation, which is still
+  the clearest written statement of the separation/convergence technique and of the rule that 2D must be
+  drawn at convergence depth while world-referenced HUD takes its object's depth.
+- **bo3b (Bo3b Johnson)** — the 3Dmigoto wiki and *School for Shaderhackers*, for the canonical stereo
+  formula and for *Auto Crosshair*, the published solution to finding a world-anchored element's depth
+  per frame.
+- **DarkStarSword** — `3d-fixes` and its `shadertool` / `hlsltool` / `asmtool` UI-depth insertion, and
+  the auto-HUD toggles in his Far Cry 4 and Akiba's Trip fixes.
+- **Helix**, **Losti**, **DHR** and the HelixMod community — for the HUD-depth and crosshair-depth key
+  conventions that made "expose it, don't hard-code it" the obvious design.
+- **"admin" at xdPixel** — *Decoding a Projection Matrix*, for the orthographic-vs-perspective test.
+- **Microsoft** — the Direct3D fixed-function FVF documentation, which is where the `D3DFVF_XYZRHW`
+  pre-transformed-vertex trap comes from.
+- **GhwstVR** — *UT99 Quest*, for the quad 2D layer; **the Khronos OpenXR Working Group** for
+  `XrCompositionLayerQuad`.
+- **cybereality / Denis Reischl** and contributors — *Vireio Perception*, whose `D3DProxyDeviceUnreal`
+  remains the closest relative to this project's patched device, recorded as an unverified lead.
+
 ## Respecting creators
 
 This project exists because other people generously shared their
