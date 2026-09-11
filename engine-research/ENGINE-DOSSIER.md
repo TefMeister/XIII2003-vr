@@ -781,6 +781,106 @@ foreground.
   instance blocks new launches silently (instant exit code 0), so this looked
   like "the game won't launch" until root-caused.
 
+## 11b. 🚨 Our device-vtable patches can be silently rewritten by ANYONE recording a D3D state block (drained from `/sr` 2026-09-04)
+
+**This is the one that would waste a whole launch, because it is indistinguishable from two other
+causes by eye.**
+
+`IDirect3DDevice::BeginStateBlock` puts the runtime into recording mode by swapping the device's
+**state-setting** methods for recording variants, and `EndStateBlock` writes the runtime's **own
+originals** back — **overwriting any third-party pointer sitting in those slots**. Non-state-setting
+methods (`Present`, `Reset`, the `Draw*` calls, the creation calls) are left alone. `[reported]`
+
+**So the signature is: some of our hooks keep working forever and others die permanently, in the same
+table, silently.**
+
+Two independent public witnesses, one D3D9 and one D3D8:
+- **gho**, author of **DxWnd**, diagnosing it while chasing D3D9 device-`Reset` trouble (2014-06-02):
+  *"D3DDevice9::BeginStateBlock recover all COM method pointers invalidating the hook patching. It's
+  sufficient to hook this method to restore back the DxWnd routines and the trick is done!"*
+- **Paul Roussin**, on Microsoft's retired DirectX newsgroup, answering a failed D3D8 vtable hook:
+  *"BeginStateblock will reset the device table so you have to make the code return control back to
+  you so you can reset your modified addresses."* ⚠️ survives only on a third-party Usenet mirror —
+  an archived public post, not a vendor source.
+
+⚠️ **We are usually not the one recording.** The caller is another resident of the process — an
+overlay, anything on `ID3DXSprite`/`ID3DXFont`, or the engine itself — and such residents most often
+re-initialise **after a device reset**, which is exactly why this reads as *"the reset killed my
+hook"*.
+
+**What it would look like on an M2 run:** the `vs-mismatch` counter and the per-second class counts go
+quiet or partial while `Present` keeps running and the picture looks mono-but-fine. **From a
+screenshot that is identical to "the equality check failed" and to "stereo was never armed" — three
+different causes, one appearance. Distinguish them in the log, not by eye.**
+
+**Cheapest remedy, and it is a handful of lines:** once per `Present`, compare each patched slot
+against our own function pointers and log the first mismatch with the new pointer value and the module
+it belongs to. That converts a silent permanent failure into one line. Re-patching after detection is
+the follow-up, not the first step — detection alone tells you whether this is even happening here.
+**Queued as a ⭐ `[PD]` row (2026-09-11); not implemented yet.**
+
+## 11c. Per-view poses: VDXR is a THIRD runtime, and no public report covers it (drained from `/gr` 2026-09-04)
+
+§12's OpenXR risk rests on public reports about per-view pose handling. **None of the three public
+reports is about the runtime this project is actually tested on.** In-headset testing happens on the
+home PC's **Quest 3 over Virtual Desktop (VDXR)**, which is:
+
+- **not** a Valve Index / lighthouse device (LukeRoss's OpenXR failure case, and the OpenVR fixed case),
+- **not** the Oculus desktop runtime (SirKandela's failure case),
+- but **VDXR — a third OpenXR runtime with no public report in evidence either way** `[reported 2026-09-04]`.
+
+**The consequence for the `[VR]` row's outcome table: do not expect any of the three reported
+signatures specifically, and ⚠️ do not read their absence as a pass.** The row's existing instruction
+— look for a visibly wrong stereo baseline **together with** vertical misalignment between the eyes,
+which is a *positive* identification — stays exactly right, because it does not depend on which runtime
+is at fault.
+
+⭐ **And record `VDXR` plus its version beside whatever it produces**: that result would be the first
+public data point for this runtime in any of those threads. (The 2026-09-10 headset run used VDXR
+32-bit `virtualdesktop-openxr-32.dll` 1.0.10.0, Streamer 1.34.22.0 — so the version is already known.)
+
+⚠️ **Small correction to §12 while in there:** its OpenXR paragraph describes OpenVR issue #1253 as
+*"still open, seven years, no Valve response"*. Still open and no Valve response are both confirmed
+comment by comment `[verified-live 2026-09-04, n=1 API read]`, but the **last activity is 2020-04-22**,
+not the 2019 creation date — so "seven years" overstates the silence. Same correction as the one the
+sibling `far-cry-2-vr` dossier carries.
+
+## 11d. ⭐⭐ The HUD needs a THIRD treatment, and the objective marker is a different bucket (drained from `/gr` 2026-09-11)
+
+Full reasoning and sources: `external-research/topics/2026-09-11-the-hud-needs-a-third-treatment-and-the-objective-marker-is-in-the-wrong-bucket.md`.
+The short form, because it changes what the ⭐⭐ HUD row should actually do:
+
+- **The 2D bucket needs neither of the two obvious treatments.** NVIDIA's own archived 3D-Vision
+  documentation describes the same footer our patch implements
+  (`position.x += Separation * (position.w − Convergence)`) and states the rule: *"to render an object
+  without separation … render these objects at convergence depth"* `[reported 2026-09-11, first-party
+  vendor docs]`. So `mono-ortho` must **not** simply drop the eye offset (that pins the HUD at exact
+  screen depth — uncomfortable, and what 3D Vision does by accident) and must **not** take the world's
+  offset (our current defect). It wants a **perspective projection at one chosen distance `D`**, giving
+  every HUD pixel the same parallax `Separation * (D − Convergence)` — **tunable by one number**. The
+  community calls it **HUD depth** and the convention is to put it on a key. ⚠️ On the numpad here, per
+  this account's standing rule.
+- **⭐ The objective marker is world-anchored and is in the WRONG BUCKET.** It only looks like HUD
+  because it goes through the 2D path. NVIDIA splits these explicitly: world-referenced indicators take
+  *"an apparent depth value"* matching the object they point at. **So fixing the HUD will stop the
+  marker sliding and still leave it at the wrong distance.** The published hard version is 3Dmigoto's
+  **Auto Crosshair** (a ray per eye, 255 depth samples, take the last non-intersecting offset).
+  ⇒ **The ⭐⭐ row is really two rows.**
+- ⚠️ **A D3D8 trap that decides the implementation:** identify an orthographic projection from the
+  **matrix** (`_34 ≈ 0`, `_44 ≈ 1`), **but `D3DFVF_XYZRHW` pre-transformed vertices bypass the transform
+  pipeline entirely and cannot be stereoised by any matrix edit** — they need an explicit per-eye pixel
+  offset `[reported 2026-09-11, first-party Microsoft docs]`. **Nothing public states which our tile
+  path uses; reading our own renderer settles it and is the cheapest next step on that row.**
+- **⭐ End state, and this project can reach it first:** render the 2D layer once and submit it as a
+  quad in the world — what UT99 Quest ships, and what OpenXR standardises as
+  **`XrCompositionLayerQuad`**. **Because this project already runs over OpenXR, that layer type is
+  directly available to us**, which it is not to a half-SBS path. Same end state as the sibling
+  `unreal-gold-vr`.
+- ⚠️ **Recorded as gaps, not dead ends:** nothing UE2-specific on stereo exists publicly at all; **no
+  HelixMod or 3Dmigoto fix exists for any UE2 game** (both are D3D9/D3D11); and **no public UE1 or UE2
+  render device does stereo**, so our `D3DDrv` patch has no precedent to copy — and no published reason
+  it cannot work.
+
 ## 12. Open risks toward the North Star
 - **True stereo depth** is not attempted in Milestone 1 (same 2D image to both
   eyes). Real per-eye rendering needs Milestone 2's native-ABI direction —
