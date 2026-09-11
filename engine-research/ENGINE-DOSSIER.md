@@ -853,6 +853,44 @@ the slot says which capability died, the module says who did it, and re-patching
 work rather than defensive coding. ⚠️ A rewritten slot 37 or 79 would also **retro-actively explain
 any past run where the classification looked broken for no reason.**
 
+## 11f. ⭐ The per-eye edit sets TWO matrices — a projected shadow would use a third (2026-09-11, `/pd`, static)
+
+Read out of our own source; no launch involved.
+
+**The fixed-function per-eye path is exactly two lines:**
+
+```
+s_realSetTransform(dev, D3DTS_VIEW_,       s_eyeView[eye]);
+s_realSetTransform(dev, D3DTS_PROJECTION_, s_eyeProj[eye]);
+```
+
+and `Hook_SetTransform` tracks only `WORLD`, `VIEW` and `PROJECTION`. **Texture-stage matrices
+(`D3DTS_TEXTURE0..7`, states 16–23) passed straight through, untracked and never adjusted**
+`[inferred-static 2026-09-11]`.
+
+🚨 **Consequence for shadows.** The standard D3D8 fixed-function character shadow is a
+**projected texture**: the light's view-projection baked into a **texture matrix**, with texcoords
+generated from the receiving surface's camera-space position. Per eye, the **receiver moves** (we
+offset VIEW and PROJECTION) while the **shadow's projection does not** — so the two fuse at different
+depths, which is exactly *"character shadows look spatial and 3D somehow"*: a shadow reading as a
+separate object floating near the floor rather than a mark on it
+`[hypothesis 2026-09-11 — mechanism solid, premise untested]`.
+
+⚠️ **Subtlety that does not rescue it:** with `D3DTSS_TCI_CAMERASPACEPOSITION` the texcoords *do*
+change when VIEW changes — but by the **wrong amount**, since the texture matrix was built for the
+original view. Both readings give a mismatch; only its size differs.
+
+**✅ Now instrumented, still not adjusted:** `texmat=` in the heartbeat counts texture-matrix sets per
+frame, and a one-time line names which stages carry one. `[compile-verified 2026-09-11]`
+
+**⭐ The cheapest outcome is the one that closes the row.** `texmat` **zero for a whole session** kills
+the projected-shadow hypothesis outright — XIII would not use texture matrices at all, the shadow
+must be geometry, and our stereo already handles geometry per eye, so the "3D" look would have a
+different cause entirely. Non-zero names the stage, and **adjusting that matrix per eye becomes the
+fix** — a third matrix beside the two the eye path already writes. ⚠️ Texture matrices serve
+scrolling, environment mapping and decals too, so non-zero narrows the field without identifying the
+shadow.
+
 ## 11c. Per-view poses: VDXR is a THIRD runtime, and no public report covers it (drained from `/gr` 2026-09-04)
 
 §12's OpenXR risk rests on public reports about per-view pose handling. **None of the three public
