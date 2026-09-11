@@ -1,0 +1,690 @@
+20:39:49.046 [4500] [xiii-stereo] 
+20:39:49.046 [4500] t=541s frames=72 stereo=off ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=0.0 vs-stereo=0.0 vs-mismatch=0.0 mono-ortho=0.0 mono-rtt=0.0 mono-off=267.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=0.0 texmat=18.0 | rt-switch-away=144 max-mismatch=0
+20:39:50.044 [4500] [xiii-stereo] 
+20:39:50.045 [4500] t=542s frames=76 stereo=off ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=0.0 vs-stereo=0.0 vs-mismatch=0.0 mono-ortho=0.0 mono-rtt=0.0 mono-off=267.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=0.0 texmat=18.0 | rt-switch-away=152 max-mismatch=0
+20:39:51.042 [4500] [xiii-stereo] 
+20:39:51.042 [4500] t=543s frames=77 stereo=off ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=0.0 vs-stereo=0.0 vs-mismatch=0.0 mono-ortho=0.0 mono-rtt=0.0 mono-off=267.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=0.0 texmat=18.0 | rt-switch-away=154 max-mismatch=0
+20:39:52.048 [4500] [xiii-stereo] 
+20:39:52.048 [4500] t=544s frames=75 stereo=off ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=0.0 vs-stereo=0.0 vs-mismatch=0.0 mono-ortho=0.0 mono-rtt=0.0 mono-off=267.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=0.0 texmat=18.0 | rt-switch-away=150 max-mismatch=0
+20:39:53.050 [4500] [xiii-stereo] 
+20:39:53.050 [4500] t=545s frames=76 stereo=off ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=0.0 vs-stereo=0.0 vs-mismatch=0.0 mono-ortho=0.0 mono-rtt=0.0 mono-off=267.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=0.0 texmat=18.0 | rt-switch-away=152 max-mismatch=0
+20:39:54.047 [4500] [xiii-stereo] 
+20:39:54.047 [4500] t=546s frames=71 stereo=off ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=0.0 vs-stereo=0.0 vs-mismatch=0.0 mono-ortho=0.0 mono-rtt=0.0 mono-off=267.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=0.0 texmat=18.0 | rt-switch-away=142 max-mismatch=0
+20:39:55.045 [4500] [xiii-stereo] 
+20:39:55.045 [4500] t=547s frames=75 stereo=off ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=0.0 vs-stereo=0.0 vs-mismatch=0.0 mono-ortho=0.0 mono-rtt=0.0 mono-off=287.6 no-state=0.0 rhw-mono=0.0 rhw-stereo=0.0 texmat=18.0 | rt-switch-away=150 max-mismatch=0
+20:39:56.047 [4500] [xiii-stereo] 
+20:39:56.047 [4500] t=548s frames=78 stereo=off ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=0.0 vs-stereo=0.0 vs-mismatch=0.0 mono-ortho=0.0 mono-rtt=0.0 mono-off=249.8 no-state=0.0 rhw-mono=0.0 rhw-stereo=0.0 texmat=18.0 | rt-switch-away=156 max-mismatch=0
+20:39:57.047 [4500] [xiii-stereo] 
+20:39:57.047 [4500] t=549s frames=76 stereo=off ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=0.0 vs-stereo=0.0 vs-mismatch=0.0 mono-ortho=0.0 mono-rtt=0.0 mono-off=247.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=0.0 texmat=18.0 | rt-switch-away=152 max-mismatch=0
+20:39:58.040 [4500] [xiii-stereo] 
+20:39:58.040 [4500] t=550s frames=72 stereo=off ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=0.0 vs-stereo=0.0 vs-mismatch=0.0 mono-ortho=0.0 mono-rtt=0.0 mono-off=247.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=0.0 texmat=18.0 | rt-switch-away=144 max-mismatch=0
+20:39:59.049 [4500] [xiii-stereo] 
+20:39:59.049 [4500] t=551s frames=78 stereo=off ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=0.0 vs-stereo=0.0 vs-mismatch=0.0 mono-ortho=0.0 mono-rtt=0.0 mono-off=247.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=0.0 texmat=18.0 | rt-switch-away=156 max-mismatch=0
+20:40:00.038 [4500] [xiii-stereo] 
+20:40:00.038 [4500] t=552s frames=78 stereo=off ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=0.0 vs-stereo=0.0 vs-mismatch=0.0 mono-ortho=0.0 mono-rtt=0.0 mono-off=247.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=0.0 texmat=18.0 | rt-switch-away=156 max-mismatch=0
+20:40:01.043 [4500] [xiii-stereo] 
+20:40:01.043 [4500] t=553s frames=78 stereo=off ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=0.0 vs-stereo=0.0 vs-mismatch=0.0 mono-ortho=0.0 mono-rtt=0.0 mono-off=234.6 no-state=0.0 rhw-mono=0.0 rhw-stereo=0.0 texmat=18.0 | rt-switch-away=156 max-mismatch=0
+20:40:02.045 [4500] [xiii-stereo] 
+20:40:02.045 [4500] t=554s frames=77 stereo=off ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=0.0 vs-stereo=0.0 vs-mismatch=0.0 mono-ortho=0.0 mono-rtt=0.0 mono-off=233.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=0.0 texmat=18.0 | rt-switch-away=154 max-mismatch=0
+20:40:03.041 [4500] [xiii-stereo] 
+20:40:03.041 [4500] t=555s frames=73 stereo=off ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=0.0 vs-stereo=0.0 vs-mismatch=0.0 mono-ortho=0.0 mono-rtt=0.0 mono-off=233.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=0.0 texmat=18.0 | rt-switch-away=146 max-mismatch=0
+20:40:04.042 [4500] [xiii-stereo] 
+20:40:04.042 [4500] t=556s frames=77 stereo=off ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=0.0 vs-stereo=0.0 vs-mismatch=0.0 mono-ortho=0.0 mono-rtt=0.0 mono-off=233.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=0.0 texmat=18.0 | rt-switch-away=154 max-mismatch=0
+20:40:05.039 [4500] [xiii-stereo] 
+20:40:05.039 [4500] t=557s frames=77 stereo=off ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=0.0 vs-stereo=0.0 vs-mismatch=0.0 mono-ortho=0.0 mono-rtt=0.0 mono-off=233.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=0.0 texmat=18.0 | rt-switch-away=154 max-mismatch=0
+20:40:06.049 [4500] [xiii-stereo] 
+20:40:06.049 [4500] t=558s frames=74 stereo=off ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=0.0 vs-stereo=0.0 vs-mismatch=0.0 mono-ortho=0.0 mono-rtt=0.0 mono-off=233.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=0.0 texmat=18.0 | rt-switch-away=148 max-mismatch=0
+20:40:07.050 [4500] [xiii-stereo] 
+20:40:07.050 [4500] t=559s frames=79 stereo=off ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=0.0 vs-stereo=0.0 vs-mismatch=0.0 mono-ortho=0.0 mono-rtt=0.0 mono-off=233.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=0.0 texmat=18.0 | rt-switch-away=158 max-mismatch=0
+20:40:08.042 [4500] [xiii-stereo] 
+20:40:08.042 [4500] t=560s frames=78 stereo=off ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=0.0 vs-stereo=0.0 vs-mismatch=0.0 mono-ortho=0.0 mono-rtt=0.0 mono-off=233.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=0.0 texmat=18.0 | rt-switch-away=156 max-mismatch=0
+20:40:09.048 [4500] [xiii-stereo] 
+20:40:09.048 [4500] t=561s frames=78 stereo=off ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=0.0 vs-stereo=0.0 vs-mismatch=0.0 mono-ortho=0.0 mono-rtt=0.0 mono-off=233.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=0.0 texmat=18.0 | rt-switch-away=156 max-mismatch=0
+20:40:10.045 [4500] [xiii-stereo] 
+20:40:10.045 [4500] t=562s frames=69 stereo=off ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=0.0 vs-stereo=0.0 vs-mismatch=0.0 mono-ortho=0.0 mono-rtt=0.0 mono-off=233.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=0.0 texmat=18.0 | rt-switch-away=138 max-mismatch=0
+20:40:11.045 [4500] [xiii-stereo] 
+20:40:11.045 [4500] t=563s frames=79 stereo=off ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=0.0 vs-stereo=0.0 vs-mismatch=0.0 mono-ortho=0.0 mono-rtt=0.0 mono-off=233.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=0.0 texmat=18.0 | rt-switch-away=158 max-mismatch=0
+20:40:12.050 [4500] [xiii-stereo] 
+20:40:12.050 [4500] t=564s frames=75 stereo=off ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=0.0 vs-stereo=0.0 vs-mismatch=0.0 mono-ortho=0.0 mono-rtt=0.0 mono-off=233.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=0.0 texmat=18.0 | rt-switch-away=150 max-mismatch=0
+20:40:13.041 [4500] [xiii-stereo] 
+20:40:13.041 [4500] t=565s frames=73 stereo=off ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=0.0 vs-stereo=0.0 vs-mismatch=0.0 mono-ortho=0.0 mono-rtt=0.0 mono-off=233.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=0.0 texmat=18.0 | rt-switch-away=146 max-mismatch=0
+20:40:14.041 [4500] [xiii-stereo] 
+20:40:14.042 [4500] t=566s frames=76 stereo=off ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=0.0 vs-stereo=0.0 vs-mismatch=0.0 mono-ortho=0.0 mono-rtt=0.0 mono-off=233.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=0.0 texmat=18.0 | rt-switch-away=152 max-mismatch=0
+20:40:15.046 [4500] [xiii-stereo] 
+20:40:15.046 [4500] t=567s frames=78 stereo=off ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=0.0 vs-stereo=0.0 vs-mismatch=0.0 mono-ortho=0.0 mono-rtt=0.0 mono-off=233.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=0.0 texmat=18.0 | rt-switch-away=156 max-mismatch=0
+20:40:16.038 [4500] [xiii-stereo] 
+20:40:16.038 [4500] t=568s frames=76 stereo=off ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=0.0 vs-stereo=0.0 vs-mismatch=0.0 mono-ortho=0.0 mono-rtt=0.0 mono-off=233.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=0.0 texmat=18.0 | rt-switch-away=152 max-mismatch=0
+20:40:17.043 [4500] [xiii-stereo] 
+20:40:17.043 [4500] t=569s frames=77 stereo=off ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=0.0 vs-stereo=0.0 vs-mismatch=0.0 mono-ortho=0.0 mono-rtt=0.0 mono-off=233.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=0.0 texmat=18.0 | rt-switch-away=154 max-mismatch=0
+20:40:18.049 [4500] [xiii-stereo] 
+20:40:18.049 [4500] t=570s frames=74 stereo=off ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=0.0 vs-stereo=0.0 vs-mismatch=0.0 mono-ortho=0.0 mono-rtt=0.0 mono-off=233.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=0.0 texmat=18.0 | rt-switch-away=148 max-mismatch=0
+20:40:19.045 [4500] [xiii-stereo] 
+20:40:19.045 [4500] t=571s frames=75 stereo=off ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=0.0 vs-stereo=0.0 vs-mismatch=0.0 mono-ortho=0.0 mono-rtt=0.0 mono-off=233.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=0.0 texmat=18.0 | rt-switch-away=150 max-mismatch=0
+20:40:19.207 [4500] [xiii-stereo] 
+20:40:19.207 [4500] numpad 7: stereo ON
+20:40:19.217 [4500] [xiii-stereo] 
+20:40:19.217 [4500] programmable draw: c0..c3 == W*V*P (max |diff| 0) frame=47961 -> per-eye constants path engaged
+20:40:19.218 [4500] [xiii-stereo] 
+20:40:19.218 [4500] programmable draw: c0..c3 == W*V*P (max |diff| 0) frame=47961 -> per-eye constants path engaged
+20:40:19.219 [4500] [xiii-stereo] 
+20:40:19.219 [4500] programmable draw: c0..c3 == W*V*P (max |diff| 0) frame=47961 -> per-eye constants path engaged
+20:40:20.048 [4500] [xiii-stereo] 
+20:40:20.048 [4500] t=572s frames=70 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=171.5 vs-stereo=17.4 vs-mismatch=0.0 mono-ortho=2.5 mono-rtt=1.7 mono-off=39.9 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.9 texmat=18.0 | rt-switch-away=140 max-mismatch=0
+20:40:21.043 [4500] [xiii-stereo] 
+20:40:21.043 [4500] t=573s frames=70 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=140 max-mismatch=0
+20:40:22.050 [4500] [xiii-stereo] 
+20:40:22.050 [4500] t=574s frames=69 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=138 max-mismatch=0
+20:40:23.047 [4500] [xiii-stereo] 
+20:40:23.047 [4500] t=575s frames=71 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=142 max-mismatch=0
+20:40:24.048 [4500] [xiii-stereo] 
+20:40:24.048 [4500] t=576s frames=69 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=138 max-mismatch=0
+20:40:25.051 [4500] [xiii-stereo] 
+20:40:25.051 [4500] t=577s frames=67 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=134 max-mismatch=0
+20:40:26.049 [4500] [xiii-stereo] 
+20:40:26.049 [4500] t=578s frames=72 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=144 max-mismatch=0
+20:40:27.047 [4500] [xiii-stereo] 
+20:40:27.047 [4500] t=579s frames=71 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=142 max-mismatch=0
+20:40:28.050 [4500] [xiii-stereo] 
+20:40:28.051 [4500] t=580s frames=68 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=136 max-mismatch=0
+20:40:29.054 [4500] [xiii-stereo] 
+20:40:29.054 [4500] t=581s frames=71 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=142 max-mismatch=0
+20:40:30.051 [4500] [xiii-stereo] 
+20:40:30.051 [4500] t=582s frames=69 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=138 max-mismatch=0
+20:40:31.056 [4500] [xiii-stereo] 
+20:40:31.056 [4500] t=583s frames=70 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=140 max-mismatch=0
+20:40:32.065 [4500] [xiii-stereo] 
+20:40:32.065 [4500] t=584s frames=69 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=138 max-mismatch=0
+20:40:33.065 [4500] [xiii-stereo] 
+20:40:33.065 [4500] t=585s frames=71 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=142 max-mismatch=0
+20:40:34.054 [4500] [xiii-stereo] 
+20:40:34.054 [4500] t=586s frames=68 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=136 max-mismatch=0
+20:40:35.063 [4500] [xiii-stereo] 
+20:40:35.063 [4500] t=587s frames=69 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=138 max-mismatch=0
+20:40:36.060 [4500] [xiii-stereo] 
+20:40:36.060 [4500] t=588s frames=71 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=142 max-mismatch=0
+20:40:37.063 [4500] [xiii-stereo] 
+20:40:37.063 [4500] t=589s frames=72 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=144 max-mismatch=0
+20:40:38.057 [4500] [xiii-stereo] 
+20:40:38.057 [4500] t=590s frames=70 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=140 max-mismatch=0
+20:40:39.060 [4500] [xiii-stereo] 
+20:40:39.060 [4500] t=591s frames=69 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=138 max-mismatch=0
+20:40:40.062 [4500] [xiii-stereo] 
+20:40:40.062 [4500] t=592s frames=71 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=142 max-mismatch=0
+20:40:41.066 [4500] [xiii-stereo] 
+20:40:41.066 [4500] t=593s frames=72 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=144 max-mismatch=0
+20:40:42.065 [4500] [xiii-stereo] 
+20:40:42.065 [4500] t=594s frames=71 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=142 max-mismatch=0
+20:40:43.063 [4500] [xiii-stereo] 
+20:40:43.063 [4500] t=595s frames=69 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=138 max-mismatch=0
+20:40:44.062 [4500] [xiii-stereo] 
+20:40:44.062 [4500] t=596s frames=71 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=142 max-mismatch=0
+20:40:45.059 [4500] [xiii-stereo] 
+20:40:45.059 [4500] t=597s frames=71 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=142 max-mismatch=0
+20:40:46.065 [4500] [xiii-stereo] 
+20:40:46.065 [4500] t=598s frames=69 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=138 max-mismatch=0
+20:40:47.056 [4500] [xiii-stereo] 
+20:40:47.056 [4500] t=599s frames=71 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=142 max-mismatch=0
+20:40:48.060 [4500] [xiii-stereo] 
+20:40:48.060 [4500] t=600s frames=72 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=144 max-mismatch=0
+20:40:49.063 [4500] [xiii-stereo] 
+20:40:49.063 [4500] t=601s frames=71 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=142 max-mismatch=0
+20:40:50.065 [4500] [xiii-stereo] 
+20:40:50.066 [4500] t=602s frames=69 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=138 max-mismatch=0
+20:40:51.062 [4500] [xiii-stereo] 
+20:40:51.062 [4500] t=603s frames=71 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=142 max-mismatch=0
+20:40:52.064 [4500] [xiii-stereo] 
+20:40:52.064 [4500] t=604s frames=71 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=142 max-mismatch=0
+20:40:53.057 [4500] [xiii-stereo] 
+20:40:53.057 [4500] t=605s frames=67 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=134 max-mismatch=0
+20:40:54.062 [4500] [xiii-stereo] 
+20:40:54.062 [4500] t=606s frames=72 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=144 max-mismatch=0
+20:40:55.058 [4500] [xiii-stereo] 
+20:40:55.058 [4500] t=607s frames=71 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=142 max-mismatch=0
+20:40:56.066 [4500] [xiii-stereo] 
+20:40:56.066 [4500] t=608s frames=71 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=142 max-mismatch=0
+20:40:57.066 [4500] [xiii-stereo] 
+20:40:57.067 [4500] t=609s frames=69 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=138 max-mismatch=0
+20:40:58.055 [4500] [xiii-stereo] 
+20:40:58.055 [4500] t=610s frames=71 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=142 max-mismatch=0
+20:40:59.064 [4500] [xiii-stereo] 
+20:40:59.064 [4500] t=611s frames=72 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=144 max-mismatch=0
+20:41:00.061 [4500] [xiii-stereo] 
+20:41:00.061 [4500] t=612s frames=70 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=140 max-mismatch=0
+20:41:01.054 [4500] [xiii-stereo] 
+20:41:01.054 [4500] t=613s frames=70 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=140 max-mismatch=0
+20:41:02.067 [4500] [xiii-stereo] 
+20:41:02.067 [4500] t=614s frames=71 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=142 max-mismatch=0
+20:41:03.055 [4500] [xiii-stereo] 
+20:41:03.055 [4500] t=615s frames=68 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=136 max-mismatch=0
+20:41:04.060 [4500] [xiii-stereo] 
+20:41:04.060 [4500] t=616s frames=66 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=132 max-mismatch=0
+20:41:05.060 [4500] [xiii-stereo] 
+20:41:05.060 [4500] t=617s frames=72 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=144 max-mismatch=0
+20:41:06.057 [4500] [xiii-stereo] 
+20:41:06.057 [4500] t=618s frames=67 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=134 max-mismatch=0
+20:41:07.063 [4500] [xiii-stereo] 
+20:41:07.063 [4500] t=619s frames=71 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=142 max-mismatch=0
+20:41:08.066 [4500] [xiii-stereo] 
+20:41:08.066 [4500] t=620s frames=71 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=142 max-mismatch=0
+20:41:09.065 [4500] [xiii-stereo] 
+20:41:09.065 [4500] t=621s frames=70 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=140 max-mismatch=0
+20:41:10.056 [4500] [xiii-stereo] 
+20:41:10.056 [4500] t=622s frames=69 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=138 max-mismatch=0
+20:41:11.056 [4500] [xiii-stereo] 
+20:41:11.056 [4500] t=623s frames=68 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=136 max-mismatch=0
+20:41:12.067 [4500] [xiii-stereo] 
+20:41:12.067 [4500] t=624s frames=72 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=144 max-mismatch=0
+20:41:13.066 [4500] [xiii-stereo] 
+20:41:13.066 [4500] t=625s frames=67 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=134 max-mismatch=0
+20:41:14.058 [4500] [xiii-stereo] 
+20:41:14.058 [4500] t=626s frames=68 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=136 max-mismatch=0
+20:41:15.064 [4500] [xiii-stereo] 
+20:41:15.064 [4500] t=627s frames=72 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=144 max-mismatch=0
+20:41:16.065 [4500] [xiii-stereo] 
+20:41:16.065 [4500] t=628s frames=71 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=142 max-mismatch=0
+20:41:17.056 [4500] [xiii-stereo] 
+20:41:17.056 [4500] t=629s frames=64 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=128 max-mismatch=0
+20:41:18.062 [4500] [xiii-stereo] 
+20:41:18.062 [4500] t=630s frames=70 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=140 max-mismatch=0
+20:41:19.060 [4500] [xiii-stereo] 
+20:41:19.060 [4500] t=631s frames=70 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=140 max-mismatch=0
+20:41:19.791 [4500] [xiii-stereo] 
+20:41:19.791 [4500] numpad 6: StereoIPD=3.65
+20:41:20.063 [4500] [xiii-stereo] 
+20:41:20.063 [4500] t=632s frames=67 stereo=ON ipd=3.65u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=134 max-mismatch=0
+20:41:20.423 [4500] [xiii-stereo] 
+20:41:20.423 [4500] numpad 6: StereoIPD=3.90
+20:41:21.062 [4500] [xiii-stereo] 
+20:41:21.062 [4500] numpad 6: StereoIPD=4.15
+20:41:21.063 [4500] [xiii-stereo] 
+20:41:21.063 [4500] t=633s frames=71 stereo=ON ipd=4.15u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=142 max-mismatch=0
+20:41:22.066 [4500] [xiii-stereo] 
+20:41:22.066 [4500] t=634s frames=70 stereo=ON ipd=4.15u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=140 max-mismatch=0
+20:41:23.065 [4500] [xiii-stereo] 
+20:41:23.065 [4500] t=635s frames=67 stereo=ON ipd=4.15u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=134 max-mismatch=0
+20:41:24.060 [4500] [xiii-stereo] 
+20:41:24.060 [4500] t=636s frames=70 stereo=ON ipd=4.15u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=140 max-mismatch=0
+20:41:24.497 [4500] [xiii-stereo] 
+20:41:24.497 [4500] numpad 5: eyes SWAPPED (left eye in right half)
+20:41:25.060 [4500] [xiii-stereo] 
+20:41:25.060 [4500] t=637s frames=71 stereo=ON ipd=4.15u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=142 max-mismatch=0
+20:41:26.056 [4500] [xiii-stereo] 
+20:41:26.056 [4500] t=638s frames=70 stereo=ON ipd=4.15u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=140 max-mismatch=0
+20:41:27.056 [4500] [xiii-stereo] 
+20:41:27.056 [4500] t=639s frames=68 stereo=ON ipd=4.15u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=136 max-mismatch=0
+20:41:27.766 [4500] [xiii-stereo] 
+20:41:27.766 [4500] numpad 5: eyes normal
+20:41:28.062 [4500] [xiii-stereo] 
+20:41:28.062 [4500] t=640s frames=72 stereo=ON ipd=4.15u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=144 max-mismatch=0
+20:41:28.397 [4500] [xiii-stereo] 
+20:41:28.397 [4500] numpad 4: StereoIPD=3.90
+20:41:29.032 [4500] [xiii-stereo] 
+20:41:29.032 [4500] numpad 4: StereoIPD=3.65
+20:41:29.064 [4500] [xiii-stereo] 
+20:41:29.064 [4500] t=641s frames=71 stereo=ON ipd=3.65u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=142 max-mismatch=0
+20:41:29.673 [4500] [xiii-stereo] 
+20:41:29.673 [4500] numpad 4: StereoIPD=3.40
+20:41:30.060 [4500] [xiii-stereo] 
+20:41:30.060 [4500] t=642s frames=70 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=140 max-mismatch=0
+20:41:31.065 [4500] [xiii-stereo] 
+20:41:31.065 [4500] t=643s frames=69 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=138 max-mismatch=0
+20:41:32.062 [4500] [xiii-stereo] 
+20:41:32.062 [4500] t=644s frames=71 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=142 max-mismatch=0
+20:41:33.059 [4500] [xiii-stereo] 
+20:41:33.059 [4500] t=645s frames=67 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=134 max-mismatch=0
+20:41:34.062 [4500] [xiii-stereo] 
+20:41:34.062 [4500] t=646s frames=67 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=134 max-mismatch=0
+20:41:35.055 [4500] [xiii-stereo] 
+20:41:35.055 [4500] t=647s frames=70 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=140 max-mismatch=0
+20:41:36.063 [4500] [xiii-stereo] 
+20:41:36.063 [4500] t=648s frames=71 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=142 max-mismatch=0
+20:41:37.056 [4500] [xiii-stereo] 
+20:41:37.056 [4500] t=649s frames=69 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=138 max-mismatch=0
+20:41:38.067 [4500] [xiii-stereo] 
+20:41:38.067 [4500] t=650s frames=69 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=138 max-mismatch=0
+20:41:39.056 [4500] [xiii-stereo] 
+20:41:39.056 [4500] t=651s frames=69 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=138 max-mismatch=0
+20:41:40.063 [4500] [xiii-stereo] 
+20:41:40.063 [4500] t=652s frames=71 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=142 max-mismatch=0
+20:41:41.066 [4500] [xiii-stereo] 
+20:41:41.066 [4500] t=653s frames=68 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=136 max-mismatch=0
+20:41:42.060 [4500] [xiii-stereo] 
+20:41:42.060 [4500] t=654s frames=65 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=130 max-mismatch=0
+20:41:43.060 [4500] [xiii-stereo] 
+20:41:43.061 [4500] t=655s frames=69 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=138 max-mismatch=0
+20:41:44.055 [4500] [xiii-stereo] 
+20:41:44.055 [4500] t=656s frames=64 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=128 max-mismatch=0
+20:41:45.072 [4500] [xiii-stereo] 
+20:41:45.072 [4500] t=657s frames=70 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=140 max-mismatch=0
+20:41:46.073 [4500] [xiii-stereo] 
+20:41:46.073 [4500] t=658s frames=71 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=142 max-mismatch=0
+20:41:47.085 [4500] [xiii-stereo] 
+20:41:47.085 [4500] t=659s frames=69 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=138 max-mismatch=0
+20:41:48.083 [4500] [xiii-stereo] 
+20:41:48.083 [4500] t=660s frames=70 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=140 max-mismatch=0
+20:41:49.077 [4500] [xiii-stereo] 
+20:41:49.078 [4500] t=661s frames=69 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=138 max-mismatch=0
+20:41:50.080 [4500] [xiii-stereo] 
+20:41:50.080 [4500] t=662s frames=69 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=138 max-mismatch=0
+20:41:51.082 [4500] [xiii-stereo] 
+20:41:51.082 [4500] t=663s frames=69 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=138 max-mismatch=0
+20:41:52.074 [4500] [xiii-stereo] 
+20:41:52.074 [4500] t=664s frames=69 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=138 max-mismatch=0
+20:41:53.075 [4500] [xiii-stereo] 
+20:41:53.075 [4500] t=665s frames=68 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=136 max-mismatch=0
+20:41:54.075 [4500] [xiii-stereo] 
+20:41:54.075 [4500] t=666s frames=64 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=128 max-mismatch=0
+20:41:55.075 [4500] [xiii-stereo] 
+20:41:55.075 [4500] t=667s frames=68 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=136 max-mismatch=0
+20:41:56.083 [4500] [xiii-stereo] 
+20:41:56.083 [4500] t=668s frames=69 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=138 max-mismatch=0
+20:41:57.078 [4500] [xiii-stereo] 
+20:41:57.078 [4500] t=669s frames=67 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=134 max-mismatch=0
+20:41:58.079 [4500] [xiii-stereo] 
+20:41:58.079 [4500] t=670s frames=72 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=144 max-mismatch=0
+20:41:59.079 [4500] [xiii-stereo] 
+20:41:59.079 [4500] t=671s frames=71 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=142 max-mismatch=0
+20:42:00.073 [4500] [xiii-stereo] 
+20:42:00.073 [4500] t=672s frames=68 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=136 max-mismatch=0
+20:42:01.085 [4500] [xiii-stereo] 
+20:42:01.085 [4500] t=673s frames=67 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=134 max-mismatch=0
+20:42:02.083 [4500] [xiii-stereo] 
+20:42:02.083 [4500] t=674s frames=70 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=140 max-mismatch=0
+20:42:03.079 [4500] [xiii-stereo] 
+20:42:03.079 [4500] t=675s frames=67 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=134 max-mismatch=0
+20:42:04.075 [4500] [xiii-stereo] 
+20:42:04.075 [4500] t=676s frames=71 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=142 max-mismatch=0
+20:42:05.072 [4500] [xiii-stereo] 
+20:42:05.073 [4500] t=677s frames=71 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=142 max-mismatch=0
+20:42:06.075 [4500] [xiii-stereo] 
+20:42:06.075 [4500] t=678s frames=65 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=130 max-mismatch=0
+20:42:07.086 [4500] [xiii-stereo] 
+20:42:07.086 [4500] t=679s frames=68 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=136 max-mismatch=0
+20:42:08.097 [4500] [xiii-stereo] 
+20:42:08.097 [4500] t=680s frames=65 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=130 max-mismatch=0
+20:42:09.096 [4500] [xiii-stereo] 
+20:42:09.096 [4500] t=681s frames=63 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=126 max-mismatch=0
+20:42:10.099 [4500] [xiii-stereo] 
+20:42:10.099 [4500] t=682s frames=64 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=207.0 vs-stereo=21.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=18.0 | rt-switch-away=128 max-mismatch=0
+20:42:11.087 [4500] [xiii-stereo] 
+20:42:11.087 [4500] t=683s frames=63 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=202.8 vs-stereo=19.3 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.4 texmat=17.9 | rt-switch-away=127 max-mismatch=0
+20:42:12.086 [4500] [xiii-stereo] 
+20:42:12.086 [4500] t=684s frames=71 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=181.7 vs-stereo=14.7 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=15.7 texmat=23.8 | rt-switch-away=142 max-mismatch=0
+20:42:13.089 [4500] [xiii-stereo] 
+20:42:13.089 [4500] t=685s frames=72 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=167.0 vs-stereo=15.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=22.0 | rt-switch-away=144 max-mismatch=0
+20:42:14.096 [4500] [xiii-stereo] 
+20:42:14.096 [4500] t=686s frames=67 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=166.5 vs-stereo=14.9 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=12.0 texmat=22.0 | rt-switch-away=133 max-mismatch=0
+20:42:15.091 [4500] [xiii-stereo] 
+20:42:15.091 [4500] t=687s frames=76 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=125.7 vs-stereo=15.9 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=10.0 texmat=19.3 | rt-switch-away=152 max-mismatch=0
+20:42:16.089 [4500] [xiii-stereo] 
+20:42:16.089 [4500] t=688s frames=78 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=118.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=18.0 | rt-switch-away=156 max-mismatch=0
+20:42:17.092 [4500] [xiii-stereo] 
+20:42:17.092 [4500] t=689s frames=75 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=118.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=18.0 | rt-switch-away=150 max-mismatch=0
+20:42:18.096 [4500] [xiii-stereo] 
+20:42:18.096 [4500] t=690s frames=75 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=118.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=18.0 | rt-switch-away=150 max-mismatch=0
+20:42:19.096 [4500] [xiii-stereo] 
+20:42:19.096 [4500] t=691s frames=73 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=118.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=18.0 | rt-switch-away=146 max-mismatch=0
+20:42:20.094 [4500] [xiii-stereo] 
+20:42:20.094 [4500] t=692s frames=78 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=118.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=18.0 | rt-switch-away=156 max-mismatch=0
+20:42:21.099 [4500] [xiii-stereo] 
+20:42:21.099 [4500] t=693s frames=73 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=118.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=18.0 | rt-switch-away=146 max-mismatch=0
+20:42:22.091 [4500] [xiii-stereo] 
+20:42:22.091 [4500] t=694s frames=71 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=118.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=18.0 | rt-switch-away=142 max-mismatch=0
+20:42:23.095 [4500] [xiii-stereo] 
+20:42:23.095 [4500] t=695s frames=61 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=118.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=18.0 | rt-switch-away=122 max-mismatch=0
+20:42:24.091 [4500] [xiii-stereo] 
+20:42:24.091 [4500] t=696s frames=72 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=118.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=18.0 | rt-switch-away=144 max-mismatch=0
+20:42:25.087 [4500] [xiii-stereo] 
+20:42:25.087 [4500] t=697s frames=69 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=118.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=18.0 | rt-switch-away=138 max-mismatch=0
+20:42:26.090 [4500] [xiii-stereo] 
+20:42:26.090 [4500] t=698s frames=74 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=118.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=18.0 | rt-switch-away=148 max-mismatch=0
+20:42:27.087 [4500] [xiii-stereo] 
+20:42:27.087 [4500] t=699s frames=71 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=118.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=18.0 | rt-switch-away=142 max-mismatch=0
+20:42:28.099 [4500] [xiii-stereo] 
+20:42:28.099 [4500] t=700s frames=71 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=118.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=18.0 | rt-switch-away=142 max-mismatch=0
+20:42:29.098 [4500] [xiii-stereo] 
+20:42:29.098 [4500] t=701s frames=68 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=118.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=18.0 | rt-switch-away=136 max-mismatch=0
+20:42:30.091 [4500] [xiii-stereo] 
+20:42:30.091 [4500] t=702s frames=73 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=118.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=18.0 | rt-switch-away=146 max-mismatch=0
+20:42:31.097 [4500] [xiii-stereo] 
+20:42:31.097 [4500] t=703s frames=77 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=118.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=18.0 | rt-switch-away=154 max-mismatch=0
+20:42:32.091 [4500] [xiii-stereo] 
+20:42:32.091 [4500] t=704s frames=70 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=118.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=18.0 | rt-switch-away=140 max-mismatch=0
+20:42:33.092 [4500] [xiii-stereo] 
+20:42:33.092 [4500] t=705s frames=80 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=83.6 vs-stereo=11.8 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.3 | rt-switch-away=160 max-mismatch=0
+20:42:34.090 [4500] [xiii-stereo] 
+20:42:34.090 [4500] t=706s frames=89 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=72.0 vs-stereo=10.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=178 max-mismatch=0
+20:42:35.089 [4500] [xiii-stereo] 
+20:42:35.089 [4500] t=707s frames=83 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=72.0 vs-stereo=10.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=166 max-mismatch=0
+20:42:36.097 [4500] [xiii-stereo] 
+20:42:36.097 [4500] t=708s frames=80 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=72.0 vs-stereo=10.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=160 max-mismatch=0
+20:42:37.093 [4500] [xiii-stereo] 
+20:42:37.093 [4500] t=709s frames=82 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=72.0 vs-stereo=10.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=164 max-mismatch=0
+20:42:38.090 [4500] [xiii-stereo] 
+20:42:38.090 [4500] t=710s frames=81 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=72.0 vs-stereo=10.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=162 max-mismatch=0
+20:42:39.096 [4500] [xiii-stereo] 
+20:42:39.096 [4500] t=711s frames=79 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=72.0 vs-stereo=10.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=158 max-mismatch=0
+20:42:40.086 [4500] [xiii-stereo] 
+20:42:40.086 [4500] t=712s frames=81 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=72.0 vs-stereo=10.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=162 max-mismatch=0
+20:42:41.097 [4500] [xiii-stereo] 
+20:42:41.097 [4500] t=713s frames=84 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=72.0 vs-stereo=10.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=168 max-mismatch=0
+20:42:42.094 [4500] [xiii-stereo] 
+20:42:42.094 [4500] t=714s frames=77 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=72.0 vs-stereo=10.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=154 max-mismatch=0
+20:42:43.097 [4500] [xiii-stereo] 
+20:42:43.097 [4500] t=715s frames=82 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=72.0 vs-stereo=10.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=164 max-mismatch=0
+20:42:44.103 [4500] [xiii-stereo] 
+20:42:44.103 [4500] t=716s frames=73 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=72.0 vs-stereo=10.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=146 max-mismatch=0
+20:42:45.113 [4500] [xiii-stereo] 
+20:42:45.113 [4500] t=717s frames=74 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=72.0 vs-stereo=10.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=148 max-mismatch=0
+20:42:46.111 [4500] [xiii-stereo] 
+20:42:46.112 [4500] t=718s frames=80 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=72.0 vs-stereo=10.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=160 max-mismatch=0
+20:42:47.105 [4500] [xiii-stereo] 
+20:42:47.106 [4500] t=719s frames=75 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=72.0 vs-stereo=10.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=150 max-mismatch=0
+20:42:48.108 [4500] [xiii-stereo] 
+20:42:48.108 [4500] t=720s frames=74 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=72.0 vs-stereo=10.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=148 max-mismatch=0
+20:42:49.111 [4500] [xiii-stereo] 
+20:42:49.111 [4500] t=721s frames=80 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=72.0 vs-stereo=10.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=160 max-mismatch=0
+20:42:50.113 [4500] [xiii-stereo] 
+20:42:50.113 [4500] t=722s frames=78 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=72.0 vs-stereo=10.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=156 max-mismatch=0
+20:42:51.111 [4500] [xiii-stereo] 
+20:42:51.111 [4500] t=723s frames=75 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=80.0 vs-stereo=12.2 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=150 max-mismatch=0
+20:42:52.112 [4500] [xiii-stereo] 
+20:42:52.112 [4500] t=724s frames=79 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=81.3 vs-stereo=12.9 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=158 max-mismatch=0
+20:42:53.108 [4500] [xiii-stereo] 
+20:42:53.108 [4500] t=725s frames=82 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=61.2 vs-stereo=8.4 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=13.8 | rt-switch-away=164 max-mismatch=0
+20:42:54.110 [4500] [xiii-stereo] 
+20:42:54.110 [4500] t=726s frames=79 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=57.0 vs-stereo=8.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=13.0 | rt-switch-away=158 max-mismatch=0
+20:42:55.105 [4500] [xiii-stereo] 
+20:42:55.105 [4500] t=727s frames=79 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=57.0 vs-stereo=8.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=13.0 | rt-switch-away=158 max-mismatch=0
+20:42:56.110 [4500] [xiii-stereo] 
+20:42:56.110 [4500] t=728s frames=78 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=57.0 vs-stereo=8.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=13.0 | rt-switch-away=156 max-mismatch=0
+20:42:57.106 [4500] [xiii-stereo] 
+20:42:57.106 [4500] t=729s frames=80 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=57.0 vs-stereo=8.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=13.0 | rt-switch-away=160 max-mismatch=0
+20:42:58.113 [4500] [xiii-stereo] 
+20:42:58.113 [4500] t=730s frames=77 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=57.0 vs-stereo=8.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=13.0 | rt-switch-away=154 max-mismatch=0
+20:42:59.105 [4500] [xiii-stereo] 
+20:42:59.105 [4500] t=731s frames=80 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=57.0 vs-stereo=8.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=13.0 | rt-switch-away=160 max-mismatch=0
+20:43:00.110 [4500] [xiii-stereo] 
+20:43:00.110 [4500] t=732s frames=80 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=57.0 vs-stereo=8.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=13.0 | rt-switch-away=160 max-mismatch=0
+20:43:01.110 [4500] [xiii-stereo] 
+20:43:01.110 [4500] t=733s frames=81 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=57.0 vs-stereo=8.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=13.0 | rt-switch-away=162 max-mismatch=0
+20:43:02.111 [4500] [xiii-stereo] 
+20:43:02.112 [4500] t=734s frames=78 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=57.0 vs-stereo=8.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=13.0 | rt-switch-away=156 max-mismatch=0
+20:43:03.114 [4500] [xiii-stereo] 
+20:43:03.114 [4500] t=735s frames=80 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=57.0 vs-stereo=8.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=13.0 | rt-switch-away=160 max-mismatch=0
+20:43:04.110 [4500] [xiii-stereo] 
+20:43:04.110 [4500] t=736s frames=76 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=57.0 vs-stereo=8.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=13.0 | rt-switch-away=152 max-mismatch=0
+20:43:05.110 [4500] [xiii-stereo] 
+20:43:05.110 [4500] t=737s frames=80 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=57.0 vs-stereo=8.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=13.0 | rt-switch-away=160 max-mismatch=0
+20:43:06.110 [4500] [xiii-stereo] 
+20:43:06.110 [4500] t=738s frames=78 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=57.0 vs-stereo=8.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=13.0 | rt-switch-away=156 max-mismatch=0
+20:43:07.113 [4500] [xiii-stereo] 
+20:43:07.113 [4500] t=739s frames=76 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=57.0 vs-stereo=8.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=13.0 | rt-switch-away=152 max-mismatch=0
+20:43:08.107 [4500] [xiii-stereo] 
+20:43:08.107 [4500] t=740s frames=75 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=57.0 vs-stereo=8.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=13.0 | rt-switch-away=150 max-mismatch=0
+20:43:09.109 [4500] [xiii-stereo] 
+20:43:09.109 [4500] t=741s frames=75 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=57.0 vs-stereo=8.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=13.0 | rt-switch-away=150 max-mismatch=0
+20:43:10.108 [4500] [xiii-stereo] 
+20:43:10.109 [4500] t=742s frames=78 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=57.0 vs-stereo=8.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=13.0 | rt-switch-away=156 max-mismatch=0
+20:43:11.108 [4500] [xiii-stereo] 
+20:43:11.108 [4500] t=743s frames=78 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=58.9 vs-stereo=8.5 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=13.2 | rt-switch-away=156 max-mismatch=0
+20:43:12.106 [4500] [xiii-stereo] 
+20:43:12.106 [4500] t=744s frames=76 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=89.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=15.0 | rt-switch-away=152 max-mismatch=0
+20:43:13.107 [4500] [xiii-stereo] 
+20:43:13.107 [4500] t=745s frames=74 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=101.5 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=148 max-mismatch=0
+20:43:14.109 [4500] [xiii-stereo] 
+20:43:14.109 [4500] t=746s frames=72 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=127.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=18.0 | rt-switch-away=144 max-mismatch=0
+20:43:15.113 [4500] [xiii-stereo] 
+20:43:15.113 [4500] t=747s frames=74 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=127.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=18.0 | rt-switch-away=148 max-mismatch=0
+20:43:16.111 [4500] [xiii-stereo] 
+20:43:16.111 [4500] t=748s frames=75 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=127.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=18.0 | rt-switch-away=150 max-mismatch=0
+20:43:17.112 [4500] [xiii-stereo] 
+20:43:17.112 [4500] t=749s frames=77 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=127.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=18.0 | rt-switch-away=154 max-mismatch=0
+20:43:18.111 [4500] [xiii-stereo] 
+20:43:18.111 [4500] t=750s frames=74 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=127.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=18.0 | rt-switch-away=148 max-mismatch=0
+20:43:19.107 [4500] [xiii-stereo] 
+20:43:19.108 [4500] t=751s frames=77 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=127.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=18.0 | rt-switch-away=154 max-mismatch=0
+20:43:20.106 [4500] [xiii-stereo] 
+20:43:20.106 [4500] t=752s frames=77 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=127.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=18.0 | rt-switch-away=154 max-mismatch=0
+20:43:21.107 [4500] [xiii-stereo] 
+20:43:21.107 [4500] t=753s frames=74 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=127.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=18.0 | rt-switch-away=148 max-mismatch=0
+20:43:22.114 [4500] [xiii-stereo] 
+20:43:22.114 [4500] t=754s frames=74 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=127.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=18.0 | rt-switch-away=148 max-mismatch=0
+20:43:23.103 [4500] [xiii-stereo] 
+20:43:23.103 [4500] t=755s frames=78 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=127.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=18.0 | rt-switch-away=156 max-mismatch=0
+20:43:24.111 [4500] [xiii-stereo] 
+20:43:24.111 [4500] t=756s frames=79 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=127.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=18.0 | rt-switch-away=158 max-mismatch=0
+20:43:25.111 [4500] [xiii-stereo] 
+20:43:25.112 [4500] t=757s frames=74 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=127.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=18.0 | rt-switch-away=148 max-mismatch=0
+20:43:26.116 [4500] [xiii-stereo] 
+20:43:26.116 [4500] t=758s frames=76 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=127.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=18.0 | rt-switch-away=152 max-mismatch=0
+20:43:27.104 [4500] [xiii-stereo] 
+20:43:27.104 [4500] t=759s frames=72 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=127.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=18.0 | rt-switch-away=144 max-mismatch=0
+20:43:28.105 [4500] [xiii-stereo] 
+20:43:28.105 [4500] t=760s frames=76 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=127.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=18.0 | rt-switch-away=152 max-mismatch=0
+20:43:29.115 [4500] [xiii-stereo] 
+20:43:29.115 [4500] t=761s frames=75 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=127.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=18.0 | rt-switch-away=150 max-mismatch=0
+20:43:30.114 [4500] [xiii-stereo] 
+20:43:30.114 [4500] t=762s frames=73 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=127.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=18.0 | rt-switch-away=146 max-mismatch=0
+20:43:31.103 [4500] [xiii-stereo] 
+20:43:31.103 [4500] t=763s frames=73 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=127.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=18.0 | rt-switch-away=146 max-mismatch=0
+20:43:32.108 [4500] [xiii-stereo] 
+20:43:32.108 [4500] t=764s frames=75 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=127.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=18.0 | rt-switch-away=150 max-mismatch=0
+20:43:33.108 [4500] [xiii-stereo] 
+20:43:33.109 [4500] t=765s frames=77 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=127.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=18.0 | rt-switch-away=154 max-mismatch=0
+20:43:34.108 [4500] [xiii-stereo] 
+20:43:34.108 [4500] t=766s frames=77 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=127.1 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=18.0 | rt-switch-away=154 max-mismatch=0
+20:43:35.109 [4500] [xiii-stereo] 
+20:43:35.109 [4500] t=767s frames=77 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=126.9 vs-stereo=15.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=1.5 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=8.9 texmat=17.9 | rt-switch-away=114 max-mismatch=0
+20:43:36.114 [4500] [xiii-stereo] 
+20:43:36.114 [4500] t=768s frames=70 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=124.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=1.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=6.0 texmat=14.0 | rt-switch-away=70 max-mismatch=0
+20:43:37.114 [4500] [xiii-stereo] 
+20:43:37.114 [4500] t=769s frames=77 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=124.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=1.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=6.0 texmat=14.0 | rt-switch-away=77 max-mismatch=0
+20:43:38.112 [4500] [xiii-stereo] 
+20:43:38.112 [4500] t=770s frames=76 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=124.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=1.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=6.0 texmat=14.0 | rt-switch-away=76 max-mismatch=0
+20:43:39.112 [4500] [xiii-stereo] 
+20:43:39.112 [4500] t=771s frames=77 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=124.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=1.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=6.0 texmat=14.0 | rt-switch-away=77 max-mismatch=0
+20:43:40.103 [4500] [xiii-stereo] 
+20:43:40.103 [4500] t=772s frames=76 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=124.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=1.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=6.0 texmat=14.0 | rt-switch-away=76 max-mismatch=0
+20:43:41.109 [4500] [xiii-stereo] 
+20:43:41.109 [4500] t=773s frames=73 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=124.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=1.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=6.0 texmat=14.0 | rt-switch-away=73 max-mismatch=0
+20:43:42.112 [4500] [xiii-stereo] 
+20:43:42.112 [4500] t=774s frames=77 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=124.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=1.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=6.0 texmat=14.0 | rt-switch-away=77 max-mismatch=0
+20:43:43.112 [4500] [xiii-stereo] 
+20:43:43.112 [4500] t=775s frames=76 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=124.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=1.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=6.0 texmat=14.0 | rt-switch-away=76 max-mismatch=0
+20:43:44.115 [4500] [xiii-stereo] 
+20:43:44.115 [4500] t=776s frames=77 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=124.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=1.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=6.0 texmat=14.0 | rt-switch-away=77 max-mismatch=0
+20:43:45.114 [4500] [xiii-stereo] 
+20:43:45.114 [4500] t=777s frames=77 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=124.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=1.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=6.0 texmat=14.0 | rt-switch-away=77 max-mismatch=0
+20:43:46.106 [4500] [xiii-stereo] 
+20:43:46.107 [4500] t=778s frames=73 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=124.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=1.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=6.0 texmat=14.0 | rt-switch-away=73 max-mismatch=0
+20:43:47.107 [4500] [xiii-stereo] 
+20:43:47.107 [4500] t=779s frames=77 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=124.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=1.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=6.0 texmat=14.0 | rt-switch-away=77 max-mismatch=0
+20:43:48.112 [4500] [xiii-stereo] 
+20:43:48.112 [4500] t=780s frames=78 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=124.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=1.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=6.0 texmat=14.0 | rt-switch-away=78 max-mismatch=0
+20:43:49.114 [4500] [xiii-stereo] 
+20:43:49.115 [4500] t=781s frames=68 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=124.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=1.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=6.0 texmat=14.0 | rt-switch-away=68 max-mismatch=0
+20:43:50.104 [4500] [xiii-stereo] 
+20:43:50.104 [4500] t=782s frames=75 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=124.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=1.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=6.0 texmat=14.0 | rt-switch-away=75 max-mismatch=0
+20:43:51.106 [4500] [xiii-stereo] 
+20:43:51.106 [4500] t=783s frames=71 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=124.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=1.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=6.0 texmat=14.0 | rt-switch-away=71 max-mismatch=0
+20:43:52.105 [4500] [xiii-stereo] 
+20:43:52.105 [4500] t=784s frames=71 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=122.4 vs-stereo=14.6 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=1.3 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=7.0 texmat=14.9 | rt-switch-away=94 max-mismatch=0
+20:43:53.110 [4500] [xiii-stereo] 
+20:43:53.110 [4500] t=785s frames=60 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=117.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=120 max-mismatch=0
+20:43:54.104 [4500] [xiii-stereo] 
+20:43:54.104 [4500] t=786s frames=73 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=117.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=146 max-mismatch=0
+20:43:55.105 [4500] [xiii-stereo] 
+20:43:55.105 [4500] t=787s frames=73 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=117.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=146 max-mismatch=0
+20:43:56.112 [4500] [xiii-stereo] 
+20:43:56.112 [4500] t=788s frames=66 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=117.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=132 max-mismatch=0
+20:43:57.103 [4500] [xiii-stereo] 
+20:43:57.103 [4500] t=789s frames=76 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=117.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=152 max-mismatch=0
+20:43:58.112 [4500] [xiii-stereo] 
+20:43:58.112 [4500] t=790s frames=75 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=117.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=150 max-mismatch=0
+20:43:59.111 [4500] [xiii-stereo] 
+20:43:59.111 [4500] t=791s frames=72 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=117.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=144 max-mismatch=0
+20:44:00.113 [4500] [xiii-stereo] 
+20:44:00.113 [4500] t=792s frames=72 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=117.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=144 max-mismatch=0
+20:44:01.114 [4500] [xiii-stereo] 
+20:44:01.114 [4500] t=793s frames=75 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=117.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=150 max-mismatch=0
+20:44:02.116 [4500] [xiii-stereo] 
+20:44:02.116 [4500] t=794s frames=75 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=117.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=150 max-mismatch=0
+20:44:03.104 [4500] [xiii-stereo] 
+20:44:03.105 [4500] t=795s frames=56 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=117.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=112 max-mismatch=0
+20:44:04.108 [4500] [xiii-stereo] 
+20:44:04.108 [4500] t=796s frames=69 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=117.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=138 max-mismatch=0
+20:44:05.114 [4500] [xiii-stereo] 
+20:44:05.114 [4500] t=797s frames=72 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=117.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=144 max-mismatch=0
+20:44:06.106 [4500] [xiii-stereo] 
+20:44:06.106 [4500] t=798s frames=76 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=117.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=152 max-mismatch=0
+20:44:07.108 [4500] [xiii-stereo] 
+20:44:07.108 [4500] t=799s frames=75 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=117.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=150 max-mismatch=0
+20:44:08.104 [4500] [xiii-stereo] 
+20:44:08.104 [4500] t=800s frames=75 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=117.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=150 max-mismatch=0
+20:44:09.104 [4500] [xiii-stereo] 
+20:44:09.104 [4500] t=801s frames=70 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=117.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=140 max-mismatch=0
+20:44:10.118 [4500] [xiii-stereo] 
+20:44:10.118 [4500] t=802s frames=78 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=117.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=156 max-mismatch=0
+20:44:11.114 [4500] [xiii-stereo] 
+20:44:11.114 [4500] t=803s frames=76 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=117.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=152 max-mismatch=0
+20:44:12.107 [4500] [xiii-stereo] 
+20:44:12.107 [4500] t=804s frames=75 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=117.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=150 max-mismatch=0
+20:44:13.110 [4500] [xiii-stereo] 
+20:44:13.110 [4500] t=805s frames=76 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=117.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=152 max-mismatch=0
+20:44:14.105 [4500] [xiii-stereo] 
+20:44:14.105 [4500] t=806s frames=72 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=117.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=144 max-mismatch=0
+20:44:15.103 [4500] [xiii-stereo] 
+20:44:15.103 [4500] t=807s frames=78 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=117.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=156 max-mismatch=0
+20:44:16.111 [4500] [xiii-stereo] 
+20:44:16.111 [4500] t=808s frames=78 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=117.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=156 max-mismatch=0
+20:44:17.107 [4500] [xiii-stereo] 
+20:44:17.107 [4500] t=809s frames=72 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=117.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=144 max-mismatch=0
+20:44:18.114 [4500] [xiii-stereo] 
+20:44:18.114 [4500] t=810s frames=76 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=117.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=152 max-mismatch=0
+20:44:19.115 [4500] [xiii-stereo] 
+20:44:19.116 [4500] t=811s frames=71 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=117.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=142 max-mismatch=0
+20:44:20.103 [4500] [xiii-stereo] 
+20:44:20.103 [4500] t=812s frames=73 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=117.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=146 max-mismatch=0
+20:44:21.107 [4500] [xiii-stereo] 
+20:44:21.107 [4500] t=813s frames=78 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=117.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=156 max-mismatch=0
+20:44:22.110 [4500] [xiii-stereo] 
+20:44:22.110 [4500] t=814s frames=77 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=117.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=154 max-mismatch=0
+20:44:23.103 [4500] [xiii-stereo] 
+20:44:23.103 [4500] t=815s frames=76 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=117.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=152 max-mismatch=0
+20:44:24.107 [4500] [xiii-stereo] 
+20:44:24.107 [4500] t=816s frames=76 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=117.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=152 max-mismatch=0
+20:44:25.111 [4500] [xiii-stereo] 
+20:44:25.111 [4500] t=817s frames=69 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=117.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=138 max-mismatch=0
+20:44:26.114 [4500] [xiii-stereo] 
+20:44:26.114 [4500] t=818s frames=78 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=117.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=156 max-mismatch=0
+20:44:27.115 [4500] [xiii-stereo] 
+20:44:27.115 [4500] t=819s frames=76 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=117.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=152 max-mismatch=0
+20:44:28.113 [4500] [xiii-stereo] 
+20:44:28.114 [4500] t=820s frames=73 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=117.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=146 max-mismatch=0
+20:44:29.107 [4500] [xiii-stereo] 
+20:44:29.108 [4500] t=821s frames=69 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=117.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=138 max-mismatch=0
+20:44:30.114 [4500] [xiii-stereo] 
+20:44:30.114 [4500] t=822s frames=72 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=117.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=144 max-mismatch=0
+20:44:31.107 [4500] [xiii-stereo] 
+20:44:31.107 [4500] t=823s frames=75 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=117.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=150 max-mismatch=0
+20:44:32.113 [4500] [xiii-stereo] 
+20:44:32.113 [4500] t=824s frames=75 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=117.0 vs-stereo=16.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=150 max-mismatch=0
+20:44:33.119 [4500] [xiii-stereo] 
+20:44:33.119 [4500] t=825s frames=70 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=115.2 vs-stereo=15.9 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=140 max-mismatch=0
+20:44:34.130 [4500] [xiii-stereo] 
+20:44:34.130 [4500] t=826s frames=78 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=94.8 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=156 max-mismatch=0
+20:44:35.123 [4500] [xiii-stereo] 
+20:44:35.123 [4500] t=827s frames=74 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=84.5 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=148 max-mismatch=0
+20:44:36.134 [4500] [xiii-stereo] 
+20:44:36.134 [4500] t=828s frames=75 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=81.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=150 max-mismatch=0
+20:44:37.123 [4500] [xiii-stereo] 
+20:44:37.123 [4500] t=829s frames=73 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=81.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=146 max-mismatch=0
+20:44:38.128 [4500] [xiii-stereo] 
+20:44:38.128 [4500] t=830s frames=72 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=81.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=144 max-mismatch=0
+20:44:39.127 [4500] [xiii-stereo] 
+20:44:39.127 [4500] t=831s frames=75 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=81.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=150 max-mismatch=0
+20:44:40.126 [4500] [xiii-stereo] 
+20:44:40.126 [4500] t=832s frames=77 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=81.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=154 max-mismatch=0
+20:44:41.129 [4500] [xiii-stereo] 
+20:44:41.129 [4500] t=833s frames=75 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=81.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=150 max-mismatch=0
+20:44:42.123 [4500] [xiii-stereo] 
+20:44:42.123 [4500] t=834s frames=77 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=81.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=154 max-mismatch=0
+20:44:43.123 [4500] [xiii-stereo] 
+20:44:43.123 [4500] t=835s frames=77 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=81.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=154 max-mismatch=0
+20:44:44.129 [4500] [xiii-stereo] 
+20:44:44.129 [4500] t=836s frames=78 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=81.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=156 max-mismatch=0
+20:44:45.127 [4500] [xiii-stereo] 
+20:44:45.127 [4500] t=837s frames=78 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=81.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=156 max-mismatch=0
+20:44:46.129 [4500] [xiii-stereo] 
+20:44:46.129 [4500] t=838s frames=78 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=81.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=156 max-mismatch=0
+20:44:47.127 [4500] [xiii-stereo] 
+20:44:47.127 [4500] t=839s frames=77 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=81.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=154 max-mismatch=0
+20:44:48.128 [4500] [xiii-stereo] 
+20:44:48.129 [4500] t=840s frames=77 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=81.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=154 max-mismatch=0
+20:44:49.120 [4500] [xiii-stereo] 
+20:44:49.120 [4500] t=841s frames=74 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=81.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=148 max-mismatch=0
+20:44:50.126 [4500] [xiii-stereo] 
+20:44:50.126 [4500] t=842s frames=72 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=81.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=144 max-mismatch=0
+20:44:51.127 [4500] [xiii-stereo] 
+20:44:51.127 [4500] t=843s frames=77 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=81.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=154 max-mismatch=0
+20:44:52.120 [4500] [xiii-stereo] 
+20:44:52.120 [4500] t=844s frames=77 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=81.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=154 max-mismatch=0
+20:44:53.119 [4500] [xiii-stereo] 
+20:44:53.119 [4500] t=845s frames=73 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=81.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=146 max-mismatch=0
+20:44:54.127 [4500] [xiii-stereo] 
+20:44:54.127 [4500] t=846s frames=78 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=81.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=156 max-mismatch=0
+20:44:55.120 [4500] [xiii-stereo] 
+20:44:55.120 [4500] t=847s frames=68 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=81.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=136 max-mismatch=0
+20:44:56.122 [4500] [xiii-stereo] 
+20:44:56.122 [4500] t=848s frames=76 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=81.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=152 max-mismatch=0
+20:44:57.130 [4500] [xiii-stereo] 
+20:44:57.130 [4500] t=849s frames=73 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=81.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=146 max-mismatch=0
+20:44:58.130 [4500] [xiii-stereo] 
+20:44:58.130 [4500] t=850s frames=79 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=81.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=158 max-mismatch=0
+20:44:59.119 [4500] [xiii-stereo] 
+20:44:59.119 [4500] t=851s frames=78 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=81.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=156 max-mismatch=0
+20:45:00.129 [4500] [xiii-stereo] 
+20:45:00.129 [4500] t=852s frames=75 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=81.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=150 max-mismatch=0
+20:45:01.125 [4500] [xiii-stereo] 
+20:45:01.125 [4500] t=853s frames=76 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=81.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=152 max-mismatch=0
+20:45:02.126 [4500] [xiii-stereo] 
+20:45:02.126 [4500] t=854s frames=76 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=81.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=152 max-mismatch=0
+20:45:03.128 [4500] [xiii-stereo] 
+20:45:03.128 [4500] t=855s frames=71 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=81.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=142 max-mismatch=0
+20:45:04.131 [4500] [xiii-stereo] 
+20:45:04.131 [4500] t=856s frames=76 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=81.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=152 max-mismatch=0
+20:45:05.123 [4500] [xiii-stereo] 
+20:45:05.123 [4500] t=857s frames=69 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=81.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=138 max-mismatch=0
+20:45:06.130 [4500] [xiii-stereo] 
+20:45:06.130 [4500] t=858s frames=78 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=81.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=156 max-mismatch=0
+20:45:07.127 [4500] [xiii-stereo] 
+20:45:07.127 [4500] t=859s frames=78 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=81.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=156 max-mismatch=0
+20:45:08.125 [4500] [xiii-stereo] 
+20:45:08.125 [4500] t=860s frames=78 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=81.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=156 max-mismatch=0
+20:45:09.123 [4500] [xiii-stereo] 
+20:45:09.123 [4500] t=861s frames=78 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=81.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=156 max-mismatch=0
+20:45:10.126 [4500] [xiii-stereo] 
+20:45:10.126 [4500] t=862s frames=78 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=81.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=156 max-mismatch=0
+20:45:11.119 [4500] [xiii-stereo] 
+20:45:11.119 [4500] t=863s frames=77 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=81.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=154 max-mismatch=0
+20:45:12.127 [4500] [xiii-stereo] 
+20:45:12.127 [4500] t=864s frames=78 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=81.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=156 max-mismatch=0
+20:45:13.123 [4500] [xiii-stereo] 
+20:45:13.123 [4500] t=865s frames=77 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=81.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=154 max-mismatch=0
+20:45:14.122 [4500] [xiii-stereo] 
+20:45:14.122 [4500] t=866s frames=77 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=81.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=154 max-mismatch=0
+20:45:15.128 [4500] [xiii-stereo] 
+20:45:15.128 [4500] t=867s frames=76 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=81.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=152 max-mismatch=0
+20:45:16.131 [4500] [xiii-stereo] 
+20:45:16.132 [4500] t=868s frames=78 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=81.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=156 max-mismatch=0
+20:45:17.120 [4500] [xiii-stereo] 
+20:45:17.120 [4500] t=869s frames=70 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=81.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=140 max-mismatch=0
+20:45:18.128 [4500] [xiii-stereo] 
+20:45:18.128 [4500] t=870s frames=77 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=81.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=154 max-mismatch=0
+20:45:19.130 [4500] [xiii-stereo] 
+20:45:19.131 [4500] t=871s frames=76 stereo=ON ipd=3.40u(ini) fov=engine vp=1280x960 | draws/frame: ff-stereo=81.0 vs-stereo=14.0 vs-mismatch=0.0 mono-ortho=3.0 mono-rtt=2.0 mono-off=0.0 no-state=0.0 rhw-mono=0.0 rhw-stereo=9.0 texmat=16.0 | rt-switch-away=152 max-mismatch=0
+20:45:20.382 [4500] [xiii-shutdown] 
+20:45:20.382 [4500] quit detected -- stopping VR hosts
+20:45:20.420 [4500] [xiii-shutdown] 
+20:45:20.420 [4500] VR hosts stopped -- handing off to real ExitProcess
