@@ -891,6 +891,41 @@ fix** — a third matrix beside the two the eye path already writes. ⚠️ Text
 scrolling, environment mapping and decals too, so non-zero narrows the field without identifying the
 shadow.
 
+## 11g. ⭐ Head roll: computed on every frame since day one, never used (2026-09-11, `/pd`, static)
+
+`camera_hook.cpp` applied yaw and pitch and stopped — **but `FRotator` already carries a `Roll`
+field and `QuaternionToEuler` already returns `roll`.** The value was produced every frame and
+discarded `[inferred-static 2026-09-11]`.
+
+**Why that tilts the world:** nothing else counter-rotates the image. XIII's picture is submitted as
+flat stereo halves, so there is no compositor applying head roll — tilt your head and the displayed
+image tilts with it, which reads as the world tilting.
+
+**✅ Now applied, behind `[VR] CameraRollScale`** — **signed** (1.0 default, -1.0 mirror, 0 = the old
+behaviour), clamped ±4, and the value in force is logged once at hook install. Signed on purpose:
+yaw already needs negating because OpenVR winds opposite to Unreal, and nothing establishes that roll
+follows the same convention. **Same remedy and same reasoning as `re-village-scope-vr`'s `roll_k`.**
+⚠️ Defaulted **on**, against the usual off-by-default house style, because the current behaviour is
+*known broken* — off-by-default would mean the next launch still tilts unless somebody remembers.
+
+**Verified numerically against the shipped `pose_math`, with a control that was proved to fail.**
+Roll previously had one test — identity gives zero — which cannot catch a wrong axis, a wrong sign, or
+**roll leaking into pitch**, the nastiest of the three because tilting the head would also look up or
+down. Four cases added (30° round-trip; a −60…+60 sweep asserting no leak into yaw or pitch; the
+hook's own unit conversion against independent expectations; scale 0 and −1 behaviour with a
+non-vacuity check). **14 cases / 50 assertions pass**, and **deliberately flipping the roll sign in
+the shipped source failed exactly 2 cases and 5 assertions** before being reverted
+`[verified-numerically 2026-09-11]`.
+
+**Pitch:** the hook now logs the engine's **own** pitch and roll, captured *before* we modify them,
+beside our deltas — which is the comparison the pitch half of the row asked for.
+
+⚠️ **Shake was analysed and deliberately left.** Two contributors: no `xrLocateViews` prediction at
+the display time (a restructuring of when the pose is sampled, not a two-line change) and **frame
+pacing** — the stereo log already shows 24–72 fps swings, and prediction cannot smooth a frame rate
+that is itself lurching. **Attempting prediction first would be guessing at the split**; whatever
+shake survives a run with roll correct is the honest measure of what prediction must fix.
+
 ## 11c. Per-view poses: VDXR is a THIRD runtime, and no public report covers it (drained from `/gr` 2026-09-04)
 
 §12's OpenXR risk rests on public reports about per-view pose handling. **None of the three public
