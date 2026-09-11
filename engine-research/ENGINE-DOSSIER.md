@@ -881,6 +881,35 @@ The short form, because it changes what the ⭐⭐ HUD row should actually do:
   render device does stereo**, so our `D3DDrv` patch has no precedent to copy — and no published reason
   it cannot work.
 
+## 11e. ⭐ Our draw classifier keys on the projection matrix, which is MEANINGLESS for pre-transformed draws (2026-09-11, `/pd`, static)
+
+Read out of our own `stereo_hook.cpp`, answering §11d's "cheapest first step".
+
+- **The classifier's whole 2D test is the projection matrix:** `s_projPersp = (m[11] == 1.0f &&
+  m[15] == 0.0f)` (i.e. `_34 == 1`, `_44 == 0`), and `StereoDraw()` gates on it —
+  `if (!s_haveP || !s_projPersp) { s_cMonoOrtho++; return draw(); }`. Correct as far as it goes
+  `[inferred-static 2026-09-11]`.
+- **🚨 But a `D3DFVF_XYZRHW` draw bypasses the transform pipeline, so the projection matrix in
+  force says nothing about it.** Nothing obliges the game to set an ortho projection for vertices
+  that ignore the matrix, so pre-transformed 2D drawn while a perspective projection is set sails
+  past the mono gate and **gets stereo'd** — the shape of the reported sliding HUD
+  `[hypothesis 2026-09-11; mechanism read from our source, premise untested]`.
+- **⭐ The distinguishing fact was already in our hands and being discarded.**
+  `Hook_SetVertexShader(void*, DWORD handle)` asks only whether the handle is one of the programmable
+  shaders we saw created. **In D3D8 a non-shader handle IS an FVF code**, so the position type —
+  `D3DFVF_XYZRHW` (`handle & 0x00E) == 0x004`) — was arriving on every draw and being dropped.
+- **Now shadowed as `s_curVsXyzrhw` and counted** in the once-per-second heartbeat as
+  **`rhw-mono=` / `rhw-stereo=`**, split by where the classifier sends such draws. **Any non-zero
+  `rhw-stereo` is the smoking gun.** `[compile-verified 2026-09-11]`, never run.
+- ⚠️ **The one-line fix (force XYZRHW mono) is deliberately NOT applied.** The stereo path sets
+  per-eye **viewports** as well as matrices, so drawing pre-transformed 2D twice into two half
+  viewports is not obviously wrong — it might be how a HUD *should* be duplicated per eye. Measure
+  which bucket the sliding elements are in before changing behaviour.
+- ⚠️ **Method worth keeping:** §11d asked for a static read of the GAME. The answer was a static read
+  of **our own instrument** — two cases were indistinguishable because our classifier never looked at
+  the field that distinguishes them. *Before concluding you need a measurement from the game, check
+  what your own code is already throwing away.*
+
 ## 12. Open risks toward the North Star
 - **True stereo depth** is not attempted in Milestone 1 (same 2D image to both
   eyes). Real per-eye rendering needs Milestone 2's native-ABI direction —
