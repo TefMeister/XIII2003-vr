@@ -819,6 +819,40 @@ it belongs to. That converts a silent permanent failure into one line. Re-patchi
 the follow-up, not the first step — detection alone tells you whether this is even happening here.
 **Queued as a ⭐ `[PD]` row (2026-09-11); not implemented yet.**
 
+### ✅ 11b built: the watchdog registers itself (2026-09-11, `/pd`, static)
+
+Implemented, `[compile-verified 2026-09-11]`, never run.
+
+**Which of our ten patched slots are at risk follows from which are state-setting**
+`[inferred-static 2026-09-11]`: **37 `SetTransform`, 40 `SetViewport`, 76 `SetVertexShader`,
+79 `SetVertexShaderConstant`** — while 70–73 (`Draw*`) and 75 (`CreateVertexShader`) are not, and
+31 (`SetRenderTarget`) probably is not.
+
+🚨 **That distribution is the alarming part.** `SetTransform` is where `s_projPersp` comes from
+— the entire 2D-vs-3D classification — and `SetVertexShaderConstant` is how `c0..c3` are shadowed.
+**Both are at risk while every `Draw*` hook is safe**, so the predicted failure is precisely: draws
+keep flowing, the picture looks mono-but-fine, and the classifier silently stops being fed.
+
+**⭐ The design decision worth copying: the watchdog registers itself.** The obvious implementation
+is a list of slot numbers, and **that list is wrong the first time somebody adds a hook** — silently,
+at exactly the moment nobody is thinking about it, which is the same class of failure the watchdog
+exists to catch. So the recording lives **inside `HookVtbl` itself**: every call that patches a slot
+records `(obj, idx, our pointer)`, and the check therefore covers **every hook automatically,
+including hooks that do not exist yet**.
+
+`FrameCaptureCheckPatchedSlots(dev)` runs once per `Present` (ten pointer compares) and on the first
+change to a slot logs the index, our pointer, the new pointer **and the module that now owns it** —
+naming the culprit, not just the symptom. Reported **once per slot**; **only device slots are
+checked** (the same helper hooks surfaces, whose vtables may since have been freed); and it
+**detects only, never re-patches**, because a silent auto-repair would destroy the evidence the row
+asks for.
+
+**Any launch of the stereo build now answers it for free.** Nothing in the log ⇒ XIII does not
+trigger this and §11b stops being a live suspect. A `VTABLE SLOT REWRITTEN` line ⇒ it happens here,
+the slot says which capability died, the module says who did it, and re-patching becomes justified
+work rather than defensive coding. ⚠️ A rewritten slot 37 or 79 would also **retro-actively explain
+any past run where the classification looked broken for no reason.**
+
 ## 11c. Per-view poses: VDXR is a THIRD runtime, and no public report covers it (drained from `/gr` 2026-09-04)
 
 §12's OpenXR risk rests on public reports about per-view pose handling. **None of the three public
