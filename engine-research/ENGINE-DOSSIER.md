@@ -1002,6 +1002,44 @@ order; sign to be pinned by a failing control), on stages whose texgen is camera
   loaded … pid N ===` `[verified-live 2026-09-11, n=1]`. Earlier builds need `odscap.ps1` started
   **before** launch for those lines.
 
+### ✅ 11h continued (2026-09-12): both fixes built, deployed and verified live — build `2F72793710F5`
+
+**Shadow, per-eye texture matrix** (`[VR] StereoTexGenPerEye=1`, default ON, numpad 3 A/B). For stages
+whose texcoords come from camera-space **position** with a texture transform, each eye gets
+`Translate(±e,0,0) · T`, where `e` is that eye's camera offset; the engine's matrix is restored after
+the draw. Camera-space **normal/reflection** stages are left alone (directions; a per-eye reflection
+is correct). Stage state is tracked through a new `SetTextureStageState` hook.
+**Live A/B/A at eye distance 13.40:** shadow −25.8 px with the fix against floor −23.9/−25.4;
+**+4.5 px with it off**; identical numbers on the way back
+`[verified-live 2026-09-12, n=1 scene, A/B/A]`. ⇒ §11f's mechanism is confirmed and fixed.
+
+**HUD, per-eye placement** (`StereoOrthoPerEye=1` + `StereoRhwRemap=1`, both default ON, numpad 9 A/B,
+`StereoHudParallaxPx` for depth, numpad 8/2). Ortho-bucket draws are re-issued once per eye with that
+eye's viewport; pre-transformed draws have their vertices remapped
+(`x' = half.x + (x − vp.x)·half.w/vp.w`), user-pointer draws by copy, vertex-buffer draws by a
+read-only lock and re-draw (bindings restored afterwards; any refused lock falls back and counts as
+`rhw-fail`). **Live:** health, crosshair (now centred per eye, not on the seam) and the objectives card
+appear in both eyes; in `Banque01` `rhw-remap=12` with **`rhw-fail=0`** — the write-only buffer read
+worked on this driver `[verified-live 2026-09-12, n=2 levels]`. Full-screen ortho quads are detected
+and counted (`ortho-full`) and still drawn per eye; `StereoOrthoFullscreenMono=1` exists if a
+full-screen effect ever needs to stay mono.
+
+**New heartbeat fields:** `rhw-remap`, `rhw-fail`, `ortho-eye`, `ortho-full`, `hud-px`, `texgen-cam`,
+`texgen-adj` (old fields unchanged).
+
+⭐ **Cross-check worth keeping:** `Banque01` reads `texmat=18` with **`texgen-cam=0`** — its texture
+matrices are reflection-type, not shadow projections, which matches the lobby having no character
+shadows; `Plage01` reads `texgen-cam=12–29` `[measured 2026-09-12]`. So `texmat` alone never meant
+"shadows here": **`texgen-cam` is the shadow-bearing counter.**
+
+**Mechanism (reader, static):** XIII uses UE2's standard shadow **projector** — the caster is drawn
+into a small off-screen texture and projected onto surfaces `[inferred-static 2026-09-11]`; UE2
+projects using camera-space coordinates plus a texture matrix `[reported — general UE2 knowledge, not
+traced in XIII's own code]`. No shadow on/off switch exists in any shipped config; the only related
+key is `MaxNumberOfProjectorPerStaticMesh=10` `[measured 2026-09-11]`. ⚠️ `rt-switch-away ≈ 140` per
+frame is NOT explained by 2 caster draws — unexplained, and the cheapest next measurement is counting
+`Clear` calls and distinct render targets per frame.
+
 ## 11c. Per-view poses: VDXR is a THIRD runtime, and no public report covers it (drained from `/gr` 2026-09-04)
 
 §12's OpenXR risk rests on public reports about per-view pose handling. **None of the three public
