@@ -124,6 +124,38 @@ pre-transformed coordinates the same way. Queued to the reader.
 | Character + camera | ✅ `W/A/S/D`, `U/J` turning in small steps, numpad stereo keys |
 | Self-close | ✅ window close message ×3, clean exit every time |
 
+## 7. ⭐⭐ Next morning (2026-09-12): both fixes built overnight, deployed, and verified live
+
+Build `2F72793710F5` (the reader's, from the file-logging source), installed and run twice — once
+into the beach level, once into the bank. Both fixes are **on by default** and each has a live A/B key.
+
+**The shadow now lies on the floor** (numpad 3 toggles it):
+
+| | shadow | the floor under it | far floor |
+| --- | --- | --- | --- |
+| fix ON | **−25.8 px** | −23.9 / −25.4 px | −6.6 px |
+| fix OFF (control) | **+4.5 px** | −23.9 / −25.4 px | −6.6 px |
+| fix ON again | **−25.8 px** | identical | identical |
+
+Eye distance 13.40 to magnify; match quality 0.996. `[verified-live 2026-09-12, n=1 scene, A/B/A]`
+The fix is a per-eye texture matrix on stages whose coordinates come from camera-space position;
+reflection stages are deliberately left alone.
+
+**The HUD is now complete in both eyes** (numpad 9 toggles): health counter, crosshair (centred in
+each half instead of on the seam) and the objectives card all appear in each eye
+`[verified-live 2026-09-12, n=2 levels]`.
+
+**The bank's 12 mystery draws are handled too:** `rhw-remap=12`, `rhw-fail=0` — every one was
+readable and remapped into both halves, with no fallbacks `[verified-live 2026-09-12, n=1 level]`.
+What they actually are is still unknown (queued to the reader).
+
+**A cross-check worth keeping:** in the bank, `texmat=18` but `texgen-cam=0` — those texture matrices
+are reflection-type, not shadow projections, which fits the bank lobby having no character shadows at
+all. The beach reads `texgen-cam=12–29` `[measured 2026-09-12]`.
+
+⚠️ **The reader stopped overnight** on the account's session limit, mid-way through its next job
+(identifying those 12 draws). Nothing was lost: both builds and its notes were already saved.
+
 ## Not established
 
 - What the bank's 12 pre-transformed stereo'd draws are.
