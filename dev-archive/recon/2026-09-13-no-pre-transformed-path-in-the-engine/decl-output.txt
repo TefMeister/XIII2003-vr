@@ -1,0 +1,21 @@
+== Engine.dll ==
+  FAnimMeshVertexStream              fvf=0x112 stride=32  [Float3 Position, Float3 Normal, Float2 TexCoord0]
+  FBspVertexStream                   fvf=0x242 stride=32  [Float3 Position, Color Diffuse, Float2 TexCoord0, Float2 TexCoord1]
+  FCanvasUtil                        fvf=0x142 stride=24  [Float3 Position, Color Diffuse, Float2 TexCoord0]
+  FLineBatcher                       fvf=0x042 stride=16  [Float3 Position, Color Diffuse]
+  FRawColorStream                    fvf=0x040 stride= 4  [Color Diffuse]
+  FStaticMeshColVertexStream         fvf=0x002 stride=12  [Float3 Position]
+  FStaticMeshColorStream             fvf=0x080 stride= 4  [Color Specular]
+  FStaticMeshUVStream                fvf=0x000 stride= 0  []
+  FStaticMeshVectorStream            fvf=0x002 stride=12  [Float3 Position]
+  FStaticMeshVertexColorUVStream     fvf=0x052 stride=28  [Float3 Position, Float3 Normal, Color Diffuse]
+  FStaticMeshVertexStream            fvf=0x012 stride=24  [Float3 Position, Float3 Normal]
+  FStaticMeshVertexUVStream          fvf=0x012 stride=24  [Float3 Position, Float3 Normal]
+  FTrailVertexStream                 fvf=0x142 stride=24  [Float3 Position, Color Diffuse, Float2 TexCoord0]
+  FTriangleBatcher                   fvf=0x042 stride=16  [Float3 Position, Color Diffuse]
+== Xiii.dll: no GetComponents exports
+== GUI.dll: no GetComponents exports
+== XIIIMP.dll: no GetComponents exports
+== Window.dll: no GetComponents exports
+== XIDCine.dll: no GetComponents exports
+== XIDPawn.dll: no GetComponents exports

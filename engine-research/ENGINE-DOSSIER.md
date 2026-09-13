@@ -1133,6 +1133,119 @@ Read out of our own `stereo_hook.cpp`, answering §11d's "cheapest first step".
 - **⇒ RAN 2026-09-11 (§11h): the HUD players see is NOT pre-transformed** — first-person play reads
   `rhw` 0/0 with `mono-ortho=3`; the bank's 12 `rhw-stereo` draws are something else, unidentified
   `[measured 2026-09-11]`.
+- 🚨 **CORRECTED 2026-09-13 — see §11i.** The premise in this section, *"a non-shader handle IS
+  an FVF code"*, holds only for a handle we watched NOT being created, and the hook recorded only
+  function-bearing creations. The stock driver's `FD3DFixedVertexShader` creates
+  **declaration-only** shaders, whose handles were therefore read as FVFs. The bank's 12 are very
+  likely those `[inferred-static 2026-09-13]`. The measurement stands; the reading of it does not.
+
+## 11i. 🚨 A DECLARATION-ONLY VERTEX SHADER HANDLE IS NOT AN FVF — and that is very likely all twelve "pre-transformed" draws were (2026-09-13, `/pd`, static)
+
+**Supersedes: §11e's premise** *"In D3D8 a non-shader handle IS an FVF code"*, and with it the
+reading of `Banque01`'s `rhw-stereo=12` / `rhw-remap=12` as twelve screen-space draws
+`[measured 2026-09-11]` — the measurement stands, its interpretation does not.
+
+### The premise was half true, and the half that is missing is the whole bug
+
+`D3DFVF_*` codes and `CreateVertexShader` handles share one DWORD parameter on
+`SetVertexShader`. §11e's rule — *not one of our recorded shaders ⇒ it is an FVF* — is sound only
+if **every** created handle was recorded. `Hook_CreateVertexShader` recorded a handle only when
+`pFunction != nullptr`, on the stated reasoning that declaration-only creations "still run
+fixed-function". **True, and beside the point: the value is still a HANDLE.**
+
+⭐ **And the stock driver creates exactly that kind.** `FD3DFixedVertexShader`'s constructor
+(`D3DDrv_Original.dll` VA `0x116162F0`, reached from `UD3DRenderDevice::GetVertexShader`,
+VA `0x1160D740`) calls `CreateVertexShader` through `[vtbl+0x12C]` and **pushes `0` for
+`pFunction`** `[inferred-static 2026-09-13]`. So its handles were never recorded, and their numeric
+value was read as an FVF. **About one arbitrary handle in eight has `(h & 0x00E) == 0x004`**, which
+decodes as `D3DFVF_XYZRHW`. Twelve draws a frame is what that looks like.
+
+Second, quieter instance of the same failure: the recorded-handle table held **64** entries and
+**overflowed in silence**, so a driver creating more than 64 shaders would have the same
+misclassification for every later one.
+
+### Corroboration: the engine has no pre-transformed path at all
+
+Two independent static readings, and they agree with each other rather than with §11e's reading:
+
+- **All 14 `FVertexStream::GetComponents` implementations in `Engine.dll` declare position as
+  `Float3`; none declares `Float4`** — `FAnimMeshVertexStream` `0x112`, `FBspVertexStream` `0x242`,
+  `FCanvasUtil` **`0x142` stride 24**, `FLineBatcher`/`FTriangleBatcher` `0x042`, `FRawColorStream`
+  `0x040`, the six `FStaticMesh*` streams `0x002`/`0x012`/`0x052`/`0x080`, `FStaticMeshUVStream`
+  (UV only), `FTrailVertexStream` `0x142` `[inferred-static 2026-09-13]`.
+- **The only FVF CONSTANTS the stock driver ever passes to `SetVertexShader` are `0x142` and
+  `0x242`** — both `D3DFVF_XYZ`, and both exactly matching a stream above
+  `[inferred-static 2026-09-13]`.
+
+⚠️ `Xiii.dll`, `GUI.dll`, `XIIIMP.dll`, `Window.dll`, `XIDCine.dll` and `XIDPawn.dll` export **no**
+`GetComponents` at all, so the list above is the whole set for this game.
+
+### How the enums were read (worth keeping: it decodes any UE2 D3D driver)
+
+`FD3DVertexShader`'s base constructor (VA `0x11615FB0`) turns the engine's component list into a D3D8
+declaration, and its two switch ladders give both enums outright:
+
+| engine component `Type` | `D3DVSDT_*` | bytes |
+| --- | --- | --- |
+| 0 | `FLOAT4` | 16 |
+| 1 | `FLOAT3` | 12 |
+| 2 | `FLOAT2` | 8 |
+| 3 | `FLOAT1` | 4 |
+| 4 | `D3DCOLOR` | 4 |
+
+| engine component `Function` | `D3DVSDE_*` register |
+| --- | --- |
+| 0 | `POSITION` (0) |
+| 1 | `NORMAL` (3) |
+| 2 | `DIFFUSE` (5) |
+| 3 | `SPECULAR` (6) |
+| 4–11 | `TEXCOORD0`–`7` (7–14) |
+
+Cross-checked against `FCanvasUtil`: components `(1,0) (4,2) (2,4)` and `GetStride() = 0x18` ⇒
+`XYZ|DIFFUSE|TEX1`, 24 bytes — which is `FCanvasVertex(FVector, FColor, float, float)` exactly, and
+which is the constant `0x142` the driver passes. Tool: `decl.py` in the 2026-09-13 recon folder.
+**There is no `Function` value meaning "already in screen space"**, and a `FLOAT4` position is the
+only thing that could make the runtime's FVF carry `0x004`. Nothing declares one.
+
+### What changed in our code, and what deliberately did not
+
+- Declaration-only creations are recorded in their own table; both tables hold **512** and **log
+  when they fill** rather than going quiet.
+- `s_curVsXyzrhw` now requires `!prog && !decl`.
+- ⚠️ **`s_curFvf` is unchanged on purpose.** The per-eye **ortho** HUD path (§11d, verified live and
+  shipped in v0.3.0-alpha) reads `s_curFvf & 0x00E == 0x002` and is left exactly as it was, so this
+  correction cannot regress it. Whether that path has the same pollution is **counted, not acted on**:
+  new heartbeat field **`decl-xyz=`**.
+- New heartbeat field **`rhw-suppressed=`** — draws rescued from the pre-transformed bucket. In
+  `Banque01` this should read ≈ 12 and `rhw-remap` should fall to ≈ 0.
+- **VS CENSUS** log line, once per distinct `SetVertexShader` value: the value, whether we watched it
+  being created (programmable / declaration-only) or it is a genuine FVF, and its FVF decode.
+- **Numpad `.`** dumps every remaining pre-transformed draw of one frame: primitive type, vertex
+  count, stride, the **screen-space bounding box** (the identifying field), z/rhw ranges, vertex-0
+  diffuse, stage-0 texture size/format/levels, and blend/z/cull/fog/lighting state. Capped at 48
+  draws. Numpad `.` is unbound in `DefUser.ini` (`NumPad0`/`1` are inventory, `NumPadSlash` is Look).
+
+`[compile-verified 2026-09-13]`, and pinned end-to-end: `tests/fakedev_stereo_hook.cpp` §8 creates a
+declaration-only shader whose handle carries the XYZRHW bits, asserts the draw's vertices are **not**
+rewritten, and asserts that the same geometry under a real `0x044` **is** — so the first check cannot
+pass by the path being dead. **on = 57/57, off (control) = 43/43**; maths suites unchanged at 14/11/12
+cases, 50/9209/5410 assertions.
+
+### ⚠️ What is still NOT established
+
+That the twelve *were* declaration handles. The inference is strong and doubly corroborated, but it
+is an inference. **One flat launch settles it**: `rhw-suppressed ≈ 12` with an empty `RHW DUMP`
+confirms it; any `RHW DUMP` line means genuine pre-transformed draws exist after all and the dump
+says what they look like. Board row carries both readings.
+
+### Method worth keeping
+
+§11e's own closing lesson was *"before concluding you need a measurement from the game, check what
+your own code is already throwing away."* This is the next turn of the same screw: **our code was not
+throwing the field away any more — it was reading a field that was not there.** A value that can be
+one of two kinds needs provenance, not bit-twiddling; and the test that would have caught it is the
+one where the fake returns a handle whose bits *look* like the thing being tested for. The old fake
+returned `0x80000001` for everything, which could never fail.
 
 ## 12. Open risks toward the North Star
 - **True stereo depth** is not attempted in Milestone 1 (same 2D image to both
