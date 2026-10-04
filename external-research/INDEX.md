@@ -1,6 +1,8 @@
 # Research index
 
-**Last `/gr` pass: 2026-09-29 (estate sweep) — CHECK-IN.** Inbox empty. Nothing new: every open row is internal (the Numpad-. census run and the unexplained render-target switches), so nothing was searched.
+**Last `/gr` pass: 2026-10-04 (estate sweep, second pass) — CHECK-IN.** Inbox empty; board `OPEN` rows read: the open rows are our own launch and release-notes upkeep, nothing public to look up. Nothing new.
+
+_Previous: **Last `/gr` pass: 2026-09-29 (estate sweep) — CHECK-IN.** Inbox empty. Nothing new: every open row is internal (the Numpad-. census run and the unexplained render-target switches), so nothing was searched._
 
 _Previous: **Last `/gr` pass: 2026-09-23 (estate sweep) — CHECK-IN.** Checked phunkaeg's *VR Modding Playbook*: it lists this project's repos as studied sources; its UE2.5 BioShock chapters are the nearest engine material and were not mined this pass._
 
