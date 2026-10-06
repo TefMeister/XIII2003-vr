@@ -1271,10 +1271,14 @@ one press of numpad `.` in the bank lobby. Log and screenshot:
   Declaration-only: `0x0F 0x11 0x13 0x15 0x17 0x19`. Programmable: `0x03 0x05 0x07 0x0B`. **`0x15` is the
   one that used to read as `XYZRHW|NORMAL`** and was counted as pre-transformed `[verified-live 2026-10-06, n=1]`.
   No `VERTEX SHADER TABLE FULL`.
-- **(b) NOT answered by this counter — the row's premise was off.** `decl-xyz=12.0` counts
-  `SetVertexShader` CALLS with a declaration handle whose bits read as `XYZ`, wherever the next draw
-  goes (`stereo_hook.cpp` ~1111) `[inferred-static 2026-10-06]`. It does not say those calls feed the
-  ortho bucket (`mono-ortho=3.0`). Whether the ortho path can be affected at all is a `[PD]` question.
+- **(b) Answered, though not by the counter the row named: the HUD is unaffected.** `decl-xyz=12.0`
+  counts `SetVertexShader` CALLS (`stereo_hook.cpp` ~1111), not HUD draws. The ortho bucket is chosen
+  by the projection matrix alone (`StereoDraw` ~852); a declaration handle can only touch the
+  full-viewport check `OrthoCoversViewport`, and that matters only with `StereoOrthoFullscreenMono=1`
+  (off by default) `[inferred-static 2026-10-06]`. Today `ortho-eye` = `mono-ortho` (3.0) and
+  `ortho-full=0.0` on every stereo line, so every HUD draw went per eye `[measured 2026-10-06, n=6 lines]`.
+  An optional counter (`decl-ortho`) is compiled in `staging/XIII2003-vr/reader-declortho-2026-10-06/`,
+  not deployed and not needed `[compile-verified 2026-10-06]`.
 - **The HUD shows in both eyes in stereo** (health bottom-left, crosshair centred per eye)
   `[verified-live 2026-10-06, n=1]`.
 - **`rt-switch-away` is per heartbeat line (≈1 s), not per frame** — `Heartbeat` prints it raw while

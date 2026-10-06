@@ -12,10 +12,10 @@ on with numpad 7, then one press of numpad `.`.
   fact rather than a static reading. `[verified-live 2026-10-06, n=1]`
 - **The ticket census** lists 12 distinct values: 2 real layout codes, 6 declaration-only tickets,
   4 programmable shaders. Ticket `0x15` is the one that used to be misread. `[verified-live 2026-10-06, n=1]`
-- **The third question did not get a clean answer.** The counter meant to say whether the HUD's own
-  group of draws was affected the same way counts something broader (every time such a ticket is set, not
-  just for HUD draws). It read 12 per frame, which therefore proves nothing about the HUD. That question
-  went back to static work. `[inferred-static 2026-10-06]`
+- **The third question was answered a different way.** The counter it named counts something broader,
+  so the helper read the code instead: the HUD's group is chosen by the camera lens alone, and those tickets
+  could only matter with an option that is switched off. Today's log agrees: every HUD draw went to both eyes,
+  none was treated as full-screen. `[inferred-static + measured 2026-10-06]`
 - **The HUD shows in both eyes**, crosshair centred in each. Screenshot in the recon folder.
 - **The "140 render-target switches per frame" mystery was a units slip.** That number is a per-second
   total; per frame it is exactly 2. The background helper found it in the code and in 14,900 old log lines,
@@ -24,6 +24,7 @@ on with numpad 7, then one press of numpad `.`.
 ## Housekeeping done
 
 - Music set to zero in `XIII.ini` and `User.ini` (backed up). Not yet seen in a running game.
+- A spare counter for this is built in `staging` but not installed; nothing needs it.
 - Learned how to quit cleanly with the keyboard (two menus, two Yes prompts). Closing the window and
   typing `exit` in the console both do nothing.
 - The game deletes `User.ini` on exit; it was identical to `DefUser.ini`, so it was simply put back.
