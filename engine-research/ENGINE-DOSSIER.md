@@ -89,6 +89,16 @@ never feed VR pose back into the simulation).
   target's prologue bytes at runtime before patching, so a build/version
   mismatch **fails safe** (skips the hook) instead of crashing.
 
+**Music muted, window, quitting (2026-10-06):** music is `[XBoxAudio.XBoxAudioSubsystem] MusicVolume=0.0`
+in `system/XIII.ini` plus `MusicSliderPos=0` in `system/User.ini` (backups `*.bak-2026-10-06-pre-music-mute`).
+The ini edit survived the game's exit `[measured 2026-10-06]`; whether the profile's own slider
+(`Save/XIII.pro`) overrides it is unchecked until the next launch. ⚠️ `User.ini` was **deleted by the game
+on exit** and was byte-identical to `DefUser.ini`, so nothing was lost; it was put back. Window: 1280×960
+client, windowed, from `WindowedViewportX/Y` + `StartupFullscreen=False` `[measured 2026-10-06]`.
+**Quit route:** Esc → down ×5 to *Main menu* → Enter → Left to *Yes* → Enter (profile screen) → Esc →
+Left to *Yes* → Enter. `WM_CLOSE` to the viewport window and `exit` typed in the F2 console both did nothing
+`[verified-live 2026-10-06, n=1]`.
+
 ## 5. Threading & frame structure
 - Single-threaded classic-UE main loop in `XIII.exe` (a `CMainLoop`-shaped
   loop: `GIsRunning` / `GIsRequestingExit` globals, a tick-rate limiter driven
@@ -1036,9 +1046,8 @@ shadows; `Plage01` reads `texgen-cam=12–29` `[measured 2026-09-12]`. So `texma
 into a small off-screen texture and projected onto surfaces `[inferred-static 2026-09-11]`; UE2
 projects using camera-space coordinates plus a texture matrix `[reported — general UE2 knowledge, not
 traced in XIII's own code]`. No shadow on/off switch exists in any shipped config; the only related
-key is `MaxNumberOfProjectorPerStaticMesh=10` `[measured 2026-09-11]`. ⚠️ `rt-switch-away ≈ 140` per
-frame is NOT explained by 2 caster draws — unexplained, and the cheapest next measurement is counting
-`Clear` calls and distinct render targets per frame.
+key is `MaxNumberOfProjectorPerStaticMesh=10` `[measured 2026-09-11]`. ~~`rt-switch-away ≈ 140` per frame is
+unexplained~~ **Corrected 2026-10-06 (see §11j): it is a per-SECOND total, which is exactly 2 per frame.**
 
 ## 11c. Per-view poses: VDXR is a THIRD runtime, and no public report covers it (drained from `/gr` 2026-09-04)
 
@@ -1246,6 +1255,33 @@ throwing the field away any more — it was reading a field that was not there.*
 one of two kinds needs provenance, not bit-twiddling; and the test that would have caught it is the
 one where the fake returns a handle whose bits *look* like the thing being tested for. The old fake
 returned `0x80000001` for everything, which could never fail.
+
+## 11j. ✅ The twelve were never draws — confirmed live; and `rt-switch-away` is 2 per frame (2026-10-06, `/lm`, dev PC)
+
+**Confirms §11i.** One launch (`XIII.exe Banque01`, build `4D494DC32730`, stereo on with numpad 7),
+one press of numpad `.` in the bank lobby. Log and screenshot:
+`dev-archive/recon/2026-10-06-numpad-dot-the-twelve-were-never-draws/`.
+
+- **(a) Answered: no pre-transformed draws exist.** `RHW DUMP: NOTHING was pre-transformed this
+  frame`, `rhw-mono=0 rhw-stereo=0 rhw-remap=0`, while `rhw-suppressed=4.0` per frame — so declaration
+  handles reading as `XYZRHW` were still being set, and are now correctly ignored
+  `[verified-live 2026-10-06, n=1 dump frame, 6 heartbeat lines]`. ⚠️ It was 4 here, not 12 —
+  the view differed from 2026-09-11, so the count is view-dependent; the conclusion is not.
+- **(c) Answered: the handle census.** 12 distinct values. FVFs (never created): `0x142`, `0x112`.
+  Declaration-only: `0x0F 0x11 0x13 0x15 0x17 0x19`. Programmable: `0x03 0x05 0x07 0x0B`. **`0x15` is the
+  one that used to read as `XYZRHW|NORMAL`** and was counted as pre-transformed `[verified-live 2026-10-06, n=1]`.
+  No `VERTEX SHADER TABLE FULL`.
+- **(b) NOT answered by this counter — the row's premise was off.** `decl-xyz=12.0` counts
+  `SetVertexShader` CALLS with a declaration handle whose bits read as `XYZ`, wherever the next draw
+  goes (`stereo_hook.cpp` ~1111) `[inferred-static 2026-10-06]`. It does not say those calls feed the
+  ortho bucket (`mono-ortho=3.0`). Whether the ortho path can be affected at all is a `[PD]` question.
+- **The HUD shows in both eyes in stereo** (health bottom-left, crosshair centred per eye)
+  `[verified-live 2026-10-06, n=1]`.
+- **`rt-switch-away` is per heartbeat line (≈1 s), not per frame** — `Heartbeat` prints it raw while
+  every other field is divided by `frames`. Today 138/69, 126/63, 132/66, 128/64, 118/59 frames =
+  **exactly 2.0 per frame** `[verified-live 2026-10-06, n=6 lines]`, and the same 2.00 on ≈14,900 older
+  log lines `[measured 2026-10-06]` (reader helper). The game leaves the backbuffer twice per frame;
+  which pass each is remains `[hypothesis]` (shadow texture is the obvious candidate).
 
 ## 12. Open risks toward the North Star
 - **True stereo depth** is not attempted in Milestone 1 (same 2D image to both
