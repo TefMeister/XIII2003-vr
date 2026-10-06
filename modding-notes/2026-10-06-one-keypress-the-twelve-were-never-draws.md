@@ -15,7 +15,7 @@ on with numpad 7, then one press of numpad `.`.
 - **The third question was answered a different way.** The counter it named counts something broader,
   so the helper read the code instead: the HUD's group is chosen by the camera lens alone, and those tickets
   could only matter with an option that is switched off. Today's log agrees: every HUD draw went to both eyes,
-  none was treated as full-screen. `[inferred-static + measured 2026-10-06]`
+  none was treated as full-screen. `[inferred-static 2026-10-06]` `[measured 2026-10-06]`
 - **The HUD shows in both eyes**, crosshair centred in each. Screenshot in the recon folder.
 - **The "140 render-target switches per frame" mystery was a units slip.** That number is a per-second
   total; per frame it is exactly 2. The background helper found it in the code and in 14,900 old log lines,
