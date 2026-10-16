@@ -7,3 +7,5 @@ One line per idea, so nothing is offered twice.
 - 2026-10-06 chosen `all-games--software-that-cancels-controller-drift-when-one-controller-hides-behin` - Software that cancels controller drift when one controller hides behind the other
 - 2026-10-06 chosen `all-games--a-launcher-to-switch-gameplay-features-on-or-off-before-playing` - A launcher to switch gameplay features on or off before playing
 - 2026-10-06 chosen `all-games--bullet-casings-stay-on-the-floor-until-the-level-ends` - Bullet casings stay on the floor until the level ends
+- 2026-10-16 settled `all-games--a-universal-poser-finds-a-game-s-hand-and-arm-joints-by-itself-then-be` - A universal poser: finds a game's hand and arm joints by itself, then bends them with sliders (Tefa: already being worked on in another session; cleared here)
+- 2026-10-16 settled `all-games--a-hand-and-body-poser-like-emv-engine-s-for-our-other-third-person-gam` - A hand and body poser like EMV Engine's, for our other third-person games (Tefa: already being worked on in another session; cleared here)
