@@ -172,17 +172,17 @@ This is an unofficial, non-commercial fan mod, made possible by the work of many
   inspiration along the way — whether named here or not.
 
 If you helped in any way, even just as inspiration, and feel you should be
-credited but aren't, please email us and we will add you as soon as possible.
+credited but aren't, please open an issue on GitHub and we will add you as soon as possible.
 
 ## Corrections & removal requests
 
-- **Missing or incorrect credit?** Email us and we will correct it as soon as
+- **Missing or incorrect credit?** Open an issue on GitHub and we will correct it as soon as
   possible.
 - **Removal requests:** if you are the owner or creator of something used in this
   mod and you want it removed from the mod or this repository, please contact us.
   We will honour legitimate requests from rights holders promptly.
 
-**Contact:** (an issue on this repository)
+**Contact:** open an issue on this repository
 
 ## Contributing & policy
 
