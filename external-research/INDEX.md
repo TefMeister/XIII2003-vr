@@ -1,6 +1,8 @@
 # Research index
 
-**Last `/gr` pass: 2026-10-04 (estate sweep, second pass) — CHECK-IN.** Inbox empty; board `OPEN` rows read: the open rows are our own launch and release-notes upkeep, nothing public to look up. Nothing new.
+**Last `/gr` pass: 2026-10-26 (estate sweep) — CHECK-IN.** Inbox empty; board rows are headset tests and our own release-notes upkeep. One search for another VR mod: none found (only the old widescreen and unofficial patches). Nothing new.
+
+_Previous: **Last `/gr` pass: 2026-10-04 (estate sweep, second pass) — CHECK-IN.** Inbox empty; board `OPEN` rows read: the open rows are our own launch and release-notes upkeep, nothing public to look up. Nothing new._
 
 _Previous: **Last `/gr` pass: 2026-09-29 (estate sweep) — CHECK-IN.** Inbox empty. Nothing new: every open row is internal (the Numpad-. census run and the unexplained render-target switches), so nothing was searched._
 
