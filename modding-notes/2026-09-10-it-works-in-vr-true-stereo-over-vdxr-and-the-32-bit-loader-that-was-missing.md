@@ -1,6 +1,6 @@
 # 2026-09-10 — it works in VR: true stereo over VDXR, and the 32-bit loader that was missing
 
-Home PC `RTX`, Quest 3 over Virtual Desktop. **OpenXR runtime: Virtual Desktop VDXR, 32-bit**
+Home PC, Quest 3 over Virtual Desktop. **OpenXR runtime: Virtual Desktop VDXR, 32-bit**
 (`C:\Program Files\Virtual Desktop Streamer\OpenXR\virtualdesktop-openxr-32.dll` 1.0.10.0,
 Streamer 1.34.22.0 — recorded because dossier §12 says the runtime name and version must
 travel with any stereo verdict). Tefa driving, three launches.
@@ -59,5 +59,5 @@ use.
 ## State left on this machine
 
 The stereo driver is now the **active** `D3DDrv.dll` here, `[VR]` is set for OpenXR, and the
-loader is beside the exe; `deployed/RTX/XIII2003-vr.tsv` re-stamped. ⚠️ Until the placeholder
+loader is beside the exe; `deployed/<home PC>/XIII2003-vr.tsv` re-stamped. ⚠️ Until the placeholder
 pose is removed, launching XIII **without** Virtual Desktop running will spin the view.
