@@ -59,5 +59,5 @@ use.
 ## State left on this machine
 
 The stereo driver is now the **active** `D3DDrv.dll` here, `[VR]` is set for OpenXR, and the
-loader is beside the exe; `deployed/home-pc/XIII2003-vr.tsv` re-stamped. ⚠️ Until the placeholder
+loader is beside the exe; `deployed/<home PC>/XIII2003-vr.tsv` re-stamped. ⚠️ Until the placeholder
 pose is removed, launching XIII **without** Virtual Desktop running will spin the view.
