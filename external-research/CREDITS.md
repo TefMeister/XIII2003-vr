@@ -76,6 +76,11 @@ For the HUD-depth and stereo-bucket findings behind
 - **cybereality / Denis Reischl** and contributors — *Vireio Perception*, whose `D3DProxyDeviceUnreal`
   remains the closest relative to this project's patched device, recorded as an unverified lead.
 
+## Added by the 2026-11-07 research pass
+
+- **CastleTroy28** — *XIII-VR*, the VR mod for the 2020 remake, read from its public README for the feature
+  list: <https://github.com/CastleTroy28/XIII-VR>
+
 ## Respecting creators
 
 This project exists because other people generously shared their
